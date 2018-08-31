@@ -1,0 +1,51 @@
+Manual Build Instructions
+Ubuntu 16.04
+
+apt-get install python-pip
+python3 -m pip install --upgrade pip==9.0.3
+python3 -m pip install setuptools
+python3 -m pip install sphinx sphinx-autobuild
+python3 -m pip install sphinx_rtd_them
+
+git clone XX_DOCSURL_XX
+cd KomodoPlatformdocs/docs
+make html
+
+
+Output will be at ./build/html
+
+
+########################
+
+Jenkins build instructions
+
+
+Ubuntu 16.04
+
+ apt-get install python-pip
+python3 -m pip install --upgrade pip==9.0.3
+python3 -m pip install setuptools
+python3 -m pip install sphinx sphinx-autobuild
+python3 -m pip install sphinx_rtd_them
+(if that doesn't work try python3 -m pip install --user sphinx_rtd_theme)
+
+Jenkins -> New Project -> Freestyle Project. OK
+Source control: git
+URL is the clone url
+
+cd docs
+make html
+
+This however only works manually.
+As a cheap workaround, a script to remove the build directory works
+#!/bin/bash
+rm -Rf build
+
+Call this remove.sh
+
+From cron we can build from shell (jenkins craps: make html, to resolve try python virtualenv because sphinx is a python based templating tool)
+#!/bin/bash
+cd /var/lib/jenkins/workspace/<FREESTYLEPROJECT_NAME>/docs
+./make.sh &
+
+
