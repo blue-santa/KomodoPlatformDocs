@@ -13,7 +13,7 @@ We try to avoid getting technical here, but we do get specific about the implica
 - Decision Matrix
 - One page explanation of each component
  - Understanding blockchain in general
- - dPoW
+ - Komodo Security: dPoW
  - Creating your own assetchain
  - Building Smart contracts
  - Cross-chain Interoperability
@@ -50,11 +50,15 @@ It's cleanly organized and has enough information for each item that, in most ci
  - How to create an Asset Chain
  - Asset Chain parameters
  - API
+- Smart Contracts
+ - Explanation
+ - API Commands
+ - One or Two Tutorials
 - DEX
  - Explanation
  - API (Market Maker)
  - Additional Info
-- Wallet
+- GUI Software
  - Anything in-depth with the wallet
 - Notary Nodes
  - Explanation
