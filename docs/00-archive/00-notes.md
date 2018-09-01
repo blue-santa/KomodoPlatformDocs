@@ -1,6 +1,5 @@
 New outline
 
-===============
 Komodo Overview
 ===============
 Target Persona: Stan
@@ -24,7 +23,6 @@ We try to avoid getting technical here, but we do get specific about the implica
  - Add in new sections, too
 - Decision Matrix repeat
 
-==================
 Basic Installation
 ==================
 Target Personas: Sarah, Matthew, and Stan
@@ -32,7 +30,6 @@ Target Personas: Sarah, Matthew, and Stan
 - Very brief installation instructions
 - Links to support center
 
-=======================
 Developer Documentation
 =======================
 Target Persona: Matthew
