@@ -252,9 +252,9 @@ Default file locations:
 
 -addressindex
 -------------
-``addressindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all addresses and balances. It is initiated at run time, and it enables rapid search across the entire blockchain history.
+``addressindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all addresses and balances. The feature is initiated at run time, and it enables rapid search across the entire blockchain history.
 
-When utilizing this command the synced blockchain data should be deleted to allow for a full resync. The user may need to manually delete the blockchain data beforehand ===link to manual deletion instructions above===.
+Initiating this parameter should trigger an automatic full resync. If the resync does not occur automatically, the user should manually delete the blockchain data before trying again ===link to manual deletion instructions above===.
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
@@ -266,7 +266,7 @@ To initiate the ``addressindex`` command at runtime, include ``-addressindex=1``
 
   ``./komodod -addressindex=1``
 
-To set the ``addressindex`` feature as a default parameter, include the parameter in the ``komodo.conf`` configuration file.
+To set the ``addressindex`` feature as a default parameter, include the parameter in the coin's ``.conf`` configuration file.
 
 ::
 
@@ -274,9 +274,9 @@ To set the ``addressindex`` feature as a default parameter, include the paramete
 
 -timestampindex
 ---------------
-``timestampindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all === transaction timestamps ===. It is initiated at run time and it enables rapid search across the entire blockchain history.
+``timestampindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all === data timestamps ===. It is initiated at run time and it enables rapid search across the entire blockchain history.
 
-When utilizing this command the synced blockchain data should be deleted to allow for a full resync. The user may need to manually delete the blockchain data before executing the command ===link to manual deletion instructions above===.
+Initiating this parameter should trigger an automatic full resync. If the resync does not occur automatically, the user should manually delete the blockchain data before trying again ===link to manual deletion instructions above===.
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
@@ -296,9 +296,9 @@ To set the ``timestampindex`` feature as a default parameter, include the parame
 
 -unspentindex
 ------------
-``unspentindex`` is a coin daemon parameter that is initiated at run time. The command instructs a KMD-based coin daemon to make a full index of all === unspent transactions (utxos) ===. It is commonly used in web-based blockchain explorers for rapid search across the entire blockchain history.
+``unspentindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all === unspent transactions (utxos) ===. It is enabled at runtime and facilitates rapid search across the entire blockchain history.
 
-When utilizing this command the synced blockchain data should be deleted to allow for a full resync. The user may need to manually delete the blockchain data before executing the command ===link to manual deletion instructions above===.
+Initiating this parameter should trigger an automatic full resync. If the resync does not occur automatically, the user should manually delete the blockchain data before trying again ===link to manual deletion instructions above===.
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
@@ -318,9 +318,9 @@ To set the ``unspentindex`` feature as a default parameter, include the paramete
 
 -spentindex
 ----------
-``spentindex`` is a coin daemon parameter that is initiated at run time. The command instructs a KMD-based coin daemon to make a full index of all === spent transactions (utxos) ===. It is commonly used in web-based blockchain explorers for rapid search across the entire blockchain history.
+``spentindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all === spent transactions (txids?) ===. The parameter is called at runtime and enables rapid search across the entire blockchain history.
 
-When utilizing this command the synced blockchain data should be deleted to allow for a full resync. The user may need to manually delete the blockchain data before executing the command ===link to manual deletion instructions above===.
+Initiating this parameter should trigger an automatic full resync. If the resync does not occur automatically, the user should manually delete the blockchain data before trying again ===link to manual deletion instructions above===.
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
@@ -338,7 +338,7 @@ To set the ``spentindex`` feature as a default parameter, include the parameter 
 
 AddressIndex
 ============
-The AddressIndex API commands are used to query various aspects of the blockchain's history. Most require the ===link=== ``addressindex`` feature, as these API commands scan the entire blockchain history.
+The AddressIndex API commands are used to query various aspects of the blockchain's history. Most require the ===link=== ``addressindex`` feature to be enabled, as these API commands scan the entire blockchain history.
 
 getaddressbalance
 -----------------
@@ -371,28 +371,35 @@ Response:
 ::
 
 	{
-	  "balance_string"  		       // (number) the current confirmed balance, listed in satoshis
-	  "received_string" 		       // (number) the total confirmed number of satoshis received (including change)
+	  "balance_string"  		       // (number)   the current confirmed balance of satoshis
+	  "received_string" 		       // (number)   the total confirmed number of satoshis received (including change)
 	}
 
 Examples:
 ===italics===(the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+
 ::
 
 	command:
-	# ./komodo-cli getaddressbalance '{"addresses":["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}'
+
+	./komodo-cli getaddressbalance '{"addresses":["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}'
 
 	response:
+
 	{
     "balance": 40000,
     "received": 1011916229
   }
 
+::
+
 	command:
-	# curl --user myrpcuser:myuserpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+	curl --user myrpcuser:myuserpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
 	response:
-	{"result":{"balance":40000,"received":1011916229},"error":null,"id":"curltest"}
+
+  {"result":{"balance":40000,"received":1011916229},"error":null,"id":"curltest"}
 
 getaddressdeltas
 ----------------
@@ -401,12 +408,12 @@ getaddressdeltas
 
   getaddressdeltas '{"addresses": ["address_string", "address_string", ...], "start": start_number, "end": end_number, "chainInfo": boolean}'
 
-The ``getaddressdeltas`` method returns all confirmed balance changes of an address. The parameters allow the user to optionally limit the response to a given interval of blocks. The method requires ===link===``addressindex`` to be enabled.
+The ``getaddressdeltas`` method returns all confirmed balance changes of an address. The parameters allow the user to optionally limit the response to a given interval of blocks. The method requires ===link=== ``addressindex`` to be enabled.
 
 ===Insert "Run" sandbox here===
-Komodo API Demo: getaddressdeltas method
-(example code)
-Run/Reset Buttons
+  Komodo API Demo: getaddressdeltas method
+  (example code)
+  Run/Reset Buttons
 ===End sandbox===
 
 Arguments:
@@ -439,14 +446,16 @@ Result:
 	]
 
 Example (no optional parameters):
-===italics===(the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+===italics=== (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
 
   command:
+
 	./komodo-cli getaddressdeltas '{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}'
 
   response:
+
   [
     {
       "satoshis": 1011876229,
@@ -460,10 +469,12 @@ Example (no optional parameters):
 
 ::
   command:
+
   ./komodo-cli getaddressdeltas '{"addresses":["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}'
 
 
   response:
+
   {
     "deltas": [
       {
@@ -487,16 +498,20 @@ Example (no optional parameters):
 
 ::
   command:
+
 	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
+
   {"result":[{"satoshis":1011876229,"txid":"39c61e8ea769ba1fc971cb7dadc531f25a2528d01a4244f379043248b6c51cc1","index":0,"blockindex":0,"height":1,"address":"RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"}],"error":null,"id":"curltest"}
 
 ::
   command:
+
   curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}]}' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
+
   {"result":{"deltas":[{"satoshis":1011876229,"txid":"39c61e8ea769ba1fc971cb7dadc531f25a2528d01a4244f379043248b6c51cc1","index":0,"blockindex":0,"height":1,"address":"RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"}],"start":{"hash":"022df4cd1b0bdf548fedc48f27c6367536a560857f61f9bec4b35179c8a45734","height":1},"end":{"hash":"001fd35407abd8f4e2ec9734ce6f91d820ff553efcb9c39d657afed84da84963","height":200}},"error":null,"id":"curltest"}
 
 getaddressmempool
@@ -507,9 +522,9 @@ getaddressmempool
 The ``getaddressmempool`` method returns all mempool deltas for an address. It requires ===link===``addressindex`` to be enabled.
 
 ===Insert "Run" sandbox here===
-Komodo API Demo: getaddressmempool method
-(example code)
-Run/Reset Buttons
+  Komodo API Demo: getaddressmempool method
+  (example code)
+  Run/Reset Buttons
 ===End sandbox===
 
 Arguments:
@@ -517,10 +532,10 @@ Arguments:
 ::
 
 	{
-	  "addresses":
+	  "addresses"
 	    [
-	      "address":               // (string)     the base58check encoded address
-	      ,...
+	      "address"                // (string)     the base58check encoded address
+	      ,...                     //              the method accepts multiple addresses
 	    ]
 	}
 
@@ -530,13 +545,13 @@ Result:
 
 	[
 	  {
-	    "address":                 // (string)     the base58check encoded address
-	    "txid":                    // (string)     the related txid
-	    "index":                   // (number)     the related input or output index
-	    "satoshis":                // (number)     the difference of satoshis
-	    "timestamp":               // (number)     the time the transaction entered the mempool (seconds)
-	    "prevtxid":                // (string)     the previous txid (if spending)
-	    "prevout":                 // (string)     the previous transaction output index (if spending)
+	    "address"                  // (string)     the base58check encoded address
+	    "txid"                     // (string)     the related txid
+	    "index"                    // (number)     the related input or output index
+	    "satoshis"                 // (number)     the difference of satoshis
+	    "timestamp"                // (number)     the time the transaction entered the mempool (seconds)
+	    "prevtxid"                 // (string)     the previous txid (if spending)
+	    "prevout"                  // (string)     the previous transaction output index (if spending)
 	  }
 	]
 
@@ -545,9 +560,11 @@ Examples:
 ::
 
   command:
-	# komodo-cli getaddressmempool '{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}'
+
+	./komodo-cli getaddressmempool '{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}'
 
   response:
+
   [
     {
       "address": "RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb",
@@ -558,12 +575,15 @@ Examples:
     }
   ]
 
+::
 
   command:
-  # curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressmempool", "params": [{"addresses": ["komodo-cli getaddressmempool '{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}'"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressmempool", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
+  {"result":[{"address":"RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb","txid":"17474b73ec5a985c78a46435a021a1ad3ebd5609724ffd23d9c787c30f661342","index":1,"satoshis":50000000,"timestamp":1536364105}],"error":null,"id":"curltest"}
 
 getaddresstxids
 ---------------
@@ -573,7 +593,7 @@ getaddresstxids
 The ``getaddresstxids`` method returns the txids for an address(es). It requires ===link=== ``addressindex`` to be enabled.
 
 ===Insert "Run" sandbox here===
-  Komodo API Demo: getaddressmempool method
+  Komodo API Demo: getaddresstxids method
   (example code)
   Run/Reset Buttons
 ===End sandbox===
@@ -619,8 +639,16 @@ Examples:
 
 getaddressutxos
 ---------------
+::
+  getaddressutxos '{"addresses": ["address_string"]}'
 
-Returns all unspent outputs for an address (requires addressindex to be enabled).
+The ``getaddressutxos`` method returns all unspent outputs for an address. It requires ===link==``addressindex`` to be enabled.
+
+===Insert "Run" sandbox here===
+  Komodo API Demo: getaddresstxids method
+  (example code)
+  Run/Reset Buttons
+===End sandbox===
 
 Arguments:
 
@@ -629,10 +657,10 @@ Arguments:
 	{
 	  "addresses"
 	    [
-	      "address"  (string) The base58check encoded address
-	      ,...
+	      "address"                // (string)   the base58check encoded address
+	      ,...                     //            the method accepts multiple addresses
 	    ],
-	  "chainInfo"  (boolean) Include chain info with results
+	  "chainInfo"                  // (boolean)  include chain info with results
 	}
 
 Result:
@@ -641,12 +669,12 @@ Result:
 
 	[
 	  {
-	    "address"  (string) The address base58check encoded
-	    "txid"  (string) The output txid
-	    "height"  (number) The block height
-	    "outputIndex"  (number) The output index
-	    "script"  (strin) The script hex encoded
-	    "satoshis"  (number) The number of satoshis of the output
+	    "address"                  // (string)   the address base58check encoded
+	    "txid"                     // (string)   the output txid
+	    "height"                   // (number)   the block height
+	    "outputIndex"              // (number)   the output index
+	    "script"                   // (string)   the script hex encoded
+	    "satoshis"                 // (number)   the number of satoshis of the output
 	  }
 	]
 
@@ -654,5 +682,29 @@ Examples:
 
 ::
 
-	> komodo-cli getaddressutxos '{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}'
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+  command:
+
+	komodo-cli getaddressutxos '{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}'
+
+  response:
+
+  [
+    {
+      "address": "RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb",
+      "txid": "2a3c3664851370ff762b47d735cc661e3dbce4cf36b6c1b74799f3b1c847bd52",
+      "outputIndex": 0,
+      "script": "2102e0d9ea73a391400ed2cb090e029d3f03eda0efaf371da11f436c076d817025e4ac",
+      "satoshis": 10000,
+      "height": 3
+    }
+  ]
+
+::
+
+  command:
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {"result":[{"address":"RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb","txid":"2a3c3664851370ff762b47d735cc661e3dbce4cf36b6c1b74799f3b1c847bd52","outputIndex":0,"script":"2102e0d9ea73a391400ed2cb090e029d3f03eda0efaf371da11f436c076d817025e4ac","satoshis":10000,"height":3}],"error":null,"id":"curltest"}
