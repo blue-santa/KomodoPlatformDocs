@@ -258,6 +258,8 @@ The user should manually delete the blockchain data before initiating this param
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
+``addressindex`` is enabled by default on any asset chain that utilizes the ``cc`` smart contract protocol.
+
 Usage:
 
 To initiate the ``addressindex`` command at runtime, include ``-addressindex=1`` as a parameter.
@@ -301,6 +303,8 @@ To set the ``timestampindex`` feature as a default parameter, include the parame
 The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions above===.
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
+
+``spentindex`` is enabled by default on any asset chain that utilizes the ``cc`` smart contract protocol.
 
 Usage:
 
