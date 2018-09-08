@@ -252,9 +252,9 @@ Default file locations:
 
 -addressindex
 -------------
-``addressindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all addresses and balances. The feature is initiated at run time, and it enables rapid search across the entire blockchain history.
+``addressindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to maintain an index of all addresses and balances. It is initiated at run time and it is used to query address balances across the entire chain.
 
-Initiating this parameter should trigger an automatic full resync. If the resync does not occur automatically, the user should manually delete the blockchain data before trying again ===link to manual deletion instructions above===.
+The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions above===.
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
@@ -274,9 +274,9 @@ To set the ``addressindex`` feature as a default parameter, include the paramete
 
 -timestampindex
 ---------------
-``timestampindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all === data timestamps ===. It is initiated at run time and it enables rapid search across the entire blockchain history.
+``timestampindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to maintain a timestamp index for all blockhashes. It is initiated at run time and it is used to query blocks by a range of timestamps.
 
-Initiating this parameter should trigger an automatic full resync. If the resync does not occur automatically, the user should manually delete the blockchain data before trying again ===link to manual deletion instructions above===.
+The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions above===.
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
@@ -294,33 +294,11 @@ To set the ``timestampindex`` feature as a default parameter, include the parame
 
   ``timestampindex=1``
 
--unspentindex
-------------
-``unspentindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all === unspent transactions (utxos) ===. It is enabled at runtime and facilitates rapid search across the entire blockchain history.
-
-Initiating this parameter should trigger an automatic full resync. If the resync does not occur automatically, the user should manually delete the blockchain data before trying again ===link to manual deletion instructions above===.
-
-The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
-
-Usage:
-
-To initiate the ``unspentindex`` command at runtime, include ``-unspentindex=1`` as a parameter.
-
-::
-
-  ``./komodod -unspentindex=1``
-
-To set the ``unspentindex`` feature as a default parameter, include the parameter in the ``komodo.conf`` configuration file.
-
-::
-
-  ``unspentindex=1``
-
 -spentindex
 ----------
-``spentindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to make a full index of all === spent transactions (txids?) ===. The parameter is called at runtime and enables rapid search across the entire blockchain history.
+``spentindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to maintain a full index of all spent transactions (txids). The parameter is called at runtime and it is used to search across the entire chain history.
 
-Initiating this parameter should trigger an automatic full resync. If the resync does not occur automatically, the user should manually delete the blockchain data before trying again ===link to manual deletion instructions above===.
+The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions above===.
 
 The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
@@ -708,3 +686,629 @@ Examples:
   response:
 
   {"result":[{"address":"RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb","txid":"2a3c3664851370ff762b47d735cc661e3dbce4cf36b6c1b74799f3b1c847bd52","outputIndex":0,"script":"2102e0d9ea73a391400ed2cb090e029d3f03eda0efaf371da11f436c076d817025e4ac","satoshis":10000,"height":3}],"error":null,"id":"curltest"}
+
+  Blockchain
+  ==========
+
+  MoMoMdata symbol kmdheight notarized_height
+  -------------------------------------------
+
+  ``COMING SOON``
+
+  allMoMs kmdstarti kmdendi
+  -------------------------
+
+  ``COMING SOON``
+
+  calc_MoM height MoMdepth
+  ------------------------
+
+  ``COMING SOON``
+
+  getbestblockhash
+  ----------------
+
+  Returns the hash of the best (tip) block in the longest block chain.
+
+  Result:
+
+  ::
+
+  	"hex"      (string) the block hash hex encoded
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getbestblockhash
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  getblock "hash|height" ( verbose )
+  ----------------------------------
+
+  * If verbose is ``false``, returns a string that is serialized, hex-encoded data for block 'hash|height'.
+  * If verbose is ``true``, returns an Object with information about block <hash|height>.
+
+  Arguments:
+
+  ::
+
+  	1. "hash|height"     (string, required) The block hash or height
+  	2. verbose           (boolean, optional, default=true) true for a json object, false for the hex encoded data
+
+  Result (for verbose = ``true``):
+
+  ::
+
+          {
+              "hash": "hash",       (string) the block hash (same as provided hash)
+    "confirmations": n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
+    "size": n,            (numeric) The block size
+    "height": n,          (numeric) The block height or index (same as provided height)
+    "version": n,         (numeric) The block version
+    "merkleroot": "xxxx", (string) The merkle root
+    "tx": [               (array of string) The transaction ids
+       "transactionid"     (string) The transaction id
+       ,...
+              ],
+              "time": ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
+    "nonce": n,           (numeric) The nonce
+    "bits": "1d00ffff",   (string) The bits
+    "difficulty": x.xxx,  (numeric) The difficulty
+    "previousblockhash": "hash",  (string) The hash of the previous block
+    "nextblockhash": "hash"       (string) The hash of the next block
+          }
+
+  Result (for verbose=``false``):
+
+  ::
+
+  	"data"             (string) A string that is serialized, hex-encoded data for block 'hash'.
+
+  Examples:
+  ::
+
+  	> komodo-cli getblock "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+  	> komodo-cli getblock 12800
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": [12800] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+
+  getblockchaininfo
+  -----------------
+
+  Returns an object containing various state info regarding block chain processing.
+
+   *Note that when the chain tip is at the last block before a network upgrade activation,* ``consensus.chaintip != consensus.nextblock``.
+
+  Result:
+
+  ::
+
+      {
+          "chain": "xxxx",        (string) current network name as defined in BIP70 (main, test, regtest)
+    "blocks": xxxxxx,         (numeric) the current number of blocks processed in the server
+    "headers": xxxxxx,        (numeric) the current number of headers we have validated
+    "bestblockhash": "...", (string) the hash of the currently best block
+    "difficulty": xxxxxx,     (numeric) the current difficulty
+    "verificationprogress": xxxx, (numeric) estimate of verification progress [0..1
+          ]
+    "chainwork": "xxxx"     (string) total amount of work in active chain, in hexadecimal
+    "commitments": xxxxxx,    (numeric) the current number of note commitments in the commitment tree
+    "softforks": [            (array) status of softforks in progress
+       {
+                  "id": "xxxx",        (string) name of softfork
+          "version": xx,         (numeric) block version
+          "enforce": {           (object) progress toward enforcing the softfork rules for new-version blocks
+             "status": xx,       (boolean) true if threshold reached
+             "found": xx,        (numeric) number of blocks with the new version found
+             "required": xx,     (numeric) number of blocks required to trigger
+             "window": xx,       (numeric) maximum size of examined window of recent blocks
+                  },
+                  "reject": { ...
+                  }      (object) progress toward rejecting pre-softfork blocks (same fields as "enforce")
+              }, ...
+          ],
+          "upgrades": {                (object) status of network upgrades
+       "xxxx": {                (string) branch ID of the upgrade
+          "name": "xxxx",        (string) name of upgrade
+          "activationheight": xxxxxx,  (numeric) block height of activation
+          "status": "xxxx",      (string) status of upgrade
+          "info": "xxxx",        (string) additional information about upgrade
+              }, ...
+          },
+          "consensus": {               (object) branch IDs of the current and upcoming consensus rules
+       "chaintip": "xxxxxxxx",   (string) branch ID used to validate the current chain tip
+       "nextblock": "xxxxxxxx"   (string) branch ID that the next block will be validated under
+          }
+      }
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getblockchaininfo
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+
+  getblockcount
+  -------------
+
+  Returns the number of blocks in the best valid block chain.
+
+  Result:
+
+  ::
+
+  	n    (numeric) The current block count
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getblockcount
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  getblockhash index
+  ------------------
+
+  Returns hash of block in best-block-chain at index provided.
+
+  Arguments:
+
+  ::
+
+  	1. index         (numeric, required) The block index
+
+  Result:
+
+  ::
+
+  	"hash"         (string) The block hash
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getblockhash 1000
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  getblockhashes timestamp
+  ------------------------
+
+  Returns array of hashes of blocks within the timestamp range provided.
+
+  Arguments:
+
+  ::
+
+  	1. high         (numeric, required) The newer block timestamp
+  	2. low          (numeric, required) The older block timestamp
+  	3. options      (string, required) A json object
+      {
+        "noOrphans":true   (boolean) will only include blocks on the main chain
+        "logicalTimes":true   (boolean) will include logical timestamps with hashes
+      }
+
+  Result:
+
+  ::
+
+  	[
+  		  "hash"         (string) The block hash
+  	]
+  	[
+  	  {
+  	    "blockhash": (string) The block hash
+  	    "logicalts": (numeric) The logical timestamp
+  	  }
+  	]
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getblockhashes 1231614698 1231024505
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+  	> komodo-cli getblockhashes 1231614698 1231024505 '{"noOrphans":false, "logicalTimes":true}'
+
+  getblockheader "hash" ( verbose )
+  ---------------------------------
+
+  If verbose is false, returns a string that is serialized, hex-encoded data for blockheader 'hash'.
+  If verbose is true, returns an Object with information about blockheader <hash>.
+
+  Arguments:
+
+  ::
+
+  	1. "hash"          (string, required) The block hash
+  	2. verbose           (boolean, optional, default=true) true for a json object, false for the hex encoded data
+
+  Result (for verbose = true):
+
+  ::
+
+  	{
+  	  "hash" : "hash",     (string) the block hash (same as provided)
+  	  "confirmations" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
+  	  "height" : n,          (numeric) The block height or index
+  	  "version" : n,         (numeric) The block version
+  	  "merkleroot" : "xxxx", (string) The merkle root
+  	  "time" : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
+  	  "nonce" : n,           (numeric) The nonce
+  	  "bits" : "1d00ffff", (string) The bits
+  	  "difficulty" : x.xxx,  (numeric) The difficulty
+  	  "previousblockhash" : "hash",  (string) The hash of the previous block
+  	  "nextblockhash" : "hash"       (string) The hash of the next block
+  	}
+
+  Result (for verbose=false):
+
+  ::
+
+  	"data"             (string) A string that is serialized, hex-encoded data for block 'hash'.
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getblockheader "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  getchaintips
+  ------------
+
+  Return information about all known tips in the block tree, including the main chain as well as orphaned branches.
+
+  Result:
+
+  ::
+
+  	[
+  	  {
+  	    "height": xxxx,         (numeric) height of the chain tip
+  	    "hash": "xxxx",         (string) block hash of the tip
+  	    "branchlen": 0          (numeric) zero for main chain
+  	    "status": "active"      (string) "active" for the main chain
+  	  },
+  	  {
+  	    "height": xxxx,
+  	    "hash": "xxxx",
+  	    "branchlen": 1          (numeric) length of branch connecting the tip to the main chain
+  	    "status": "xxxx"        (string) status of the chain (active, valid-fork, valid-headers, headers-only, invalid)
+  	  }
+  	]
+
+  Possible values for status:
+
+  ::
+
+  	1.  "invalid"               This branch contains at least one invalid block
+  	2.  "headers-only"          Not all blocks for this branch are available, but the headers are valid
+  	3.  "valid-headers"         All blocks are available for this branch, but they were never fully validated
+  	4.  "valid-fork"            This branch is not part of the active chain, but is fully validated
+  	5.  "active"                This is the tip of the active main chain, which is certainly valid
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getchaintips
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+
+  getdifficulty
+  -------------
+
+  Returns the proof-of-work difficulty as a multiple of the minimum difficulty.
+
+  Result:
+
+  ::
+
+  	n.nnn       (numeric) the proof-of-work difficulty as a multiple of the minimum difficulty.
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getdifficulty
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  getmempoolinfo
+  --------------
+
+  Returns details on the active state of the TX memory pool.
+
+  Result:
+
+  ::
+
+  	{
+  	  "size": xxxxx                (numeric) Current tx count
+  	  "bytes": xxxxx               (numeric) Sum of all tx sizes
+  	  "usage": xxxxx               (numeric) Total memory usage for the mempool
+  	}
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getmempoolinfo
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  getrawmempool ( verbose )
+  -------------------------
+
+  Returns all transaction ids in memory pool as a json array of string transaction ids.
+
+  Arguments:
+
+  ::
+
+  	1. verbose           (boolean, optional, default=false) true for a json object, false for array of transaction ids
+
+  Result: (for verbose = false):
+
+  ::
+
+  	[                     (json array of string)
+  	  "transactionid"     (string) The transaction id
+  	  ,...
+  	]
+
+  Result: (for verbose = true):
+
+  ::
+
+  	{                           (json object)
+  	  "transactionid" : {       (json object)
+  	    "size" : n,             (numeric) transaction size in bytes
+  	    "fee" : n,              (numeric) transaction fee in ZEC
+      	"time" : n,             (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT
+      	"height" : n,           (numeric) block height when transaction entered pool
+      	"startingpriority" : n, (numeric) priority when transaction entered pool
+      	"currentpriority" : n,  (numeric) transaction priority now
+      	"depends" : [           (array) unconfirmed transactions used as inputs for this transaction
+          "transactionid",    (string) parent transaction id
+  	       ...]
+  	  }, ...
+  	}
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getrawmempool true
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  getspentinfo
+  ------------
+
+  Returns the txid and index where an output is spent.
+
+  Arguments:
+
+  ::
+
+  	{
+  	  "txid" (string) The hex string of the txid
+  	  "index" (number) The start block height
+  	}
+
+  Result:
+
+  ::
+
+  	{
+  	  "txid"  (string) The transaction id
+  	  "index"  (number) The spending input index
+  	  ,...
+  	}
+
+  Examples:
+
+  ::
+
+  	> komodo-cli getspentinfo '{"txid": "0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9", "index": 0}'
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  gettxout "txid" n ( includemempool )
+  ------------------------------------
+
+  Returns details about an unspent transaction output.
+
+  Arguments:
+
+  ::
+
+  	1. "txid"       (string, required) The transaction id
+  	2. n              (numeric, required) vout value
+  	3. includemempool  (boolean, optional) Whether to include the mempool
+
+  Result:
+
+  ::
+
+  	{
+  	  "bestblock" : "hash",    (string) the block hash
+  	  "confirmations" : n,       (numeric) The number of confirmations
+  	  "value" : x.xxx,           (numeric) The transaction value in ZEC
+    	"scriptPubKey" : {         (json object)
+      	 "asm" : "code",       (string)
+      	 "hex" : "hex",        (string)
+      	 "reqSigs" : n,          (numeric) Number of required signatures
+      	 "type" : "pubkeyhash", (string) The type, eg pubkeyhash
+      	 "addresses" : [          (array of string) array of Zcash addresses
+      	    "zcashaddress"        (string) Zcash address
+      	    ,...
+      	 ]
+    	},
+    	"version" : n,              (numeric) The version
+    	"coinbase" : true|false     (boolean) Coinbase or not
+  	}
+
+  Examples:
+
+  Get unspent transactions
+
+  ::
+
+  	> komodo-cli listunspent
+
+  View the details
+
+  ::
+
+  	> komodo-cli gettxout "txid" 1
+
+  As a json rpc call
+
+  ::
+
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  gettxoutproof ["txid",...] ( blockhash )
+  ----------------------------------------
+
+  Returns a hex-encoded proof that "txid" was included in a block.
+
+  **NOTE:** By default this function only works sometimes. This is when there is an
+  unspent output in the utxo for this transaction. To make it always work,
+  you need to maintain a transaction index, using the -txindex command line option or
+  specify the block in which the transaction is included in manually (by blockhash).
+
+  Return the raw transaction data.
+
+  Arguments:
+
+  ::
+
+  	1. "txids"       (string) A json array of txids to filter
+  	    [
+  	      "txid"     (string) A transaction hash
+  	      ,...
+  	    ]
+  	2. "block hash"  (string, optional) If specified, looks for txid in the block with this hash
+
+  Result:
+
+  ::
+
+  	"data"           (string) A string that is a serialized, hex-encoded data for the proof.
+
+  gettxoutsetinfo
+  ---------------
+
+  Returns statistics about the unspent transaction output set.
+  Note this call may take some time.
+
+  Result:
+
+  ::
+
+  	{
+  	  "height":n,     (numeric) The current block height (index)
+  	  "bestblock": "hex",   (string) the best block hash hex
+  	  "transactions": n,      (numeric) The number of transactions
+  	  "txouts": n,            (numeric) The number of output transactions
+   	 "bytes_serialized": n,  (numeric) The serialized size
+  	  "hash_serialized": "hash",   (string) The serialized hash
+  	  "total_amount": x.xxx          (numeric) The total amount
+  	}
+
+  Examples:
+
+  ::
+
+  	> komodo-cli gettxoutsetinfo
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  height_MoM height
+  -----------------
+
+  ``COMING SOON``
+
+  kvsearch key
+  ------------
+
+  ``COMING SOON``
+
+  kvupdate key value flags/passphrase
+  -----------------------------------
+
+  ``COMING SOON``
+
+  minerids needs height
+  ---------------------
+
+  ``COMING SOON``
+
+  notaries height timestamp
+  -------------------------
+
+  ``COMING SOON``
+
+  paxpending needs no args
+  ------------------------
+
+  ``DEPRECATED``
+
+  paxprice "base" "rel" height
+  ----------------------------
+
+  ``DEPRECATED``
+
+  paxprices "base" "rel" maxsamples
+  ---------------------------------
+
+  ``DEPRECATED``
+
+  txMoMproof needs a txid
+  -----------------------
+
+  ``COMING SOON``
+
+  verifychain ( checklevel numblocks )
+  ------------------------------------
+
+  Verifies blockchain database.
+
+  Arguments:
+
+  ::
+
+  	1. checklevel   (numeric, optional, 0-4, default=3) How thorough the block verification is.
+  	2. numblocks    (numeric, optional, default=288, 0=all) The number of blocks to check.
+
+  Result:
+
+  ::
+
+  	true|false       (boolean) Verified or not
+
+  Examples:
+
+  ::
+
+  	> komodo-cli verifychain
+  	> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+
+  verifytxoutproof "proof"
+  ------------------------
+
+  Verifies that a proof points to a transaction in a block, returning the transaction it commits to
+  and throwing an RPC error if the block is not in our best chain
+
+  Arguments:
+
+  ::
+
+  	1. "proof"    (string, required) The hex-encoded proof generated by gettxoutproof
+
+  Result:
+
+  ::
+
+  	["txid"]      (array, strings) The txid(s) which the proof commits to, or empty array if the proof is invalid
