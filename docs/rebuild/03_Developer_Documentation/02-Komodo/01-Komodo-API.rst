@@ -274,6 +274,12 @@ To set the ``addressindex`` feature as a default parameter, include the paramete
 
   ``addressindex=1``
 
+-txindex
+--------
+``txindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to track every transaction made on the relevant blockchain.
+
+``txindex`` is enabled by default on all KMD-based coin daemons, and is utilized in dPoW, JUMBLR, and the CryptoConditions smart-contract protocol. Disabling the feature will cause a normal KMD-based coin daemon to malfunction.
+
 -timestampindex
 ---------------
 ``timestampindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to maintain a timestamp index for all blockhashes. It is initiated at run time and it is used to query blocks by a range of timestamps.
@@ -1455,7 +1461,7 @@ Arguments:
 
 	high                       // (numeric, required)    the newer block timestamp
 	low                        // (numeric, required)    the older block timestamp
-	options                    // (string, required)     a json object
+	options                    // (string, required)     a json object, formatted as a string
     {
       "noOrphans"            // (boolean)              will only include blocks on the main chain
       "logicalTimes"         // (boolean)              will include logical timestamps with hashes
@@ -1486,60 +1492,132 @@ Examples:
 
   response:
 
-  
 
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
-	> komodo-cli getblockhashes 1231614698 1231024505 '{"noOrphans":false, "logicalTimes":true}'
+::
 
-getblockheader "hash" ( verbose )
----------------------------------
+  command:
 
-If verbose is false, returns a string that is serialized, hex-encoded data for blockheader 'hash'.
-If verbose is true, returns an Object with information about blockheader <hash>.
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+::
+  command:
+
+  komodo-cli getblockhashes 1231614698 1231024505 '{"noOrphans":false, "logicalTimes":true}'
+
+  response:
+
+getblockheader
+--------------
+
+::
+
+  getblockheader "hash" ( verbose )
+
+The ``getblockheader`` method returns information about the indicated block.
+
+The verbose input is optional. If verbose is false, the method returns a string that is serialized, hex-encoded data for the indicated blockheader. If verbose is true, the method returns a JSON object with information about the indicated blockheader.
 
 Arguments:
 
 ::
 
-	1. "hash"          (string, required) The block hash
-	2. verbose           (boolean, optional, default=true) true for a json object, false for the hex encoded data
+	"hash"                  // (string, required)                  the block hash
+	verbose                 // (boolean, optional, default=true)   true returns a json object, false returns hex-encoded data
 
 Result (for verbose = true):
 
 ::
 
 	{
-	  "hash" : "hash",     (string) the block hash (same as provided)
-	  "confirmations" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
-	  "height" : n,          (numeric) The block height or index
-	  "version" : n,         (numeric) The block version
-	  "merkleroot" : "xxxx", (string) The merkle root
-	  "time" : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
-	  "nonce" : n,           (numeric) The nonce
-	  "bits" : "1d00ffff", (string) The bits
-	  "difficulty" : x.xxx,  (numeric) The difficulty
-	  "previousblockhash" : "hash",  (string) The hash of the previous block
-	  "nextblockhash" : "hash"       (string) The hash of the next block
+	  "hash"                 // (string)       the block hash (same as provided)
+	  "confirmations"        // (numeric)      the number of confirmations, or -1 if the block is not on the main chain
+	  "height"               // (numeric)      the block height or index
+	  "version"              // (numeric)      the block version
+	  "merkleroot"           // (string)       the merkle root
+	  "time"                 // (numeric)      the block time in seconds since epoch (Jan 1 1970 GMT)
+	  "nonce"                // (numeric)      the nonce
+	  "bits"                 // (string)       the bits
+	  "difficulty"           // (numeric)      the difficulty
+	  "previousblockhash"    // (string)       the hash of the previous block
+	  "nextblockhash"        // (string)       the hash of the next block
 	}
 
 Result (for verbose=false):
 
 ::
 
-	"data"             (string) A string that is serialized, hex-encoded data for block 'hash'.
+	"data"                   // (string)       a string that is serialized hex-encoded data for the indicated block
 
 Examples:
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
 
-	> komodo-cli getblockheader "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+  command:
+
+	komodo-cli getblockheader "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
+
+  response:
+
+  {
+    "hash": "0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084",
+    "confirmations": 1,
+    "height": 398,
+    "version": 4,
+    "merkleroot": "d6e8292d85181a177c21497a7e636fc4f1eef1fbd2887b3a19e1d72134429668",
+    "time": 1536603968,
+    "nonce": "00002474e66d5ef243d7b0a8eec32983492daf29e0b0887bd67b2107d1000004",
+    "solution": "30a5e9153392b643d139cf205b270d55cb7d3b4779fd7a3666bdb744ef221c966fde1324",
+    "bits": "200f0ef8",
+    "difficulty": 1.000023305960651,
+    "chainwork": "0000000000000000000000000000000000000000000000000000000000001a7f",
+    "segid": -2,
+    "previousblockhash": "09f9b547842b38a7748c8633eedb609b269138fdb3f2f75570fcb0d653fe42f4"
+  }
+
+::
+
+  command:
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {
+    "result": {
+      "hash": "0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084",
+      "confirmations": 1,
+      "height": 398,
+      "version": 4,
+      "merkleroot": "d6e8292d85181a177c21497a7e636fc4f1eef1fbd2887b3a19e1d72134429668",
+      "time": 1536603968,
+      "nonce": "00002474e66d5ef243d7b0a8eec32983492daf29e0b0887bd67b2107d1000004",
+      "solution": "30a5e9153392b643d139cf205b270d55cb7d3b4779fd7a3666bdb744ef221c966fde1324",
+      "bits": "200f0ef8",
+      "difficulty": 1.000023305960651,
+      "chainwork": "0000000000000000000000000000000000000000000000000000000000001a7f",
+      "segid": -2,
+      "previousblockhash": "09f9b547842b38a7748c8633eedb609b269138fdb3f2f75570fcb0d653fe42f4"
+    },
+    "error": null,
+    "id": "curltest"
+  }
 
 getchaintips
 ------------
+::
 
-Return information about all known tips in the block tree, including the main chain as well as orphaned branches.
+  getchaintips
+
+The ``getchaintips`` method returns information about all known tips in the block tree, including the main chain and any orphaned branches.
+
+Arguments:
+
+::
+
+  (none)
 
 Result:
 
@@ -1547,16 +1625,16 @@ Result:
 
 	[
 	  {
-	    "height": xxxx,         (numeric) height of the chain tip
-	    "hash": "xxxx",         (string) block hash of the tip
-	    "branchlen": 0          (numeric) zero for main chain
-	    "status": "active"      (string) "active" for the main chain
+	    "height"               // (numeric)    height of the chain tip
+	    "hash"                 // (string)     block hash of the tip
+	    "branchlen"            // (numeric)    zero for main chain
+	    "status"               // (string)     "active" for the main chain
 	  },
 	  {
-	    "height": xxxx,
-	    "hash": "xxxx",
-	    "branchlen": 1          (numeric) length of branch connecting the tip to the main chain
-	    "status": "xxxx"        (string) status of the chain (active, valid-fork, valid-headers, headers-only, invalid)
+	    "height"               // (numeric)    height of the branch tip
+	    "hash"                 // (string)     blockhash of the branch tip
+	    "branchlen"            // (numeric)    length of branch connecting the tip to the main chain
+	    "status"               // (string)     status of the chain
 	  }
 	]
 
@@ -1564,53 +1642,125 @@ Possible values for status:
 
 ::
 
-	1.  "invalid"               This branch contains at least one invalid block
-	2.  "headers-only"          Not all blocks for this branch are available, but the headers are valid
-	3.  "valid-headers"         All blocks are available for this branch, but they were never fully validated
-	4.  "valid-fork"            This branch is not part of the active chain, but is fully validated
-	5.  "active"                This is the tip of the active main chain, which is certainly valid
+	1.  "invalid"               this branch contains at least one invalid block
+	2.  "headers-only"          not all blocks for this branch are available, but the headers are valid
+	3.  "valid-headers"         all blocks are available for this branch, but they were never fully validated
+	4.  "valid-fork"            this branch is not part of the active chain, but is fully validated
+	5.  "active"                this is the tip of the active main chain, which is certainly valid
 
 Examples:
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
 
-	> komodo-cli getchaintips
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+  command:
 
+	komodo-cli getchaintips
+
+  response:
+
+  [
+    {
+      "height": 398,
+      "hash": "0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084",
+      "branchlen": 0,
+      "status": "active"
+    }
+  ]
+
+::
+
+  command:
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {
+    "result": [
+      {
+        "height": 398,
+        "hash": "0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084",
+        "branchlen": 0,
+        "status": "active"
+      }
+    ],
+    "error": null,
+    "id": "curltest"
+  }
 
 getdifficulty
 -------------
 
-Returns the proof-of-work difficulty as a multiple of the minimum difficulty.
+::
+
+  getdifficulty
+
+The ``getdifficulty`` method returns the proof-of-work difficulty as a multiple of the minimum difficulty.
+
+Arguments:
+
+::
+
+  (none)
 
 Result:
 
 ::
 
-	n.nnn       (numeric) the proof-of-work difficulty as a multiple of the minimum difficulty.
+	number                     // (numeric)  the proof-of-work difficulty as a multiple of the minimum difficulty
 
 Examples:
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
 
-	> komodo-cli getdifficulty
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+  command:
+
+	komodo-cli getdifficulty
+
+  response:
+
+  1.000023305960651
+
+
+::
+
+  command:
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {
+    "result": 1.000023305960651,
+    "error": null,
+    "id": "curltest"
+  }
 
 getmempoolinfo
 --------------
 
-Returns details on the active state of the TX memory pool.
+::
+
+  getmempoolinfo
+
+The ``getmempoolinfo`` method returns details on the active state of the transaction memory pool.
+
+Arguments:
+
+::
+
+  (none)
 
 Result:
 
 ::
 
 	{
-	  "size": xxxxx                (numeric) Current tx count
-	  "bytes": xxxxx               (numeric) Sum of all tx sizes
-	  "usage": xxxxx               (numeric) Total memory usage for the mempool
+	  "size"                 // (numeric)    current tx count
+	  "bytes"                // (numeric)    sum of all tx sizes
+	  "usage"                // (numeric)    total memory usage for the mempool
 	}
 
 Examples:
@@ -1618,44 +1768,78 @@ Examples:
 
 ::
 
-	> komodo-cli getmempoolinfo
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+  command:
 
-getrawmempool ( verbose )
--------------------------
+	komodo-cli getmempoolinfo
 
-Returns all transaction ids in memory pool as a json array of string transaction ids.
+  response:
+
+  {
+    "size": 1,
+    "bytes": 226,
+    "usage": 896
+  }
+
+::
+
+  command:
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {
+    "result": {
+      "size": 1,
+      "bytes": 226,
+      "usage": 896
+    },
+    "error": null,
+    "id": "curltest"
+  }
+
+getrawmempool
+-------------
+
+::
+
+  getrawmempool ( verbose )
+
+The ``getrawmempool`` method returns all transaction ids in the memory pool as a JSON array of transaction ids.
+
+The verbose input is optional and is false by default. When it is true, the method instead returns a JSON object with various related data.
 
 Arguments:
 
 ::
 
-	1. verbose           (boolean, optional, default=false) true for a json object, false for array of transaction ids
+	verbose                // (boolean, optional, default=false)     true for a JSON object, false for a JSON array of transaction ids
 
-Result: (for verbose = false):
+Result (verbose = false):
 
 ::
 
-	[                     (json array of string)
-	  "transactionid"     (string) The transaction id
+	[
+	  "transactionid"                 // (string)    the transaction id
 	  ,...
 	]
 
-Result: (for verbose = true):
+Result (verbose = true):
 
 ::
 
-	{                           (json object)
-	  "transactionid" : {       (json object)
-	    "size" : n,             (numeric) transaction size in bytes
-	    "fee" : n,              (numeric) transaction fee in ZEC
-    	"time" : n,             (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT
-    	"height" : n,           (numeric) block height when transaction entered pool
-    	"startingpriority" : n, (numeric) priority when transaction entered pool
-    	"currentpriority" : n,  (numeric) transaction priority now
-    	"depends" : [           (array) unconfirmed transactions used as inputs for this transaction
-        "transactionid",    (string) parent transaction id
-	       ...]
+	{
+	  "transactionid" : {
+	    "size"                        // (numeric)   transaction size in bytes
+	    "fee"                         // (numeric)   transaction fee in ZEC
+    	"time"                        // (numeric)   local time transaction entered pool in seconds since 1 Jan 1970 GMT
+    	"height"                      // (numeric)   block height when transaction entered pool
+    	"startingpriority"            // (numeric)   priority when transaction entered pool
+    	"currentpriority"             // (numeric)   transaction priority now
+    	"depends": [                  // (array)     unconfirmed transactions used as inputs for this transaction
+        "transactionid"             // (string)    parent transaction id
+	       ...
+      ]
 	  }, ...
 	}
 
@@ -1664,21 +1848,65 @@ Examples:
 
 ::
 
-	> komodo-cli getrawmempool true
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+  command:
+
+  komodo-cli getrawmempool true
+
+  response:
+
+  {
+    "44760f145303cae081819c6e54665d6716c98e97691603b4edf133b8180e6048": {
+      "size": 488,
+      "fee": 0.00011462,
+      "time": 1536618366,
+      "height": 448,
+      "startingpriority": 20910198.65384615,
+      "currentpriority": 20910198.65384615,
+      "depends": [
+      ]
+    }
+  }
+
+::
+
+  command:
+
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {
+    "result": {
+      "44760f145303cae081819c6e54665d6716c98e97691603b4edf133b8180e6048": {
+        "size": 488,
+        "fee": 0.00011462,
+        "time": 1536618366,
+        "height": 448,
+        "startingpriority": 20910198.65384615,
+        "currentpriority": 20910198.65384615,
+        "depends": []
+      }
+    },
+    "error": null,
+    "id": "curltest"
+  }
 
 getspentinfo
 ------------
 
-Returns the txid and index where an output is spent.
+::
+
+  getspentinfo '{"txid": txid_string, "index", block_height_number}'
+
+The ``getspentinfo`` method returns the transaction id and index where an output is spent.
 
 Arguments:
 
 ::
 
 	{
-	  "txid" (string) The hex string of the txid
-	  "index" (number) The start block height
+	  "txid"             // (string)     the hex string of the txid
+	  "index"            // (number)     the start block height
 	}
 
 Result:
@@ -1686,8 +1914,8 @@ Result:
 ::
 
 	{
-	  "txid"  (string) The transaction id
-	  "index"  (number) The spending input index
+	  "txid"             // (string)     the transaction id
+	  "index"            // (number)     the spending input index
 	  ,...
 	}
 
@@ -1696,121 +1924,228 @@ Examples:
 
 ::
 
-	> komodo-cli getspentinfo '{"txid": "0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9", "index": 0}'
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+  command:
 
-gettxout "txid" n ( includemempool )
-------------------------------------
+	komodo-cli getspentinfo '{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}'
 
-Returns details about an unspent transaction output.
+  response:
+
+
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+gettxout
+--------
+
+::
+
+  gettxout "txid_string" vout_number ( includemempool_bool )
+
+The ``gettxout`` method returns details about an unspent transaction output.
 
 Arguments:
 
 ::
 
-	1. "txid"       (string, required) The transaction id
-	2. n              (numeric, required) vout value
-	3. includemempool  (boolean, optional) Whether to include the mempool
+	"txid"                       // (string, required)     the transaction id
+	vout                         // (numeric, required)    vout value
+	includemempool               // (boolean, optional)    whether to include the mempool
 
 Result:
 
 ::
 
 	{
-	  "bestblock" : "hash",    (string) the block hash
-	  "confirmations" : n,       (numeric) The number of confirmations
-	  "value" : x.xxx,           (numeric) The transaction value in ZEC
-  	"scriptPubKey" : {         (json object)
-    	 "asm" : "code",       (string)
-    	 "hex" : "hex",        (string)
-    	 "reqSigs" : n,          (numeric) Number of required signatures
-    	 "type" : "pubkeyhash", (string) The type, eg pubkeyhash
-    	 "addresses" : [          (array of string) array of Zcash addresses
-    	    "zcashaddress"        (string) Zcash address
+	  "bestblock"                // (string)               the block hash
+	  "confirmations"            // (numeric)              the number of confirmations
+	  "value"                    // (numeric)              the transaction value in ZEC
+  	"scriptPubKey": {          //
+    	 "asm"                   // (string)
+    	 "hex"                   // (string)
+    	 "reqSigs"               // (numeric)              number of required signatures
+    	 "type"                  // (string)               the type, e.g. pubkeyhash
+    	 "addresses" : [         // (array of strings)     array of addresses
+    	    "zcashaddress"       // (string)               address on blockchain
     	    ,...
     	 ]
   	},
-  	"version" : n,              (numeric) The version
-  	"coinbase" : true|false     (boolean) Coinbase or not
+  	"version"                  // (numeric)              the version
+  	"coinbase"                 // (boolean)              coinbase or not
 	}
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
-Get unspent transactions
+::
+
+  command:
+
+	komodo-cli gettxout "txid" 1
+
+  response:
+
+  {
+    "bestblock": "0e398d8d00f7846f28b47a6c0da16b14002441f5a5340b6d492060c698bdd84c",
+    "confirmations": 252,
+    "value": 0.00010000,
+    "scriptPubKey": {
+      "asm": "03c0259e1a166e53f6ccf094ce37c0843d4a013622603bc301b4eb0f89c7cce823 OP_CHECKSIG",
+      "hex": "2103c0259e1a166e53f6ccf094ce37c0843d4a013622603bc301b4eb0f89c7cce823ac",
+      "reqSigs": 1,
+      "type": "pubkey",
+      "addresses": [
+        "RM1mKzZDEr462UBqVjXSKXR3F83yMpG3Ue"
+      ]
+    },
+    "version": 1,
+    "coinbase": true
+  }
 
 ::
 
-	> komodo-cli listunspent
+  command:
 
-View the details
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {
+    "result": {
+      "bestblock": "0e398d8d00f7846f28b47a6c0da16b14002441f5a5340b6d492060c698bdd84c",
+      "confirmations": 252,
+      "value": 0.0001,
+      "scriptPubKey": {
+        "asm": "03c0259e1a166e53f6ccf094ce37c0843d4a013622603bc301b4eb0f89c7cce823 OP_CHECKSIG",
+        "hex": "2103c0259e1a166e53f6ccf094ce37c0843d4a013622603bc301b4eb0f89c7cce823ac",
+        "reqSigs": 1,
+        "type": "pubkey",
+        "addresses": [
+          "RM1mKzZDEr462UBqVjXSKXR3F83yMpG3Ue"
+        ]
+      },
+      "version": 1,
+      "coinbase": true
+    },
+    "error": null,
+    "id": "curltest"
+  }
+
+gettxoutproof
+-------------
 
 ::
 
-	> komodo-cli gettxout "txid" 1
+  gettxoutproof '["transaction_id_string",...]' ( "blockhash_string" )
 
-As a json rpc call
+The ``gettxoutproof`` method returns a hex-encoded proof showing that the indicated transaction was included in a block.
 
-::
-
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
-
-gettxoutproof ["txid",...] ( blockhash )
-----------------------------------------
-
-Returns a hex-encoded proof that "txid" was included in a block.
-
-**NOTE:** By default this function only works sometimes. This is when there is an
-unspent output in the utxo for this transaction. To make it always work,
-you need to maintain a transaction index, using the -txindex command line option or
-specify the block in which the transaction is included in manually (by blockhash).
-
-Return the raw transaction data.
+**NOTE:** By default this function only works in certain situations. It is successful when there is an unspent output in the utxo for this transaction. It is possible to make the command always successful; you need to maintain a transaction index, using the ``-txindex`` command-line option at runtime, or you must manually specify the hash of the block in which the transaction is included.
 
 Arguments:
 
 ::
 
-	1. "txids"       (string) A json array of txids to filter
-	    [
-	      "txid"     (string) A transaction hash
-	      ,...
-	    ]
-	2. "block hash"  (string, optional) If specified, looks for txid in the block with this hash
+  [
+    "txid_string"                  // (string)               a transaction hash
+    ,...
+  ]
+	"blockhash_string"               // (string, optional)     if specified, looks for txid in the block with this hash
 
 Result:
 
 ::
 
-	"data"           (string) A string that is a serialized, hex-encoded data for the proof.
+	"data"                           // (string)               a string that is a serialized, hex-encoded data for the proof
+
+Examples:
+
+ *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+
+::
+
+  command:
+
+  ./komodo-cli -ac_name=SIDD gettxoutproof '["c71f4a2ebf87bdd588e3aa168917933ee4be1661245ebf52d5708a8339cf9d7a"]' "0a28e2fb630b282138bf23bb79f597b11acff6f57c8d9c1c10fa54770035c813"
+
+  response:
+
+  040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d
 
 gettxoutsetinfo
 ---------------
 
-Returns statistics about the unspent transaction output set.
-Note this call may take some time.
+::
+
+  gettxoutsetinfo
+
+The ``gettxoutsetinfo`` method returns statistics about the unspent transaction output set.
+
+* Note this call may take a long time to complete, depending on the state of your blockchain.
+
+Arguments
+
+::
+
+  (none)
 
 Result:
 
 ::
 
 	{
-	  "height":n,     (numeric) The current block height (index)
-	  "bestblock": "hex",   (string) the best block hash hex
-	  "transactions": n,      (numeric) The number of transactions
-	  "txouts": n,            (numeric) The number of output transactions
- 	 "bytes_serialized": n,  (numeric) The serialized size
-	  "hash_serialized": "hash",   (string) The serialized hash
-	  "total_amount": x.xxx          (numeric) The total amount
+	  "height"                 // (numeric)        the current block height (index)
+	  "bestblock"              // (string)         the best block hash hex
+	  "transactions"           // (numeric)        the number of transactions
+	  "txouts"                 // (numeric)        the number of output transactions
+ 	  "bytes_serialized"       // (numeric)        the serialized size
+	  "hash_serialized"        // (string)         the serialized hash
+	  "total_amount"           // (numeric)        the total amount
 	}
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
 
-	> komodo-cli gettxoutsetinfo
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+	command:
+
+  komodo-cli gettxoutsetinfo
+
+  response:
+
+  {
+    "height": 459,
+    "bestblock": "0a28e2fb630b282138bf23bb79f597b11acff6f57c8d9c1c10fa54770035c813",
+    "transactions": 258,
+    "txouts": 261,
+    "bytes_serialized": 18051,
+    "hash_serialized": "fdd2039fa21400be0928b26dfe534f543dc5090989bcbd97fdc81b30ce7dca3a",
+    "total_amount": 10.16456229
+  }
+
+::
+
+  command:
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {
+    "result": {
+      "height": 459,
+      "bestblock": "0a28e2fb630b282138bf23bb79f597b11acff6f57c8d9c1c10fa54770035c813",
+      "transactions": 258,
+      "txouts": 261,
+      "bytes_serialized": 18051,
+      "hash_serialized": "fdd2039fa21400be0928b26dfe534f543dc5090989bcbd97fdc81b30ce7dca3a",
+      "total_amount": 10.16456229
+    },
+    "error": null,
+    "id": "curltest"
+  }
 
 height_MoM height
 -----------------
@@ -1837,18 +2172,30 @@ notaries height timestamp
 
 ``COMING SOON``
 
-paxpending needs no args
-------------------------
+paxpending
+----------
+
+::
+
+  paxpending
 
 ``DEPRECATED``
 
-paxprice "base" "rel" height
-----------------------------
+paxprice
+--------
+
+::
+
+  paxprice "base" "rel" height
 
 ``DEPRECATED``
 
-paxprices "base" "rel" maxsamples
----------------------------------
+paxprices
+---------
+
+::
+
+  paxprices "base" "rel" maxsamples
 
 ``DEPRECATED``
 
@@ -1857,46 +2204,107 @@ txMoMproof needs a txid
 
 ``COMING SOON``
 
-verifychain ( checklevel numblocks )
-------------------------------------
+verifychain
+-----------
 
-Verifies blockchain database.
+::
+
+  verifychain ( checklevel numblocks )
+
+The ``verifychain`` method verifies the coin daemon's blockchain database.
 
 Arguments:
 
 ::
 
-	1. checklevel   (numeric, optional, 0-4, default=3) How thorough the block verification is.
-	2. numblocks    (numeric, optional, default=288, 0=all) The number of blocks to check.
+	checklevel           // (numeric, optional, 0-4, default=3)        indicates the thoroughness of block verification
+	numblocks            // (numeric, optional, default=288, 0=all)    indicates the number of blocks to verify
 
 Result:
 
 ::
 
-	true|false       (boolean) Verified or not
+	true|false           // (boolean)                                  verification was successful or unsuccessful
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
 
-	> komodo-cli verifychain
-	> curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+  command:
 
-verifytxoutproof "proof"
-------------------------
+	komodo-cli verifychain
 
-Verifies that a proof points to a transaction in a block, returning the transaction it commits to
-and throwing an RPC error if the block is not in our best chain
+  response:
+
+  true
+
+::
+
+  command:
+
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+
+  response:
+
+  {
+    "result": true,
+    "error": null,
+    "id": "curltest"
+  }
+
+verifytxoutproof
+----------------
+
+::
+
+  verifytxoutproof "proof_string"
+
+The ``verifytxoutproof`` method verifies that a proof points to a transaction in a block. It returns the transaction to which the proof is committed, or it will throw an RPC error if the block is not in the current best chain.
 
 Arguments:
 
 ::
 
-	1. "proof"    (string, required) The hex-encoded proof generated by gettxoutproof
+	"proof_string"             // (string, required)       the hex-encoded proof generated by gettxoutproof
 
 Result:
 
 ::
 
-	["txid"]      (array, strings) The txid(s) which the proof commits to, or empty array if the proof is invalid
+	[
+    "txid"                   // (array, strings)         the transaction ids which the proof commits to; the array is empty if the proof is invalid
+  ]
+
+Examples:
+
+*  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+
+::
+
+  command:
+
+  komodo-cli -ac_name=SIDD verifytxoutproof "040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d"
+
+  response:
+
+  [
+    "c71f4a2ebf87bdd588e3aa168917933ee4be1661245ebf52d5708a8339cf9d7a"
+  ]
+
+::
+
+  command:
+
+  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc    --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifytxoutproof", "params": ["040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
+
+  response:
+
+  {
+    "result": [
+      "c71f4a2ebf87bdd588e3aa168917933ee4be1661245ebf52d5708a8339cf9d7a"
+    ],
+    "error": null,
+    "id": "curltest"
+  }
