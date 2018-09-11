@@ -633,7 +633,9 @@ Examples:
 
 getaddresstxids
 ---------------
+
 ::
+
   getaddresstxids '{"addresses": ["address_string"]}'
 
 The ``getaddresstxids`` method returns the txids for an address(es). It requires ===link=== ``addressindex`` to be enabled.
@@ -667,6 +669,7 @@ Result:
 	]
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -683,6 +686,7 @@ Examples:
   ]
 
 ::
+
   command:
 
   curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddresstxids", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
@@ -702,6 +706,7 @@ Examples:
 getaddressutxos
 ---------------
 ::
+
   getaddressutxos '{"addresses": ["address_string"]}'
 
 The ``getaddressutxos`` method returns all unspent outputs for an address. It requires ===link==``addressindex`` to be enabled.
@@ -741,6 +746,7 @@ Result:
 	]
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -770,6 +776,7 @@ Examples:
 
 
   response:
+
   {
     "utxos": [
       {
@@ -839,21 +846,6 @@ Examples:
 Blockchain
 ==========
 
-MoMoMdata symbol kmdheight notarized_height
--------------------------------------------
-
-``COMING SOON``
-
-allMoMs kmdstarti kmdendi
--------------------------
-
-``COMING SOON``
-
-calc_MoM height MoMdepth
-------------------------
-
-``COMING SOON``
-
 getbestblockhash
 ----------------
 
@@ -884,6 +876,7 @@ Result:
 	"hex"                        // (string)     the block hash hex encoded
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -925,8 +918,8 @@ Arguments:
 
 ::
 
-	1. "hash|height"         // (string, required)                 the block hash or height
-	2. verbose               // (boolean, optional, default=true)  true returns a json object, false returns hex-encoded data
+	"hash|height"             // (string, required)                 the block hash or height
+	verbose                   // (boolean, optional, default=true)  true returns a json object, false returns hex-encoded data
 
 Result (for verbose = ``true``):
 
@@ -1059,7 +1052,6 @@ Examples (using blockhash):
 
   curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09", false] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
-
   response:
 
   {
@@ -1070,6 +1062,7 @@ Examples (using blockhash):
 
 
 Examples (using block height):
+
  * (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1241,6 +1234,7 @@ Result:
   }
 
 Examples:
+
  * (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1372,6 +1366,7 @@ Result:
 	(numeric) The current block count
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1420,6 +1415,7 @@ Result:
 	"hash"                        // (string)                the block hash
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1551,6 +1547,7 @@ Result (for verbose=false):
 	"data"                   // (string)       a string that is serialized hex-encoded data for the indicated block
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1649,6 +1646,7 @@ Possible values for status:
 	5.  "active"                this is the tip of the active main chain, which is certainly valid
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1711,6 +1709,7 @@ Result:
 	number                     // (numeric)  the proof-of-work difficulty as a multiple of the minimum difficulty
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1764,6 +1763,7 @@ Result:
 	}
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1844,6 +1844,7 @@ Result (verbose = true):
 	}
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1920,6 +1921,7 @@ Result:
 	}
 
 Examples:
+
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
@@ -1929,8 +1931,6 @@ Examples:
 	komodo-cli getspentinfo '{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}'
 
   response:
-
-
 
   curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
@@ -2146,11 +2146,6 @@ Examples:
     "error": null,
     "id": "curltest"
   }
-
-height_MoM height
------------------
-
-``COMING SOON``
 
 kvsearch key
 ------------
