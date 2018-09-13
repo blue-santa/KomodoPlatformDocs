@@ -439,7 +439,7 @@ Result:
 	  }
 	]
 
-Examples (no optional parameters):
+Examples:
 
  *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
@@ -552,7 +552,7 @@ getaddressmempool
 -----------------
 
 ::
-  getaddressmempool '{"addresses": ["address_string"]}'
+  getaddressmempool '{"addresses": ["address_string", "address_string", ... ]}'
 
 The ``getaddressmempool`` method returns all mempool deltas for an address. It requires ===link===``addressindex`` to be enabled.
 
@@ -3075,7 +3075,7 @@ getblocksubsidy
 
   getblocksubsidy height_number
 
-The ``getblocksubsidy`` method returns the block-subsidy reward. The resulting calculation takes into account the mining slow start and the founders reward of the block at the provided index.
+The ``getblocksubsidy`` method returns the block-subsidy reward. The resulting calculation takes into account the mining slow start. This method can be used in conjunction with custom mining rewards designed by the developers of a KMD asset chain.
 
 Arguments:
 
@@ -3952,7 +3952,7 @@ getnettotals
 
   getnettotals
 
-Returns information about network traffic, including bytes in, bytes out,
+The ``getnettotals`` method returns information about network traffic, including bytes in, bytes out,
 and current time.
 
 Arguments:
@@ -4010,7 +4010,7 @@ getnetworkinfo
 
   getnetworkinfo
 
-Returns an object containing various state info regarding P2P networking.
+The ``getnetworkinfo`` method returns an object containing various state info regarding P2P networking.
 
 Arguments:
 
@@ -4039,28 +4039,122 @@ Result:
 	  ,...
 	  ],
 	  "relayfee"               // (numeric)    minimum relay fee for non-free transactions in ZEC/kB
-	  "localaddresses": [                    (array) list of local addresses
+	  "localaddresses": [      // (array)      list of local addresses
 	  {
-	    "address"                 (string) network address
-	    "port"                         (numeric) network port
-	    "score"                         (numeric) relative score
+	    "address"              // (string)     network address
+	    "port"                 // (numeric)    network port
+	    "score"                // (numeric)    relative score
 	  }
 	  ,...
 	  ]
-	  "warnings": "..."                    (string) any network warnings (such as alert messages)
+	  "warnings"               // (string)     any network warnings (such as alert messages)
 	}
 
 Examples:
 
 ::
 
-	> komodo-cli getnetworkinfo
-	> curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  command:
+
+	komodo-cli getnetworkinfo
+
+  response:
+
+  {
+    "version": 1001550,
+    "subversion": "/MagicBean:1.0.15/",
+    "protocolversion": 170003,
+    "localservices": "0000000000000001",
+    "timeoffset": -1,
+    "connections": 10,
+    "networks": [
+      {
+        "name": "ipv4",
+        "limited": false,
+        "reachable": true,
+        "proxy": "",
+        "proxy_randomize_credentials": false
+      },
+      {
+        "name": "ipv6",
+        "limited": false,
+        "reachable": true,
+        "proxy": "",
+        "proxy_randomize_credentials": false
+      },
+      {
+        "name": "onion",
+        "limited": true,
+        "reachable": false,
+        "proxy": "",
+        "proxy_randomize_credentials": false
+      }
+    ],
+    "relayfee": 0.00000100,
+    "localaddresses": [
+    ],
+    "warnings": ""
+  }
+
+::
+
+  command:
+
+	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+
+  response:
+
+  {
+    "result": {
+      "version": 1001550,
+      "subversion": "/MagicBean:1.0.15/",
+      "protocolversion": 170003,
+      "localservices": "0000000000000001",
+      "timeoffset": -1,
+      "connections": 10,
+      "networks": [
+        {
+          "name": "ipv4",
+          "limited": false,
+          "reachable": true,
+          "proxy": "",
+          "proxy_randomize_credentials": false
+        },
+        {
+          "name": "ipv6",
+          "limited": false,
+          "reachable": true,
+          "proxy": "",
+          "proxy_randomize_credentials": false
+        },
+        {
+          "name": "onion",
+          "limited": true,
+          "reachable": false,
+          "proxy": "",
+          "proxy_randomize_credentials": false
+        }
+      ],
+      "relayfee": 1e-06,
+      "localaddresses": [],
+      "warnings": ""
+    },
+    "error": null,
+    "id": "curltest"
+  }
 
 getpeerinfo
 -----------
 
-Returns data about each connected network node as a json array of objects.
+::
+
+  getpeerinfo
+
+The ``getpeerinfo`` method returns data about each connected network node as a json array of objects.
+
+Arguments:
+
+  (none)
 
 Result:
 
@@ -4068,27 +4162,27 @@ Result:
 
 	[
 	  {
-	    "id": n,                   (numeric) Peer index
-	    "addr":"host:port",      (string) The ip address and port of the peer
-	    "addrlocal":"ip:port",   (string) local address
-	    "services":"xxxxxxxxxxxxxxxx",   (string) The services offered
-	    "lastsend"           (numeric) The time in seconds since epoch (Jan 1 1970 GMT) of the last send
-	    "lastrecv"           (numeric) The time in seconds since epoch (Jan 1 1970 GMT) of the last receive
-	    "bytessent": n,            (numeric) The total bytes sent
-	    "bytesrecv": n,            (numeric) The total bytes received
-	    "conntime"           (numeric) The connection time in seconds since epoch (Jan 1 1970 GMT)
-	    "timeoffset"         (numeric) The time offset in seconds
-	    "pingtime": n,             (numeric) ping time
-	    "pingwait": n,             (numeric) ping wait
-	    "version": v,              (numeric) The peer version, such as 170002
-	    "subver": "/MagicBean:x.y.z[-v]/",  (string) The string version
-	    "inbound": true|false,     (boolean) Inbound (true) or Outbound (false)
-	    "startingheight": n,       (numeric) The starting height (block) of the peer
-	    "banscore": n,             (numeric) The ban score
-	    "synced_headers": n,       (numeric) The last header we have in common with this peer
-	    "synced_blocks": n,        (numeric) The last block we have in common with this peer
+	    "id"                       // (numeric)    peer index
+	    "addr":,                   // (string)     the ip address and port of the peer ("host:port")
+	    "addrlocal"                // (string)     local address ("ip:port")
+	    "services"                 // (string)     the services offered
+	    "lastsend"                 // (numeric)    the time in seconds since epoch (Jan 1 1970 GMT) of the last send
+	    "lastrecv"                 // (numeric)    the time in seconds since epoch (Jan 1 1970 GMT) of the last receive
+	    "bytessent"                // (numeric)    the total bytes sent
+	    "bytesrecv"                // (numeric)    the total bytes received
+	    "conntime"                 // (numeric)    the connection time in seconds since epoch (Jan 1 1970 GMT)
+	    "timeoffset"               // (numeric)    the time offset in seconds
+	    "pingtime"                 // (numeric)    ping time
+	    "pingwait"                 // (numeric)    ping wait
+	    "version"                  // (numeric)    the peer version, such as 170002
+	    "subver"                   // (string)     the string version (i.e. "/MagicBean:x.y.z[-v]/")
+	    "inbound"                  // (boolean)    inbound (true) or outbound (false)
+	    "startingheight"           // (numeric)    the starting height (block) of the peer
+	    "banscore"                 // (numeric)    the ban score
+	    "synced_headers"           // (numeric)    the last header we have in common with this peer
+	    "synced_blocks"            // (numeric)    the last block we have in common with this peer
 	    "inflight": [
-	       n,                        (numeric) The heights of blocks we're currently asking from this peer
+	       number,                 // (numeric)    the heights of blocks we're currently asking from this peer
 	       ...
 	    ]
 	  }
@@ -4099,8 +4193,74 @@ Examples:
 
 ::
 
-	> komodo-cli getpeerinfo
-	> curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  command:
+
+	komodo-cli getpeerinfo
+
+  response:
+
+  [
+    {
+      "id": 1,
+      "addr": "78.47.196.146:7770",
+      "addrlocal": "69.178.104.172:49724",
+      "services": "0000000000000001",
+      "lastsend": 1536827621,
+      "lastrecv": 1536827617,
+      "bytessent": 5181633,
+      "bytesrecv": 6245958,
+      "conntime": 1536792412,
+      "timeoffset": -2,
+      "pingtime": 0.234065,
+      "version": 170003,
+      "subver": "/MagicBean:1.0.15/",
+      "inbound": false,
+      "startingheight": 1007074,
+      "banscore": 45,
+      "synced_headers": 1007671,
+      "synced_blocks": 1007671,
+      "inflight": [
+      ],
+      "whitelisted": false
+    }
+  ]
+
+::
+
+  command:
+
+	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+
+  response:
+
+  {
+    "result": [
+      {
+        "id": 1,
+        "addr": "78.47.196.146:7770",
+        "addrlocal": "69.178.104.172:49724",
+        "services": "0000000000000001",
+        "lastsend": 1536827702,
+        "lastrecv": 1536827698,
+        "bytessent": 5195639,
+        "bytesrecv": 6247781,
+        "conntime": 1536792412,
+        "timeoffset": -2,
+        "pingtime": 0.234605,
+        "version": 170003,
+        "subver": "/MagicBean:1.0.15/",
+        "inbound": false,
+        "startingheight": 1007074,
+        "banscore": 45,
+        "synced_headers": 1007672,
+        "synced_blocks": 1007672,
+        "inflight": [],
+        "whitelisted": false
+      }
+    ],
+    "error": null,
+    "id": "curltest"
+  }
 
 listbanned
 ----------
@@ -4213,7 +4373,7 @@ Result:
 	  "vin" : [               (array of json objects)
 	     {
 	       "txid": "id",    (string) The transaction id
-	       "vout": n,         (numeric) The output number
+	       "vout"         (numeric) The output number
 	       "scriptSig": {     (json object) The script
 	         "asm": "asm",  (string) asm
 	         "hex": "hex"   (string) hex
@@ -4294,7 +4454,7 @@ Result:
 	  "asm":"asm",   (string) Script public key
 	  "hex":"hex",   (string) hex encoded public key
 	  "type":"type", (string) The output type
-	  "reqSigs": n,    (numeric) The required signatures
+	  "reqSigs"    (numeric) The required signatures
 	  "addresses": [   (json array of string)
 	     "address"     (string) Zcash address
 	     ,...
@@ -4398,7 +4558,7 @@ Result (if verbose > 0):
 	  "vin" : [               (array of json objects)
 	     {
 	       "txid": "id",    (string) The transaction id
-	       "vout": n,         (numeric)
+	       "vout"         (numeric)
 	       "scriptSig": {     (json object) The script
 	         "asm": "asm",  (string) asm
 	         "hex": "hex"   (string) hex
