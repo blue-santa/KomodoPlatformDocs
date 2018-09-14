@@ -5141,30 +5141,27 @@ Util
 createmultisig nrequired ["key",...]
 ------------------------------------
 
-Creates a multi-signature address with n signature of m keys required.
-It returns a json object with the address and redeemScript.
+The ``createmultisig`` method creates a multi-signature address with ``n`` signature of ``m`` keys required. The method returns a json object with the address and redeemScript.
 
 Arguments:
 
 ::
 
-	1. nrequired      (numeric, required) The number of required signatures out of the n keys or addresses.
-	2. "keys"       (string, required) A json array of keys which are Zcash addresses or hex-encoded public keys
+	number_required        (numeric, required) the number of required signatures out of the ``n`` keys or addresses.
+	"keys"                 (string, required) a json array of keys which are KMD/asset-chain addresses or hex-encoded public keys
 
-::
-
-     [
-       "key"    (string) Zcash address or hex-encoded public key
-       ,...
-     ]
+ [
+   "key"                 (string) KMD/asset-chain address or hex-encoded public key
+   ,...
+ ]
 
 Result:
 
 ::
 
 	{
-	  "address":"multisigaddress",  (string) The value of the new multisig address.
-	  "redeemScript":"script"       (string) The string value of the hex-encoded redemption script.
+	  "address"            (string) the value of the new multisig address.
+	  "redeemScript"       (string) the string value of the hex-encoded redemption script.
 	}
 
 Examples:
@@ -5173,26 +5170,37 @@ Create a multisig address from 2 addresses
 
 ::
 
-	> komodo-cli createmultisig 2 "[\"t16sSauSf5pF2UkUwvKGq4qjNRzBZYqgEL5\",\"t171sgjn4YtPu27adkKGrdDwzRTxnRkBfKV\"]"
+  command:
 
-As a json rpc call
+	komodo-cli -ac_name=SIDD createmultisig 2 "[\"RJnVEQgucK1iwiRjfTZmreXkF49KgTErDn\",\"RCVyjn9MQ8Tw6YRJnDcsx67kfsmfUgLdfw\"]"
+
+  response:
+
+  {
+    "address": "bZjsy6bt2ZdyHV5hfCNL2HsuA4eV63s5u6",
+    "redeemScript": "52210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc9821021f527b7269ab18da85a50b7f45f572e8b017fce476de06cb80a2550ee7d4b11652ae"
+  }
 
 ::
 
-	> curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createmultisig", "params": [2, "[\"t16sSauSf5pF2UkUwvKGq4qjNRzBZYqgEL5\",\"t171sgjn4YtPu27adkKGrdDwzRTxnRkBfKV\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  command:
+
+  ===not working yet====
+
+	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createmultisig", "params": [2, \'["RJnVEQgucK1iwiRjfTZmreXkF49KgTErDn","RCVyjn9MQ8Tw6YRJnDcsx67kfsmfUgLdfw"]\'] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+
+  response:
 
 estimatefee nblocks
 -------------------
 
-Estimates the approximate fee per kilobyte
-needed for a transaction to begin confirmation
-within nblocks blocks.
+The ``estimatefee`` method estimates the approximate fee per kilobyte. The method is needed for a transaction to begin confirmation within ``nblocks`` blocks.
 
 Arguments:
 
 ::
 
-	1. nblocks     (numeric)
+	nblocks     (numeric)
 
 Result:
 
@@ -5200,45 +5208,56 @@ Result:
 
 	n :    (numeric) estimated fee-per-kilobyte
 
-	-1.0 is returned if not enough transactions and blocks have been observed to make an estimate.
+  The value ``-1.0`` is returned if not enough transactions and blocks have been observed to make an estimate.
+
 
 Example:
 
 ::
 
-	> komodo-cli estimatefee 6
+  command:
+
+	komodo-cli estimatefee 6
+
+  response:
+
+  0.00019376
 
 estimatepriority nblocks
 ------------------------
 
-Estimates the approximate priority
-a zero-fee transaction needs to begin confirmation
-within nblocks blocks.
+The ``estimatepriority`` method estimates the approximate priority of a zero-fee transaction, when it needs to begin confirmation within ``nblocks`` blocks.
 
 Arguments:
 
 ::
 
-	1. nblocks     (numeric)
+	nblocks     (numeric)      a statement indicating within how many blocks the transaction should be confirmed
 
 Result:
 
 ::
 
-	n :    (numeric) estimated priority
+	n    (numeric) estimated priority
 
-	-1.0 is returned if not enough transactions and blocks have been observed to make an estimate.
+  -1.0 is returned if not enough transactions and blocks have been observed to make an estimate.
 
 Example:
 
 ::
 
-	> komodo-cli estimatepriority 6
+  command:
+
+	komodo-cli estimatepriority 6
+
+  response:
+
+  ===need to come back to this, getting -1===
 
 invalidateblock "hash"
 ----------------------
 
-Permanently marks a block as invalid, as if it violated a consensus rule.
+The ``invalidateblock`` method permanently marks a block as invalid, as if it violated a consensus rule.
 
 Arguments:
 
@@ -5248,12 +5267,35 @@ Arguments:
 
 Result:
 
+::
+
+  (none)
+
 Examples:
 
 ::
 
-	> komodo-cli invalidateblock "blockhash"
-	> curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "invalidateblock", "params": ["blockhash"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  command:
+
+	komodo-cli invalidateblock "02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "invalidateblock", "params": ["02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+
+  response:
+
+  {
+    "result": null,
+    "error": null,
+    "id": "curltest"
+  }
 
 jumblr_deposit "depositaddress"
 -------------------------------
@@ -5278,58 +5320,74 @@ For usage look at :doc:`using-JUMBLR`
 reconsiderblock "hash"
 ----------------------
 
-Removes invalidity status of a block and its descendants, reconsider them for activation.
-This can be used to undo the effects of invalidateblock.
+The ``reconsiderblock`` method removes invalidity status of a block and its descendants, reconsidering them for activation. This can be used to undo the effects of invalidateblock.
 
 Arguments:
 
 ::
 
-	1. hash   (string, required) the hash of the block to reconsider
+	hash   (string, required) the hash of the block to reconsider
 
 Result:
+
+  (none)
 
 Examples:
 
 ::
 
-	> komodo-cli reconsiderblock "blockhash"
-	> curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "reconsiderblock", "params": ["blockhash"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	komodo-cli reconsiderblock "02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"
 
 validateaddress "komodoaddress"
 -------------------------------
 
-Return information about the given Zcash address.
+The ``validateaddress`` method returns information about the given KMD/asset-chain address.
 
 Arguments:
 
 ::
 
-	1. "zcashaddress"     (string, required) The Zcash address to validate
+	"address"     (string, required) The KMD/asset-chain address to validate
 
 Result:
 
 ::
 
 	{
-	  "isvalid" : true|false,         (boolean) If the address is valid or not. If not, this is the only property returned.
-	  "address" : "zcashaddress",   (string) The Zcash address validated
-	  "scriptPubKey"       (string) The hex encoded scriptPubKey generated by the address
-	  "ismine" : true|false,          (boolean) If the address is yours or not
-	  "isscript" : true|false,        (boolean) If the key is a script
-	  "pubkey" : "publickeyhex",    (string) The hex value of the raw public key
-	  "iscompressed" : true|false,    (boolean) If the address is compressed
-	  "account" : "account"         (string) DEPRECATED. The account associated with the address, "" is the default account
+	  "isvalid"         (boolean) indicates whether the address is valid. If it is not, this is the only property returned.
+	  "address"   (string) the address validated
+	  "scriptPubKey"       (string) the hex encoded scriptPubKey generated by the address
+	  "ismine"          (boolean) indicates whether the address is yours or not
+	  "isscript"    (boolean) if the key is a script
+	  "pubkey"           (string) the hex value of the raw public key
+	  "iscompressed"     (boolean) if the address is compressed
+	  "account"          (string) DEPRECATED. The account associated with the address, "" is the default account
 	}
 
 Examples:
 
 ::
 
-	> komodo-cli validateaddress "1PSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc"
-	> curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "validateaddress", "params": ["1PSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  command:
 
-verifymessage "komodoaddress" "signature" "message"
+	komodo-cli validateaddress "RDNC9mLrN48pVGDQ5jSoPb2nRsUPJ5t2R7"
+
+  response:
+
+  {
+    "isvalid": true,
+    "address": "RDNC9mLrN48pVGDQ5jSoPb2nRsUPJ5t2R7",
+    "scriptPubKey": "76a9142cd2a4e3d1c2738ee4fce61e73ea822dcaacb9b488ac",
+    "segid": 9,
+    "ismine": true,
+    "iswatchonly": false,
+    "isscript": false,
+    "pubkey": "03c376b00b3a2ae43b8bf103a6c6962b241de684383301fe628a460b68a79ac1d8",
+    "iscompressed": true,
+    "account": ""
+  }
+
+verifymessage "address" "signature" "message"
 ---------------------------------------------------
 
 Verify a signed message
@@ -5338,68 +5396,73 @@ Arguments:
 
 ::
 
-	1. "zcashaddress"    (string, required) The Zcash address to use for the signature.
-	2. "signature"       (string, required) The signature provided by the signer in base 64 encoding (see signmessage).
-	3. "message"         (string, required) The message that was signed.
+	"address"         (string, required) the address to use for the signature
+	"signature"       (string, required) the signature provided by the signer in base 64 encoding (see signmessage)
+	"message"         (string, required) the message that was signed
 
 Result:
 
 ::
 
-	true|false   (boolean) If the signature is verified or not.
+	true|false   (boolean) indicates whether the signature is verified
 
 Examples:
+
+===come back to this after we've done `signmessage` and others in the wallet category===
 
 Unlock the wallet for 30 seconds
 
 ::
 
-	> komodo-cli walletpassphrase "mypassphrase" 30
+	komodo-cli walletpassphrase "mypassphrase" 30
 
 Create the signature
 
 ::
 
-	> komodo-cli signmessage "t14oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1" "my message"
+	komodo-cli signmessage "t14oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1" "my message"
 
 Verify the signature
 
 ::
 
-	> komodo-cli verifymessage "t14oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1" "signature" "my message"
-
-As json rpc
-
-::
-
-	> curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifymessage", "params": ["t14oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1", "signature", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	komodo-cli verifymessage "t14oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1" "signature" "my message"
 
 z_validateaddress "zaddr"
 -------------------------
 
-Return information about the given z address.
+The ``z_validateaddress`` method returns information about the given z address.
 
 Arguments:
 
 ::
 
-	1. "zaddr"     (string, required) The z address to validate
+	"zaddr"     (string, required) the z address to validate
 
 Result:
 
 ::
 
 	{
-	  "isvalid" : true|false,      (boolean) If the address is valid or not. If not, this is the only property returned.
-	  "address" : "zaddr",         (string) The z address validated
-	  "ismine" : true|false,       (boolean) If the address is yours or not
-	  "payingkey"         (string) The hex value of the paying key, a_pk
-	  "transmissionkey"   (string) The hex value of the transmission key, pk_enc
+	  "isvalid"      (boolean) indicates whether the address is valid; if not, this is the only property returned
+	  "address"         (string) the z address validated
+	  "ismine"       (boolean) indicates if the address is yours or not
+	  "payingkey"         (string) the hex value of the paying key, a_pk
+	  "transmissionkey"   (string) the hex value of the transmission key, pk_enc
 	}
 
 Examples:
 
 ::
 
-	> komodo-cli z_validateaddress "zcWsmqT4X2V4jgxbgiCzyrAfRT1vi1F4sn7M5Pkh66izzw8Uk7LBGAH3DtcSMJeUb2pi3W4SQF8LMKkU2cUuVP68yAGcomL"
-	> curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_validateaddress", "params": ["zcWsmqT4X2V4jgxbgiCzyrAfRT1vi1F4sn7M5Pkh66izzw8Uk7LBGAH3DtcSMJeUb2pi3W4SQF8LMKkU2cUuVP68yAGcomL"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  command:
+
+	komodo-cli z_validateaddress "zcWsmqT4X2V4jgxbgiCzyrAfRT1vi1F4sn7M5Pkh66izzw8Uk7LBGAH3DtcSMJeUb2pi3W4SQF8LMKkU2cUuVP68yAGcomL"
+
+  {
+    "isvalid": true,
+    "address": "ztdChvxs2Z97X7qeBwsnRLbxva1ZVgWhFWZxZTA5bC8XLt9RHF8uXn16MWCU8DhKEt4gTtKqQwzsrk85f5tThWMNoYds2oX",
+    "payingkey": "d9c09cb974fbe0bf7e36a2318b46396c5112511f90749531428936867d83bd92",
+    "transmissionkey": "5ce3250912758cbb591e3d585ef110992f25ed7694b88f55315b060698b75404",
+    "ismine": true
+  }
