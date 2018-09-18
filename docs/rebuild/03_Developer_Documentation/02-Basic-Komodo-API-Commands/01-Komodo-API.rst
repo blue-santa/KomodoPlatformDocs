@@ -381,7 +381,7 @@ Examples:
 
 	command:
 
-	curl --user myrpcuser:myuserpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user myrpcuser:myuserpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 	response:
 
@@ -425,7 +425,7 @@ Arguments:
 	  "chainInfo" 					   // (boolean)  include chain info in results (only applies if start and end specified)
 	}
 
-Result:
+Response:
 
 ::
 
@@ -494,7 +494,7 @@ Examples:
 ::
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -518,7 +518,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}]}' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}]}' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -574,7 +574,7 @@ Arguments:
 	    ]
 	}
 
-Result:
+Response:
 
 ::
 
@@ -616,7 +616,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressmempool", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressmempool", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -664,7 +664,7 @@ Arguments:
 	  "end"                           // (number)   the end block height
 	}
 
-Result:
+Response:
 
 ::
 
@@ -694,7 +694,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddresstxids", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddresstxids", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -736,7 +736,7 @@ Arguments:
 	  "chainInfo"                  // (boolean)  include chain info with results
 	}
 
-Result:
+Response:
 
 ::
 
@@ -802,7 +802,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -825,7 +825,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"], "chainInfo": true}] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"], "chainInfo": true}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -875,7 +875,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -899,7 +899,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1014,7 +1014,7 @@ Examples (using blockhash):
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1057,7 +1057,7 @@ Examples (using blockhash):
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09", false] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1126,7 +1126,7 @@ Examples (using block height):
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1171,7 +1171,7 @@ Examples (using block height):
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120", false] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1198,7 +1198,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -1300,7 +1300,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1366,7 +1366,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -1390,7 +1390,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1415,7 +1415,7 @@ Arguments:
 
 	index                         // (numeric, required)     the block index
 
-Result:
+Response:
 
 ::
 
@@ -1439,7 +1439,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1470,7 +1470,7 @@ Arguments:
       "logicalTimes"         // (boolean)              will include logical timestamps with hashes
     }
 
-Result:
+Response:
 
 ::
 
@@ -1500,7 +1500,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1585,7 +1585,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1623,7 +1623,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -1646,11 +1646,11 @@ Possible values for status:
 
 ::
 
-	1.  "invalid"               this branch contains at least one invalid block
-	2.  "headers-only"          not all blocks for this branch are available, but the headers are valid
-	3.  "valid-headers"         all blocks are available for this branch, but they were never fully validated
-	4.  "valid-fork"            this branch is not part of the active chain, but is fully validated
-	5.  "active"                this is the tip of the active main chain, which is certainly valid
+	 "invalid"               this branch contains at least one invalid block
+	 "headers-only"          not all blocks for this branch are available, but the headers are valid
+	 "valid-headers"         all blocks are available for this branch, but they were never fully validated
+	"valid-fork"            this branch is not part of the active chain, but is fully validated
+	"active"                this is the tip of the active main chain, which is certainly valid
 
 Examples:
 
@@ -1677,7 +1677,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1709,7 +1709,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -1734,7 +1734,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1759,7 +1759,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -1791,7 +1791,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1879,7 +1879,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1917,7 +1917,7 @@ Arguments:
 	  "index"            // (number)     the start block height
 	}
 
-Result:
+Response:
 
 ::
 
@@ -1939,7 +1939,7 @@ Examples:
 
   response:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 gettxout
 --------
@@ -1958,7 +1958,7 @@ Arguments:
 	vout                         // (numeric, required)    vout value
 	includemempool               // (boolean, optional)    whether to include the mempool
 
-Result:
+Response:
 
 ::
 
@@ -2013,7 +2013,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2059,7 +2059,7 @@ Arguments:
   ]
 	"blockhash_string"               // (string, optional)     if specified, looks for txid in the block with this hash
 
-Result:
+Response:
 
 ::
 
@@ -2096,7 +2096,7 @@ Arguments
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -2136,7 +2136,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2169,7 +2169,7 @@ Arguments:
 
   key                // (string, required)    search the chain for this key
 
-Result:
+Response:
 {
   "coin"             // (string)              chain the key is stored on
   "currentheight"    // (numeric)             current height of the chain
@@ -2210,7 +2210,7 @@ Examples:
 
   command:
 
-  curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "kvsearch", "params": ["examplekey"] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "kvsearch", "params": ["examplekey"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2254,7 +2254,7 @@ Arguments:
   "days"                    // (numeric, required)    amount of days before the key expires (1440 blocks/day); minimum 1 day
   "passphrase"              // (string, optional)     passphrase required to update this key
 
-Result:
+Response:
 
 ::
   {
@@ -2298,7 +2298,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc   --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "kvupdate", "params": ["examplekey", "examplevalue", "2", "examplepassphrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7   --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "kvupdate", "params": ["examplekey", "examplevalue", "2", "examplepassphrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
 
   response:
 
@@ -2335,7 +2335,7 @@ Arguments:
 
   heights                   // (number)   the block height for the query
 
-Results:
+Response:
 
 ::
 
@@ -2383,7 +2383,7 @@ Examples:
 
   command:
 
-  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "minerids", "params": ["1000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "minerids", "params": ["1000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2432,7 +2432,7 @@ Arguments:
   height                  // (number)     the block height desired for the query
   timestamp               // (number)     the timestamp of the block desired for the query
 
-Results:
+Response:
 
   {
     "notaries": [
@@ -2515,7 +2515,7 @@ Arguments:
 	checklevel           // (numeric, optional, 0-4, default=3)        indicates the thoroughness of block verification
 	numblocks            // (numeric, optional, default=288, 0=all)    indicates the number of blocks to verify
 
-Result:
+Response:
 
 ::
 
@@ -2539,7 +2539,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2564,7 +2564,7 @@ Arguments:
 
 	"proof_string"             // (string, required)       the hex-encoded proof generated by gettxoutproof
 
-Result:
+Response:
 
 ::
 
@@ -2592,7 +2592,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc    --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifytxoutproof", "params": ["040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7    --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifytxoutproof", "params": ["040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
 
   response:
 
@@ -2622,7 +2622,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -2692,7 +2692,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2748,7 +2748,7 @@ Arguments:
 
 	"command"            // (string, optional)     the command requiring assistance
 
-Result:
+Response:
 
 ::
 
@@ -2775,7 +2775,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -2824,7 +2824,7 @@ Arguments:
 	"output_index"           // (string, required)
 	"message"                // (string, optional)
 
-Result:
+Response:
 
 ::
 
@@ -2885,7 +2885,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_validatepaymentdisclosure", "params": ["zpd:706462ff004c561a0447ba2ec51184e6c204..."] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_validatepaymentdisclosure", "params": ["zpd:706462ff004c561a0447ba2ec51184e6c204..."] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2913,7 +2913,7 @@ Arguments:
 
 	numblocks          // (numeric)     the desired number of blocks to generate
 
-Result:
+Response:
 
 ::
 
@@ -2957,7 +2957,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -2979,7 +2979,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getgenerate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getgenerate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3055,7 +3055,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setgenerate", "params": [true, 1] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setgenerate", "params": [true, 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3083,7 +3083,7 @@ Arguments:
 
 	height          // (numeric, optional)  the block height; if the height is not provided, the method defaults to the current height of the chain
 
-Result:
+Response:
 
 ::
 
@@ -3109,7 +3109,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockubsidy", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockubsidy", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 getblocktemplate
 ----------------
@@ -3137,7 +3137,7 @@ Arguments:
 	         ]
 	     }
 
-Result:
+Response:
 
 ::
 
@@ -3223,7 +3223,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3286,7 +3286,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 	"data"             // (numeric) solutions per second average
 
@@ -3306,7 +3306,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getlocalsolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getlocalsolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3325,7 +3325,7 @@ getmininginfo
 
 Returns a json object containing mining-related information.
 
-Result:
+Response:
 
 ::
 
@@ -3377,7 +3377,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3423,7 +3423,7 @@ Arguments:
 	blocks           // (numeric, optional, default=120)   the number of blocks (use -1 to calculate over the relevant difficulty averaging window)
 	height           // (numeric, optional, default=-1)    to estimate at the time of the given height
 
-Result:
+Response:
 
 ::
 
@@ -3446,7 +3446,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3475,7 +3475,7 @@ Arguments:
 	blocks           // (numeric, optional, default=120)     the number of blocks; use -1 to calculate according to the relevant difficulty averaging window
 	height           // (numeric, optional, default=-1)      to estimate at the time of the given height
 
-Result:
+Response:
 
 ::
 
@@ -3495,7 +3495,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworksolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworksolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 prioritisetransaction
 ---------------------
@@ -3517,7 +3517,7 @@ Arguments:
 
 	fee delta                        // (numeric, required)    the fee value (in satoshis) to add (or subtract, if negative).
 
-Result:
+Response:
 
 ::
 
@@ -3540,7 +3540,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   result:
 
@@ -3574,7 +3574,7 @@ Arguments:
 	      "workid"               // (string, sometimes optional)     if the server provides a workid, it MUST be included with submissions
 	    }
 
-Result:
+Response:
 
 ::
 
@@ -3596,7 +3596,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 Network
 =======
@@ -3617,7 +3617,7 @@ Arguments:
 	"node"                 // (string, required)     the node (see getpeerinfo for nodes)
 	"command"              // (string, required)     'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once
 
-Result:
+Response:
 
 ::
 
@@ -3639,7 +3639,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addnode", "params": ["192.168.0.6:8233", "onetry"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addnode", "params": ["192.168.0.6:8233", "onetry"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3660,7 +3660,7 @@ Arguments:
 
   (none)
 
-Results:
+Response:
 
 ::
 
@@ -3682,7 +3682,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3727,7 +3727,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["192.168.0.6:8233"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["192.168.0.6:8233"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3753,7 +3753,7 @@ Arguments:
 	dns                      // (boolean, required)    if false, only a list of added nodes will be provided; otherwise, connection information is also provided
 	"node"                   // (string, optional)     if provided, the method returns information about this specific node; otherwise, all nodes are returned
 
-Result:
+Response:
 
 ::
 
@@ -3820,7 +3820,7 @@ Examples:
 
   command:
 
-  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddednodeinfo", "params": [true, "78.47.205.239"] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddednodeinfo", "params": [true, "78.47.205.239"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3854,7 +3854,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -3876,7 +3876,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3901,7 +3901,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -3931,7 +3931,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdeprecationinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdeprecationinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3959,7 +3959,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -3989,7 +3989,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnettotals", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnettotals", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -4018,7 +4018,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -4100,7 +4100,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -4156,7 +4156,7 @@ Arguments:
 
   (none)
 
-Result:
+Response:
 
 ::
 
@@ -4229,7 +4229,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -4275,7 +4275,7 @@ Arguments:
 
   (none)
 
-Results:
+Response:
 
   [
     {
@@ -4303,7 +4303,7 @@ Examples:
 
 2.
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   {
     "result": [
@@ -4334,7 +4334,7 @@ Arguments:
 
   (none)
 
-Results:
+Response:
 
 ::
 
@@ -4356,7 +4356,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "ping", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "ping", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -4375,10 +4375,10 @@ Arguments:
 
 ::
 
-	1. "ip(/netmask)" (string, ip required) the IP/subnet (see ===link===getpeerinfo for nodes ip) with an optional netmask (default is /32 = single ip)
-	2. "command"      (string, required) 'add' to add an IP/subnet to the list, 'remove' to remove an IP/subnet from the list
-	3. bantime      (numeric, optional) indicates how long (in seconds) the ip is banned (or until when, if [absolute] is set) (0 or empty means using the default time of 24h, which can also be overwritten using the ===do we need to make this -bantime its own method somewhere?=== -bantime startup argument)
-	4. absolute     (boolean, optional) if set to true, the bantime must be an absolute timestamp (in seconds) since epoch (Jan 1 1970 GMT)
+	"ip(/netmask)" (string, ip required) the IP/subnet (see ===link===getpeerinfo for nodes ip) with an optional netmask (default is /32 = single ip)
+	"command"      (string, required) 'add' to add an IP/subnet to the list, 'remove' to remove an IP/subnet from the list
+	bantime      (numeric, optional) indicates how long (in seconds) the ip is banned (or until when, if [absolute] is set) (0 or empty means using the default time of 24h, which can also be overwritten using the ===do we need to make this -bantime its own method somewhere?=== -bantime startup argument)
+	absolute     (boolean, optional) if set to true, the bantime must be an absolute timestamp (in seconds) since epoch (Jan 1 1970 GMT)
 
 Examples:
 
@@ -4400,7 +4400,7 @@ Examples:
 
   (none - use the ===link=== ``listbanned`` method to view the results)
 
-  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setban", "params": ["78.47.205.239", "add", 86400] }' -H 'content-type: text/plain;' http://127.0.0.1:7771/
+  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setban", "params": ["78.47.205.239", "add", 86400] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 Rawtransactions
 ===============
@@ -4430,7 +4430,7 @@ Arguments:
       ,...
     }
 
-Result:
+Response:
 
 ::
 
@@ -4452,7 +4452,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": [[{"txid":"9f44dc664882198b14e9a8c466d466efcdd070ccb6f57be8e2884aa11e7b2a30","vout":0}], {"RHCXHfXCZQpbUbihNHh5gTwfr7NXmJXmHi":0.01} ]}' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": [[{"txid":"9f44dc664882198b14e9a8c466d466efcdd070ccb6f57be8e2884aa11e7b2a30","vout":0}], {"RHCXHfXCZQpbUbihNHh5gTwfr7NXmJXmHi":0.01} ]}' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   {
     "result": "0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000",
@@ -4471,7 +4471,7 @@ Arguments:
 
 	"hex"      (string, required)    the transaction hex string
 
-Result:
+Response:
 
 ::
 
@@ -4590,7 +4590,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decoderawtransaction", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decoderawtransaction", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   {
     "result": {
@@ -4642,7 +4642,7 @@ Arguments:
 
 	"hex"     (string) the hex encoded script
 
-Result:
+Response:
 
 ::
 
@@ -4678,7 +4678,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decodescript", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decodescript", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   {
     "result": {
@@ -4705,7 +4705,7 @@ Arguments:
 
 	"hexstring"    (string, required) The hex string of the raw transaction
 
-Result:
+Response:
 
 ::
 
@@ -4931,7 +4931,7 @@ Examples:
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawtransaction", "params": ["a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawtransaction", "params": ["a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
   {
@@ -4991,7 +4991,7 @@ Arguments:
 	"hexstring"    (string, required) the hex string of the raw transaction)
 	allowhighfees    (boolean, optional, default=false) allow high fees
 
-Result:
+Response:
 
 ::
 
@@ -5044,7 +5044,7 @@ As a json rpc call
 
   command:
 
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa4000000006a4730440220242c38740261799f9b6ccbde8f941e2567e86c84108c508d108d062ab9677b6e02206fea089b28c6d66d1c8f2343e1de7960dadafa3cf268c00f7dbe391cd8b9365f01210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc98ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa4000000006a4730440220242c38740261799f9b6ccbde8f941e2567e86c84108c508d108d062ab9677b6e02206fea089b28c6d66d1c8f2343e1de7960dadafa3cf268c00f7dbe391cd8b9365f01210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc98ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -5084,7 +5084,7 @@ Arguments:
     ]
 	"sighashtype"     (string, optional, default=ALL) the signature hash type; the following options are available: "ALL" | "NONE" | "SINGLE" | "ALL|ANYONECANPAY" | "NONE|ANYONECANPAY" | "SINGLE|ANYONECANPAY"
 
-Result:
+Response:
 
 ::
 
@@ -5122,7 +5122,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa40000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa40000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -5155,7 +5155,7 @@ Arguments:
    ,...
  ]
 
-Result:
+Response:
 
 ::
 
@@ -5185,11 +5185,18 @@ Create a multisig address from 2 addresses
 
   command:
 
-  ===not working yet====
-
-	curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createmultisig", "params": [2, \'["RJnVEQgucK1iwiRjfTZmreXkF49KgTErDn","RCVyjn9MQ8Tw6YRJnDcsx67kfsmfUgLdfw"]\'] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createmultisig", "params": [2, ["RJnVEQgucK1iwiRjfTZmreXkF49KgTErDn","RCVyjn9MQ8Tw6YRJnDcsx67kfsmfUgLdfw"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
+
+  {
+    "result": {
+      "address": "bNnKtDC6UuSt5kGJewCQ5b2BhzFK3HTQUV",
+      "redeemScript": "522103ae084021ff011b527c34914d2c40148080c09254dd3c7d1f31f32549b53ccd232103bee23783f726ba81b5977473b172497260d9c261b9ef9f5a9dd51c545c8db0ac52ae"
+    },
+    "error": null,
+    "id": "curltest"
+  }
 
 estimatefee nblocks
 -------------------
@@ -5202,7 +5209,7 @@ Arguments:
 
 	nblocks     (numeric)
 
-Result:
+Response:
 
 ::
 
@@ -5234,7 +5241,7 @@ Arguments:
 
 	nblocks     (numeric)      a statement indicating within how many blocks the transaction should be confirmed
 
-Result:
+Response:
 
 ::
 
@@ -5263,9 +5270,9 @@ Arguments:
 
 ::
 
-	1. hash   (string, required) the hash of the block to mark as invalid
+	hash   (string, required) the hash of the block to mark as invalid
 
-Result:
+Response:
 
 ::
 
@@ -5287,7 +5294,7 @@ Examples:
 
   command:
 
-  curl --user user138763741:pass5ff9f6434ed6405b884fc24ee41e590a64fcf163ee9f9c44e973124935aed7a9fc     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "invalidateblock", "params": ["02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "invalidateblock", "params": ["02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -5328,7 +5335,7 @@ Arguments:
 
 	hash   (string, required) the hash of the block to reconsider
 
-Result:
+Response:
 
   (none)
 
@@ -5349,7 +5356,7 @@ Arguments:
 
 	"address"     (string, required) The KMD/asset-chain address to validate
 
-Result:
+Response:
 
 ::
 
@@ -5400,7 +5407,7 @@ Arguments:
 	"signature"       (string, required) the signature provided by the signer in base 64 encoding (see signmessage)
 	"message"         (string, required) the message that was signed
 
-Result:
+Response:
 
 ::
 
@@ -5408,25 +5415,29 @@ Result:
 
 Examples:
 
-===come back to this after we've done `signmessage` and others in the wallet category===
-
-Unlock the wallet for 30 seconds
-
-::
-
-	komodo-cli walletpassphrase "mypassphrase" 30
-
 Create the signature
 
 ::
 
-	komodo-cli signmessage "t14oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1" "my message"
+  command:
+
+	komodo-cli signmessage "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ" "my message"
+
+  response:
+
+  H1y0mn/wRv56r1bcfkbQtzjG6XeWSelAsyayBuCwEL9XGXs7ieU55dryt/cFWM9gnRFI7gS01AByuSqRs+o/AZs=
 
 Verify the signature
 
 ::
 
-	komodo-cli verifymessage "t14oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1" "signature" "my message"
+  command:
+
+	komodo-cli verifymessage "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ" "H1y0mn/wRv56r1bcfkbQtzjG6XeWSelAsyayBuCwEL9XGXs7ieU55dryt/cFWM9gnRFI7gS01AByuSqRs+o/AZs=" "my message"
+
+  response:
+
+  true
 
 z_validateaddress "zaddr"
 -------------------------
@@ -5439,7 +5450,7 @@ Arguments:
 
 	"zaddr"     (string, required) the z address to validate
 
-Result:
+Response:
 
 ::
 
@@ -5466,3 +5477,3710 @@ Examples:
     "transmissionkey": "5ce3250912758cbb591e3d585ef110992f25ed7694b88f55315b060698b75404",
     "ismine": true
   }
+
+Wallet
+======
+
+addmultisigaddress nrequired ["key",...] ( "account" )
+------------------------------------------------------
+
+The ``addmultisigaddress`` method adds a multi-signature address to the wallet, where `nrequired` indicates the number of keys (out of the total provided) required to execute a transaction.
+
+The keys function as signatures, allowing multiple parties or entities to manage an account. Each key in the array can be a Komodo address or a hex-encoded public key.
+
+DEPRECATED: If 'account' is specified, the method assigns the multi-signature address to that account.
+
+Arguments:
+
+::
+
+	nrequired        (numeric, required) the number of required keys (out of the `n` submitted)
+	"keysobject"   (string, required) a json array of addresses or hex-encoded public keys
+	     [
+	       "address"  (string) address or hex-encoded public key
+	       ...,
+	     ]
+	"account"      (string, optional) DEPRECATED: if provided, "account" MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+
+Response:
+
+::
+
+	"zcashaddress"  (string) an address associated with the keys
+
+Examples:
+
+Add a multisig address from 2 addresses
+
+::
+
+  command:
+
+	komodo-cli addmultisigaddress 2 '["RSWwtqsNr9mW21UXRm6Lz4AzQnj4pVzzkp","RW8d8EChHTooVbwF3reqHYgkzWCnJFLXgh"]'
+
+  response:
+
+  bLz2YZ7Mm8MgPc9mPNiFqhjFPbFZU4WUD5
+
+As json rpc call
+
+::
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addmultisigaddress", "params": [2, "[\"t16sSauSf5pF2UkUwvKGq4qjNRzBZYqgEL5\",\"t171sgjn4YtPu27adkKGrdDwzRTxnRkBfKV\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+backupwallet "destination"
+--------------------------
+
+The ``backupwallet`` method safely copies the ``wallet.dat`` file to the indicated file.
+
+The ``destination`` input accepts only alphanumeric characters.
+
+Arguments:
+
+::
+
+	"destination"   (string, required) the destination filename, saved in the directory set by ===link=== -exportdir option
+
+Response:
+
+::
+
+	"path"         (string) the full path of the destination file
+
+Examples:
+
+::
+
+	komodo-cli backupwallet "mybackupdata"
+
+  /home/myusername/myexportdir/mybackupdata
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "backupwallet", "params": ["backupdata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "/home/siddhartha/Desktop/backupdata",
+    "error": null,
+    "id": "curltest"
+  }
+
+dumpprivkey "address"
+---------------------------
+
+The ``dumpprivkey`` method reveals the private key corresponding to the indicated 'address'.
+
+* Note: See also ``importprivkey``
+
+Arguments:
+
+::
+
+	"address"   (string, required)     the address for the private key
+
+Response:
+
+::
+
+	"data"                (string)     the private key
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli dumpprivkey "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs"
+
+  response:
+
+  PURPOSEFULLYOMMITTEDxxxxxxxx4KkCmRnnSg7iXvAUjoYivC8K
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpprivkey", "params": ["RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "PURPOSEFULLYOMMITTEDxxxxxxxx4KkCmRnnSg7iXvAUjoYivC8K",
+    "error": null,
+    "id": "curltest"
+  }
+
+
+dumpwallet "filename"
+---------------------
+
+The ``dumpwallet`` method dumps all transparent_address wallet keys in a human-readable format.
+
+Overwriting an existing file is not permitted. The ``destination`` parameter accepts only alphanumeric characters.
+
+Arguments:
+
+::
+
+	"filename"    (string, required) the filename, saved in folder set by the ===link=== -exportdir runtime parameter
+
+Response:
+
+::
+
+	"path"           (string) the full path of the destination file
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli dumpwallet "test"
+
+  response:
+
+  /home/myusername/myexportdir/test
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  {
+    "result": "/home/siddhartha/Desktop/test",
+    "error": null,
+    "id": "curltest"
+  }
+
+encryptwallet "passphrase"
+--------------------------
+
+**WARNING**: Wallet encryption is **DISABLED**. This call always fails.
+
+The ``encryptwallet`` method encrypts the wallet with the indicated ``passphrase``.
+
+This method is for first time encryption only. After this, any calls that interact with private keys, such as sending or signing, will require the passphrase to be set prior to the making these calls. Use the ``walletpassphrase`` call for this, and then ``walletlock`` call. If the wallet is already encrypted, use the ``walletpassphrasechange`` call.
+
+Note that using the ``encryptwallet`` method will shutdown the server.
+
+Arguments:
+
+::
+
+	"passphrase"    (string) the passphrase to encrypt the wallet with. It must be at least 1 character, but should be long.
+
+Response:
+
+::
+
+  (none)
+
+Examples:
+
+Encrypt your wallet
+
+::
+
+  command:
+
+	komodo-cli encryptwallet "mypassphrase"
+
+  response:
+
+  (disabled)
+
+Set the passphrase to use the wallet, such as for signing or sending coins
+
+::
+
+  command:
+
+	komodo-cli walletpassphrase "mypassphrase"
+
+  response:
+
+  (disabled)
+
+Enter a test command like ``signmessage``
+
+::
+
+  command:
+
+	komodo-cli signmessage "address" "test message"
+
+  response:
+
+  (disabled)
+
+Lock the wallet again by removing the passphrase
+
+::
+
+	command:
+
+  komodo-cli walletlock
+
+  response:
+
+  (disabled)
+
+As a json rpc call
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["mypassphrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (disabled)
+
+getaccount "KMD_address"
+------------------------
+
+**DEPRECATED** The ``getaccount`` method returns the account associated with the given address.
+
+Arguments:
+
+::
+
+  "address"        (string, required) the address for account lookup
+
+Response:
+
+::
+
+	"accountname"          (string) the account address
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli getaccount "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ"
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaccount", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (deprecated)
+
+getaccountaddress "account"
+---------------------------
+
+**DEPRECATED** The ``getaccountaddress`` method returns the current address for receiving payments to this account.
+
+Arguments:
+
+::
+
+	"account"       (string, required)   MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+
+Response:
+
+	"address"   (string) the account address
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli getaccountaddress
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaccountaddress", "params": ["myaccount"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (deprecated)
+
+getaddressesbyaccount "account"
+-------------------------------
+
+**DEPRECATED**. Returns the list of addresses for the given account.
+
+Arguments:
+
+::
+
+	"account"  (string, required)  MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+
+Response:
+
+::
+
+	[
+	  "address"  (string) an address associated with the given account
+	  ,...
+	]
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli getaddressesbyaccount "tabby"
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressesbyaccount", "params": ["tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (deprecated)
+
+getbalance ( "account" minconf includeWatchonly )
+-------------------------------------------------
+
+The ``getbalance`` method returns the server's total available balance.
+
+**WARNING* The "account" input is deprecated.
+
+Arguments:
+
+::
+
+	"account"      (string, optional)    DEPRECATED if provided, it MUST be set to the empty string "" or to the string "*"
+	minconf          (numeric, optional, default=1)    only include transactions confirmed at least this many times
+	includeWatchonly (bool, optional, default=false) also include balance in watchonly addresses (see ===link=== ``importaddress``)
+
+Response:
+
+::
+
+	amount              (numeric) the total amount of coins
+
+Examples:
+
+The total amount in the wallet
+
+::
+
+  command:
+
+	komodo-cli getbalance
+
+  response:
+
+  10.05000000
+
+The total amount in the wallet where at five blocks are confirmed
+
+::
+
+  command:
+
+	komodo-cli getbalance "*" 5
+
+  response:
+
+  10.05000000
+
+As a json rpc call
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbalance", "params": ["", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": 10.09234883,
+    "error": null,
+    "id": "curltest"
+  }
+
+getnewaddress ( "account" )
+---------------------------
+
+The ``getnewaddress`` method returns a new address for receiving payments.
+
+Arguments:
+
+::
+
+	"account"        (string, optional) DEPRECATED. If provided, it MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+
+Response:
+
+::
+
+	"address"    (string)    the new address
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli getnewaddress
+
+  response:
+
+  "RYDuQ2oQCCz1PQNxUQTDAaRinWKiCoT2E6"
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "R9iQRG6J9eY8SwaCcYZ65QJxg5UhgLC5Rx",
+    "error": null,
+    "id": "curltest"
+  }
+
+getrawchangeaddress
+-------------------
+
+The ``getrawchangeaddress`` returns a new address that can be used to receive change.
+
+* Note: This is for use with raw transactions, NOT normal use.
+
+Arguments:
+
+::
+
+  (none)
+
+Response:
+
+::
+
+	"address"    (string) the address
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli getrawchangeaddress
+
+  response:
+
+  RS8oqzbjShKhftmuk2RpRmHH2hTAukp6yP
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawchangeaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN",
+    "error": null,
+    "id": "curltest"
+  }
+
+getreceivedbyaccount "account" ( minconf )
+------------------------------------------
+
+**DEPRECATED** The ``getreceivedbyaccount`` method returns the total amount received by ``account`` in transactions with at least ``minconf`` confirmations.
+
+Arguments:
+
+::
+
+	"account"      (string, required)  MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+	minconf          (numeric, optional, default=1) only include transactions confirmed at least this many times
+
+Response:
+
+::
+
+	amount              (numeric)  the total amount received for this account.
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli getreceivedbyaccount ""
+
+  response:
+
+  (deprecated)
+
+getreceivedbyaddress "address" ( minconf )
+------------------------------------------
+
+The ``getreceivedbyaddress`` method returns the total amount received by the given ``address`` in transactions with at least ``minconf`` confirmations.
+
+Arguments:
+
+::
+
+	"address"  (string, required)                  the address for transactions
+	minconf    (numeric, optional, default=1)      only include transactions confirmed at least this many times
+
+Response:
+
+::
+
+	amount   (numeric)     the total amount of the relevant coin received at this address
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli getreceivedbyaddress "RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN"
+
+  response:
+  10.0500000
+
+::
+
+  command:
+
+	komodo-cli getreceivedbyaddress "RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN" 0
+
+  response:
+
+  10.0500000
+
+::
+
+  command:
+
+	komodo-cli getreceivedbyaddress "RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN" 6
+
+  response:
+
+  10.0500000
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getreceivedbyaddress", "params": ["RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": 0,
+    "error": null,
+    "id": "curltest"
+  }
+
+gettransaction "txid" ( includeWatchonly )
+------------------------------------------
+
+The ``gettransaction`` method queries detailed information about transaction ``txid``. This command applies only to ``txid``'s that are in the user's local wallet.
+
+Arguments:
+
+::
+
+	 "txid"    (string, required)    the transaction id
+	"includeWatchonly"    (bool, optional, default=false)    whether to include watchonly addresses in the returned balance calculation and in the ``details[]`` returned values
+
+Response:
+
+::
+
+	{
+	  "amount"           (numeric)  the transaction amount
+	  "confirmations"     (numeric) the number of confirmations
+	  "blockhash"        (string) the block hash
+	  "blockindex"       (numeric) the block index
+	  "blocktime"       (numeric) the time in seconds since epoch (1 Jan 1970 GMT)
+	  "txid"             (string) the transaction id.
+	  "time"            (numeric) the transaction time in seconds since epoch (1 Jan 1970 GMT)
+	  "timereceived"    (numeric) the time received in seconds since epoch (1 Jan 1970 GMT)
+	  "details" : [
+	    {
+	      "account"      (string) (DEPRECATED) the account name involved in the transaction; can be "" for the default account
+	      "address"      (string) the address involved in the transaction
+	      "category"    (string) the category - either ``send`` or ``receive``
+	      "amount"                  (numeric) the amount
+	      "vout"                       (numeric) the vout value
+	    }
+	    ,...
+	  ],
+	  "vjoinsplit" : [
+	    {
+	      "anchor"          (string) merkle root of note commitment tree
+	      "nullifiers" : [ string, ...]      (string) nullifiers of input notes
+	      "commitments" : [ string, ...]     (string) note commitments for note outputs
+	      "macs" : [ string, ...]            (string) message authentication tags
+	      "vpub_old"                  (numeric) the amount removed from the transparent value pool
+	      "vpub_new"                 (numeric) the amount added to the transparent value pool
+	    }
+	    ,...
+	  ],
+	  "hex"         (string) raw data for transaction
+	}
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli gettransaction "7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa"
+
+  response:
+
+  {
+    "amount": 0.00000000,
+    "fee": -0.00005000,
+    "confirmations": 0,
+    "txid": "7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa",
+    "walletconflicts": [
+    ],
+    "time": 1536993107,
+    "timereceived": 1536993107,
+    "vjoinsplit": [
+    ],
+    "details": [
+    ],
+    "hex": "0100000001d69a6c4b9aa1991bd72ab86086db91a4c709c4b954c15d1622f2e1fb2deeb262000000004847304402205927908c985e09f6d9888e37e23b82770ca906b145c74a388ea9359afba63fff02204bd49a9b158ecfb7c12737579a31dd9e44dc63214813f70617f9a24a1e4d987801feffffff02302d903b000000001976a9141c973dbbed002e189caf31664d9ca7e8b1e92d8788ac40420f00000000001976a914646e1ddd9b6415e0209e5bbe3861309353301eec88aca2659c5b"
+  }
+::
+
+  command:
+
+	komodo-cli gettransaction "7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa" true
+
+  response:
+
+  {
+    "amount": 0.00000000,
+    "fee": -0.00005000,
+    "confirmations": 0,
+    "txid": "7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa",
+    "walletconflicts": [
+    ],
+    "time": 1536993107,
+    "timereceived": 1536993107,
+    "vjoinsplit": [
+    ],
+    "details": [
+    ],
+    "hex": "0100000001d69a6c4b9aa1991bd72ab86086db91a4c709c4b954c15d1622f2e1fb2deeb262000000004847304402205927908c985e09f6d9888e37e23b82770ca906b145c74a388ea9359afba63fff02204bd49a9b158ecfb7c12737579a31dd9e44dc63214813f70617f9a24a1e4d987801feffffff02302d903b000000001976a9141c973dbbed002e189caf31664d9ca7e8b1e92d8788ac40420f00000000001976a914646e1ddd9b6415e0209e5bbe3861309353301eec88aca2659c5b"
+  }
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettransaction", "params": ["7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": {
+      "amount": 0,
+      "fee": -5e-05,
+      "confirmations": 0,
+      "txid": "7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa",
+      "walletconflicts": [],
+      "time": 1536993107,
+      "timereceived": 1536993107,
+      "vjoinsplit": [],
+      "details": [],
+      "hex": "0100000001d69a6c4b9aa1991bd72ab86086db91a4c709c4b954c15d1622f2e1fb2deeb262000000004847304402205927908c985e09f6d9888e37e23b82770ca906b145c74a388ea9359afba63fff02204bd49a9b158ecfb7c12737579a31dd9e44dc63214813f70617f9a24a1e4d987801feffffff02302d903b000000001976a9141c973dbbed002e189caf31664d9ca7e8b1e92d8788ac40420f00000000001976a914646e1ddd9b6415e0209e5bbe3861309353301eec88aca2659c5b"
+    },
+    "error": null,
+    "id": "curltest"
+  }
+
+getunconfirmedbalance
+---------------------
+
+The ``getunconfirmedbalance`` method returns the server's total unconfirmed balance.
+
+Arguments:
+
+::
+
+  (none)
+
+Response:
+
+::
+
+  (none)
+
+Examples:
+
+::
+
+  command:
+
+  komodo-cli getunconfirmedbalance
+
+  response:
+
+  10.05000000
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getunconfirmedbalance", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": 10.05000000,
+    "error": null,
+    "id": "curltest"
+  }
+
+getwalletinfo
+-------------
+
+The ``getwalletinfo`` method returns an object containing various information about the wallet state.
+
+Arguments:
+
+::
+
+  (none)
+
+Response:
+
+::
+
+	{
+	  "walletversion"        (numeric) the wallet version
+	  "balance"              (numeric) the total confirmed balance of the wallet
+	  "unconfirmed_balance"  (numeric) the total unconfirmed balance of the wallet
+	  "immature_balance"   (numeric) the total immature balance of the wallet
+	  "txcount"         (numeric) the total number of transactions in the wallet
+	  "keypoololdest"    (numeric) the timestamp (seconds since GMT epoch) of the oldest pre-generated key in the key pool
+	  "keypoolsize"          (numeric) how many new keys are pre-generated
+	  "unlocked_until"       (numeric) the timestamp in seconds since epoch (midnight Jan 1 1970 GMT) that the wallet is unlocked for transfers, or 0 if the wallet is locked
+	  "paytxfee"             (numeric) the transaction fee configuration, denotated as the relevant COIN per KB
+	}
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli getwalletinfo
+
+  response:
+
+  {
+    "walletversion": 60000,
+    "balance": 10.01334496,
+    "unconfirmed_balance": 0.00000000,
+    "immature_balance": 0.00010000,
+    "txcount": 106,
+    "keypoololdest": 1536889653,
+    "keypoolsize": 101,
+    "paytxfee": 0.00000000
+  }
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": {
+      "walletversion": 60000,
+      "balance": 10.01334496,
+      "unconfirmed_balance": 0,
+      "immature_balance": 0.0001,
+      "txcount": 106,
+      "keypoololdest": 1536889653,
+      "keypoolsize": 101,
+      "paytxfee": 0
+    },
+    "error": null,
+    "id": "curltest"
+  }
+
+===random note: we need a legend that indicates what the () and other symbols means===
+
+importaddress "address" ( "label" rescan )
+------------------------------------------
+
+The ``importaddress`` method adds an address or script (in hex) that can be watched as if it were in your wallet, although it cannot be used to spend.
+
+Arguments:
+
+::
+
+	"address"          (string, required) the address to watch
+	"label"            (string, optional, default="") an optional label
+	rescan               (boolean, optional, default=true) rescan the wallet for transactions
+
+Response:
+
+::
+
+  (none)
+
+**Note**: this call can take an increased amount of time to complete if rescan is true.
+
+Examples:
+
+Import an address with rescan
+
+::
+
+  command:
+
+  komodo-cli importaddress "RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN"
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+  komodo-cli importaddress "RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN" "testing" false
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importaddress", "params": ["R9z796AehK5b6NCPeVkGUHSpJnawerf8oP", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": null,
+    "error": null,
+    "id": "curltest"
+  }
+
+importprivkey "komodoprivkey" ( "label" rescan )
+------------------------------------------------
+
+The ``importprivkey`` method adds a private key to your wallet.
+
+* Note: See also ===link=== ``dumpprivkey``
+
+Arguments:
+
+::
+
+	"privkey"   (string, required)  the private key (see ===link=== dumpprivkey)
+	"label"            (string, optional, default="") an optional label
+	rescan               (boolean, optional, default=true) Rescan the wallet for transactions
+
+Note: This call can take minutes to complete if rescan is true.
+
+Response:
+
+::
+
+  addresses     (string)      the public address
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli importprivkey "PURPOSEFULLYOMMITTEDxxxxxxxxj4Xu9jjinhLpffhdtoKg5gar2"
+
+  response:
+
+  R9z796AehK5b6NCPeVkGUHSpJnawerf8oP
+
+Import using a label and without rescan
+
+::
+
+  command:
+
+	komodo-cli importprivkey "PURPOSEFULLYOMMITTEDxxxxxxxxj4Xu9jjinhLpffhdtoKg5gar2" "testing" false
+
+  response:
+
+  RFtA32tttJm89VWRWPCQtV8bkQ1FvE1MBG
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importprivkey", "params": ["UwibHKsYfiM19BXQmcUwAfw331GzGQK8aoPqqYEbyoPrzc2965nE", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "RC5qhqgYRzf3dUXGAst9ah5LcuLjmMgT64",
+    "error": null,
+    "id": "curltest"
+  }
+
+importwallet "filename"
+-----------------------
+
+The ``importwallet`` method imports transparent-address keys from a wallet-dump file (see ===link=== ``dumpwallet``).
+
+Arguments:
+
+::
+
+	"filename"    (string, required)   the wallet file
+
+Response:
+
+::
+
+  (none)
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli importwallet "path/to/exportdir/nameofbackup"
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importwallet", "params": ["path/to/exportdir/nameofbackup"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": null,
+    "error": null,
+    "id": "curltest"
+  }
+
+keypoolrefill ( newsize )
+-------------------------
+
+The ``keypoolrefill`` method fills the keypool.
+
+Arguments:
+
+::
+
+	newsize     (numeric, optional, default=100) The new keypool size
+
+Response:
+
+::
+
+  (none)
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli keypoolrefill
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+  komodo-cli keypoolrefill 100
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "keypoolrefill", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": null,
+    "error": null,
+    "id": "curltest"
+  }
+
+listaccounts ( minconf includeWatchonly)
+----------------------------------------
+
+**DEPRECATED** The ``listaccounts`` method returns an object that has account names as keys and account balances as values.
+
+Arguments:
+
+::
+
+	minconf              (numeric, optional, default=1)    only include transactions with at least this many confirmations
+	includeWatchonly     (bool, optional, default=false)   include balances in watchonly addresses (see 'importaddress')
+
+Response:
+
+::
+
+	{
+	  "account_number"  (numeric) the property name is the account name, and the value is the total balance for the account
+	  ...
+	}
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli listaccounts 6
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listaccounts", "params": [6] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (deprecated)
+
+listaddressgroupings
+--------------------
+
+The ``listaddressgroupings`` method lists groups of addresses which have had their common ownership made public by common use as inputs or as the resulting change in past transactions.
+
+Response:
+
+::
+
+	[
+	  [                          (array) each array at this indentation level is a unique grouping of addresses
+	    [
+	      "address",             (string) the address
+	      amount,                (numeric) the amount in ZEC
+	      "account"              (string, optional) (DEPRECATED) the account
+	    ]
+	    ,...
+	  ]
+	  ,...
+	]
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli listaddressgroupings
+
+  response (note how there are two separate, unique groupings of addresses):
+
+  [
+    [
+      [
+        "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ",
+        9.99304496
+      ],
+      [
+        "RDNC9mLrN48pVGDQ5jSoPb2nRsUPJ5t2R7",
+        0.00040000,
+        ""
+      ],
+      [
+        "RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN",
+        0.01000000
+      ]
+    ],
+    [
+      [
+        "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs",
+        0.00990000,
+        ""
+      ]
+    ]
+  ]
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listaddressgroupings", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      [
+        [
+          "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ",
+          9.99304496
+        ],
+        [
+          "RDNC9mLrN48pVGDQ5jSoPb2nRsUPJ5t2R7",
+          0.0004,
+          ""
+        ],
+        [
+          "RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN",
+          0.01
+        ]
+      ],
+      [
+        [
+          "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs",
+          0.0099,
+          ""
+        ]
+      ]
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+listlockunspent
+---------------
+
+The ``listlockunspent`` method returns a list of temporarily unspendable outputs.
+
+* Note: see the ===link=== ``lockunspent`` call to lock and unlock transactions for spending
+
+Response:
+
+::
+
+	[
+	  {
+	    "txid"     (string)    the transaction id locked
+	    "vout"      (numeric)  the vout value
+	  }
+	  ,...
+	]
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli listlockunspent
+
+  response:
+
+  [
+    {
+      "txid": "d7ba45296c66e16eb61f27a4eef8848c7f5579fe801f277c1b0e074a4f47d6fd",
+      "vout": 0
+    }
+  ]
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listlockunspent", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      {
+        "txid": "d7ba45296c66e16eb61f27a4eef8848c7f5579fe801f277c1b0e074a4f47d6fd",
+        "vout": 0
+      }
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+listreceivedbyaccount ( minconf includeempty includeWatchonly)
+--------------------------------------------------------------
+
+**DEPRECATED** The ``listreceivedbyaccount`` method lists balances by account.
+
+Arguments:
+
+::
+
+  minconf      (numeric, optional, default=1)       the minimum number of confirmations before payments are included
+	includeempty (boolean, optional, default=false)    whether to include accounts that haven't received any payments
+	includeWatchonly (bool, optional, default=false)   whether to include watchonly addresses (see 'importaddress')
+
+Response:
+
+::
+
+	[
+	  {
+	    "involvesWatchonly"         (bool)      only returned if imported addresses were involved in transaction
+	    "account"                  (string)    the account name of the receiving account
+	    "amount"                 (numeric)       the total amount received by addresses with this account
+	    "confirmations"           (numeric)    the number of confirmations of the most recent transaction included
+	  }
+	  ,...
+	]
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli listreceivedbyaccount
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	komodo-cli listreceivedbyaccount 6 true
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaccount", "params": [6, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (deprecated)
+
+listreceivedbyaddress ( minconf includeempty includeWatchonly)
+--------------------------------------------------------------
+
+The ``listreceivedbyaddress`` method lists balances by receiving address.
+
+Arguments:
+
+::
+
+	minconf       (numeric, optional, default=1)         the minimum number of confirmations before payments are included
+	includeempty  (numeric, optional, default=false)     whether to include addresses that haven't received any payments
+	includeWatchonly (bool, optional, default=false)     whether to include watchonly addresses (see 'importaddress')
+
+Response:
+
+::
+
+	[
+	  {
+	    "involvesWatchonly"        (bool)      only returned if imported addresses were involved in transaction
+	    "address"                  (string)    the receiving address
+	    "account"                  (string) DEPRECATED     the account of the receiving address; the default account is ""
+	    "amount"                  (numeric)    the total amount received by the address
+	    "confirmations"            (numeric)   the number of confirmations of the most recent transaction included
+	  }
+	  ,...
+	]
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli listreceivedbyaddress
+
+  response:
+
+  [
+    {
+      "address": "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs",
+      "account": "",
+      "amount": 0.01000000,
+      "confirmations": 10,
+      "txids": [
+        "5e6349567c893bab51a525219e5d2264532f1e73277fa1179449343cf2864211"
+      ]
+    }
+  ]
+
+::
+
+  command:
+
+  komodo-cli listreceivedbyaddress 6 true
+
+  response:
+
+  [
+    {
+      "address": "RSWwtqsNr9mW21UXRm6Lz4AzQnj4pVzzkp",
+      "account": "",
+      "amount": 0.00000000,
+      "confirmations": 0,
+      "txids": [
+      ]
+    },
+    {
+      "address": "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs",
+      "account": "",
+      "amount": 0.01000000,
+      "confirmations": 10,
+      "txids": [
+        "5e6349567c893bab51a525219e5d2264532f1e73277fa1179449343cf2864211"
+      ]
+    }
+  ]
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  {
+    "result": [
+      {
+        "address": "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs",
+        "account": "",
+        "amount": 0.01,
+        "confirmations": 10,
+        "txids": [
+          "5e6349567c893bab51a525219e5d2264532f1e73277fa1179449343cf2864211"
+        ]
+      },
+      {
+        "address": "RV3vVf5wPHwtToNzHqMomieLoqyF1VodB1",
+        "account": "",
+        "amount": 0,
+        "confirmations": 0,
+        "txids": []
+      }
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+listsinceblock ( "blockhash" target-confirmations includeWatchonly)
+-------------------------------------------------------------------
+
+The ``listsinceblock`` method queries all transactions in blocks since block ``blockhash``, or all transactions if ``blockhash`` is omitted.
+
+Arguments:
+
+::
+
+	"blockhash"              (string, optional)                the block hash from which to list transactions
+	target-confirmations    (numeric, optional)               the confirmations required (must be 1 or more)
+	includeWatchonly        (bool, optional, default=false)   include transactions to watchonly addresses (see also ===link=== 'importaddress')
+
+Response:
+
+::
+
+	{
+	  "transactions": [
+  	  "account"          (string)      DEPRECATED the account name associated with the transaction; will be "" for the default account
+  	  "address"          (string)      the address of the transaction (not present for move transactions -- category = move)
+  	  "category"         (string)      the transaction category; ``send`` has negative amounts, ``receive`` has positive amounts
+  	  "amount"           (numeric)     the amount of the relevant currency -- negative for the ``send`` category, and for the ``move`` category for moves outbound. It is positive for the ``receive`` category, and for the ``move`` category for inbound funds.
+    	"vout"             (numeric)     the vout value
+	    "fee"              (numeric)     the amount of the fee; this value is negative and only available for the ``send`` category of transactions
+	    "confirmations"    (numeric)     the number of confirmations for the transaction; available for ``send`` and ``receive`` category of transactions
+	    "blockhash"        (string)      the block hash containing the transaction; available for the ``send`` and ``receive`` categories of transactions
+	    "blockindex"       (numeric)     the block index containing the transaction; available for the ``send`` and ``receive`` categories of transactions
+	    "blocktime"        (numeric)     the block time in seconds since epoch (1 Jan 1970 GMT)
+	    "txid"             (string)      the transaction id; available for ``send`` and ``receive`` categories of transactions
+    	"time"             (numeric)     the transaction time in seconds since epoch (Jan 1 1970 GMT)
+	    "timereceived"     (numeric)     the time received in seconds since epoch (Jan 1 1970 GMT); available for ``send`` and ``receive`` category of transactions
+	    "comment"          (string)      whether a comment is associated with the transaction
+	    "to"               (string)      whether a 'to' comment is associated with the transaction
+	  ],
+	  "lastblock"          (string)      the hash of the last block
+	}
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli listsinceblock
+
+  response:
+
+  {
+    "transactions": [
+      {
+        "account": "",
+        "address": "RSqt98kgCcXEKLSoMjBkwnMoYpVvHjxqaf",
+        "category": "generate",
+        "amount": 0.00010000,
+        "vout": 0,
+        "confirmations": 19,
+        "generated": true,
+        "blockhash": "02738f05d6e13f4be0ed2c04d472d42112ec03d5f35bd797b8ef0e0fc61dd472",
+        "blockindex": 0,
+        "blocktime": 1537220864,
+        "expiryheight": 0,
+        "txid": "a4a589a5c5397ae8a72ee6819ce18703418d21b6ab7370a8f58a8a48dca7cd01",
+        "walletconflicts": [
+        ],
+        "time": 1537220863,
+        "timereceived": 1537220863,
+        "vjoinsplit": [
+        ],
+        "size": 99
+      },
+        ...
+    ],
+    "lastblock": "003852ef655d7577492ffed079894a66788a8679b4c291f08850b9cea7b20ad0"
+  }
+
+::
+
+  command:
+
+  komodo-cli listsinceblock "029f11d80ef9765602235e1bc9727e3eb6ba20839319f761fee920d63401e327" 6
+
+  response:
+
+  {
+    "transactions": [
+      {
+        "account": "",
+        "address": "RSqt98kgCcXEKLSoMjBkwnMoYpVvHjxqaf",
+        "category": "generate",
+        "amount": 0.00010000,
+        "vout": 0,
+        "confirmations": 19,
+        "generated": true,
+        "blockhash": "02738f05d6e13f4be0ed2c04d472d42112ec03d5f35bd797b8ef0e0fc61dd472",
+        "blockindex": 0,
+        "blocktime": 1537220864,
+        "expiryheight": 0,
+        "txid": "a4a589a5c5397ae8a72ee6819ce18703418d21b6ab7370a8f58a8a48dca7cd01",
+        "walletconflicts": [
+        ],
+        "time": 1537220863,
+        "timereceived": 1537220863,
+        "vjoinsplit": [
+        ],
+        "size": 99
+      },
+        ...
+    ],
+    "lastblock": "0542c8f7c718e062af872b08a8a4469ed1b2f48ecb023533e57997b074a4430f"
+  }
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listsinceblock", "params": ["029f11d80ef9765602235e1bc9727e3eb6ba20839319f761fee920d63401e327", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+  {
+    "transactions": [
+      {
+         "account": "",
+         "address": "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs",
+         "category": "generate",
+         "amount": 0.0001,
+         "vout": 0,
+         "confirmations": 86,
+         "generated": true,
+         "blockhash": "006b9064941f7b04c5f8c36e6456f30a592b46fc6b256d15e3a9fa36a319b52f",
+         "blockindex": 0,
+         "blocktime": 1536976225,
+         "expiryheight": 0,
+         "txid": "0a47e3965b76cd0593fa37dabb8fc1a3fbb0660cd0d9c1ac3fc5ae8c83e3bcd5",
+         "walletconflicts": [],
+         "time": 1536976224,
+         "timereceived": 1536976224,
+         "vjoinsplit": [],
+         "size": 99
+       },
+        ...
+     ],
+     "lastblock": "0542c8f7c718e062af872b08a8a4469ed1b2f48ecb023533e57997b074a4430f"
+   },
+   "error": null,
+   "id": "curltest"
+  }
+
+
+listtransactions ( "account" count from includeWatchonly)
+---------------------------------------------------------
+
+The ``listtransactions`` method returns up to ``count`` most recent transactions skipping the first ``from`` transactions for account ``account``.
+
+Arguments:
+
+::
+
+	"account"      (string, optional)                DEPRECATED the account name; should be "*"
+	count          (numeric, optional, default=10)   the number of transactions to return
+	from           (numeric, optional, default=0)    the number of transactions to skip
+	includeWatchonly (bool, optional, default=false) include transactions to watchonly addresses (see ===link=== ``importaddress``)
+
+Response:
+
+::
+
+	[
+	  {
+	    "account"             (string)   DEPRECATED the account name associated with the transaction; it will be "" for the default account
+	    "address"             (string)   the address of the transaction; not present for move transactions (category = move)
+	    "category"            (string)   The transaction category. This property can be ``send`` | ``receive`` | ``move``. ``move`` is a local (off blockchain) transaction between accounts -- not associated with an address, transaction id, or block. ``send`` and ``receive`` transactions are associated with an address, transaction id, and block details.
+	    "amount"              (numeric)  The amount. This value is negative for the ``send`` category, and for the ``move`` category for moves outbound. It is positive for the ``receive`` category and for the ``move`` category for inbound funds.
+	    "vout"                (numeric)  the vout value
+	    "fee"                 (numeric)  the amount of the fee; this is negative and only available for the ``send`` category of transactions
+	    "confirmations"       (numeric)  the number of confirmations for the transaction; available for the ``send`` and ``receive`` categories of transactions
+	    "blockhash"           (string)   the block hash containing the transaction; available for the ``send`` and ``receive`` categories of transactions
+	    "blockindex"          (numeric)  the block index containing the transaction; available for the ``send`` and ``receive`` categories of transactions
+	    "txid"                (string)   the transaction id; available for the ``send`` and ``receive`` categories of transactions
+	    "time"                (numeric)  the transaction time in seconds since epoch (midnight Jan 1 1970 GMT)
+	    "timereceived"        (numeric)  the time received in seconds since epoch (midnight Jan 1 1970 GMT); available for the ``send`` and ``receive`` categories of transactions
+	    "comment"             (string)   whether a comment is associated with the transaction
+	    "otheraccount"        (string)   for the ``move`` category of transactions; indicates the account which sent the funds (for receiving funds, positive amounts), or went to (for sending funds, negative amounts)
+	    "size"                (numeric)  transaction size in bytes
+	  }
+	]
+
+Examples:
+
+List the most recent 10 transactions in the systems:
+
+::
+
+  command:
+
+	./komodo-cli listtransactions
+
+  response:
+
+  [
+    {
+      "account": "",
+      "address": "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu",
+      "category": "generate",
+      "amount": 0.00021689,
+      "vout": 0,
+      "confirmations": 10,
+      "generated": true,
+      "blockhash": "038a888c0a6e6c8103684f3a7b53dcab71186c7cb2136fd298f7900b3da05d94",
+      "blockindex": 0,
+      "blocktime": 1537223045,
+      "expiryheight": 0,
+      "txid": "760788836335913068a66d3e4279233214b96a7dfc7757b899ea5d700aa4bc57",
+      "walletconflicts": [
+      ],
+      "time": 1537223044,
+      "timereceived": 1537223044,
+      "vjoinsplit": [
+      ],
+      "size": 99
+    },
+     ...
+  ]
+
+
+List transactions 100 to 120:
+
+::
+
+  command:
+
+	./komodo-cli listtransactions "*" 20 100
+
+  result:
+
+  [
+    {
+      "account": "",
+      "address": "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs",
+      "category": "generate",
+      "amount": 0.00010000,
+      "vout": 0,
+      "confirmations": 99,
+      "generated": true,
+      "blockhash": "0eb4edeb5141a7670ef8be413873e1bef4f6f321867a2b8d67a616cdc7df1e77",
+      "blockindex": 0,
+      "blocktime": 1536976212,
+      "expiryheight": 0,
+      "txid": "3041aa7374e530d4d28e14620dd2bb9d2ff0bf71dd1106f08bc9f02fce44598e",
+      "walletconflicts": [
+      ],
+      "time": 1536976211,
+      "timereceived": 1536976211,
+      "vjoinsplit": [
+      ],
+      "size": 99
+    },
+      ...
+  ]
+
+As a json rpc call
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listtransactions", "params": ["*", 20, 100] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+  {
+    [
+      {
+        "account": "",
+        "address": "RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs",
+        "category": "generate",
+        "amount": 0.0001,
+        "vout": 0,
+        "confirmations": 99,
+        "generated": true,
+        "blockhash": "0eb4edeb5141a7670ef8be413873e1bef4f6f321867a2b8d67a616cdc7df1e77",
+        "blockindex": 0,
+        "blocktime": 1536976212,
+        "expiryheight": 0,
+        "txid": "3041aa7374e530d4d28e14620dd2bb9d2ff0bf71dd1106f08bc9f02fce44598e",
+        "walletconflicts": [],
+        "time": 1536976211,
+        "timereceived": 1536976211,
+        "vjoinsplit": [],
+        "size": 99
+      },
+        ...
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+listunspent ( minconf maxconf  ["address",...] )
+------------------------------------------------
+
+The ``listunspent`` method returns an array of unspent transaction outputs, with a range between ``minconf`` and ``maxconf`` (inclusive) confirmations. The method can, optionally, filter to only include ``txouts`` paid to specified addresses.
+
+Arguments:
+
+::
+
+	minconf          (numeric, optional, default=1) the minimum confirmations to filter
+	maxconf          (numeric, optional, default=9999999) the maximum confirmations to filter
+  [
+    "address"       (string)   a series of addresses
+    , ...
+  ]
+
+Response:
+
+::
+
+	[
+	  {
+	    "txid"             (string)    the transaction id
+	    "vout"             (numeric)   the vout value
+	    "generated"        (boolean)   true if txout is a coinbase transaction output
+	    "address"          (string)    the address
+	    "account"          (string)    DEPRECATED the associated account, or "" for the default account
+	    "scriptPubKey"     (string)    the script key
+	    "amount"           (numeric)   the transaction amount
+	    "confirmations"    (numeric)   the number of confirmations
+	  }
+	   , ...
+	]
+
+Examples:
+
+::
+
+  command:
+
+	./komodo-cli listunspent
+
+  response:
+
+  [
+    {
+      "txid": "269b658b9a52e9142c96f3a49c0ad917e5d0c08126baa96713827267137d150f",
+      "vout": 0,
+      "generated": true,
+      "address": "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu",
+      "scriptPubKey": "21037e631c6a03d028e48aecfd93b2d2737d5d7e2852a426b940ff301f78aa31690cac",
+      "amount": 0.00010000,
+      "interest": 0.00000000,
+      "confirmations": 6,
+      "spendable": true
+    },
+      ...
+  ]
+
+::
+
+  command:
+
+	komodo-cli listunspent 6 9999999 '["RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu","RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ"]'
+
+  response:
+
+  [
+    {
+      "txid": "0ca752c996c4074ca62071cdbf848ccd33864894151f982024006b3d69d021ac",
+      "vout": 0,
+      "generated": true,
+      "address": "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu",
+      "scriptPubKey": "21037e631c6a03d028e48aecfd93b2d2737d5d7e2852a426b940ff301f78aa31690cac",
+      "amount": 0.00010000,
+      "interest": 0.00000000,
+      "confirmations": 7,
+      "spendable": true
+    },
+    {
+      "txid": "7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa",
+      "vout": 0,
+      "generated": false,
+      "address": "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ",
+      "scriptPubKey": "76a9141c973dbbed002e189caf31664d9ca7e8b1e92d8788ac",
+      "amount": 9.99304496,
+      "interest": 0.00000000,
+      "confirmations": 21,
+      "spendable": true
+    }
+  ]
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listunspent", "params": [6, 9999999, ["RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu","RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      {
+        "txid": "0ca752c996c4074ca62071cdbf848ccd33864894151f982024006b3d69d021ac",
+        "vout": 0,
+        "generated": true,
+        "address": "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu",
+        "scriptPubKey": "21037e631c6a03d028e48aecfd93b2d2737d5d7e2852a426b940ff301f78aa31690cac",
+        "amount": 0.00010000,
+        "interest": 0.00000000,
+        "confirmations": 7,
+        "spendable": true
+      },
+      {
+        "txid": "7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa",
+        "vout": 0,
+        "generated": false,
+        "address": "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ",
+        "scriptPubKey": "76a9141c973dbbed002e189caf31664d9ca7e8b1e92d8788ac",
+        "amount": 9.99304496,
+        "interest": 0.00000000,
+        "confirmations": 21,
+        "spendable": true
+      }
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+
+lockunspent unlock [{"txid":"txid","vout":n},...]
+-------------------------------------------------
+
+The ``lockunspent`` method locks (unlock = ``false``) or unlocks (unlock = ``true``) specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection, when spending the relevant coin. The locks are stored in memory only; at runtime a node always starts with zero locked outputs, and the locked output list is always cleared when a node stops or fails.
+
+* Note: also see the ===link=== ``listunspent`` and ===link=== ``listlockunspent`` calls to determine the user's local transaction state and info.
+
+Arguments:
+
+::
+
+	unlock              (boolean, required) whether to unlock (true) or lock (false) the specified transactions
+  "transactions"      (string, required)
+	     [
+	       {
+	         "txid"    (string) the transaction id
+	         "vout"        (numeric) the output number
+	       }
+	       ,...
+	     ]
+
+Response:
+
+::
+
+	true|false    (boolean)      whether the command was successful or not
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli lockunspent false '[{"txid":"d7ba45296c66e16eb61f27a4eef8848c7f5579fe801f277c1b0e074a4f47d6fd","vout":0}]'
+
+  response:
+
+  true
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "lockunspent", "params": [false, [{"txid":"d7ba45296c66e16eb61f27a4eef8848c7f5579fe801f277c1b0e074a4f47d6fd","vout":0}]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": true,
+    "error": null,
+    "id": "curltest"
+  }
+
+move "fromaccount" "toaccount" amount ( minconf "comment" )
+-----------------------------------------------------------
+
+**DEPRECATED** The ``move`` method moves a specified amount from one account in your wallet to another.
+
+Arguments:
+
+::
+
+	"fromaccount"   (string, required)     MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+	"toaccount"     (string, required)     MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+	amount          (numeric)              quantity to move between accounts
+	minconf         (numeric, optional, default=1)     only use funds with at least this many confirmations
+	"comment"       (string, optional)                 an optional comment, stored in the wallet only
+
+Response:
+
+::
+
+	true|false      (boolean)              true if successful
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli move "" "tabby" 0.01
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	komodo-cli move "timotei" "akiko" 0.01 6 "happy birthday!"
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "move", "params": ["timotei", "akiko", 0.01, 6, "happy birthday!"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (deprecated)
+
+resendwallettransactions
+------------------------
+
+The ``resendwallettransactions`` method immediately re-broadcasts unconfirmed wallet transactions to all peers. This method is intended only for testing; the wallet code periodically re-broadcasts automatically.
+
+Arguments:
+
+::
+
+  (none)
+
+Response:
+
+::
+
+  [
+    "transaction_id_string"   (string)  an array of the rebroadcasted transaction id's
+  ]
+
+Examples:
+
+::
+
+  command:
+
+  komodo-cli resendwallettransactions
+
+  response:
+
+  [
+    "4e847051279ead30fb2d8d53cc0d4649f62c85a44b23f90152d2ef4ed6af2006"
+  ]
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "resendwallettransactions", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      "4e847051279ead30fb2d8d53cc0d4649f62c85a44b23f90152d2ef4ed6af2006"
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+sendfrom "account" "address" amount ( minconf "comment" "comment-to" )
+-------------------------------------------------------------------------------
+
+**DEPRECATED** (use ===link=== sendtoaddress) The ``sendfrom`` method sends an amount from ``account`` to ``address``.
+
+Arguments:
+
+::
+
+	"account"          (string, required)      MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+  "address"          (string, required)    the address to receive funds
+	amount             (numeric, required)     the amount (transaction fee not included)
+	minconf            (numeric, optional, default=1)    only use funds with at least this many confirmations
+	"comment"          (string, optional)      a comment used to store what the transaction is for; this is not part of the transaction, just kept in your wallet
+	"comment-to"       (string, optional)      an optional comment to store the name of the person or organization to which you're sending the transaction; this is not part of the transaction, it is only kept in your wallet
+
+Response:
+
+::
+
+	"transactionid"        (string) the transaction id.
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli sendfrom "" "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu" 0.01
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	komodo-cli sendfrom "tabby" "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu" 0.01 6 "donation" "seans outpost"
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendfrom", "params": ["tabby", "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu", 0.01, 6, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (deprecated)
+
+
+sendmany "account" {"address":amount,...} ( minconf "comment" ["address",...] )
+-----------------------------------------------------------------------------------
+
+The ``sendmany`` method can send multiple multiple transactions at once. Amounts are double-precision floating point numbers.
+
+Arguments:
+
+::
+
+	"account"                        (string, required)                  MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+	"amounts"                        (string, required)                  a json object with addresses and amounts
+	    {
+	      "address":amount           ("string":numeric)                  the address (string) and the value (double-precision floating numeric)
+	      ,...
+	    }
+	minconf                          (numeric, optional, default=1)      only use the balance confirmed at least this many times
+	"comment"                        (string, optional)                  a comment
+	subtractfeefromamount            (string, optional)                  A json array with addresses. The fee will be equally deducted from the amount of each selected address; the recipients will receive less than you enter in their corresponding amount field. If no addresses are specified here, the sender pays the fee.
+	    [
+	      "address"                  (string)                            subtract fee from this address
+	      ,...
+	    ]
+
+Response:
+
+::
+
+	"transactionid"                   (string)                           the transaction id for the send; only 1 transaction is created regardless of the number of addresses
+
+Examples:
+
+Send two amounts to two different addresses:
+
+::
+
+  command:
+
+	./komodo-cli sendmany "" '{"RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ":0.01,"RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu":0.02}'
+
+  response:
+
+  e39b046f0e30bd2a80c64ec78d902107858c8f0d55097d7f2293df1c9a4496ae
+
+Send two amounts to two different addresses, setting the confirmation and comment:
+
+::
+
+  command:
+
+	komodo-cli sendmany "" '{"RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ":0.01,"RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu":0.02}' 6 "testing"
+
+  response:
+
+  3829164d8a68d9b7c2c89efe419eca77e37883318b7187b7e000e80e8138a370
+
+Send two amounts to two different addresses, subtract fee from amount:
+
+::
+
+  command:
+
+	komodo-cli sendmany "" '{"RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ":0.01,"RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu":0.02}' 1 "" '["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ","RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu"]'
+
+  response:
+
+  1813a39247913abf73af10ed51537234fe4e58eb5cfc4f49ac4fbcdecb42b4b4
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendmany", "params": ["", {"RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ":0.01,"RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu":0.02}, 6, "testing"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "fe7db27ed66b9d999c21d3cc9c8c687bd68721d711da6573a0a0ccf75c1cace5",
+    "error": null,
+    "id": "curltest"
+  }
+
+sendtoaddress "KMD_address" amount ( "comment" "comment-to" subtractfeefromamount )
+-----------------------------------------------------------------------------------
+
+The ``sendtoaddress`` method sends an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001
+
+Arguments:
+
+::
+
+	"komodoaddress"      (string, required)    the receiving address
+	"amount"             (numeric, required)   the amount to send (json requires all decimals values less than 1 begin with the characters '0.')
+	"comment"            (string, optional)    a comment used to store what the transaction is for; this is not part of the transaction, just kept in your wallet
+	"comment-to"         (string, optional)    a comment to store the name of the person or organization to which you're sending the transaction; this is stored in your local wallet file only
+	subtractfeefromamount  (boolean, optional, default=false) when ``true``, the fee will be deducted from the amount being sent
+
+Response:
+
+::
+
+	"transaction_id_string"  (string) the transaction id
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli sendtoaddress "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ" 0.1
+
+  response:
+
+  cc23924c007adc98b8ea5b9b8b47638e080aa469eb9738b976def487a44f467b
+
+::
+
+  command:
+
+  komodo-cli sendtoaddress "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ" 0.1 "donation" "seans outpost"
+
+  response:
+
+  86948c27dc63be415b235c5b3ed807c1e07d9a2cac252f58734add700c55fe18
+
+::
+
+  command:
+
+	komodo-cli sendtoaddress "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ" 0.1 "" "" true
+
+  response:
+
+  c5727cafd7d6dfc888d4a0596dc58bfafb24859e29f827e1bf1443037d8461fc
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendtoaddress", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", 0.1, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "6e411f3534af8847d705d87934f6061046e2034abad96b7a1fb1d3996129cb1e",
+    "error": null,
+    "id": "curltest"
+  }
+
+setaccount "KMD_address" "account"
+----------------------------------
+
+**DEPRECATED** The ``setaccount`` method sets the account associated with the given address.
+
+Arguments:
+
+::
+
+	"address"          (string, required) the address to be associated with an account
+	"account"         (string, required)   MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli setaccount "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ" "tabby"
+
+  response:
+
+  (deprecated)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setaccount", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", "tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (deprecated)
+
+settxfee amount
+---------------
+
+The ``settxfee`` method sets the transaction fee per kB.
+
+Arguments:
+
+::
+
+	amount         (numeric, required)   the transaction fee in COIN/kB rounded to the nearest 0.00000001
+
+Result
+
+::
+
+	true|false        (boolean) returns true if successful
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli settxfee 0.00001
+
+  response:
+
+  true
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "settxfee", "params": [0.00001] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": true,
+    "error": null,
+    "id": "curltest"
+  }
+
+signmessage "KMD address" "message"
+-----------------------------------
+
+The ``signmessage`` method signs a message via the private key of an address.
+
+Arguments:
+
+::
+
+	"address"         (string, required) the address to use for the private key
+	"message"         (string, required) the message
+
+Response:
+
+::
+
+	"signature"          (string) the signature of the message encoded in base 64
+
+Examples:
+
+Create the signature
+
+::
+
+	command:
+
+  komodo-cli signmessage "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ" "my message"
+
+  response:
+
+  H1y0mn/wRv56r1bcfkbQtzjG6XeWSelAsyayBuCwEL9XGXs7ieU55dryt/cFWM9gnRFI7gS01AByuSqRs+o/AZs=
+
+Verify the signature
+
+::
+
+  command:
+
+	komodo-cli verifymessage "RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ" "H1y0mn/wRv56r1bcfkbQtzjG6XeWSelAsyayBuCwEL9XGXs7ieU55dryt/cFWM9gnRFI7gS01AByuSqRs+o/AZs=" "my message"
+
+  response:
+
+  true
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessage", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "H1y0mn/wRv56r1bcfkbQtzjG6XeWSelAsyayBuCwEL9XGXs7ieU55dryt/cFWM9gnRFI7gS01AByuSqRs+o/AZs=",
+    "error": null,
+    "id": "curltest"
+  }
+
+z_exportkey "z_address_string"
+------------------------------
+
+The ``z_exportkey`` method reveals the private z_key corresponding to ``z_address_string``.
+
+* Note: See also ===link=== ``z_importkey``.
+
+Arguments:
+
+::
+
+	"z_address_string"     (string, required)    the z_address for the private key
+
+Response:
+
+::
+
+	"key"                  (string)              the private key
+
+Examples:
+
+::
+
+  command:
+
+	./komodo-cli z_exportkey "ztffWAUUY9PnLiBVXY2pnX67kfm71SevtPC5d9LLM3xZqehy4XxV1FeyxPWcHGTiCd7GtQ17gk5jDTQxhHB13K1A7HT6hZH"
+
+  response:
+
+  PURPOSEFULLYOMMITTEDxxxxV6EyPpaZFVDsqeNB6k8eoLFERdag
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportkey", "params": ["ztffWAUUY9PnLiBVXY2pnX67kfm71SevtPC5d9LLM3xZqehy4XxV1FeyxPWcHGTiCd7GtQ17gk5jDTQxhHB13K1A7HT6hZH"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "PURPOSEFULLYOMMITTEDxxxxV6EyPpaZFVDsqeNB6k8eoLFERdag",
+    "error": null,
+    "id": "curltest"
+  }
+
+z_exportviewingkey "z_address_string"
+--------------------------
+
+The ``z_exportviewingkey`` method reveals the viewing key corresponding to ``z_address_string``.
+
+* Note: see also ===link== ``z_importviewingkey``
+
+Arguments:
+
+::
+
+	"z_address_string"   (string, required)  the z_address for the viewing key
+
+Response:
+
+::
+
+	"vkey"                  (string) the viewing key
+
+Examples:
+
+  command:
+
+	komodo-cli z_exportviewingkey "ztffWAUUY9PnLiBVXY2pnX67kfm71SevtPC5d9LLM3xZqehy4XxV1FeyxPWcHGTiCd7GtQ17gk5jDTQxhHB13K1A7HT6hZH"
+
+  response:
+
+  ZiVtf1yjjR9DeDNNgd4kvRgS1oovQwfK6xt2csfhTwpbUVjnC9RrEeuVkAfJrxN1jDR3d7vR6XmLne4vC9SCYR5F9XMzW19VJ
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportviewingkey", "params": ["ztffWAUUY9PnLiBVXY2pnX67kfm71SevtPC5d9LLM3xZqehy4XxV1FeyxPWcHGTiCd7GtQ17gk5jDTQxhHB13K1A7HT6hZH"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "ZiVtf1yjjR9DeDNNgd4kvRgS1oovQwfK6xt2csfhTwpbUVjnC9RrEeuVkAfJrxN1jDR3d7vR6XmLne4vC9SCYR5F9XMzW19VJ",
+    "error": null,
+    "id": "curltest"
+  }
+
+z_exportwallet "filename"
+-------------------------
+
+The ``z_exportwallet`` method exports all wallet keys, including both ``t_address`` and ``z_address`` types, in a human-readable format.  Overwriting an existing file is not permitted.
+
+Arguments:
+
+::
+
+	"filename"    (string, required)     the filename, saved to the directory indicated by the ===link=== ``-exportdir`` parameter at daemon runtime (required)
+
+Response:
+
+	"path"           (string)            the full path of the destination file
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_exportwallet "test"
+
+  response:
+
+  /home/myusername/mydirector/test
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "/home/myusername/mydirector/test",
+    "error": null,
+    "id": "curltest"
+  }
+
+z_getbalance "address" ( minconf )
+----------------------------------
+
+The ``z_getbalance`` method returns the balance of a t_address or z_address belonging to the node’s wallet.
+
+``CAUTION``: If address is a watch-only z_address, the returned balance may be larger than the actual balance,
+as spends cannot be detected with incoming viewing keys.
+
+Arguments:
+
+::
+
+	"address"          (string)                      the selected z or t address
+	minconf            (numeric, optional, default=1) only include transactions confirmed at least this many times
+
+Response:
+
+::
+
+	amount              (numeric)    the total amount received at this address (in the relevant COIN value)
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_getbalance "ztfF6SFBfq2qha73dAgsXnL86F8air32CXKxJg8aYtEPJFdLcw4y3zWzBasocnx1V9GLnnFeKnkPvkScjNkQBfWn2kBDmkn"
+
+  response:
+
+  0.01980000
+
+The total amount received by address "myaddress" at least 5 blocks confirmed
+
+::
+
+  command:
+
+	komodo-cli z_getbalance "ztfF6SFBfq2qha73dAgsXnL86F8air32CXKxJg8aYtEPJFdLcw4y3zWzBasocnx1V9GLnnFeKnkPvkScjNkQBfWn2kBDmkn" 5
+
+  response:
+
+  0.01980000
+
+As a json rpc call
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getbalance", "params": ["ztfF6SFBfq2qha73dAgsXnL86F8air32CXKxJg8aYtEPJFdLcw4y3zWzBasocnx1V9GLnnFeKnkPvkScjNkQBfWn2kBDmkn", 5] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": 0.0198,
+    "error": null,
+    "id": "curltest"
+  }
+
+z_getnewaddress
+---------------
+
+The ``z_getnewaddress`` method returns a new z_address for receiving payments.
+
+Arguments:
+
+  (none)
+
+Response:
+
+::
+
+	"z_address_string"    (string) the new z_address
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_getnewaddress
+
+  response:
+
+  ztbUD83kXgHt3A1M282wFvT9Ms6SiBCd6GSbQbPa2C7UtPojVZjPENytFqu7JxgnsgL9EN42xWnyhhzniHYSRJDnEPTgo3Y
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3",
+    "error": null,
+    "id": "curltest"
+  }
+
+z_getoperationresult (["operationid", ...])
+---------------------------------------------
+
+The ``z_getoperationresult`` method retrieves the result and status of an operation which has finished, and then removes the operation from memory.
+
+* Note: see also ===link=== ``z_getoperationstatus``
+
+Arguments:
+
+::
+
+	[
+    "operationid"         (string, optional)    a list of operation ids to query; if not provided, the method examines all operations known to the node
+    , ... ===note: we need to put this same indication for multi-object arrays and objects, to make it consistent===
+  ]
+
+Response:
+
+::
+
+  [
+    {
+      "id"                      (string)    the operation id
+      "status"                  (string)    the result of the operation; can be ``success`` | ``failed`` | ``executing``
+      "creation_time"           (numeric)   the creation time, in seconds since epoch (Jan 1 1970 GMT)
+      "result": {
+        "txid":                 (string)    the transaction id
+      },
+      "execution_secs"          (numeric)   the length of time to calculate the transaction
+      "method"                  (string)    the name of the method used in the operation
+      "params": {
+        "fromaddress"           (string)    the address from which funds are drawn
+        "amounts": [
+          {
+            "address"           (string)    the receiving address
+            "amount"            (numeric)   the amount to receive
+          }
+          , ...
+        ],
+        "minconf"               (numeric)   the minimum number of confirmations required
+        "fee"                   (numeric)   the transaction fee
+      }
+    }
+  ]
+
+Examples:
+
+::
+
+  command:
+
+	./komodo-cli -ac_name=SIDDA z_getoperationresult '["opid-6e581ee5-4e90-4e70-8961-f95d8d28748c"]'
+
+  response:
+
+  [
+    {
+      "id": "opid-6e581ee5-4e90-4e70-8961-f95d8d28748c",
+      "status": "success",
+      "creation_time": 1537287690,
+      "result": {
+        "txid": "65e01c8485f6a85fbf7093d8233864eed0f31e6e2eff22a7e468e92c37dc864c"
+      },
+      "execution_secs": 44.606282288,
+      "method": "z_sendmany",
+      "params": {
+        "fromaddress": "RWUwHqRUYgxfYNNSHWkQuY5sh93VGiiPoX",
+        "amounts": [
+          {
+            "address": "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3",
+            "amount": 0.01
+          }
+        ],
+        "minconf": 1,
+        "fee": 0.0001
+      }
+    }
+  ]
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getoperationresult", "params": [["opid-6a9da0dd-a950-4d95-848c-d3c18e44be03"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      {
+        "id": "opid-6a9da0dd-a950-4d95-848c-d3c18e44be03",
+        "status": "success",
+        "creation_time": 1537288235,
+        "result": {
+          "txid": "f0309f8dc2e33e108dec39285bc8755058375cf6e51bdb452fb45f3d14909fef"
+        },
+        "execution_secs": 44.978749064,
+        "method": "z_sendmany",
+        "params": {
+          "fromaddress": "RWUwHqRUYgxfYNNSHWkQuY5sh93VGiiPoX",
+          "amounts": [
+            {
+              "address": "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3",
+              "amount": 0.01
+            }
+          ],
+          "minconf": 1,
+          "fee": 0.0001
+        }
+      }
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+z_getoperationstatus (["operationid", ...])
+---------------------------------------------
+
+The ``z_getoperationstatus`` message queries the operation status and any associated result or error data of any ``operationid`` stored in local memory. The operation will remain in memory (unlike ``z_getoperationresult``, which removes the data from the local memory).
+
+Arguments:
+
+::
+
+	"operationid"         (array, optional)    a list of operation ids we are interested in; if an array is not provided, the method examines all operations known to the node
+
+Response:
+
+::
+
+  [
+    {
+      "id"                  (string)  the operation id
+      "status"              (string)  the status of the operation; can be ``success`` | ``executing`` | ``failed``
+      "creation_time"       (numeric) the creation time, in seconds since epoch (Jan 1 1970 GMT)
+      "error": {
+        "code"              (numeric) the associated error code ===do we have a link to error codes?===
+        "message"           (string)  a message to indicate the nature of the error, if such a message is available
+      },
+      "method"              (string)  name of the method used in the operation
+      "params": {
+        "fromaddress"       (string)  the address from which funds are drawn
+        "amounts": [
+          {
+            "address"       (string)  the receiving address
+            "amount"        (numeric) the amount to receive
+          }
+        ],
+        "minconf"           (numeric) indicates the required number of mining confirmations
+        "fee"               (numeric) the fee
+      }
+    }
+  ]
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_getoperationstatus
+
+  response:
+
+  [
+    {
+      "id": "opid-b650b582-c2f5-43e0-9a65-9fe23f65c1a5",
+      "status": "failed",
+      "creation_time": 1537288268,
+      "error": {
+        "code": -6,
+        "message": "Insufficient funds, no UTXOs found for taddr from address."
+      },
+      "method": "z_sendmany",
+      "params": {
+        "fromaddress": "RWUwHqRUYgxfYNNSHWkQuY5sh93VGiiPoX",
+        "amounts": [
+          {
+            "address": "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3",
+            "amount": 0.01
+          }
+        ],
+        "minconf": 1,
+        "fee": 0.0001
+      }
+    }
+  ]
+
+::
+
+  command:
+
+  komodo-cli z_getoperationstatus '["opid-47e12224-8477-4cd4-852d-d8c3ddbc6375"]'
+
+  response:
+
+  [
+    {
+      "id": "opid-47e12224-8477-4cd4-852d-d8c3ddbc6375",
+      "status": "executing",
+      "creation_time": 1537289777,
+      "method": "z_sendmany",
+      "params": {
+        "fromaddress": "RWUwHqRUYgxfYNNSHWkQuY5sh93VGiiPoX",
+        "amounts": [
+          {
+            "address": "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3",
+            "amount": 0.01
+          }
+        ],
+        "minconf": 1,
+        "fee": 0.0001
+      }
+    }
+  ]
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getoperationstatus", "params": [["opid-47e12224-8477-4cd4-852d-d8c3ddbc6375"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      {
+        "id": "opid-47e12224-8477-4cd4-852d-d8c3ddbc6375",
+        "status": "success",
+        "creation_time": 1537289777,
+        "result": {
+          "txid": "2b988a708db2b8d99a92bbff65a57d0d73fdb22c30fc3f3e4f81ab15cfeafc45"
+        },
+        "execution_secs": 45.200043917,
+        "method": "z_sendmany",
+        "params": {
+          "fromaddress": "RWUwHqRUYgxfYNNSHWkQuY5sh93VGiiPoX",
+          "amounts": [
+            {
+              "address": "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3",
+              "amount": 0.01
+            }
+          ],
+          "minconf": 1,
+          "fee": 0.0001
+        }
+      }
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+z_gettotalbalance ( minconf includeWatchonly )
+----------------------------------------------
+
+The ``z_gettotalbalance`` method returns the total value of funds, including both transparent and private, stored in the node’s wallet.
+
+**CAUTION** If the wallet contains watch-only z_addresses the returned private balance may be larger than the actual balance,
+as spends cannot be detected with incoming viewing keys.
+
+Arguments:
+
+::
+
+	minconf          (numeric, optional, default=1)    only include private and transparent transactions confirmed at least this many times
+	includeWatchonly (bool, optional, default=false)   also include balance in watchonly addresses (see 'importaddress' and 'z_importviewingkey')
+
+Response:
+
+::
+
+	{
+	  "transparent"     (numeric) the total balance of transparent funds
+    "interest"        (numeric) the total balance of unclaimed interest earned
+	  "private"         (numeric) the total balance of private funds
+	  "total"           (numeric) the total balance of both transparent and private funds
+	}
+
+* Note: While the `interest` property is returned for all KMD-based coin daemons, only the main KMD chain utilizes the interest feature. KMD-based asset chains will always return a `0.00` interest value.
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_gettotalbalance
+
+  response:
+
+  {
+    "transparent": "9.98794883",
+    "interest": "0.00",
+    "private": "0.08205",
+    "total": "10.06999883"
+  }
+
+::
+
+  command:
+
+	komodo-cli z_gettotalbalance 5
+
+  response:
+
+  {
+    "transparent": "9.98794883",
+    "interest": "0.00",
+    "private": "0.08205",
+    "total": "10.06999883"
+  }
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_gettotalbalance", "params": [5] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": {
+      "transparent": "0.00615",
+      "interest": "0.00",
+      "private": "0.06205",
+      "total": "0.0682"
+    },
+    "error": null,
+    "id": "curltest"
+  }
+
+z_importkey "z_privatekey" ( rescan startHeight )
+-------------------------------------------------
+
+The ``z_importkey`` method imports ``z_privatekey`` to your wallet.
+
+* Note: see also ===link=== ``z_exportkey``
+
+Arguments:
+
+::
+
+	"z_privatekey"             (string, required)                                  the z_privatekey (see ===link=== ``z_exportkey``)
+	rescan                     (string, optional, default=``"whenkeyisnew"``)      rescan the wallet for transactions; can be ``yes`` | ``no`` | ``whenkeyisnew``
+	startHeight                (numeric, optional, default=0)                      block height to start rescan
+
+Response:
+
+::
+
+  (none)
+
+**Note**: this call can take minutes to complete if rescan is true
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_importkey "PURPOSEFULLYOMMITTEDxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK"
+
+  response:
+
+  (none)
+
+::
+
+===fix the json object===
+
+  command:
+
+	komodo-cli z_importkey "PURPOSEFULLYOMMITTEDxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK" whenkeyisnew 30000
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+  komodo-cli z_importkey "PURPOSEFULLYOMMITTEDxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK" yes 20000
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importkey", "params": ["PURPOSEFULLYOMMITTEDxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK", "no"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": null,
+    "error": null,
+    "id": "curltest"
+  }
+
+z_importviewingkey "viewing_key" ( rescan startHeight )
+------------------------------------------------
+
+The ``z_importviewingkey`` adds a viewing key to your wallet. This method allows you to view the balance in a z_address that otherwise does not belong to your wallet.
+
+* Note: see also ===link=== ``z_exportviewingkey``
+
+Arguments:
+
+::
+
+	"viewing_key"             (string, required)                     the viewing key
+	rescan             (string, optional, default="whenkeyisnew")    rescan the wallet for transactions; can be ``"yes"`` | ``"no"`` | ``"whenkeyisnew"``
+	startHeight        (numeric, optional, default=0)                block height to start rescan from
+
+ * Note: this call can take minutes to complete if rescan is true
+
+Response:
+
+::
+
+  (none)
+
+Examples:
+
+=== the optional parameters do not yet work ===
+
+::
+
+  command:
+
+	komodo-cli z_importviewingkey "ZiVtfYkeyRY3y8Wykm5zjLcnssEkVrkej6j3kQ5B1AE2qp2F3VsKzpoXTzD82hrvMjWB9WxCHbXXrXax2ceyHLWrnQDaMrMja"
+
+  response:
+
+  (none)
+
+
+::
+
+  command:
+
+	komodo-cli z_importviewingkey "ZiVtfYkeyRY3y8Wykm5zjLcnssEkVrkej6j3kQ5B1AE2qp2F3VsKzpoXTzD82hrvMjWB9WxCHbXXrXax2ceyHLWrnQDaMrMja" no
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+	komodo-cli z_importviewingkey "ZiVtfYkeyRY3y8Wykm5zjLcnssEkVrkej6j3kQ5B1AE2qp2F3VsKzpoXTzD82hrvMjWB9WxCHbXXrXax2ceyHLWrnQDaMrMja" whenkeyisnew 30000
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+	komodo-cli z_importviewingkey "ZiVtfYkeyRY3y8Wykm5zjLcnssEkVrkej6j3kQ5B1AE2qp2F3VsKzpoXTzD82hrvMjWB9WxCHbXXrXax2ceyHLWrnQDaMrMja" yes 20000
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importviewingkey", "params": ["ZiVtfYkeyRY3y8Wykm5zjLcnssEkVrkej6j3kQ5B1AE2qp2F3VsKzpoXTzD82hrvMjWB9WxCHbXXrXax2ceyHLWrnQDaMrMja", "no"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (none)
+
+z_importwallet "filename"
+-------------------------
+
+The ``z_importwallet`` method imports t_address and z_address keys from a wallet export file.
+
+
+* Note: see also ===links=== ``z_exportwallet``
+
+Arguments:
+
+::
+
+	"filename"    (string, required)     the wallet file
+
+Response:
+
+::
+
+  (none)
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_importwallet "/mydirectory/nameofbackup"
+
+  response:
+
+  (none)
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importwallet", "params": ["/mydirectory/nameofbackup"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": null,
+    "error": null,
+    "id": "curltest"
+  }
+
+z_listaddresses ( includeWatchonly )
+------------------------------------
+
+The ``z_listaddresses`` method returns the list of z_addresses belonging to the wallet.
+
+* Note: see also ===link=== ``z_importviewingkey``
+
+Arguments:
+
+::
+
+	includeWatchonly     (bool, optional, default=false)     also include watchonly addresses
+
+Response:
+
+::
+
+	[
+	  "z_addresses"           (string) a zaddr belonging to the wallet
+	  ,...
+	]
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_listaddresses
+
+  response:
+
+  [
+    "ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP",
+    "ztbUD83kXgHt3A1M282wFvT9Ms6SiBCd6GSbQbPa2C7UtPojVZjPENytFqu7JxgnsgL9EN42xWnyhhzniHYSRJDnEPTgo3Y"
+  ]
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listaddresses", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      "ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP",
+      "ztbUD83kXgHt3A1M282wFvT9Ms6SiBCd6GSbQbPa2C7UtPojVZjPENytFqu7JxgnsgL9EN42xWnyhhzniHYSRJDnEPTgo3Y"
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+z_listoperationids
+------------------
+
+The ``z_listoperationids`` method returns the list of operation ids currently known to the wallet.
+
+Arguments:
+
+::
+
+	"status"         (string, optional) filter result by the operation's state e.g. "success"
+
+Response:
+
+::
+
+	[
+	  "operationid"       (string) an operation id belonging to the wallet
+	  ,...
+	]
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_listoperationids
+
+  response:
+
+  [
+    "opid-47e12224-8477-4cd4-852d-d8c3ddbc6375",
+    "opid-b650b582-c2f5-43e0-9a65-9fe23f65c1a5"
+  ]
+
+::
+
+  command:
+
+  komodo-cli z_listoperationids "success"
+
+  response:
+
+  [
+    "opid-47e12224-8477-4cd4-852d-d8c3ddbc6375"
+  ]
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listoperationids", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      "opid-47e12224-8477-4cd4-852d-d8c3ddbc6375",
+      "opid-b650b582-c2f5-43e0-9a65-9fe23f65c1a5"
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+z_listreceivedbyaddress "z_address" ( minconf )
+---------------------------------------------
+
+The ``z_listreceivedbyaddress`` method returns a list of amounts received by a z_address belonging to the node’s wallet.
+
+Arguments:
+
+::
+
+	"z_address"      (string)    the private address
+	minconf          (numeric, optional, default=1)  only include transactions confirmed at least this many times
+
+Response:
+
+::
+
+	{
+	  "txid"     (string)      the transaction id
+	  "amount"   (numeric)     the amount of value in the note
+	  "memo"     (string)      hexademical string representation of memo field
+	}
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_listreceivedbyaddress "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"
+
+  response:
+
+  [
+    {
+      "txid": "8f68178ad521c8cc0f22d9589d07dbe52a1c775fae1840c0a129955d13928704",
+      "amount": 0.01000000,
+      "memo": "f600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+
+::
+
+  command:
+
+  komodo-cli z_listreceivedbyaddress "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf" 2
+
+  response:
+
+  [
+    {
+      "txid": "8f68178ad521c8cc0f22d9589d07dbe52a1c775fae1840c0a129955d13928704",
+      "amount": 0.01000000,
+      "memo": "f600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listreceivedbyaddress", "params": ["ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": [
+      {
+        "txid": "8f68178ad521c8cc0f22d9589d07dbe52a1c775fae1840c0a129955d13928704",
+        "amount": 0.01,
+        "memo": "f600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "error": null,
+    "id": "curltest"
+  }
+
+
+z_mergetoaddress ["fromaddress", ...] "toaddress" ( fee ) ( transparent_limit ) ( shielded_limit ) ( memo )
+------------------------------------------------------------------------------------------------------------
+
+**WARNING**: ``z_mergetoaddress`` is DISABLED but can be enabled as an experimental feature.
+
+The ``z_mergetoaddress`` method merges multiple UTXOs and notes into a single UTXO or note. The method works for both t_addresses and z_addresses, both separately and in combination.  Coinbase UTXOs are ignored; use ``z_shieldcoinbase`` to combine those into a single note.
+
+This is an asynchronous operation, and UTXOs selected for merging will be locked.  If there is an error, they are unlocked.  The RPC call `listlockunspent` can be used to return a list of locked UTXOs.
+
+The number of UTXOs and notes selected for merging can be limited by the caller.  If the transparent limit parameter is set to zero, the -mempooltxinputlimit option will determine the number of UTXOs. Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes.
+
+Arguments:
+
+::
+
+	fromaddresses         (string, required)
+	                  Note: The following special strings are accepted inside the array:
+    	                         - "*": Merge both UTXOs and notes from all addresses belonging to the wallet.
+    	                         - "ANY_TADDR": Merge UTXOs from all t-addrs belonging to the wallet.
+    	                         - "ANY_ZADDR": Merge notes from all z-addrs belonging to the wallet.
+    	                     If a special string is given, any given addresses of that type will be ignored.
+    	[
+    	  "address"          (string) can be a t_address or a z_address
+    	  , ...
+    	]
+	"toaddress"           (string, required) the t_address or z_address to receive the combined UTXO
+	fee                   (numeric, optional, default=0.0001) the fee amount to attach to this transaction
+	transparent_limit     (numeric, optional, default=50) limit on the maximum number of transparent UTXOs to merge; you may set this value to 0 to use the node option ===link explanation?=== ``-mempooltxinputlimit``
+	shielded_limit        (numeric, optional, default=10) limit on the maximum number of hidden notes to merge; you may set this value to 0 to merge as many as will fit in the transaction
+	"memo"                (string, optional)         encoded as hex; when ``toaddress`` is a z_address, this value will be stored in the memo field of the new note
+
+Response:
+
+::
+
+	{
+	  "remainingUTXOs"              (numeric) number of UTXOs still available for merging
+	  "remainingTransparentValue"   (numeric) value of UTXOs still available for merging
+	  "remainingNotes"              (numeric) number of notes still available for merging
+	  "remainingShieldedValue"      (numeric) value of notes still available for merging
+	  "mergingUTXOs"                (numeric) number of UTXOs being merged
+	  "mergingTransparentValue"     (numeric) value of UTXOs being merged
+	  "mergingNotes"                (numeric) number of notes being merged
+	  "mergingShieldedValue"        (numeric) value of notes being merged
+	  "opid"                        (string)  an operationid to pass to z_getoperationstatus to get the result of the operation
+	}
+
+Examples:
+
+::
+
+  command:
+
+	komodo-cli z_mergetoaddress '["t1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd"]' ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf
+
+  response:
+
+  (disabled)
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_mergetoaddress", "params": [["t1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd"], "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (disabled)
+
+z_sendmany "fromaddress" [{"address":...,"amount":...},...] ( minconf ) ( fee )
+--------------------------------------------------------------------------------
+
+The ``z_sendmany`` method sends one or more transactions at once, and allows for sending transactions of types `t --> z`, `z --> z`, `z --> t`. The ``amount`` values are double-precision floating point numbers.
+
+Change from a t_address flows to a new taddr address, while change from zaddr returns to itself.
+When sending coinbase UTXOs to a zaddr, change is not allowed. The entire value of the UTXO(s) must be consumed.
+Currently, the maximum number of zaddr outputs is 54 due to transaction size limits.
+
+Arguments:
+
+::
+
+	"fromaddress"         (string, required) The taddr or zaddr to send the funds from.
+	"amounts"             (array, required) An array of json objects representing the amounts to send.
+	    [{
+	      "address":address  (string, required) The address is a taddr or zaddr
+	      "amount":amount    (numeric, required) The numeric amount in KMD is the value
+	      "memo":memo        (string, optional) If the address is a zaddr, raw data represented in hexadecimal string format
+	    }, ...]
+	minconf               (numeric, optional, default=1) Only use funds confirmed at least this many times.
+	fee                   (numeric, optional, default=0.0001) The fee amount to attach to this transaction.
+
+Response:
+
+::
+
+	"operationid"          (string) An operationid to pass to z_getoperationstatus to get the result of the operation.
+
+Examples:
+
+::
+
+  command:
+
+  ./komodo-cli -ac_name=SIDDA z_sendmany "RUX5vGkxJCKBPGm8b97VUumt2aHkuCjp8e" '[{"address":"RVEsww91UBdUNGyCC1GjDVuvJShEei2kj4","amount":0.01}]'
+
+  response:
+
+  opid-ad947755-b348-4842-90ca-0f0c71d13d34
+
+::
+
+  command:
+
+  ./komodo-cli z_sendmany "RCpMUZwxc3pWsgip5aj3Sy1cKkh86P3Tns" '[{"address":"ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3","amount":0.01}]'
+
+  response:
+
+  opid-cdd6af37-88a2-44d7-9630-d54d21f8b1c4
+
+::
+
+  command:
+
+  ./komodo-cli -ac_name=SIDDA z_sendmany "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3" '[{"address":"ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP","amount":0.0099}]'
+
+  response:
+
+  opid-3c3d6f25-f333-4898-8a50-06f4012cf975
+
+::
+
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_sendmany", "params": ["RCpMUZwxc3pWsgip5aj3Sy1cKkh86P3Tns", [{"address": "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf" ,"amount": 0.01}]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "opid-73306924-3466-4944-a8f7-c45c14be0438",
+    "error": null,
+    "id": "curltest"
+  }
+
+z_shieldcoinbase "fromaddress" "tozaddress" ( fee ) ( limit )
+-------------------------------------------------------------
+
+The ``z_shieldcoinbase`` method shields transparent coinbase funds by sending the funds to a shielded z_address.  This is an asynchronous operation and utxos selected for shielding will be locked. If there is an error, they are unlocked.  The RPC call ``listlockunspent`` can be used to return a list of locked utxos. The number of coinbase utxos selected for shielding can be limited by the caller.  If the limit parameter is set to zero, the ``-mempooltxinputlimit`` option will determine the number of uxtos.  Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes.
+
+Arguments:
+
+::
+
+	"fromaddress"         (string, required)     the address is a t_addr or "*" for all t_addrs belonging to the wallet
+	"toaddress"           (string, required)     the address is a z_addr
+	fee                   (numeric, optional, default=0.0001) the fee amount to attach to this transaction
+	limit                 (numeric, optional, default=50) limit on the maximum number of utxos to shield; Set to ``0`` to use node option ``-mempooltxinputlimit``
+
+Response:
+
+::
+
+	{
+	  "remainingUTXOs"      (numeric)    number of coinbase utxos still available for shielding
+	  "remainingValue"      (numeric)    value of coinbase utxos still available for shielding
+	  "shieldingUTXOs"      (numeric)    number of coinbase utxos being shielded
+	  "shieldingValue"       (numeric) Value of coinbase utxos being shielded.
+	  "opid"         (string) An operationid to pass to z_getoperationstatus to get the result of the operation.
+	}
+
+Examples:
+
+::
+
+	> komodo-cli z_shieldcoinbase "t1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd" "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"
+	> curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_shieldcoinbase", "params": ["t1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd", "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+zcbenchmark benchmarktype samplecount
+-------------------------------------
+
+Runs a benchmark of the selected type samplecount times,
+returning the running times of each sample.
+
+Output:
+
+::
+
+	[
+	  {
+	    "runningtime": runningtime
+	  },
+	  {
+	    "runningtime": runningtime
+	  }
+	  ...
+	]
+
+zcrawjoinsplit rawtx inputs outputs vpub_old vpub_new
+-----------------------------------------------------
+
+  inputs: a JSON object mapping {note: zcsecretkey, ...}
+  outputs: a JSON object mapping {zcaddr: value, ...}
+
+**DEPRECATED**. Splices a joinsplit into rawtx. Inputs are unilaterally confidential.
+Outputs are confidential between sender/receiver. The vpub_old and
+vpub_new values are globally public and move transparent value into
+or out of the confidential value store, respectively.
+
+Note: The caller is responsible for delivering the output enc1 and
+enc2 to the appropriate recipients, as well as signing rawtxout and
+ensuring it is mined. (A future RPC call will deliver the confidential
+payments in-band on the blockchain.)
+
+Output:
+
+::
+
+	{
+	  "encryptednote1": enc1,
+	  "encryptednote2": enc2,
+	  "rawtxn": rawtxout
+	}
+
+zcrawkeygen
+-----------
+
+**DEPRECATED**. Generate a zcaddr which can send and receive confidential values.
+
+Output:
+
+::
+
+	{
+	  "zcaddress": zcaddr,
+	  "zcsecretkey": zcsecretkey,
+	  "zcviewingkey": zcviewingkey,
+	}
+
+zcrawreceive zcsecretkey encryptednote
+--------------------------------------
+
+**DEPRECATED**. Decrypts encryptednote and checks if the coin commitments
+are in the blockchain as indicated by the "exists" result.
+
+Output:
+
+::
+
+	{
+	  "amount": value,
+	  "note": noteplaintext,
+	  "exists": exists
+	}
+
+zcsamplejoinsplit
+-----------------
+
+Perform a joinsplit and return the JSDescription.
+
+################################
+
+##
+## komodo.conf configuration file. Lines beginning with # are comments.
+##
+
+# Network-related settings:
+
+# Run a regression test network
+#regtest=0
+
+# Connect via a SOCKS5 proxy
+#proxy=127.0.0.1:9050
+
+# Bind to given address and always listen on it. Use [host]:port notation for IPv6
+#bind=<addr>
+
+# Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6
+#whitebind=<addr>
+
+##############################################################
+##            Quick Primer on addnode vs connect            ##
+##  Let's say for instance you use addnode=4.2.2.4          ##
+##  addnode will connect you to and tell you about the      ##
+##    nodes connected to 4.2.2.4.  In addition it will tell ##
+##    the other nodes connected to it that you exist so     ##
+##    they can connect to you.                              ##
+##  connect will not do the above when you 'connect' to it. ##
+##    It will *only* connect you to 4.2.2.4 and no one else.##
+##                                                          ##
+##  So if you're behind a firewall, or have other problems  ##
+##  finding nodes, add some using 'addnode'.                ##
+##                                                          ##
+##  If you want to stay private, use 'connect' to only      ##
+##  connect to "trusted" nodes.                             ##
+##                                                          ##
+##  If you run multiple nodes on a LAN, there's no need for ##
+##  all of them to open lots of connections.  Instead       ##
+##  'connect' them all to one node that is port forwarded   ##
+##  and has lots of connections.                            ##
+##       Thanks goes to [Noodle] on Freenode.               ##
+##############################################################
+
+# Use as many addnode= settings as you like to connect to specific peers
+#addnode=69.164.218.197
+#addnode=10.0.0.2:8233
+
+# Alternatively use as many connect= settings as you like to connect ONLY to specific peers
+#connect=69.164.218.197
+#connect=10.0.0.1:8233
+
+# Listening mode, enabled by default except when 'connect' is being used
+#listen=1
+
+# Maximum number of inbound+outbound connections.
+#maxconnections=
+
+#
+# JSON-RPC options (for controlling a running Komodo/komodod process)
+#
+
+# server=1 tells komodod to accept JSON-RPC commands (set as default if not specified)
+#server=1
+
+# Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6.
+# This option can be specified multiple times (default: bind to all interfaces)
+#rpcbind=<addr>
+
+# You must set rpcuser and rpcpassword to secure the JSON-RPC api
+#rpcuser=Ulysses
+#rpcpassword=YourSuperGreatPasswordNumber_DO_NOT_USE_THIS_OR_YOU_WILL_GET_ROBBED_385593
+
+# How many seconds komodo will wait for a complete RPC HTTP request.
+# after the HTTP connection is established.
+#rpcclienttimeout=30
+
+# By default, only RPC connections from localhost are allowed.
+# Specify as many rpcallowip= settings as you like to allow connections from other hosts,
+# either as a single IPv4/IPv6 or with a subnet specification.
+
+# NOTE: opening up the RPC port to hosts outside your local trusted network is NOT RECOMMENDED,
+# because the rpcpassword is transmitted over the network unencrypted and also because anyone
+# that can authenticate on the RPC port can steal your keys + take over the account running komodod
+# For more information see https://github.com/zcash/zcash/issues/1497
+
+#rpcallowip=10.1.1.34/255.255.255.0
+#rpcallowip=1.2.3.4/24
+#rpcallowip=2001:db8:85a3:0:0:8a2e:370:7334/96
+
+# Listen for RPC connections on this TCP port:
+#rpcport=8232
+
+# You can use Komodo or komodod to send commands to Komodo/komodod
+# running on another host using this option:
+#rpcconnect=127.0.0.1
+
+# Transaction Fee
+
+# Send transactions as zero-fee transactions if possible (default: 0)
+#sendfreetransactions=0
+
+# Create transactions that have enough fees (or priority) so they are likely to # begin confirmation within n blocks (default: 1).
+# This setting is overridden by the -paytxfee option.
+#txconfirmtarget=n
+
+# Miscellaneous options
+
+# Enable attempt to mine komodo.
+#gen=0
+
+# Set the number of threads to be used for mining komodo (-1 = all cores).
+#genproclimit=1
+
+# Specify a different Equihash solver (e.g. "tromp") to try to mine komodo
+# faster when gen=1.
+#equihashsolver=default
+
+# Pre-generate this many public/private key pairs, so wallet backups will be valid for
+# both prior transactions and several dozen future transactions.
+#keypool=100
+
+# Pay an optional transaction fee every time you send komodo.  Transactions with fees
+# are more likely than free transactions to be included in generated blocks, so may
+# be validated sooner. This setting does not affect private transactions created with
+# 'z_sendmany'.
+#paytxfee=0.00
+
+#Rewind the chain to specific block height. This is useful for creating snapshots at a given block height.
+#rewind=777777
+
+#Stop the chain a specific block height. This is useful for creating snapshots at a given block height.
+#stopat=1000000
+
+#Set an address to use as change address for all transactions. This value must be set to a 33 byte pubkey. All mined coins will also be sent to this address.
+#pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392
+
+#Forfeit all user rewards to miners. Set this to explicitly not claim user rewards.
+#exchange=1
+
+#Donate all user rewards to a a specific address. This value must be set to a 33 byte pubkey.
+#donation=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392
+
+# Needs description
+#-exportdir

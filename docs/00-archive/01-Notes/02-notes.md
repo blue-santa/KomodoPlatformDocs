@@ -9,3 +9,9 @@ getaddressmempool
 getaddresstxids
 getaddressutxos
 getsnapshot
+
+
+kv - asset chains only
+jumblr - kmd only 
+the -donation and -exchange and -notary are KMD specific
+-genproclimit=0 is specifically for ac_staked chains
