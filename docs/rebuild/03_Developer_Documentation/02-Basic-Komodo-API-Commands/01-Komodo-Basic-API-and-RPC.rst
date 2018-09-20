@@ -224,109 +224,8 @@ Click any of the API options below to be taken to their summary. You may also na
 
 === Do we need to set it up so that you can link directly to a spot in the doc? Or is that there already? If there is a mechanism, can we make it more obvious in the docs by adding a link next to the name?===
 
-Coin Daemon Maintenance and Parameters
-======================================
-
-=== we need to add this section above in the index? Or perhaps this stuff should be condensed into the Control section? Maybe the index commands should be condensed into the generate section, too? ===
-
-Manually deleting blockchain data
----------------------------------
-Sometimes it is necessary to manually delete all blockchain data. This should automatically trigger a full resync of the blockchain.
-
-Users should exercise caution not to delete the ``wallet.dat`` file during this procedure. We recommend that the user make frequent backups of the ``wallet.dat`` file, especially before deleting files from the application directory.
-
-To erase all synced blockchain data, the following files should be deleted:
-
-::
-  ``blocks``
-  ``chainstate``
-  ``notarisations``
-  ``komodostate``
-  ``komodostate.ind``
-
-Default file locations:
-::
-	MacOS: ``~/Library/Application Support/Komodo``
-	Windows: ===need this==
-	GNU/Linux: ``~/.komodo``
-
--addressindex
--------------
-``addressindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to maintain an index of all addresses and balances. It is initiated at run time and it is used to query address balances across the entire chain.
-
-The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions above===.
-
-The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
-
-``addressindex`` is enabled by default on any asset chain that utilizes the ``cc`` smart contract protocol.
-
-Usage:
-
-To initiate the ``addressindex`` command at runtime, include ``-addressindex=1`` as a parameter.
-
-::
-
-  ``./komodod -addressindex=1``
-
-To set the ``addressindex`` feature as a default parameter, include the parameter in the coin's ``.conf`` configuration file.
-
-::
-
-  ``addressindex=1``
-
--txindex
---------
-``txindex`` is a parameter that instructs a KMD-based coin daemon to track every transaction made on the relevant blockchain.
-
-``txindex`` is enabled by default on all KMD-based coin daemons, and is utilized in dPoW, JUMBLR, and the CryptoConditions smart-contract protocol. Disabling the feature will cause a normal KMD-based coin daemon to malfunction.
-
--timestampindex
----------------
-``timestampindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to maintain a timestamp index for all blockhashes. It is initiated at run time and it is used to query blocks by a range of timestamps.
-
-The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions above===.
-
-The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
-
-Usage:
-
-To initiate the ``timestampindex`` command at runtime, include ``-timestampindex=1`` as a parameter.
-
-::
-
-  ``./komodod -timestampindex=1``
-
-To set the ``timestampindex`` feature as a default parameter, include the parameter in the ``komodo.conf`` configuration file.
-
-::
-
-  ``timestampindex=1``
-
--spentindex
------------
-``spentindex`` is a coin daemon parameter that instructs a KMD-based coin daemon to maintain a full index of all spent transactions (txids). The parameter is called at runtime and it is used to search across the entire chain history.
-
-The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions above===.
-
-The ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
-
-``spentindex`` is enabled by default on any asset chain that utilizes the ``cc`` smart contract protocol.
-
-Usage:
-
-To initiate the ``spentindex`` command at runtime, include ``-spentindex=1`` as a parameter.
-
-::
-  ``./komodod -spentindex=1``
-
-To set the ``spentindex`` feature as a default parameter, include the parameter in the ``komodo.conf`` configuration file.
-
-::
-  ``spentindex=1``
-
 AddressIndex
 ============
-The AddressIndex API commands are used to query various aspects of the blockchain's history. Most require the ===link=== ``addressindex`` feature to be enabled, as these API commands scan the entire blockchain history.
 
 getaddressbalance
 -----------------
@@ -8853,22 +8752,20 @@ Examples:
 z_sendmany "fromaddress" [{"address":...,"amount":...},...] ( minconf ) ( fee )
 --------------------------------------------------------------------------------
 
-The ``z_sendmany`` method sends one or more transactions at once, and allows for sending transactions of types `t --> z`, `z --> z`, `z --> t`. The ``amount`` values are double-precision floating point numbers.
+The ``z_sendmany`` method sends one or more transactions at once, and allows for sending transactions of types `t --> z`, `z --> z`, `z --> t`. It is the principle method for dealing with shielded `z` transactions in the Komodo ecosystem.
 
-Change from a t_address flows to a new taddr address, while change from zaddr returns to itself.
-When sending coinbase UTXOs to a zaddr, change is not allowed. The entire value of the UTXO(s) must be consumed.
-Currently, the maximum number of zaddr outputs is 54 due to transaction size limits.
+The ``amount`` values are double-precision floating point numbers. Change from a t_address flows to a new t_address address, while change from z_address returns to itself. When sending coinbase UTXOs to a z_address, change is not allowed. The entire value of the UTXO(s) must be consumed. Currently, the maximum number of z_address outputs is 54 due to transaction size limits.
 
 Arguments:
 
 ::
 
-	"fromaddress"         (string, required) The taddr or zaddr to send the funds from.
-	"amounts"             (array, required) An array of json objects representing the amounts to send.
+	"fromaddress"         (string, required) the sending t_address or z_address
+	"amounts"
 	    [{
-	      "address":address  (string, required) The address is a taddr or zaddr
-	      "amount":amount    (numeric, required) The numeric amount in KMD is the value
-	      "memo":memo        (string, optional) If the address is a zaddr, raw data represented in hexadecimal string format
+	      "address"  (string, required) the receiving address; can be a t_address or z_address
+	      "amount"    (numeric, required) the numeric amount
+	      "memo"        (string, optional) if the address is a z_addr, this property accepts raw data represented in hexadecimal string format
 	    }, ...]
 	minconf               (numeric, optional, default=1) Only use funds confirmed at least this many times.
 	fee                   (numeric, optional, default=0.0001) The fee amount to attach to this transaction.
@@ -8934,10 +8831,10 @@ Arguments:
 
 ::
 
-	"fromaddress"         (string, required)     the address is a t_addr or "*" for all t_addrs belonging to the wallet
-	"toaddress"           (string, required)     the address is a z_addr
-	fee                   (numeric, optional, default=0.0001) the fee amount to attach to this transaction
-	limit                 (numeric, optional, default=50) limit on the maximum number of utxos to shield; Set to ``0`` to use node option ``-mempooltxinputlimit``
+	"fromaddress"         (string, required)                     the address is a t_addr or "*" for all t_addrs belonging to the wallet
+	"toaddress"           (string, required)                     the address is a z_addr
+	fee                   (numeric, optional, default=0.0001)    the fee amount to attach to this transaction
+	limit                 (numeric, optional, default=50)        limit on the maximum number of utxos to shield; Set to ``0`` to use node option ``-mempooltxinputlimit``
 
 Response:
 
@@ -8947,22 +8844,68 @@ Response:
 	  "remainingUTXOs"      (numeric)    number of coinbase utxos still available for shielding
 	  "remainingValue"      (numeric)    value of coinbase utxos still available for shielding
 	  "shieldingUTXOs"      (numeric)    number of coinbase utxos being shielded
-	  "shieldingValue"       (numeric) Value of coinbase utxos being shielded.
-	  "opid"         (string) An operationid to pass to z_getoperationstatus to get the result of the operation.
+	  "shieldingValue"      (numeric)    value of coinbase utxos being shielded
+	  "opid"                (string)     an operationid to pass to z_getoperationstatus to get the result of the operation
 	}
 
 Examples:
 
 ::
 
-	> komodo-cli z_shieldcoinbase "t1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd" "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"
-	> curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_shieldcoinbase", "params": ["t1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd", "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  command:
+
+	komodo-cli z_shieldcoinbase "RXN2rxidK4cwzRL44UTnWvQjjvLdoMmCpU" "ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP"
+
+  response:
+
+  {
+    "remainingUTXOs": 0,
+    "remainingValue": 0.00000000,
+    "shieldingUTXOs": 2,
+    "shieldingValue": 0.00030000,
+    "opid": "opid-c0a7875c-aaa0-4bdc-8f17-b34ab99e8bab"
+  }
+
+::
+
+  command:
+
+  komodo-cli z_shieldcoinbase "REyaj53EB2nwUnsmVyn8JHCcquKf1zYkEP" "ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP" 0.0001 50
+
+  response:
+
+  {
+    "remainingUTXOs": 0,
+    "remainingValue": 0.00000000,
+    "shieldingUTXOs": 14,
+    "shieldingValue": 0.00160000,
+    "opid": "opid-08ce931d-876c-45d5-9aea-15cf4c695e72"
+  }
+
+::
+
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_shieldcoinbase", "params": ["RWRSfEYcfLv3yy9mhAuKHQTMCs9fArpPiH", "ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": {
+      "remainingUTXOs": 0,
+      "remainingValue": 0,
+      "shieldingUTXOs": 1,
+      "shieldingValue": 0.00025,
+      "opid": "opid-53018a85-cf68-4e7d-a065-0defea6bf061"
+    },
+    "error": null,
+    "id": "curltest"
+  }
 
 zcbenchmark benchmarktype samplecount
 -------------------------------------
 
-Runs a benchmark of the selected type samplecount times,
-returning the running times of each sample.
+The ``zcbenchmark`` method runs a ``benchmarktype`` measurement, ``samplecount`` times, and returns the running times of each sample.
 
 Output:
 
@@ -8970,46 +8913,48 @@ Output:
 
 	[
 	  {
-	    "runningtime": runningtime
-	  },
-	  {
-	    "runningtime": runningtime
+	    "runningtime"
 	  }
-	  ...
+    , ...
 	]
 
 zcrawjoinsplit rawtx inputs outputs vpub_old vpub_new
 -----------------------------------------------------
 
-  inputs: a JSON object mapping {note: zcsecretkey, ...}
-  outputs: a JSON object mapping {zcaddr: value, ...}
+**DEPRECATED** The ``zcrawjoinsplit``method splices a `joinsplit` into `rawtx`. Inputs are unilaterally confidential. Outputs are confidential between sender/receiver. The `vpub_old` and `vpub_new` values are globally public and move transparent value into or out of the confidential value store, respectively.
 
-**DEPRECATED**. Splices a joinsplit into rawtx. Inputs are unilaterally confidential.
-Outputs are confidential between sender/receiver. The vpub_old and
-vpub_new values are globally public and move transparent value into
-or out of the confidential value store, respectively.
+Note: The caller is responsible for delivering the output enc1 and enc2 to the appropriate recipients, as well as signing rawtxout and ensuring it is mined. (A future RPC call will deliver the confidential payments in-band on the blockchain.)
 
-Note: The caller is responsible for delivering the output enc1 and
-enc2 to the appropriate recipients, as well as signing rawtxout and
-ensuring it is mined. (A future RPC call will deliver the confidential
-payments in-band on the blockchain.)
-
-Output:
+Arguments:
 
 ::
 
-	{
-	  "encryptednote1": enc1,
-	  "encryptednote2": enc2,
-	  "rawtxn": rawtxout
-	}
+  (deprecated)
+
+Response:
+
+::
+
+  (deprecated)
+
+Examples:
+
+::
+
+  (deprecated)
 
 zcrawkeygen
 -----------
 
-**DEPRECATED**. Generate a zcaddr which can send and receive confidential values.
+**DEPRECATED** The ``zcrawkeygen`` method generates a z_address which can send and receive confidential values.
 
-Output:
+Arguments:
+
+::
+
+  (none)
+
+Response:
 
 ::
 
@@ -9019,26 +8964,49 @@ Output:
 	  "zcviewingkey": zcviewingkey,
 	}
 
+Examples:
+
+::
+
+  (deprecated)
+
 zcrawreceive zcsecretkey encryptednote
 --------------------------------------
 
-**DEPRECATED**. Decrypts encryptednote and checks if the coin commitments
-are in the blockchain as indicated by the "exists" result.
+**DEPRECATED** The ``zcrawreceive`` method decrypts ``encryptednote`` and checks if the coin commitments are in the blockchain, as indicated by the ``exists`` result.
+
+Arguments:
+
+::
+
+  (deprecated)
 
 Output:
 
 ::
 
+  (deprecated)
+
 	{
-	  "amount": value,
-	  "note": noteplaintext,
-	  "exists": exists
+	  "amount"             (numeric)       the amount
+	  "note"               (string)        the note
+	  "exists"
 	}
+
+Examples:
+
+::
+
+  (deprecated)
 
 zcsamplejoinsplit
 -----------------
 
-Perform a joinsplit and return the JSDescription.
+The ``zcsamplejoinsplit`` method performs a joinsplit and returns the JSDescription.
+
+
+
+
 
 ################################
 
@@ -9182,5 +9150,5 @@ Perform a joinsplit and return the JSDescription.
 #Donate all user rewards to a a specific address. This value must be set to a 33 byte pubkey.
 #donation=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392
 
-# Needs description
-#-exportdir
+# The exportdir parameter tells the coin daemon where to store your
+#exportdir=/home/myusername/mydirectory
