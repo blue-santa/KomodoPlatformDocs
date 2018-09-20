@@ -70,7 +70,7 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`getrawmempool ( verbose )`
 :ref:`getspentinfo`
 :ref:`gettxout "txid" n ( includemempool )`
-:ref:`gettxoutproof ["txid",...] ( blockhash )`
+:ref:`gettxoutproof ["txid", ...] ( blockhash )`
 :ref:`gettxoutsetinfo`
 :ref:`height_MoM height`
 :ref:`kvsearch key`
@@ -135,18 +135,18 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`Category: Rawtransactions <Rawtransactions>`
 --------------------------------------------------
 
-:ref:`createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,...}`
+:ref:`createrawtransaction [{"txid":"id","vout":n}, ...] {"address":amount, ...}`
 :ref:`decoderawtransaction "hexstring"`
 :ref:`decodescript "hex"`
 :ref:`fundrawtransaction "hexstring"`
 :ref:`getrawtransaction "txid" ( verbose )`
 :ref:`sendrawtransaction "hexstring" ( allowhighfees )`
-:ref:`signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )`
+:ref:`signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"}, ...] ["privatekey1", ...] sighashtype )`
 
 :ref:`Category: Util <Util>`
 ----------------------------
 
-:ref:`createmultisig nrequired ["key",...]`
+:ref:`createmultisig nrequired ["key", ...]`
 :ref:`estimatefee nblocks`
 :ref:`estimatepriority nblocks`
 :ref:`invalidateblock "hash"`
@@ -162,19 +162,19 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`Category: Wallet <Wallet>`
 --------------------------------
 
-:ref:`addmultisigaddress nrequired ["key",...] ( "account" )`
+:ref:`addmultisigaddress nrequired ["key", ...] ( "account" )`
 :ref:`backupwallet "destination"`
 :ref:`dumpprivkey "komodoaddress"`
 :ref:`dumpwallet "filename"`
 :ref:`encryptwallet "passphrase"`
-:ref:`getaccount "KMD_address"`
+:ref:`getaccount "address"`
 :ref:`getaccountaddress "account"`
 :ref:`getaddressesbyaccount "account"`
 :ref:`getbalance ( "account" minconf includeWatchonly )`
 :ref:`getnewaddress ( "account" )`
 :ref:`getrawchangeaddress`
 :ref:`getreceivedbyaccount "account" ( minconf )`
-:ref:`getreceivedbyaddress "KMD_address" ( minconf )`
+:ref:`getreceivedbyaddress "address" ( minconf )`
 :ref:`gettransaction "txid" ( includeWatchonly )`
 :ref:`getunconfirmedbalance`
 :ref:`getwalletinfo`
@@ -189,16 +189,16 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`listreceivedbyaddress ( minconf includeempty includeWatchonly)`
 :ref:`listsinceblock ( "blockhash" target-confirmations includeWatchonly)`
 :ref:`listtransactions ( "account" count from includeWatchonly)`
-:ref:`listunspent ( minconf maxconf  ["address",...] )`
-:ref:`lockunspent unlock [{"txid":"txid","vout":n},...]`
+:ref:`listunspent ( minconf maxconf  ["address", ...] )`
+:ref:`lockunspent unlock [{"txid":"txid","vout":n}, ...]`
 :ref:`move "fromaccount" "toaccount" amount ( minconf "comment" )`
 :ref:`resendwallettransactions`
-:ref:`sendfrom "fromaccount" "toKMDaddress" amount ( minconf "comment" "comment-to" )`
-:ref:`sendmany "fromaccount" {"address":amount,...} ( minconf "comment" ["address",...] )`
-:ref:`sendtoaddress "KMD_address" amount ( "comment" "comment-to" subtractfeefromamount )`
-:ref:`setaccount "KMD_address" "account"`
+:ref:`sendfrom "fromaccount" "toaddress" amount ( minconf "comment" "comment-to" )`
+:ref:`sendmany "fromaccount" {"address":amount, ...} ( minconf "comment" ["address", ...] )`
+:ref:`sendtoaddress "address" amount ( "comment" "comment-to" subtractfeefromamount )`
+:ref:`setaccount "address" "account"`
 :ref:`settxfee amount`
-:ref:`signmessage "KMD address" "message"`
+:ref:`signmessage "address" "message"`
 :ref:`z_exportkey "zaddr"`
 :ref:`z_exportviewingkey "zaddr"`
 :ref:`z_exportwallet "filename"`
@@ -214,7 +214,7 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`z_listoperationids`
 :ref:`z_listreceivedbyaddress "address" ( minconf )`
 :ref:`z_mergetoaddress ["fromaddress", ...] "toaddress" ( fee ) ( transparent_limit ) ( shielded_limit ) ( memo )`
-:ref:`z_sendmany "fromaddress" [{"address":...,"amount":...},...] ( minconf ) ( fee )`
+:ref:`z_sendmany "fromaddress" [{"address":...,"amount":...}, ...] ( minconf ) ( fee )`
 :ref:`z_shieldcoinbase "fromaddress" "tozaddress" ( fee ) ( limit )`
 :ref:`zcbenchmark benchmarktype samplecount`
 :ref:`zcrawjoinsplit rawtx inputs outputs vpub_old vpub_new`
@@ -229,25 +229,22 @@ AddressIndex
 
 getaddressbalance
 -----------------
+
 ::
-	getaddressbalance '{"address": ["address_string", "address_string", ...]}'
+
+	getaddressbalance '{"address": ["address", ... ]}'
 
 The ``getaddressbalance`` method returns the confirmed balance for an address(es). It requires ===link=== ``addressindex`` to be enabled.
-
-===Insert "Run" sandbox here===
-  Komodo API Demo
-  (example code)
-  Run/Reset Buttons
-===End sandbox===
 
 Arguments:
 
 ::
+
 	{
-	  "addresses"					        //
+	  "addresses"
 	    [
-	      "address_string"        // (string)    base58check encoded address
-	      , ...							      //             this method can accept multiple addresses
+	      "address"         (string)    the address
+	      , ...							                   accepts multiple entries
 	    ]
 	}
 
@@ -255,13 +252,13 @@ Response:
 ::
 
 	{
-	  "balance_string"  		       // (number)   the current confirmed balance of satoshis
-	  "received_string" 		       // (number)   the total confirmed number of satoshis received (including change)
+	  "balance_string"  		        (number)   the current confirmed balance of satoshis
+	  "received_string" 		        (number)   the total confirmed number of satoshis received (including change)
 	}
 
 Examples:
 
- * (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -280,7 +277,7 @@ Examples:
 
 	command:
 
-	curl --user myrpcuser:myuserpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myuserpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
 	response:
 
@@ -296,32 +293,28 @@ Examples:
 
 getaddressdeltas
 ----------------
-::
-  getaddressdeltas '{"addresses": ["address_string", "address_string", ...]}'
 
-  getaddressdeltas '{"addresses": ["address_string", "address_string", ...], "start": start_number, "end": end_number, "chainInfo": boolean}'
+::
+
+  getaddressdeltas '{"addresses": ["address", ...]}'
+
+  getaddressdeltas '{"addresses": ["address", ...], "start": start_number, "end": end_number, "chainInfo": boolean}'
 
 The ``getaddressdeltas`` method returns all confirmed balance changes of an address. The parameters allow the user to optionally limit the response to a given interval of blocks. The method requires ===link=== ``addressindex`` to be enabled.
-
-===Insert "Run" sandbox here===
-  Komodo API Demo
-  (example code)
-  Run/Reset Buttons
-===End sandbox===
 
 Arguments:
 
 ::
 
 	{
-	  "addresses" 					   //
+	  "addresses"
 	    [
-        "address" 				   // (string)   the base58check encoded address
-	      ,...							   //            this method accepts multiple addresses
+        "address" 				    (string)   the address
+	      , ...							               accepts multiple entries
 	    ]
-	  "start" 							   // (number)   the start block height
-	  "end" 								   // (number)   the end block height
-	  "chainInfo" 					   // (boolean)  include chain info in results (only applies if start and end specified)
+	  "start" 							    (number)   the start block height
+	  "end" 								    (number)   the end block height
+	  "chainInfo" 					    (boolean)  include chain info in results (only applies if start and end specified)
 	}
 
 Response:
@@ -330,17 +323,17 @@ Response:
 
 	[
 	  {
-	    "satoshis"             // (number)   the difference of satoshis
-	    "txid"                 // (string)   the related transaction id
-	    "index"                // (number)   the related input or output index
-	    "height"               // (number)   the block height
-	    "address"              // (string)   the base58check encoded address
+	    "satoshis"              (number)   the difference of satoshis
+	    "txid"                  (string)   the related transaction id
+	    "index"                 (number)   the related input or output index
+	    "height"                (number)   the block height
+	    "address"               (string)   the address
 	  }
 	]
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -365,7 +358,6 @@ Examples:
   command:
 
   komodo-cli getaddressdeltas '{"addresses":["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}'
-
 
   response:
 
@@ -393,7 +385,7 @@ Examples:
 ::
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -417,7 +409,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}]}' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}]}' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -446,20 +438,14 @@ Examples:
     "id": "curltest"
   }
 
-
 getaddressmempool
 -----------------
 
 ::
-  getaddressmempool '{"addresses": ["address_string", "address_string", ... ]}'
 
-The ``getaddressmempool`` method returns all mempool deltas for an address. It requires ===link===``addressindex`` to be enabled.
+  getaddressmempool '{"addresses": ["address", ... ]}'
 
-===Insert "Run" sandbox here===
-  Komodo API Demo
-  (example code)
-  Run/Reset Buttons
-===End sandbox===
+The ``getaddressmempool`` method returns all mempool deltas for an address(es). It requires ===link===``addressindex`` to be enabled.
 
 Arguments:
 
@@ -468,8 +454,8 @@ Arguments:
 	{
 	  "addresses"
 	    [
-	      "address"                // (string)     the base58check encoded address
-	      ,...                     //              the method accepts multiple addresses
+	      "address"               (string)     the address
+	      , ...                                 accepts multiple entries
 	    ]
 	}
 
@@ -479,19 +465,19 @@ Response:
 
 	[
 	  {
-	    "address"                  // (string)     the base58check encoded address
-	    "txid"                     // (string)     the related txid
-	    "index"                    // (number)     the related input or output index
-	    "satoshis"                 // (number)     the difference of satoshis
-	    "timestamp"                // (number)     the time the transaction entered the mempool (seconds)
-	    "prevtxid"                 // (string)     the previous txid (if spending)
-	    "prevout"                  // (string)     the previous transaction output index (if spending)
+	    "address"                 (string)     the address
+	    "txid"                    (string)     the related txid
+	    "index"                   (number)     the related input or output index
+	    "satoshis"                (number)     the difference of satoshis
+	    "timestamp"               (number)     the time the transaction entered the mempool (seconds)
+	    "prevtxid"                (string)     the previous txid (if spending)
+	    "prevout"                 (string)     the previous transaction output index (if spending)
 	  }
 	]
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -515,7 +501,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressmempool", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressmempool", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -540,15 +526,9 @@ getaddresstxids
 
 ::
 
-  getaddresstxids '{"addresses": ["address_string"]}'
+  getaddresstxids '{"addresses": ["address", ... ]}'
 
 The ``getaddresstxids`` method returns the txids for an address(es). It requires ===link=== ``addressindex`` to be enabled.
-
-===Insert "Run" sandbox here===
-  Komodo API Demo
-  (example code)
-  Run/Reset Buttons
-===End sandbox===
 
 Arguments:
 
@@ -556,11 +536,11 @@ Arguments:
 	{
 	  "addresses"
 	    [
-	      "address"                   // (string)   the base58check encoded address
-	      ,...                        //            method accepts multiple addresses
+	      "address"                  (string)   the address
+	      , ...                                  accepts multiple entries
 	    ],
-	  "start"                         // (number)   the start block height
-	  "end"                           // (number)   the end block height
+	  "start"                        (number)   the start block height
+	  "end"                          (number)   the end block height
 	}
 
 Response:
@@ -568,18 +548,19 @@ Response:
 ::
 
 	[
-    "transactionid"                // (string)   the transaction id
-	  ,...                           //            returns multiple transaction ids
+    "transactionid"               (string)   the transaction id
+	  , ...
 	]
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
   command:
-	# komodo-cli getaddresstxids '{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb","RQUAkqRiRMqxcNrB29B4duTK4qkqfV9HVJ"]}'
+
+	komodo-cli getaddresstxids '{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb","RQUAkqRiRMqxcNrB29B4duTK4qkqfV9HVJ"]}'
 
   response:
   [
@@ -593,7 +574,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddresstxids", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddresstxids", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -612,15 +593,9 @@ getaddressutxos
 
 ::
 
-  getaddressutxos '{"addresses": ["address_string"]}'
+  getaddressutxos '{"addresses": ["address", ... ]}'
 
 The ``getaddressutxos`` method returns all unspent outputs for an address. It requires ===link==``addressindex`` to be enabled.
-
-===Insert "Run" sandbox here===
-  Komodo API Demo
-  (example code)
-  Run/Reset Buttons
-===End sandbox===
 
 Arguments:
 
@@ -629,10 +604,10 @@ Arguments:
 	{
 	  "addresses"
 	    [
-	      "address"                // (string)   the base58check encoded address
-	      ,...                     //            the method accepts multiple addresses
+	      "address"               (string)   the address
+	      , ...                               accepts multiple entries
 	    ],
-	  "chainInfo"                  // (boolean)  include chain info with results
+	  "chainInfo"                 (boolean)  include chain info with results
 	}
 
 Response:
@@ -641,18 +616,18 @@ Response:
 
 	[
 	  {
-	    "address"                  // (string)   the address base58check encoded
-	    "txid"                     // (string)   the output txid
-	    "height"                   // (number)   the block height
-	    "outputIndex"              // (number)   the output index
-	    "script"                   // (string)   the script hex encoded
-	    "satoshis"                 // (number)   the number of satoshis of the output
+	    "address"                 (string)   the address
+	    "txid"                    (string)   the output txid
+	    "height"                  (number)   the block height
+	    "outputIndex"             (number)   the output index
+	    "script"                  (string)   the script hex encoded
+	    "satoshis"                (number)   the number of satoshis of the output
 	  }
 	]
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -701,7 +676,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -724,7 +699,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"], "chainInfo": true}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"], "chainInfo": true}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -758,15 +733,7 @@ getbestblockhash
 
   getbestblockhash
 
-Returns the hash of the best (tip) block in the longest block chain.
-
-
-===Insert "Run" sandbox here===
-  Komodo API Demo
-  (example code)
-  Run/Reset Buttons
-===End sandbox===
-
+The ``getbestblockhash`` method returns the hash of the best (tip) block in the longest block chain.
 
 Arguments:
 
@@ -778,11 +745,11 @@ Response:
 
 ::
 
-	"hex"                        // (string)     the block hash hex encoded
+	"hex"                       (string)     the block hash, hex encoded
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -798,7 +765,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -815,50 +782,50 @@ getblock
 
    getblock hash|height ( verbose )
 
-The ``getblock`` command returns the block's relevant state information.
+The ``getblock`` method returns the block's relevant state information.
 
-The verbose input is optional. The default value is true, and it will return a JSON object with information about the indicated block. If verbose is ``false``, the command returns a string that is serialized hex-encoded data for the indicated block.
+The verbose input is optional. The default value is true, and it will return a json object with information about the indicated block. If verbose is ``false``, the command returns a string that is serialized hex-encoded data for the indicated block.
 
 Arguments:
 
 ::
 
-	"hash|height"             // (string, required)                 the block hash or height
-	verbose                   // (boolean, optional, default=true)  true returns a json object, false returns hex-encoded data
+	"hash|height"            (string, required)                 the block hash or height
+	verbose                  (boolean, optional, default=true)  true returns a json object, false returns hex-encoded data
 
-Result (for verbose = ``true``):
+Response (for verbose = ``true``):
 
 ::
 
   {
-    "hash"                  // (string)           the block hash (same as provided hash)
-    "confirmations"         // (numeric)          the number of confirmations, or -1 if the block is not on the main chain
-    "size"                  // (numeric)          the block size
-    "height"                // (numeric)          the block height or index (same as provided height)
-    "version"               // (numeric)          the block version
-    "merkleroot"            // (string)           the merkle root
+    "hash"                 (string)           the block hash (same as provided hash)
+    "confirmations"        (numeric)          the number of confirmations, or -1 if the block is not on the main chain
+    "size"                 (numeric)          the block size
+    "height"               (numeric)          the block height or index (same as provided height)
+    "version"              (numeric)          the block version
+    "merkleroot"           (string)           the merkle root
     "tx"
-      [                     // (array of string)  the transaction ids
-        "transactionid"     // (string)           the transaction id
-        ,...
+      [                    (array of string)  the transaction ids
+        "transactionid"    (string)           the transaction id
+        , ...
       ]
-    "time"                  // (numeric)          the block time in seconds since epoch (Jan 1 1970 GMT)
-    "nonce"                 // (numeric)          the nonce
-    "bits"                  // (string)           the bits
-    "difficulty"            // (numeric)          the difficulty
-    "previousblockhash"     // (string)           the hash of the previous block
-    "nextblockhash"         // (string)           the hash of the next block
+    "time"                 (numeric)          the block time in seconds since epoch (Jan 1 1970 GMT)
+    "nonce"                (numeric)          the nonce
+    "bits"                 (string)           the bits
+    "difficulty"           (numeric)          the difficulty
+    "previousblockhash"    (string)           the hash of the previous block
+    "nextblockhash"        (string)           the hash of the next block
   }
 
-Result (for verbose=``false``):
+Response (for verbose=``false``):
 
 ::
 
-	"data"                     // (string)          a string that is serialized, hex-encoded data for the indicated block
+	"data"                    (string)          a string that is serialized, hex-encoded data for the indicated block
 
 Examples (using blockhash):
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -903,7 +870,7 @@ Examples (using blockhash):
 
   command:
 
-  komodo-cli -ac_name=SIDD getblock "0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084" false
+  komodo-cli getblock "0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084" false
 
   response:
 
@@ -913,7 +880,7 @@ Examples (using blockhash):
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -956,7 +923,7 @@ Examples (using blockhash):
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -969,7 +936,7 @@ Examples (using blockhash):
 
 Examples (using block height):
 
- * (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1025,7 +992,7 @@ Examples (using block height):
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1070,7 +1037,7 @@ Examples (using block height):
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1087,9 +1054,9 @@ getblockchaininfo
 
   getblockchaininfo
 
-The ``getblockchaininfo`` method returns a JSON object containing state information about blockchain processing.
+The ``getblockchaininfo`` method returns a json object containing state information about blockchain processing.
 
- * Note that when the chain tip is at the last block before a network upgrade activation, the consensus.chaintipc value is not equal to the consensus.nextblock value. ``consensus.chaintip != consensus.nextblock``.
+ * Note that when the chain tip is at the last block before a network upgrade activation, the ``consensus.chaintipc`` value is not equal to the ``consensus.nextblock`` value.
 
 Arguments:
 
@@ -1102,46 +1069,46 @@ Response:
 ::
 
   {
-    "chain"                       // (string)         current network name as defined in BIP70 (main, test, regtest)
-    "blocks"                      // (numeric)        the current number of blocks processed in the server
-    "headers"                     // (numeric)        the current number of headers we have validated
-    "bestblockhash"               // (string)         the hash of the currently best block
-    "difficulty"                  // (numeric)        the current difficulty
-    "verificationprogress"        // (numeric)        estimate of verification progress [0..1]
-    "chainwork"                   // (string)         total amount of work in active chain, in hexadecimal
-    "commitments"                 // (numeric)        the current number of note commitments in the commitment tree
-    "softforks": [                // (array)          status of softforks in progress
+    "chain"                      (string)         current network name as defined in BIP70 (main, test, regtest)
+    "blocks"                     (numeric)        the current number of blocks processed in the server
+    "headers"                    (numeric)        the current number of headers we have validated
+    "bestblockhash"              (string)         the hash of the currently best block
+    "difficulty"                 (numeric)        the current difficulty
+    "verificationprogress"       (numeric)        estimate of verification progress [0..1]
+    "chainwork"                  (string)         total amount of work in active chain, in hexadecimal
+    "commitments"                (numeric)        the current number of note commitments in the commitment tree
+    "softforks": [               (array)          status of softforks in progress
       {
-        "id"                      // (string)         name of softfork
-        "version"                 // (numeric)        block version
-        "enforce": {              // (object)         progress toward enforcing the softfork rules for new-version blocks
-          "status"                // (boolean)        true if threshold reached
-          "found"                 // (numeric)        number of blocks with the new version found
-          "required"              // (numeric)        number of blocks required to trigger
-          "window"                // (numeric)        maximum size of examined window of recent blocks
+        "id"                     (string)         name of softfork
+        "version"                (numeric)        block version
+        "enforce": {             (object)         progress toward enforcing the softfork rules for new-version blocks
+          "status"               (boolean)        true if threshold reached
+          "found"                (numeric)        number of blocks with the new version found
+          "required"             (numeric)        number of blocks required to trigger
+          "window"               (numeric)        maximum size of examined window of recent blocks
         },
         "reject": {
-          ...                     // (object)         progress toward rejecting pre-softfork blocks (same fields as "enforce")
+          ...                    (object)         progress toward rejecting pre-softfork blocks (same fields as "enforce")
         }
-      }, ...                      //                  can return multiple softfork objects
+      }, ...							                   accepts multiple entries
     ],
-    "upgrades": {                 // (object)         status of network upgrades
-      "xxxxxxxxx_string": {       // (string)         branch ID of the upgrade
-          "name"                  // (string)         name of upgrade
-          "activationheight"      // (numeric)        block height of activation
-          "status"                // (string)         status of upgrade
-          "info"                  // (string)         additional information about upgrade
-      }, ...                      //                  can return multiple branch_ID_strings
+    "upgrades": {                (object)         status of network upgrades
+      "xxxxxxxxx_string": {      (string)         branch ID of the upgrade
+          "name"                 (string)         name of upgrade
+          "activationheight"     (numeric)        block height of activation
+          "status"               (string)         status of upgrade
+          "info"                 (string)         additional information about upgrade
+      }, ...							                   accepts multiple entries
     },
-    "consensus": {                // (object)         branch IDs of the current and upcoming consensus rules
-     "chaintip"                   // (string)         branch ID used to validate the current chain tip
-     "nextblock"                  // (string)         branch ID that the next block will be validated under
+    "consensus": {               (object)         branch IDs of the current and upcoming consensus rules
+     "chaintip"                  (string)         branch ID used to validate the current chain tip
+     "nextblock"                 (string)         branch ID that the next block will be validated under
     }
   }
 
 Examples:
 
- * (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1199,7 +1166,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1269,11 +1236,11 @@ Response:
 
 ::
 
-	(numeric) The current block count
+	data                     (numeric) the current block count
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1289,7 +1256,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1312,17 +1279,17 @@ Arguments:
 
 ::
 
-	index                         // (numeric, required)     the block index
+	index                        (numeric, required)     the block index
 
 Response:
 
 ::
 
-	"hash"                        // (string)                the block hash
+	"hash"                       (string)                the block hash
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1338,7 +1305,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1361,12 +1328,12 @@ Arguments:
 
 ::
 
-	high                       // (numeric, required)    the newer block timestamp
-	low                        // (numeric, required)    the older block timestamp
-	options                    // (string, required)     a json object, formatted as a string
+	high                      (numeric, required)    the newer block timestamp
+	low                       (numeric, required)    the older block timestamp
+	options                   (string, required)
     {
-      "noOrphans"            // (boolean)              will only include blocks on the main chain
-      "logicalTimes"         // (boolean)              will include logical timestamps with hashes
+      "noOrphans"           (boolean)              will only include blocks on the main chain
+      "logicalTimes"        (boolean)              will include logical timestamps with hashes
     }
 
 Response:
@@ -1374,17 +1341,17 @@ Response:
 ::
 
 	[
-		  "hash"                 // (string)               the block hash
+		  "hash"                (string)               the block hash
 	]
 	[
 	  {
-	    "blockhash"            // (string)               the block hash
-	    "logicalts"            // (numeric)              the logical timestamp
+	    "blockhash"           (string)               the block hash
+	    "logicalts"           (numeric)              the logical timestamp
 	  }
 	]
 
 Examples:
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1399,7 +1366,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1419,42 +1386,42 @@ getblockheader
 
 The ``getblockheader`` method returns information about the indicated block.
 
-The verbose input is optional. If verbose is false, the method returns a string that is serialized, hex-encoded data for the indicated blockheader. If verbose is true, the method returns a JSON object with information about the indicated blockheader.
+The verbose input is optional. If verbose is false, the method returns a string that is serialized, hex-encoded data for the indicated blockheader. If verbose is true, the method returns a json object with information about the indicated blockheader.
 
 Arguments:
 
 ::
 
-	"hash"                  // (string, required)                  the block hash
-	verbose                 // (boolean, optional, default=true)   true returns a json object, false returns hex-encoded data
+	"hash"                 (string, required)                  the block hash
+	verbose                (boolean, optional, default=true)   true returns a json object, false returns hex-encoded data
 
 Result (for verbose = true):
 
 ::
 
 	{
-	  "hash"                 // (string)       the block hash (same as provided)
-	  "confirmations"        // (numeric)      the number of confirmations, or -1 if the block is not on the main chain
-	  "height"               // (numeric)      the block height or index
-	  "version"              // (numeric)      the block version
-	  "merkleroot"           // (string)       the merkle root
-	  "time"                 // (numeric)      the block time in seconds since epoch (Jan 1 1970 GMT)
-	  "nonce"                // (numeric)      the nonce
-	  "bits"                 // (string)       the bits
-	  "difficulty"           // (numeric)      the difficulty
-	  "previousblockhash"    // (string)       the hash of the previous block
-	  "nextblockhash"        // (string)       the hash of the next block
+	  "hash"                (string)       the block hash (same as provided)
+	  "confirmations"       (numeric)      the number of confirmations, or -1 if the block is not on the main chain
+	  "height"              (numeric)      the block height or index
+	  "version"             (numeric)      the block version
+	  "merkleroot"          (string)       the merkle root
+	  "time"                (numeric)      the block time in seconds since epoch (Jan 1 1970 GMT)
+	  "nonce"               (numeric)      the nonce
+	  "bits"                (string)       the bits
+	  "difficulty"          (numeric)      the difficulty
+	  "previousblockhash"   (string)       the hash of the previous block
+	  "nextblockhash"       (string)       the hash of the next block
 	}
 
 Result (for verbose=false):
 
 ::
 
-	"data"                   // (string)       a string that is serialized hex-encoded data for the indicated block
+	"data"                  (string)       a string that is serialized hex-encoded data for the indicated block
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1484,7 +1451,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1510,6 +1477,7 @@ Examples:
 
 getchaintips
 ------------
+
 ::
 
   getchaintips
@@ -1528,16 +1496,16 @@ Response:
 
 	[
 	  {
-	    "height"               // (numeric)    height of the chain tip
-	    "hash"                 // (string)     block hash of the tip
-	    "branchlen"            // (numeric)    zero for main chain
-	    "status"               // (string)     "active" for the main chain
+	    "height"              (numeric)    height of the chain tip
+	    "hash"                (string)     block hash of the tip
+	    "branchlen"           (numeric)    zero for main chain
+	    "status"              (string)     "active" for the main chain
 	  },
 	  {
-	    "height"               // (numeric)    height of the branch tip
-	    "hash"                 // (string)     blockhash of the branch tip
-	    "branchlen"            // (numeric)    length of branch connecting the tip to the main chain
-	    "status"               // (string)     status of the chain
+	    "height"              (numeric)    height of the branch tip
+	    "hash"                (string)     blockhash of the branch tip
+	    "branchlen"           (numeric)    length of branch connecting the tip to the main chain
+	    "status"              (string)     status of the chain
 	  }
 	]
 
@@ -1553,7 +1521,7 @@ Possible values for status:
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1576,7 +1544,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1612,11 +1580,11 @@ Response:
 
 ::
 
-	number             // (numeric)  the proof-of-work difficulty as a multiple of the minimum difficulty
+	number            (numeric)  the proof-of-work difficulty as a multiple of the minimum difficulty
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1633,7 +1601,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1663,14 +1631,14 @@ Response:
 ::
 
 	{
-	  "size"                 // (numeric)    current tx count
-	  "bytes"                // (numeric)    sum of all tx sizes
-	  "usage"                // (numeric)    total memory usage for the mempool
+	  "size"                (numeric)    current tx count
+	  "bytes"               (numeric)    sum of all tx sizes
+	  "usage"               (numeric)    total memory usage for the mempool
 	}
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1690,7 +1658,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1711,47 +1679,47 @@ getrawmempool
 
   getrawmempool ( verbose )
 
-The ``getrawmempool`` method returns all transaction ids in the memory pool as a JSON array of transaction ids.
+The ``getrawmempool`` method returns all transaction ids in the memory pool as a json array of transaction ids.
 
-The verbose input is optional and is false by default. When it is true, the method instead returns a JSON object with various related data.
+The verbose input is optional and is false by default. When it is true, the method instead returns a json object with various related data.
 
 Arguments:
 
 ::
 
-	verbose                // (boolean, optional, default=false)     true for a JSON object, false for a JSON array of transaction ids
+	verbose               (boolean, optional, default=false)     true for a json object, false for a json array of transaction ids
 
-Result (verbose = false):
+Response (verbose = false):
 
 ::
 
 	[
-	  "transactionid"                 // (string)    the transaction id
-	  ,...
+	  "transactionid"                (string)    the transaction id
+	  , ...
 	]
 
-Result (verbose = true):
+Response (verbose = true):
 
 ::
 
 	{
 	  "transactionid" : {
-	    "size"                        // (numeric)   transaction size in bytes
-	    "fee"                         // (numeric)   transaction fee in ZEC
-    	"time"                        // (numeric)   local time transaction entered pool in seconds since 1 Jan 1970 GMT
-    	"height"                      // (numeric)   block height when transaction entered pool
-    	"startingpriority"            // (numeric)   priority when transaction entered pool
-    	"currentpriority"             // (numeric)   transaction priority now
-    	"depends": [                  // (array)     unconfirmed transactions used as inputs for this transaction
-        "transactionid"             // (string)    parent transaction id
-	       ...
+	    "size"                       (numeric)   transaction size in bytes
+	    "fee"                        (numeric)   transaction fee
+    	"time"                       (numeric)   local time transaction entered pool in seconds since 1 Jan 1970 GMT
+    	"height"                     (numeric)   block height when transaction entered pool
+    	"startingpriority"           (numeric)   priority when transaction entered pool
+    	"currentpriority"            (numeric)   transaction priority now
+    	"depends": [                 (array)     unconfirmed transactions used as inputs for this transaction
+        "transactionid"            (string)    parent transaction id
+	       , ...
       ]
 	  }, ...
 	}
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1778,7 +1746,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1803,7 +1771,7 @@ getspentinfo
 
 ::
 
-  getspentinfo '{"txid": txid_string, "index", block_height_number}'
+  getspentinfo '{"txid": "txid_string", "index", block_height_number}'
 
 The ``getspentinfo`` method returns the transaction id and index where an output is spent.
 
@@ -1812,8 +1780,8 @@ Arguments:
 ::
 
 	{
-	  "txid"             // (string)     the hex string of the txid
-	  "index"            // (number)     the start block height
+	  "txid"            (string)     the hex string of the txid
+	  "index"           (number)     the start block height
 	}
 
 Response:
@@ -1821,14 +1789,14 @@ Response:
 ::
 
 	{
-	  "txid"             // (string)     the transaction id
-	  "index"            // (number)     the spending input index
-	  ,...
+	  "txid"            (string)     the transaction id
+	  "index"           (number)     the spending input index
+	  , ...
 	}
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1838,7 +1806,7 @@ Examples:
 
   response:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 gettxout
 --------
@@ -1853,35 +1821,35 @@ Arguments:
 
 ::
 
-	"txid"                       // (string, required)     the transaction id
-	vout                         // (numeric, required)    vout value
-	includemempool               // (boolean, optional)    whether to include the mempool
+	"txid"                      (string, required)     the transaction id
+	vout                        (numeric, required)    vout value
+	includemempool              (boolean, optional)    whether to include the mempool
 
 Response:
 
 ::
 
 	{
-	  "bestblock"                // (string)               the block hash
-	  "confirmations"            // (numeric)              the number of confirmations
-	  "value"                    // (numeric)              the transaction value in ZEC
+	  "bestblock"               (string)               the block hash
+	  "confirmations"           (numeric)              the number of confirmations
+	  "value"                   (numeric)              the transaction value
   	"scriptPubKey": {          //
-    	 "asm"                   // (string)
-    	 "hex"                   // (string)
-    	 "reqSigs"               // (numeric)              number of required signatures
-    	 "type"                  // (string)               the type, e.g. pubkeyhash
-    	 "addresses" : [         // (array of strings)     array of addresses
-    	    "zcashaddress"       // (string)               address on blockchain
-    	    ,...
+    	 "asm"                  (string)
+    	 "hex"                  (string)
+    	 "reqSigs"              (numeric)              number of required signatures
+    	 "type"                 (string)               the type, e.g. pubkeyhash
+    	 "addresses" : [        (array of strings)     array of addresses
+    	    "address"      (string)               address on blockchain
+    	    , ...
     	 ]
   	},
-  	"version"                  // (numeric)              the version
-  	"coinbase"                 // (boolean)              coinbase or not
+  	"version"                 (numeric)              the version
+  	"coinbase"                (boolean)              coinbase or not
 	}
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -1912,7 +1880,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -1942,7 +1910,7 @@ gettxoutproof
 
 ::
 
-  gettxoutproof '["transaction_id_string",...]' ( "blockhash_string" )
+  gettxoutproof '["transaction_id", ...]' ( "blockhash_string" )
 
 The ``gettxoutproof`` method returns a hex-encoded proof showing that the indicated transaction was included in a block.
 
@@ -1953,26 +1921,26 @@ Arguments:
 ::
 
   [
-    "txid_string"                  // (string)               a transaction hash
-    ,...
+    "txid"                 (string)               a transaction hash
+    , ...                     accepts multiple entries
   ]
-	"blockhash_string"               // (string, optional)     if specified, looks for txid in the block with this hash
+	"blockhash"              (string, optional)     if specified, looks for the relevant txid in this block
 
 Response:
 
 ::
 
-	"data"                           // (string)               a string that is a serialized, hex-encoded data for the proof
+	"data"                          (string)               a string that is a serialized, hex-encoded data for the proof
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
   command:
 
-  komodo-cli -ac_name=SIDD gettxoutproof '["c71f4a2ebf87bdd588e3aa168917933ee4be1661245ebf52d5708a8339cf9d7a"]' "0a28e2fb630b282138bf23bb79f597b11acff6f57c8d9c1c10fa54770035c813"
+  komodo-cli gettxoutproof '["c71f4a2ebf87bdd588e3aa168917933ee4be1661245ebf52d5708a8339cf9d7a"]' "0a28e2fb630b282138bf23bb79f597b11acff6f57c8d9c1c10fa54770035c813"
 
   response:
 
@@ -2000,18 +1968,18 @@ Response:
 ::
 
 	{
-	  "height"                 // (numeric)        the current block height (index)
-	  "bestblock"              // (string)         the best block hash hex
-	  "transactions"           // (numeric)        the number of transactions
-	  "txouts"                 // (numeric)        the number of output transactions
- 	  "bytes_serialized"       // (numeric)        the serialized size
-	  "hash_serialized"        // (string)         the serialized hash
-	  "total_amount"           // (numeric)        the total amount
+	  "height"                (numeric)        the current block height (index)
+	  "bestblock"             (string)         the best block hash hex
+	  "transactions"          (numeric)        the number of transactions
+	  "txouts"                (numeric)        the number of output transactions
+ 	  "bytes_serialized"      (numeric)        the serialized size
+	  "hash_serialized"       (string)         the serialized hash
+	  "total_amount"          (numeric)        the total amount
 	}
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -2035,7 +2003,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2066,20 +2034,20 @@ The ``kvsearch`` method searches for a key stored via the ===link=== ``kvupdate`
 
 Arguments:
 
-  key                // (string, required)    search the chain for this key
+  key               (string, required)    search the chain for this key
 
 Response:
 {
-  "coin"             // (string)              chain the key is stored on
-  "currentheight"    // (numeric)             current height of the chain
-  "key"              // (string)              key
-  "keylen"           // (string)              length of the key
-  "owner"            // (string)              hex string representing the owner of the key
-  "height"           // (numeric)             height the key was stored at
-  "expiration"       // (numeric)             height the key will expire
-  "flags": x         // (numeric)             1 if the key was created with a password; 0 otherwise
-  "value"            // (string)              stored value
-  "valuesize"        // (string)              amount of characters stored
+  "coin"            (string)              chain the key is stored on
+  "currentheight"   (numeric)             current height of the chain
+  "key"             (string)              key
+  "keylen"          (string)              length of the key
+  "owner"           (string)              hex string representing the owner of the key
+  "height"          (numeric)             height the key was stored at
+  "expiration"      (numeric)             height the key will expire
+  "flags": x        (numeric)             1 if the key was created with a password; 0 otherwise
+  "value"           (string)              stored value
+  "valuesize"       (string)              amount of characters stored
 }
 
 Examples:
@@ -2140,33 +2108,31 @@ kvupdate
 
 The ``kvupdate`` method stores a key/value pair via OP_RETURN.
 
-This feature is only available for asset chains.
-
-The maximum value memory size is 8kB.
+This feature is available only for asset chains. The maximum value memory size is 8kB.
 
 Arguments:
 
 ::
 
-  "key"                     // (string, required)     key (should be unique)
-  "value"                   // (string, required)     value
-  "days"                    // (numeric, required)    amount of days before the key expires (1440 blocks/day); minimum 1 day
-  "passphrase"              // (string, optional)     passphrase required to update this key
+  "key"                    (string, required)     key (should be unique)
+  "value"                  (string, required)     value
+  "days"                   (numeric, required)    amount of days before the key expires (1440 blocks/day); minimum 1 day
+  "passphrase"             (string, optional)     passphrase required to update this key
 
 Response:
 
 ::
   {
-    "coin"                  // (string)               chain the key is stored on
-    "height"                // (numeric)              height the key was stored at
-    "expiration"            // (numeric)              height the key will expire
-    "flags"                 // (string)               amount of days the key will be stored
-    "key"                   // (numeric)              stored key
-    "keylen"                // (numeric)              length of the key
-    "value"                 // (numeric)              stored value
-    "valuesize"             // (string)               length of the stored value
-    "fee"                   // (string)               transaction fee paid to store the key
-    "txid"                  // (string)               transaction id
+    "coin"                 (string)               chain the key is stored on
+    "height"               (numeric)              height the key was stored at
+    "expiration"           (numeric)              height the key will expire
+    "flags"                (string)               amount of days the key will be stored
+    "key"                  (numeric)              stored key
+    "keylen"               (numeric)              length of the key
+    "value"                (numeric)              stored value
+    "valuesize"            (string)               length of the stored value
+    "fee"                  (string)               transaction fee paid to store the key
+    "txid"                 (string)               transaction id
   }
 
 Examples:
@@ -2232,7 +2198,7 @@ Arguments:
 
 ::
 
-  heights                   // (number)   the block height for the query
+  heights                  (number)   the block height for the query
 
 Response:
 
@@ -2241,10 +2207,10 @@ Response:
   {
     "mined": [
       {
-        "notaryid"          // (number)   the id of the specific notary node
-        "kmdaddress"        // (string)   the KMD address of the notary node
-        "pubkey"            // (string)   the public signing key of the notary node
-        "blocks"            // (number)
+        "notaryid"         (number)   the id of the specific notary node
+        "kmdaddress"       (string)   the KMD address of the notary node
+        "pubkey"           (string)   the public signing key of the notary node
+        "blocks"           (number)
       }
     ]
   }
@@ -2268,7 +2234,7 @@ Examples:
         "pubkey": "03b7621b44118017a16043f19b30cc8a4cfe068ac4e42417bae16ba460c80f3828",
         "blocks": 22
       }
-        ...     // (63 responses omitted from the documentation for brevity)
+        ...    (63 responses omitted for brevity)
       ,
       {
         "pubkey": "external miners",
@@ -2295,7 +2261,7 @@ Examples:
           "pubkey": "03b7621b44118017a16043f19b30cc8a4cfe068ac4e42417bae16ba460c80f3828",
           "blocks": 22
         }
-          ...     // (63 responses omitted from the documentation for brevity)
+          ...    (63 responses omitted for brevity)
         ,
         {
           "pubkey": "external miners",
@@ -2327,24 +2293,24 @@ Arguments:
 
 ::
 
-                          // (at least one of the inputs must be provided)
-  height                  // (number)     the block height desired for the query
-  timestamp               // (number)     the timestamp of the block desired for the query
+                                      (at least one of the inputs must be provided)
+  height                 (number)     the block height desired for the query
+  timestamp              (number)     the timestamp of the block desired for the query
 
 Response:
 
   {
     "notaries": [
       {
-        "pubkey"          // (string)       the public signing key of the indicated notary node, used on the KMD network to create notary-node authorized transactions
-        "BTCaddress"      // (string)       the public BTC address the notary node uses on the BTC blockchain to create notarizations
-        "KMDaddress"      // (string)       the public KMD address the notary node uses on the KMD blockchain to create notarizations
-      },
-        ...               //                property will return typically 64 objects
+        "pubkey"         (string)       the public signing key of the indicated notary node, used on the KMD network to create notary-node authorized transactions
+        "BTCaddress"     (string)       the public BTC address the notary node uses on the BTC blockchain to create notarizations
+        "KMDaddress"     (string)       the public KMD address the notary node uses on the KMD blockchain to create notarizations
+      }
+      ,  ...                            property will return typically 64 objects
     ],
-    "numnotaries"         // (number)       the number of notary nodes; typically it is 64, but may vary on rare circumstances, such as during election seasons
-    "height"              // (number)       the block height number at which the notary-node information applies
-    "timestamp"           // (number)       the timestamp at which the notary-node information applies
+    "numnotaries"        (number)       the number of notary nodes; typically it is 64, but may vary on rare circumstances, such as during election seasons
+    "height"             (number)       the block height number at which the notary-node information applies
+    "timestamp"          (number)       the timestamp at which the notary-node information applies
   }
 
 Examples:
@@ -2366,7 +2332,7 @@ Examples:
         "BTCaddress": "1E2ac2gxeFR2ir1H3vqETTperWkiXkwy99",
         "KMDaddress": "RNJmgYaFF5DbnrNUX6pMYz9rcnDKC2tuAc"
       },
-        ...   // (63 responses omitted from the documentation for brevity)
+        ...  (63 responses omitted from the documentation for brevity)
     ],
     "numnotaries": 64,
     "height": 1536365515,
@@ -2388,7 +2354,7 @@ Examples:
         "BTCaddress": "1E2ac2gxeFR2ir1H3vqETTperWkiXkwy99",
         "KMDaddress": "RNJmgYaFF5DbnrNUX6pMYz9rcnDKC2tuAc"
       },
-        ...       // (63 responses omitted from documentation for brevity)
+        ...      (63 responses omitted from documentation for brevity)
     ],
     "numnotaries": 64,
     "height": 1000000,
@@ -2407,22 +2373,24 @@ verifychain
 
 The ``verifychain`` method verifies the coin daemon's blockchain database.
 
+ * Note: depending on the state of your blockchain database and daemon, this call can take a prolonged period of time to complete.
+
 Arguments:
 
 ::
 
-	checklevel           // (numeric, optional, 0-4, default=3)        indicates the thoroughness of block verification
-	numblocks            // (numeric, optional, default=288, 0=all)    indicates the number of blocks to verify
+	checklevel          (numeric, optional, 0-4, default=3)        indicates the thoroughness of block verification
+	numblocks           (numeric, optional, default=288, 0=all)    indicates the number of blocks to verify
 
 Response:
 
 ::
 
-	true|false           // (boolean)                                  verification was successful or unsuccessful
+	true|false          (boolean)                                  verification was successful or unsuccessful
 
 Examples:
 
- *  (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
+* Note: to find your rpcusername, rpcpassword, and rpcport, click here ===link===
 
 ::
 
@@ -2438,7 +2406,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2455,31 +2423,29 @@ verifytxoutproof
 
   verifytxoutproof "proof_string"
 
-The ``verifytxoutproof`` method verifies that a proof points to a transaction in a block. It returns the transaction to which the proof is comitted, or it will throw an RPC error if the block is not in the current best chain.
+The ``verifytxoutproof`` method verifies that a proof points to a transaction in a block. It returns the transaction to which the proof is committed, or it will throw an RPC error if the block is not in the current best chain.
 
 Arguments:
 
 ::
 
-	"proof_string"             // (string, required)       the hex-encoded proof generated by gettxoutproof
+	"proof_string"            (string, required)       the hex-encoded proof generated by gettxoutproof
 
 Response:
 
 ::
 
 	[
-    "txid"                   // (array, strings)         the transaction ids which the proof commits to; the array is empty if the proof is invalid
+    "txid"                  (string)         the transaction ids which the proof commits to; the array is empty if the proof is invalid
   ]
 
 Examples:
-
- * (the myrpcuser, myrpcpassword, and myrpcport data can be found in the coin's local .conf file)
 
 ::
 
   command:
 
-  komodo-cli -ac_name=SIDD verifytxoutproof "040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d"
+  komodo-cli verifytxoutproof "040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d"
 
   response:
 
@@ -2526,22 +2492,22 @@ Response:
 ::
 
 	{
-	  "version"              // (numeric)          the server version
-	  "protocolversion"      // (numeric)          the protocol version
-	  "walletversion"        // (numeric)          the wallet version
-	  "balance"              // (numeric)          the total Zcash balance of the wallet
-	  "blocks"               // (numeric)          the current number of blocks processed in the server
-	  "timeoffset"           // (numeric)          the time offset
-	  "connections"          // (numeric)          the number of connections
-	  "proxy"                // (string, optional) the proxy used by the server
-	  "difficulty"           // (numeric)          the current difficulty
-	  "testnet"              // (boolean)          if the server is using testnet or not
-	  "keypoololdest"        // (numeric)          the timestamp (seconds since GMT epoch) of the oldest pre-generated key in the key pool
-	  "keypoolsize"          // (numeric)          how many new keys are pre-generated
-	  "unlocked_until"       // (numeric)          the timestamp in seconds since epoch (midnight Jan 1 1970 GMT) that the wallet is unlocked for transfers, or 0 if the wallet is locked
-	  "paytxfee"             // (numeric)          the transaction fee set in ZEC/kB
-	  "relayfee"             // (numeric)          minimum relay fee for non-free transactions in ZEC/kB
-	  "errors"               // (string)           any error messages
+	  "version"             (numeric)          the server version
+	  "protocolversion"     (numeric)          the protocol version
+	  "walletversion"       (numeric)          the wallet version
+	  "balance"             (numeric)          the total balance of the wallet
+	  "blocks"              (numeric)          the current number of blocks processed in the server
+	  "timeoffset"          (numeric)          the time offset
+	  "connections"         (numeric)          the number of connections
+	  "proxy"               (string, optional) the proxy used by the server
+	  "difficulty"          (numeric)          the current difficulty
+	  "testnet"             (boolean)          if the server is using testnet or not
+	  "keypoololdest"       (numeric)          the timestamp (seconds since GMT epoch) of the oldest pre-generated key in the key pool
+	  "keypoolsize"         (numeric)          how many new keys are pre-generated
+	  "unlocked_until"      (numeric)          the timestamp in seconds since epoch (midnight Jan 1 1970 GMT) that the wallet is unlocked for transfers, or 0 if the wallet is locked
+	  "paytxfee"            (numeric)          the transaction fee set in COIN/kB
+	  "relayfee"            (numeric)          minimum relay fee for non-free transactions in COIN/kB
+	  "errors"              (string)           any error messages
 	}
 
 Examples:
@@ -2591,7 +2557,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2645,17 +2611,15 @@ Arguments:
 
 ::
 
-	"command"            // (string, optional)     the command requiring assistance
+	"command"           (string, optional)     the command requiring assistance
 
 Response:
 
 ::
 
-	"text"               // (string)               the help text
+	"text"              (string)               the help text
 
 ===What is this below?===
-
-.. _komodo-api-stop:
 
 stop
 ----
@@ -2664,9 +2628,9 @@ stop
 
   stop
 
-The ``stop`` method instructs the a KMD-based coin daemon to shut down.
+The ``stop`` method instructs the coin daemon to shut down.
 
-The amount of time it takes to shut down the chain will vary depending on the chain's current state. Forcefully stopping the chain should be avoided, as it may cause a corruption in the local database. In the event of a corrupted database, the user will need to resync their blockchain.
+The amount of time it takes to shut down the chain will vary depending on the chain's current state. Forcefully stopping the chain should be avoided, as it may cause a corruption in the local database. In the event of a corrupted database, the user will need to ===link=== resync their blockchain.
 
 Arguments:
 
@@ -2678,13 +2642,9 @@ Response:
 
 ::
 
-  (for the KMD coin daemon)
+  Komodo server stopping
 
-  "Komodo server stopping"
-
-  (for a KMD-based coin daemon)
-
-  "[coin name] Komodo server stopping"
+  [COIN] Komodo server stopping
 
 Examples:
 
@@ -2704,30 +2664,30 @@ Disclosure
 z_getpaymentdisclosure
 ----------------------
 
-::
-
-  z_getpaymentdisclosure "transaction_id_string" "js_index_string" "output_index_string" ("message")
-
-The ``z_getpaymentdisclosure`` method generates a payment disclosure for a given ``joinsplit`` output.
-
 **EXPERIMENTAL FEATURE**
 
 **WARNING**: Payment disclosure is currently DISABLED. This call always fails.
+
+::
+
+  z_getpaymentdisclosure "transaction_id" "js_index_string" "output_index_string" ("message")
+
+The ``z_getpaymentdisclosure`` method generates a payment disclosure for a given joinsplit output.
 
 Arguments:
 
 ::
 
-	"txid"                   // (string, required)
-	"js_index"               // (string, required)
-	"output_index"           // (string, required)
-	"message"                // (string, optional)
+	"txid"                  (string, required)
+	"js_index"              (string, required)
+	"output_index"          (string, required)
+	"message"               (string, optional)
 
 Response:
 
 ::
 
-	"paymentdisclosure"      // (string)             hex data string, with "zpd:" prefix.
+	"paymentdisclosure"     (string)             hex data string, with "zpd:" prefix.
 
 Examples:
 
@@ -2766,7 +2726,7 @@ Arguments:
 
 ::
 
-	"paymentdisclosure"        // (string, required)   hex data string, with "zpd:" prefix
+	"paymentdisclosure"       (string, required)   hex data string, with "zpd:" prefix
 
 Examples:
 
@@ -2784,7 +2744,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_validatepaymentdisclosure", "params": ["zpd:706462ff004c561a0447ba2ec51184e6c204..."] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_validatepaymentdisclosure", "params": ["zpd:706462ff004c561a0447ba2ec51184e6c204..."] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2792,8 +2752,6 @@ Examples:
 
 Generating
 ==========
-
-===Note to self: we don't really need descriptions about the primary sections.===
 
 generate
 --------
@@ -2810,14 +2768,15 @@ Arguments:
 
 ::
 
-	numblocks          // (numeric)     the desired number of blocks to generate
+	numblocks         (numeric)     the desired number of blocks to generate
 
 Response:
 
 ::
 
 	[
-    blockhashes      // (array)       hashes of blocks generated
+    blockhashes     (array)       hashes of blocks generated
+    , ...
   ]
 
 Examples:
@@ -2842,13 +2801,11 @@ getgenerate
 
   getgenerate
 
-The ``getgenerate`` method returns a boolean value indicating the server's mining (coin-generating) status.
+The ``getgenerate`` method returns a boolean value indicating the server's mining status.
 
 The default value is false.
 
-===This section on launching -gen needs to be elsewhere...? Or combined? I think a few of these sections, including index and mining, go under control... ===
-
-=== Put this section elsewhere: To launch the coin daemon in mining mode is set with the command line argument ``-gen`` (or ``komodo.conf`` setting gen)===
+* Note: See also ===link=== ``-gen``
 
 Arguments:
 
@@ -2860,7 +2817,7 @@ Response:
 
 ::
 
-	true|false             // (boolean)    indicates whether the server is set to generate coins
+	true|false            (boolean)    indicates whether the server is set to generate coins
 
 Examples:
 
@@ -2878,11 +2835,15 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getgenerate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getgenerate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
-  ===getting an error message right now===
+  {
+    "result": false,
+    "error": null,
+    "id": "curltest"
+  }
 
 setgenerate
 -----------
@@ -2895,14 +2856,14 @@ The ``setgenerate`` method allows the user to set the 'generate' property in the
 
 Generation is limited to 'genproclimit' processors. -1 is unlimited.
 
-===link== * See the ``getgenerate`` call to query the current setting.
+ * Note: See also the ===link=== ``getgenerate`` method to query the current setting, and ===link=== ``genproclimit``for setting processor default parameters.
 
 Arguments:
 
 ::
 
-	generate               // (boolean, required)    set to true to turn on generation; set to off to turn off generation
-	genproclimit           // (numeric, optional)    set the processor limit for when generation is on; use value "-1" for unlimited
+	generate              (boolean, required)    set to true to turn on generation; set to off to turn off generation
+	genproclimit          (numeric, optional)    set the processor limit for when generation is on; use value "-1" for unlimited
 
 Response:
 
@@ -2914,7 +2875,7 @@ Examples:
 
 ::
 
-(turn on generation with unlimited processors)
+Turn on generation with unlimited processors:
 
   command:
 
@@ -2924,7 +2885,7 @@ Examples:
 
   (none)
 
-(check the setting)
+Check the setting:
 
 ::
 
@@ -2936,7 +2897,7 @@ Examples:
 
   true
 
-(turn off generation)
+Turn off generation:
 
 ::
 
@@ -2944,17 +2905,17 @@ Examples:
 
 	komodo-cli setgenerate false
 
-  reponse:
+  response:
 
   (none)
 
-(turning the setting on via JSON rpc)
+Turning the setting on via json rpc:
 
 ::
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setgenerate", "params": [true, 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setgenerate", "params": [true, 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -2974,20 +2935,20 @@ getblocksubsidy
 
   getblocksubsidy height_number
 
-The ``getblocksubsidy`` method returns the block-subsidy reward. The resulting calculation takes into account the mining slow start. This method can be used in conjunction with custom mining rewards designed by the developers of a KMD asset chain.
+The ``getblocksubsidy`` method returns the block-subsidy reward. The resulting calculation takes into account the mining slow start. This method can be used in conjunction with custom mining rewards designed by the developers of a KMD-based asset chain.
 
 Arguments:
 
 ::
 
-	height          // (numeric, optional)  the block height; if the height is not provided, the method defaults to the current height of the chain
+	height         (numeric, optional)  the block height; if the height is not provided, the method defaults to the current height of the chain
 
 Response:
 
 ::
 
 	{
-	  "miner"       // (numeric)             the mining reward amount in KMD.
+	  "miner"      (numeric)             the mining reward amount
 	}
 
 Examples:
@@ -3008,7 +2969,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockubsidy", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockubsidy", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 getblocktemplate
 ----------------
@@ -3021,18 +2982,18 @@ The ``getblocktemplate`` method returns data that is necessary to construct a bl
 
 See https://en.bitcoin.it/wiki/BIP_0022 for full specification.
 
-If the request parameters include a ``mode`` key, that is used to explicitly select between the default 'template' request or a 'proposal'.
+If the request parameters include a ``mode`` key, it is used to explicitly select between the default 'template' request or a 'proposal'.
 
 Arguments:
 
 ::
 
-	"jsonrequestobject"            // (string, optional)   a json object in the following spec
+	"jsonrequestobject"           (string, optional)   a json object in the following spec
 	     {
-	       "mode":"template"       // (string, optional)   this must be set to "template" or "omitted"
-	       "capabilities":[        // (array, optional)    a list of strings
-	           "support"           // (string)             client side supported features: 'longpoll', 'coinbasetxn', 'coinbasevalue', 'proposal', 'serverlist', 'workid'
-	           ,...
+	       "mode"              (string, optional)      can be: "template" | "omitted"
+	       "capabilities":[
+	           "support"          (string)             client side supported features: "longpoll", "coinbasetxn", "coinbasevalue", "proposal", "serverlist", "workid"
+	           , ...                     accepts multiple entries
 	         ]
 	     }
 
@@ -3041,37 +3002,37 @@ Response:
 ::
 
 	{
-	  "version"                        // (numeric)          the block version
-	  "previousblockhash"              // (string)           the hash of current highest block
-	  "transactions" : [               // (array)            contents of non-coinbase transactions that should be included in the next block
+	  "version"                       (numeric)          the block version
+	  "previousblockhash"             (string)           the hash of current highest block
+	  "transactions" : [              (array)            contents of non-coinbase transactions that should be included in the next block
 	      {
-	         "data"                    // (string)           transaction data encoded in hexadecimal (byte-for-byte)
-	         "hash"                    // (string)           hash/id encoded in little-endian hexadecimal
-	         "depends" : [             // (array)            array of numbers
-	             number                // (numeric)          transactions before this one (by 1-based index in 'transactions' list) that must be present in the final block if this one is
-	             ,...
+	         "data"                   (string)           transaction data encoded in hexadecimal (byte-for-byte)
+	         "hash"                   (string)           hash/id encoded in little-endian hexadecimal
+	         "depends" : [
+	             number               (numeric)          transactions before this one (by 1-based index in "transactions" list) that must be present in the final block, if this one is
+	             , ...
 	         ],
-	         "fee"                     // (numeric)          difference in value between transaction inputs and outputs (in Satoshis); for coinbase transactions, this is a negative Number of the total collected block fees (ie, not including the block subsidy); if key is not present, fee is unknown and clients MUST NOT assume there isn't one
-	         "sigops"                  // (numeric)          total number of SigOps, as counted for purposes of block limits; if key is not present, sigop count is unknown and clients MUST NOT assume there aren't any
-	         "required"                // (boolean)          if provided and true, this transaction must be in the final block
+	         "fee"                    (numeric)          the difference in value between transaction inputs and outputs (in Satoshis). For coinbase transactions, this is a negative number of the total collected block fees (ie, not including the block subsidy). If a key is not present, the fee is unknown and clients MUST NOT assume it is not present.
+	         "sigops"                 (numeric)          total number of sigops, as counted for the purposes of block limits; if a key is not present, the sigop count is unknown and clients MUST NOT assume they are not present.
+	         "required"               (boolean)          if provided and true, this transaction must be in the final block
 	      }
-	      ,...
+	      , ...
 	  ],
 	  "coinbasetxn" : {
-      ...                            // (json object)      information for coinbase transaction
+      ...                           (json object)      information for coinbase transaction
      },
-	  "target"                         // (string)           the hash target
-	  "mintime"                        // (numeric)          the minimum timestamp appropriate for next block time in seconds since epoch (Jan 1 1970 GMT)
-	  "mutable" : [                    // (array of string)  list of ways the block template may be changed
-	     "value"                       // (string)           a way the block template may be changed, e.g. 'time', 'transactions', 'prevblock'
-	     ,...
+	  "target"                        (string)           the hash target
+	  "mintime"                       (numeric)          the minimum timestamp appropriate for next block time in seconds since epoch (Jan 1 1970 GMT)
+	  "mutable" : [                   (array of string)  list of ways the block template may be changed
+	     "value"                      (string)           a way the block template may be changed, e.g. "time", "transactions", "prevblock"
+	     , ...
 	  ],
-	  "noncerange"                     // (string)           a range of valid nonces
-	  "sigoplimit"                     // (numeric)          limit of sigops in blocks
-	  "sizelimit"                      // (numeric)          limit of block size
-	  "curtime"                        // (numeric)          current timestamp in seconds since epoch (Jan 1 1970 GMT)
-	  "bits"                           // (string)           compressed target of next block
-	  "height"                         // (numeric)          the height of the next block
+	  "noncerange"                    (string)           a range of valid nonces
+	  "sigoplimit"                    (numeric)          limit of sigops in blocks
+	  "sizelimit"                     (numeric)          limit of block size
+	  "curtime"                       (numeric)          current timestamp in seconds since epoch (Jan 1 1970 GMT)
+	  "bits"                          (string)           compressed target of next block
+	  "height"                        (numeric)          the height of the next block
 	}
 
 Examples:
@@ -3122,7 +3083,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3187,7 +3148,7 @@ Arguments:
 
 Response:
 
-	"data"             // (numeric) solutions per second average
+	"data"            (numeric)     solutions per second average
 
 Examples:
 
@@ -3199,18 +3160,18 @@ Examples:
 
   response:
 
-  0
+  0.4141607577247555
 
 ::
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getlocalsolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getlocalsolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
   {
-    "result": 0,
+    "result": 0.4141607577247555,
     "error": null,
     "id": "curltest"
   }
@@ -3222,25 +3183,25 @@ getmininginfo
 
   getmininginfo
 
-Returns a json object containing mining-related information.
+The ``getmininginfo`` method returns a json object containing mining-related information.
 
 Response:
 
 ::
 
 	{
-	  "blocks"                 // (numeric)      the current block
-	  "currentblocksize"       // (numeric)      the last block size
-	  "currentblocktx"         // (numeric)      the last block transaction
-	  "difficulty"             // (numeric)      the current difficulty
-	  "errors": "..."          // (string)       current errors
-	  "generate"               // (boolean)      if the generation is on or off (see ===links=== getgenerate or setgenerate calls)
-	  "genproclimit"           // (numeric)      the processor limit for generation; -1 if no generation (see ===links=== getgenerate or setgenerate calls)
-	  "localsolps"             // (numeric)      the average local solution rate (solutions per second) since this node was started
-	  "networksolps"           // (numeric)      the estimated network solution rate (solutions per second)
-	  "pooledtx": n            // (numeric)      the size of the mem pool
-	  "testnet"                // (boolean)      if using testnet or not
-	  "chain"                  // (string)       current network name as defined in BIP70 (main, test, regtest)
+	  "blocks"                (numeric)      the current block
+	  "currentblocksize"      (numeric)      the last block size
+	  "currentblocktx"        (numeric)      the last block transaction
+	  "difficulty"            (numeric)      the current difficulty
+	  "errors": "..."         (string)       current errors
+	  "generate"              (boolean)      if the generation is on or off (see ===links=== getgenerate or setgenerate calls)
+	  "genproclimit"          (numeric)      the processor limit for generation; -1 if no generation (see ===links=== getgenerate or setgenerate calls)
+	  "localsolps"            (numeric)      the average local solution rate (solutions per second) since this node was started
+	  "networksolps"          (numeric)      the estimated network solution rate (solutions per second)
+	  "pooledtx": n           (numeric)      the size of the mem pool
+	  "testnet"               (boolean)      if using testnet or not
+	  "chain"                 (string)       current network name as defined in BIP70 (main, test, regtest)
 	}
 
 Examples:
@@ -3276,7 +3237,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3312,21 +3273,21 @@ getnetworkhashps
 
 The ``getnetworkhashps`` method returns the estimated network solutions per second based on the last ``n`` blocks.
 
-Pass in ``blocks]`` value to override the default # of blocks. Passing in ``-1`` will return a value based on the average hashps of the relevant difficulty window.
+Pass in ``blocks`` value to override the default number of blocks. Passing in ``-1`` will return a value based on the average hashps of the relevant difficulty window.
 Pass in ``height`` to estimate the network speed at the time when a certain block was found.
 
 Arguments:
 
 ::
 
-	blocks           // (numeric, optional, default=120)   the number of blocks (use -1 to calculate over the relevant difficulty averaging window)
-	height           // (numeric, optional, default=-1)    to estimate at the time of the given height
+	blocks          (numeric, optional, default=120)   the number of blocks (use -1 to calculate over the relevant difficulty averaging window)
+	height          (numeric, optional, default=-1)    to estimate at the time of the given height
 
 Response:
 
 ::
 
-	data             // (numeric)                          solutions per second estimated
+	data            (numeric)                          solutions per second estimated
 
 Examples:
 
@@ -3345,7 +3306,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3371,14 +3332,14 @@ Arguments:
 
 ::
 
-	blocks           // (numeric, optional, default=120)     the number of blocks; use -1 to calculate according to the relevant difficulty averaging window
-	height           // (numeric, optional, default=-1)      to estimate at the time of the given height
+	blocks          (numeric, optional, default=120)     the number of blocks; use -1 to calculate according to the relevant difficulty averaging window
+	height          (numeric, optional, default=-1)      to estimate at the time of the given height
 
 Response:
 
 ::
 
-	data             // (numeric)                            solutions per second estimated
+	data            (numeric)                            solutions per second, estimated
 
 Examples:
 
@@ -3394,33 +3355,33 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworksolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworksolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 prioritisetransaction
 ---------------------
 
 ::
 
-  prioritisetransaction txid priority_delta_number fee_delta_number
+  prioritisetransaction "transaction_id" priority_delta fee_delta
 
 The ``prioritisetransaction`` method instructs the daemon to accept the indicated transaction into mined blocks at a higher (or lower) priority. The transaction selection algorithm considers the transaction as it would have a higher priority.
 
-* Note: This method is inherited from the original Bitcoin protocol, of which KMD is a fork (via Zcash). For more information and examples, please see the link to Bitcoin API documentation provided above.
+* Note: This method is inherited from the original Bitcoin protocol, of which KMD is a fork (via Zcash). For more information and examples, please see the ===link=== link to Bitcoin API documentation provided above. https://bitcoincore.org/en/doc/0.16.1/rpc/mining/prioritisetransaction/
 
 Arguments:
 
 ::
 
-	"transaction_id"                 // (string, required)     the transaction id
-	priority delta                   // (numeric, required)    the priority to add or subtract
+	"transaction_id"                (string, required)     the transaction id
+	priority delta                  (numeric, required)    the priority to add or subtract
 
-	fee delta                        // (numeric, required)    the fee value (in satoshis) to add (or subtract, if negative).
+	fee delta                       (numeric, required)    the fee value (in satoshis) to add (or subtract, if negative)
 
 Response:
 
 ::
 
-	true                             // (boolean)              returns true
+	true                            (boolean)              returns true
 
 Examples:
 
@@ -3429,7 +3390,7 @@ Examples:
 
   command:
 
-  komodo-cli prioritisetransaction "txid" 0.0 10000
+  komodo-cli prioritisetransaction "7dc902b280da27cf2dabe41ed6f4d04c828714f289435db193a49341005607eb" 0.0 10000
 
   result:
 
@@ -3439,7 +3400,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   result:
 
@@ -3458,30 +3419,27 @@ submitblock
 
 The ``submitblock`` method instructs the daemon to propose a new block to the network.
 
-The 'jsonparametersobject' parameter is currently ignored. See https://en.bitcoin.it/wiki/BIP_0022 for full specification.
+The 'jsonparametersobject' parameter is currently ignored. See https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki for full specification.
 
 Arguments:
 
 ::
 
-	"hexdata"                    // (string, required)               the hex-encoded block data to submit
-	"jsonparametersobject"       // (string, optional)               object of optional parameters
-
-::
-
-	    {
-	      "workid"               // (string, sometimes optional)     if the server provides a workid, it MUST be included with submissions
-	    }
+	"hexdata"                   (string, required)               the hex-encoded block data to submit
+	"jsonparametersobject"      (string, optional)               object of optional parameters
+  {
+    "workid"                  (string, sometimes optional)     if the server provides a workid, it MUST be included with submissions
+  }
 
 Response:
 
 ::
 
-	"duplicate"                    // node already has valid copy of block
-	"duplicate-invalid"            // node already has block, but it is invalid
-	"duplicate-inconclusive"       // node already has block but has not validated it
-	"inconclusive"                 // node has not validated the block, it may not be on the node's current best chain
-	"rejected"                     // block was rejected as invalid
+	"duplicate"                   node already has valid copy of block
+	"duplicate-invalid"           node already has block, but it is invalid
+	"duplicate-inconclusive"      node already has block but has not validated it
+	"inconclusive"                node has not validated the block, it may not be on the node's current best chain
+	"rejected"                    block was rejected as invalid
 
 For more information on ``submitblock`` parameters and results, see: https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki#block-submission
 
@@ -3495,7 +3453,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
 Network
 =======
@@ -3513,8 +3471,8 @@ Arguments:
 
 ::
 
-	"node"                 // (string, required)     the node (see getpeerinfo for nodes)
-	"command"              // (string, required)     'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once
+	"node"                (string, required)     the node (see ===link=== ``getpeerinfo`` for nodes)
+	"command"             (string, required)     'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once
 
 Response:
 
@@ -3538,7 +3496,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addnode", "params": ["192.168.0.6:8233", "onetry"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addnode", "params": ["192.168.0.6:8233", "onetry"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3581,7 +3539,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3602,7 +3560,7 @@ Arguments:
 
 ::
 
-	"node"             // (string, required)     the node's address (see getpeerinfo for nodes)
+	"node"            (string, required)     the node's address (see ===link=== ``getpeerinfo`` for nodes)
 
 Response:
 
@@ -3620,17 +3578,17 @@ Examples:
 
   response:
 
-  (none - see "getpeerinfo" to determine connection status)
+  (none)
 
 ::
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["192.168.0.6:8233"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["192.168.0.6:8233"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
-  (none - see "getpeerinfo" to determine connection status)
+  (none)
 
 getaddednodeinfo
 ----------------
@@ -3639,9 +3597,9 @@ getaddednodeinfo
 
   getaddednodeinfo dns ( "node" )
 
-The ``getaddednodeinfo`` method returns information about the given added node, or all added nodes
+The ``getaddednodeinfo`` method returns information about the given added node, or all added nodes.
 
-If ``dns`` is set to ``false``, only a list of added nodes is returned. Otherwise, connection information is also be provided.
+If ``dns`` is set to ``false``, only a list of added nodes is returned. Otherwise, connection information is also provided.
 
 * Note: ``onetry`` addnodes are not listed here.
 
@@ -3649,8 +3607,8 @@ Arguments:
 
 ::
 
-	dns                      // (boolean, required)    if false, only a list of added nodes will be provided; otherwise, connection information is also provided
-	"node"                   // (string, optional)     if provided, the method returns information about this specific node; otherwise, all nodes are returned
+	dns                     (boolean, required)    if false, only a list of added nodes will be provided; otherwise, connection information is also provided
+	"node"                  (string, optional)     if provided, the method returns information about this specific node; otherwise, all nodes are returned
 
 Response:
 
@@ -3658,17 +3616,17 @@ Response:
 
 	[
 	  {
-	    "addednode"          // (string)               the node ip address
-	    "connected"          // (boolean)              if connected
+	    "addednode"         (string)               the node ip address
+	    "connected"         (boolean)              if connected
 	    "addresses" : [
 	       {
-	         "address"       // (string)               the KMD server host and port
-	         "connected"     // (string)               "connected" accepts two possible values: "inbound" or "outbound"
+	         "address"      (string)               the server host and port
+	         "connected"    (string)               "connected" accepts two possible values: "inbound" or "outbound"
 	       }
-	       ,...
+	       , ...
 	     ]
 	  }
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -3757,7 +3715,7 @@ Response:
 
 ::
 
-	n              // (numeric)    the connection count
+	n             (numeric)    the connection count
 
 Examples:
 
@@ -3775,7 +3733,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3805,9 +3763,9 @@ Response:
 ::
 
 	{
-	  "version"              // (numeric)    the server version
-	  "subversion"           // (string)     the server sub-version string (i.e. "/MagicBean:x.y.z[-v]/")
-	  "deprecationheight"    // (numeric)    the block height at which this version will deprecate and shut down (unless ===link?=== -disabledeprecation is set)
+	  "version"             (numeric)    the server version
+	  "subversion"          (string)     the server sub-version string (i.e. "/MagicBean:x.y.z[-v]/")
+	  "deprecationheight"   (numeric)    the block height at which this version will deprecate and shut down (unless ===link?=== -disabledeprecation is set)
 	}
 
 Examples:
@@ -3830,7 +3788,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdeprecationinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdeprecationinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3851,8 +3809,7 @@ getnettotals
 
   getnettotals
 
-The ``getnettotals`` method returns information about network traffic, including bytes in, bytes out,
-and current time.
+The ``getnettotals`` method returns information about network traffic, including bytes in, bytes out, and current time.
 
 Arguments:
 
@@ -3863,9 +3820,9 @@ Response:
 ::
 
 	{
-	  "totalbytesrecv"         // (numeric)      total bytes received
-	  "totalbytessent"         // (numeric)      total bytes sent
-	  "timemillis"             // (numeric)      total cpu time
+	  "totalbytesrecv"        (numeric)      total bytes received
+	  "totalbytessent"        (numeric)      total bytes sent
+	  "timemillis"            (numeric)      total cpu time
 	}
 
 Examples:
@@ -3888,7 +3845,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnettotals", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnettotals", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -3922,31 +3879,31 @@ Response:
 ::
 
 	{
-	  "version"                // (numeric)    the server version
-	  "subversion"             // (string)     the server subversion string (i.e. "/MagicBean:x.y.z[-v]/")
-	  "protocolversion"        // (numeric)    the protocol version
-	  "localservices"          // (string)     the services we offer to the network
-	  "timeoffset"             // (numeric)    the time offset
-	  "connections"            // (numeric)    the number of connections
-	  "networks": [            // (array)      information per network
+	  "version"               (numeric)    the server version
+	  "subversion"            (string)     the server subversion string (i.e. "/MagicBean:x.y.z[-v]/")
+	  "protocolversion"       (numeric)    the protocol version
+	  "localservices"         (string)     the services we offer to the network
+	  "timeoffset"            (numeric)    the time offset
+	  "connections"           (numeric)    the number of connections
+	  "networks": [           (array)      information per network
 	  {
-	    "name"                 // (string)     network (ipv4, ipv6 or onion)
-	    "limited"              // (boolean)    is the network limited using -onlynet?
-	    "reachable"            // (boolean)    is the network reachable?
-	    "proxy"                // (string)     (submitted as "host:port") the proxy that is used for this network, or empty if none
+	    "name"                (string)     network (ipv4, ipv6 or onion)
+	    "limited"             (boolean)    whether the network is limited using -onlynet
+	    "reachable"           (boolean)    whether the network is reachable
+	    "proxy"               (string)     (submitted as "host:port") the proxy that is used for this network, or empty if none
 	  }
-	  ,...
+	  , ...
 	  ],
-	  "relayfee"               // (numeric)    minimum relay fee for non-free transactions in ZEC/kB
-	  "localaddresses": [      // (array)      list of local addresses
+	  "relayfee"              (numeric)    minimum relay fee for non-free transactions in COIN/kB
+	  "localaddresses": [     (array)      list of local addresses
 	  {
-	    "address"              // (string)     network address
-	    "port"                 // (numeric)    network port
-	    "score"                // (numeric)    relative score
+	    "address"             (string)     network address
+	    "port"                (numeric)    network port
+	    "score"               (numeric)    relative score
 	  }
-	  ,...
+	  , ...
 	  ]
-	  "warnings"               // (string)     any network warnings (such as alert messages)
+	  "warnings"              (string)     any network warnings (such as alert messages)
 	}
 
 Examples:
@@ -3999,7 +3956,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -4061,31 +4018,31 @@ Response:
 
 	[
 	  {
-	    "id"                       // (numeric)    peer index
-	    "addr":,                   // (string)     the ip address and port of the peer ("host:port")
-	    "addrlocal"                // (string)     local address ("ip:port")
-	    "services"                 // (string)     the services offered
-	    "lastsend"                 // (numeric)    the time in seconds since epoch (Jan 1 1970 GMT) of the last send
-	    "lastrecv"                 // (numeric)    the time in seconds since epoch (Jan 1 1970 GMT) of the last receive
-	    "bytessent"                // (numeric)    the total bytes sent
-	    "bytesrecv"                // (numeric)    the total bytes received
-	    "conntime"                 // (numeric)    the connection time in seconds since epoch (Jan 1 1970 GMT)
-	    "timeoffset"               // (numeric)    the time offset in seconds
-	    "pingtime"                 // (numeric)    ping time
-	    "pingwait"                 // (numeric)    ping wait
-	    "version"                  // (numeric)    the peer version, such as 170002
-	    "subver"                   // (string)     the string version (i.e. "/MagicBean:x.y.z[-v]/")
-	    "inbound"                  // (boolean)    inbound (true) or outbound (false)
-	    "startingheight"           // (numeric)    the starting height (block) of the peer
-	    "banscore"                 // (numeric)    the ban score
-	    "synced_headers"           // (numeric)    the last header we have in common with this peer
-	    "synced_blocks"            // (numeric)    the last block we have in common with this peer
+	    "id"                      (numeric)    peer index
+	    "addr":,                  (string)     the ip address and port of the peer ("host:port")
+	    "addrlocal"               (string)     local address ("ip:port")
+	    "services"                (string)     the services offered
+	    "lastsend"                (numeric)    the time in seconds since epoch (Jan 1 1970 GMT) of the last send
+	    "lastrecv"                (numeric)    the time in seconds since epoch (Jan 1 1970 GMT) of the last receive
+	    "bytessent"               (numeric)    the total bytes sent
+	    "bytesrecv"               (numeric)    the total bytes received
+	    "conntime"                (numeric)    the connection time in seconds since epoch (Jan 1 1970 GMT)
+	    "timeoffset"              (numeric)    the time offset in seconds
+	    "pingtime"                (numeric)    ping time
+	    "pingwait"                (numeric)    ping wait
+	    "version"                 (numeric)    the peer version, such as 170002
+	    "subver"                  (string)     the string version (i.e. "/MagicBean:x.y.z[-v]/")
+	    "inbound"                 (boolean)    inbound (true) or outbound (false)
+	    "startingheight"          (numeric)    the starting height (block) of the peer
+	    "banscore"                (numeric)    the ban score
+	    "synced_headers"          (numeric)    the last header we have in common with this peer
+	    "synced_blocks"           (numeric)    the last block we have in common with this peer
 	    "inflight": [
-	       number,                 // (numeric)    the heights of blocks we're currently asking from this peer
+	       number,                (numeric)    the heights of blocks we're currently asking from this peer
 	       ...
 	    ]
 	  }
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -4128,7 +4085,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -4178,8 +4135,8 @@ Response:
 
   [
     {
-      "address"           // (string)   the address/subnet that is banned
-      "banned_until"      // (numeric)  the timestamp, at which point the ban will be removed
+      "address"          (string)   the address/subnet that is banned
+      "banned_until"     (numeric)  the timestamp, at which point the ban will be removed
     },
      ...
   ]
@@ -4188,10 +4145,11 @@ Examples:
 
 ::
 
-1.
+  command:
 
 	komodo-cli listbanned
 
+  response:
 
   [
     {
@@ -4200,9 +4158,13 @@ Examples:
     }
   ]
 
-2.
+::
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  command:
+
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
 
   {
     "result": [
@@ -4224,8 +4186,10 @@ ping
 
 The ``ping`` method requests that a ping be sent to all other nodes, to measure ping time.
 
-Results provided in getpeerinfo, pingtime and pingwait fields are decimal seconds.
-Ping command is handled in queue with all other commands, so it measures processing backlog, not just network ping.
+Results provided in ``getpeerinfo``, ``pingtime`` and ``pingwait`` fields are decimal seconds.
+The ``ping`` command is handled in queue with all other commands, so it measures processing backlog, not just network ping.
+
+Note: Use ===link=== ``getpeerinfo`` to see ``ping`` results.
 
 Arguments:
 
@@ -4237,7 +4201,7 @@ Response:
 
 ::
 
-  (none - use ===link=== ``getpeerinfo`` for )
+  (none)
 
 Examples:
 
@@ -4255,7 +4219,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "ping", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "ping", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -4274,10 +4238,12 @@ Arguments:
 
 ::
 
-	"ip(/netmask)" (string, ip required) the IP/subnet (see ===link===getpeerinfo for nodes ip) with an optional netmask (default is /32 = single ip)
-	"command"      (string, required) 'add' to add an IP/subnet to the list, 'remove' to remove an IP/subnet from the list
-	bantime      (numeric, optional) indicates how long (in seconds) the ip is banned (or until when, if [absolute] is set) (0 or empty means using the default time of 24h, which can also be overwritten using the ===do we need to make this -bantime its own method somewhere?=== -bantime startup argument)
+	"ip(/netmask)" (string, ip required) the IP/subnet (see ===link===``getpeerinfo`` for nodes ip) with an optional netmask (default is /32 = single ip)
+	"command"      (string, required) use "add" to add an IP/subnet to the list, or "remove" to remove an IP/subnet from the list
+	bantime      (numeric, optional) indicates how long (in seconds) the ip is banned (or until when, if [absolute] is set). 0 or empty means the ban is using the default time of 24h, which can also be overwritten using the ===link=== -bantime runtime parameter.
 	absolute     (boolean, optional) if set to true, the bantime must be an absolute timestamp (in seconds) since epoch (Jan 1 1970 GMT)
+
+* Note: Use ===link=== ``listbanned`` to view results.
 
 Examples:
 
@@ -4287,7 +4253,7 @@ Examples:
 
   response:
 
-  (none - use the ===link=== ``listbanned`` method to view the results)
+  (none)
 
 ::
 
@@ -4297,14 +4263,22 @@ Examples:
 
   response:
 
-  (none - use the ===link=== ``listbanned`` method to view the results)
+  (none)
+
+::
+
+  command:
 
   curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setban", "params": ["78.47.205.239", "add", 86400] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  (none)
 
 Rawtransactions
 ===============
 
-createrawtransaction '[{"txid": "id_string", "vout": number},...]' '{"address":amount,...}'
+createrawtransaction '[{"txid": "id_string", "vout": number}, ...]' '{"address":amount, ...}'
 ------------------------------------------------------------------------
 
 The ``createrawtransaction`` method creates a transaction, spending the given inputs and sending to the given addresses. The method returns a hex-encoded raw transaction.
@@ -4315,18 +4289,18 @@ Arguments:
 
 ::
 
-	"transactions"              (string, required) a json array of json objects
+	"transactions"              (string, required)    a json array of json objects
     [
        {
-         "txid"     (string, required) the transaction id
+         "txid"               (string, required) the transaction id
          "vout"               (numeric, required) the output number
        }
-         ,...
+         , ...                     accepts multiple entries
     ]
 	"addresses"                 (string, required) a json object with addresses as keys and amounts as values
     {
-      "address"               (numeric, required) the key is the KMD or asset-chain address, the value is the COIN amount
-      ,...
+      "address"               (numeric, required) the key is the address, the value is the COIN amount
+      , ...                     accepts multiple entries
     }
 
 Response:
@@ -4362,7 +4336,7 @@ Examples:
 decoderawtransaction "hexstring"
 --------------------------------
 
-The ``decoderawtransaction`` method returns a JSON object representing the serialized, hex-encoded transaction.
+The ``decoderawtransaction`` method returns a json object representing the serialized, hex-encoded transaction.
 
 Arguments:
 
@@ -4375,67 +4349,67 @@ Response:
 ::
 
 	{
-	  "txid"        (string) the transaction id
-	  "overwintered"   (boolean) the overwintered flag
-	  "version"          (numeric) the version
-	  "versiongroupid"   (string, optional) the version group id (overwintered txs)
-	  "locktime"        (numeric) the lock time
-	  "expiryheight"     (numeric, optional) last valid block height for mining transaction (overwintered txs)
-	  "vin" : [               (array of json objects)
+	  "txid"                 (string) the transaction id
+	  "overwintered"         (boolean) the overwintered flag
+	  "version"              (numeric) the version
+	  "versiongroupid"       (string, optional) the version group id (overwintered txs)
+	  "locktime"             (numeric) the lock time
+	  "expiryheight"         (numeric, optional) last valid block height for mining transaction (overwintered txs)
+	  "vin" : [
 	     {
-	       "txid"    (string) the transaction id
-	       "vout"         (numeric) the output number
-	       "scriptSig"     (json object) the script
-	         "asm"  (string) asm
-	         "hex"   (string) hex
+	       "txid"            (string) the transaction id
+	       "vout"            (numeric) the output number
+	       "scriptSig"       (json object) the script
+	         "asm"           (string) asm
+	         "hex"           (string) hex
 	       },
-	       "sequence"     (numeric) the script sequence number
+	       "sequence"        (numeric) the script sequence number
 	     }
-	     ,...
+	     , ...
 	  ],
-	  "vout" : [             (array of json objects)
+	  "vout" : [
 	     {
-	       "value"            (numeric) The value in KMD or the asset chain's COIN
+	       "value"                     (numeric) the value
 	       "number"                    (numeric) index
-	       "scriptPubKey" : {          (json object)
-	         "asm"          (string) the asm
-	         "hex"          (string) the hex
-	         "reqSigs"            (numeric) the required sigs
-	         "type"  (string) the type, eg 'pubkeyhash'
+	       "scriptPubKey" : {
+	         "asm"                     (string) the asm
+	         "hex"                     (string) the hex
+	         "reqSigs"                 (numeric) the required sigs
+	         "type"                    (string) the type, eg 'pubkeyhash'
 	         "addresses" : [           (json array of string)
-	           "t12tvKAXCxZjSmdNbao16dKXC8tRWfcF5oc"   (string) KMD or asset chain address
-	           ,...
+	           "address"               (string) the address
+	           , ...
 	         ]
 	       }
 	     }
-	     ,...
+	     , ...
 	  ],
-	  "vjoinsplit" : [        (array of json objects, only for version >= 2)
+	  "vjoinsplit" : [                 (array of json objects, only for version >= 2)
 	     {
-	       "vpub_old"         (numeric) public input value in KMD
-	       "vpub_new"         (numeric) public output value in KMD
-	       "anchor"         (string) the anchor
+	       "vpub_old"                  (numeric) public input value
+	       "vpub_new"                  (numeric) public output value
+	       "anchor"                    (string) the anchor
 	       "nullifiers" : [            (json array of string)
 	         "hex"                     (string) input note nullifier
-	         ,...
+	         , ...
 	       ],
 	       "commitments" : [           (json array of string)
 	         "hex"                     (string) output note commitment
-	         ,...
+	         , ...
 	       ],
-	       "onetimePubKey"  (string) the onetime public key used to encrypt the ciphertexts
-	       "randomSeed"     (string) the random seed
+	       "onetimePubKey"             (string) the onetime public key used to encrypt the ciphertexts
+	       "randomSeed"                (string) the random seed
 	       "macs" : [                  (json array of string)
 	         "hex"                     (string) input note MAC
-	         ,...
+	         , ...
 	       ],
-	       "proof"          (string) the zero-knowledge proof
+	       "proof"                     (string) the zero-knowledge proof
 	       "ciphertexts" : [           (json array of string)
 	         "hex"                     (string) output note ciphertext
-	         ,...
+	         , ...
 	       ]
 	     }
-	     ,...
+	     , ...
 	  ],
 	}
 
@@ -4489,7 +4463,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decoderawtransaction", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decoderawtransaction", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   {
     "result": {
@@ -4533,28 +4507,28 @@ Examples:
 decodescript "hex"
 ------------------
 
-Decode a hex-encoded script.
+The ``decodescript`` method decodes a hex-encoded script.
 
 Arguments:
 
 ::
 
-	"hex"     (string) the hex encoded script
+	"hex"            (string) the hex encoded script
 
 Response:
 
 ::
 
 	{
-	  "asm"   (string) script public key
-	  "hex"   (string) hex encoded public key
-	  "type" (string) the output type
-	  "reqSigs"    (numeric) the required signatures
+	  "asm"              (string) script public key
+	  "hex"              (string) hex encoded public key
+	  "type"             (string) the output type
+	  "reqSigs"          (numeric) the required signatures
 	  "addresses": [
-	     "address"     (string) KMD address
-	     ,...
+	     "address"       (string) the address
+	     , ...
 	  ],
-	  "p2sh":"address" (string) script address
+	  "p2sh":"address"   (string) script address
 	}
 
 Examples:
@@ -4577,7 +4551,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decodescript", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decodescript", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   {
     "result": {
@@ -4602,22 +4576,22 @@ Arguments:
 
 ::
 
-	"hexstring"    (string, required) The hex string of the raw transaction
+	"hexstring"    (string, required) the hex string of the raw transaction
 
 Response:
 
 ::
 
 	{
-	  "hex"  (string)  the resulting raw transaction (hex-encoded string)
-	  "fee"          (numeric) the fee added to the transaction
+	  "hex"              (string)  the resulting raw transaction (hex-encoded string)
+	  "fee"              (numeric) the fee added to the transaction
 	  "changepos":       (numeric) the position of the added change output, or -1
 	}
 	"hex"
 
 Examples:
 
-Create a transaction with no inputs
+Create a transaction with no inputs:
 
 ::
 
@@ -4629,7 +4603,7 @@ Create a transaction with no inputs
 
   01000000000140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000
 
-Add sufficient unsigned inputs to meet the output value
+Add sufficient unsigned inputs to meet the output value:
 
 ::
 
@@ -4645,7 +4619,7 @@ Add sufficient unsigned inputs to meet the output value
     "fee": 0.00011740
   }
 
-Sign the transaction
+Sign the transaction:
 
 ::
 
@@ -4658,7 +4632,7 @@ Sign the transaction
     "complete": true
   }
 
-Send the transaction
+Send the transaction:
 
 ::
 
@@ -4670,13 +4644,12 @@ Send the transaction
 
   a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95
 
-getrawtransaction "transaction_id_string" ( verbose )
-------------------------------------
+getrawtransaction "transaction_id" ( verbose )
+----------------------------------------------
 
 The ``getrawtransaction`` method returns the raw transaction data.
 
-If ``verbose=0``, the method returns a string that is serialized, hex-encoded data for 'txid'. If ``verbose`` is non-zero, the method returns an object with information about 'txid'.
-
+If ``verbose=0``, the method returns a string that is serialized, hex-encoded data for 'txid'. If ``verbose`` is non-zero, the method returns an object with information about ``transaction_id``.
 
  * Note: By default, this function only works sometimes. For example, when the tx is in the mempool or there is an unspent output in the utxo for this transaction. To make it complete successfully, you need to maintain a transaction index, using the ``-txindex`` run time parameter.
 
@@ -4686,80 +4659,80 @@ Arguments:
 
 ::
 
-	"txid"      (string, required) the transaction id
-	verbose       (numeric, optional, default=0) if 0, the method returns a string; otherwise, it returns a json object
+	"txid"             (string, required) the transaction id
+	verbose            (numeric, optional, default=0) if 0, the method returns a string; otherwise, it returns a json object
 
-Result (if verbose is not set or set to 0):
+Response (if verbose is not set or set to 0):
 
 ::
 
 	"data"      (string) the serialized, hex-encoded data for 'txid'
 
-Result (if verbose > 0):
+Response (if verbose > 0):
 
 ::
 
 	{
-	  "hex"       (string) the serialized, hex-encoded data for 'txid'
-	  "txid"        (string) the transaction id (same as provided)
+	  "hex"              (string) the serialized, hex-encoded data for 'txid'
+	  "txid"             (string) the transaction id (same as provided)
 	  "version"          (numeric) the version
-	  "locktime"        (numeric) the lock time
-	  "expiryheight"    (numeric, optional) the block height after which the transaction expires
+	  "locktime"         (numeric) the lock time
+	  "expiryheight"     (numeric, optional) the block height after which the transaction expires
 	  "vin" : [
 	     {
-	       "txid"    (string) the transaction id
-	       "vout"         (numeric)
+	       "txid"              (string) the transaction id
+	       "vout"            (numeric)
 	       "scriptSig": {     (json object) the script
 	         "asm"  (string) asm
 	         "hex"   (string) hex
 	       },
 	       "sequence"      (numeric) the script sequence number
 	     }
-	     ,...
+	     , ...
 	  ],
 	  "vout" : [
 	     {
-	       "value"            (numeric) the value in KMD or the asset-chain COIN
+	       "value"            (numeric) the value
 	       "number"                    (numeric) index
 	       "scriptPubKey" : {
-	         "asm"          (string) the asm
-	         "hex"          (string) the hex
+	         "asm"               (string) the asm
+	         "hex"               (string) the hex
 	         "reqSigs"            (numeric) the required sigs
-	         "type"  (string) the type, eg 'pubkeyhash'
+	         "type"          (string) the type, eg 'pubkeyhash'
     	     "addresses" : [
-    	       "zcashaddress"          (string) KMD or asset-chain address
-    	       ,...
+    	       "address"          (string) the address
+    	       , ...
     	     ]
     	   }
     	 }
-    	 ,...
+    	 , ...
 	  ],
 	  "vjoinsplit" : [
 	     {
-	       "vpub_old"         (numeric) public input value in KMD
-	       "vpub_new"         (numeric) public output value in KMD
-	       "anchor"         (string) the anchor
+	       "vpub_old"         (numeric) public input value
+	       "vpub_new"         (numeric) public output value
+	       "anchor"              (string) the anchor
 	       "nullifiers" : [            (json array of string)
 	         "hex"                     (string) input note nullifier
-	         ,...
+	         , ...
 	       ],
 	       "commitments" : [           (json array of string)
 	         "hex"                     (string) output note commitment
-	         ,...
+	         , ...
 	       ],
 	       "onetimePubKey"  (string) the onetime public key used to encrypt the ciphertexts
 	       "randomSeed"     (string) the random seed
 	       "macs" : [                  (json array of string)
 	         "hex"                     (string) input note MAC
-	         ,...
+	         , ...
 	       ],
 	       "proof"          (string) the zero-knowledge proof
 	       "ciphertexts" : [           (json array of string)
 	         "hex"                     (string) output note ciphertext
-	         ,...
+	         , ...
 	       ]
 	     }
-	     ,...
+	     , ...
 	  ],
 	  "blockhash"   (string) the block hash
 	  "confirmations"      (numeric) the confirmations
@@ -4783,7 +4756,7 @@ Examples:
 
   command:
 
-	./komodo-cli -ac_name=SIDD getrawtransaction "a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95" 1
+	komodo-cli getrawtransaction "a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95" 1
 
   response:
 
@@ -4830,7 +4803,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawtransaction", "params": ["a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawtransaction", "params": ["a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
   {
@@ -4887,7 +4860,7 @@ Arguments:
 
 ::
 
-	"hexstring"    (string, required) the hex string of the raw transaction)
+	"hexstring"    (string, required) the hex string of the raw transaction
 	allowhighfees    (boolean, optional, default=false) allow high fees
 
 Response:
@@ -4898,7 +4871,7 @@ Response:
 
 Examples:
 
-Create a transaction
+Create a transaction:
 
 ::
 
@@ -4910,7 +4883,7 @@ Create a transaction
 
   0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa40000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000
 
-Sign the transaction, and get back the hex
+Sign the transaction, and get back the hex:
 
 ::
 
@@ -4925,25 +4898,25 @@ Sign the transaction, and get back the hex
     "complete": true
   }
 
-Send the transaction (signed hex)
+Send the transaction (signed hex):
 
 ::
 
   command:
 
-	./komodo-cli -ac_name=SIDD sendrawtransaction "0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa4000000006a4730440220242c38740261799f9b6ccbde8f941e2567e86c84108c508d108d062ab9677b6e02206fea089b28c6d66d1c8f2343e1de7960dadafa3cf268c00f7dbe391cd8b9365f01210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc98ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"
+	./komodo-cli sendrawtransaction "0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa4000000006a4730440220242c38740261799f9b6ccbde8f941e2567e86c84108c508d108d062ab9677b6e02206fea089b28c6d66d1c8f2343e1de7960dadafa3cf268c00f7dbe391cd8b9365f01210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc98ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"
 
   response:
 
   f1e041b2e2f1dafd331535d8277193aa27c33309a801949e0739a6b31c3d8a56
 
-As a json rpc call
+As a json rpc call:
 
 ::
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa4000000006a4730440220242c38740261799f9b6ccbde8f941e2567e86c84108c508d108d062ab9677b6e02206fea089b28c6d66d1c8f2343e1de7960dadafa3cf268c00f7dbe391cd8b9365f01210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc98ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa4000000006a4730440220242c38740261799f9b6ccbde8f941e2567e86c84108c508d108d062ab9677b6e02206fea089b28c6d66d1c8f2343e1de7960dadafa3cf268c00f7dbe391cd8b9365f01210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc98ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -4953,8 +4926,8 @@ As a json rpc call
     "id": "curltest"
   }
 
-signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )
------------------------------------------------------------------------------------------------------------------------------------------
+signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"}, ...] ["privatekey1", ...] sighashtype )
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 The ``signrawtransaction`` method signs inputs for a raw transaction (serialized, hex-encoded). The second optional argument (may be null) is an array of previous transaction outputs that this transaction depends on, but may not yet be in the block chain. The third optional argument (may be null) is an array of base58-encoded private keys that, if given, will be the only keys used to sign the transaction.
 
@@ -4964,24 +4937,24 @@ Arguments:
 
 ::
 
-	"hexstring"     (string, required)  the transaction hex string
-	"prevtxs"       (string, optional) an json array of previous dependent transaction outputs
+	"hexstring"            (string, required)  the transaction hex string
+	"prevtxs"              (string, optional) an json array of previous dependent transaction outputs
 	     [
 	       {
-	         "txid"             (string, required) the transaction id
+	         "txid"              (string, required) the transaction id
 	         "vout"                  (numeric, required) the output number
-	         "scriptPubKey"   (string, required) script key
-	         "redeemScript"   (string, required for P2SH) redeem script
+	         "scriptPubKey"      (string, required) script key
+	         "redeemScript"      (string, required for P2SH) redeem script
 	         "amount"            (numeric, required) the amount spent
 	       }
-	       ,...
+	       , ...                     accepts multiple entries
 	    ]
-	"privatekeys"     (string, optional) a json array of base58-encoded private keys for signing
+	"privatekeys"              (string, optional) a json array of base58-encoded private keys for signing
     [
-      "privatekey"   (string) private key in base58-encoding
-      ,...
+      "privatekey"            (string) private key in base58-encoding
+      , ...                     accepts multiple entries
     ]
-	"sighashtype"     (string, optional, default=ALL) the signature hash type; the following options are available: "ALL" | "NONE" | "SINGLE" | "ALL|ANYONECANPAY" | "NONE|ANYONECANPAY" | "SINGLE|ANYONECANPAY"
+	"sighashtype"              (string, optional, default=ALL) the signature hash type; the following options are available: "ALL" | "NONE" | "SINGLE" | "ALL|ANYONECANPAY" | "NONE|ANYONECANPAY" | "SINGLE|ANYONECANPAY"
 
 Response:
 
@@ -4989,16 +4962,16 @@ Response:
 
 	{
 	  "hex"                (string) the hex-encoded raw transaction with signature(s)
-	  "complete"           (boolean) if the transaction has a complete set of signatures
+	  "complete"           (boolean) whether the transaction has a complete set of signatures
 	  "errors" : [
 	    {
 	      "txid"           (string) the hash of the referenced, previous transaction
-	      "vout"           (numeric) the index of the output to spent and used as input
+	      "vout"           (numeric) the index of the output to spend and used as input
 	      "scriptSig"      (string) the hex-encoded signature script
 	      "sequence"       (numeric) script sequence number
 	      "error"          (string) verification or signing error related to the input
 	    }
-	    ,...
+	    , ...
 	  ]
 	}
 
@@ -5021,7 +4994,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa40000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa40000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -5037,21 +5010,21 @@ Examples:
 Util
 ====
 
-createmultisig nrequired ["key",...]
+createmultisig nrequired ["key", ...]
 ------------------------------------
 
-The ``createmultisig`` method creates a multi-signature address with ``n`` signature of ``m`` keys required. The method returns a json object with the address and redeemScript.
+The ``createmultisig`` method creates a multi-signature address with ``n`` signature(s) of ``m`` key(s) required. The method returns a json object with the address and redeemScript.
 
 Arguments:
 
 ::
 
-	number_required        (numeric, required) the number of required signatures out of the ``n`` keys or addresses.
-	"keys"                 (string, required) a json array of keys which are KMD/asset-chain addresses or hex-encoded public keys
+	number_required        (numeric, required) the number of required signatures out of the ``n`` key(s) or address(es)
+	"keys"                 (string, required) a json array of keys which are addresses or hex-encoded public keys
 
  [
-   "key"                 (string) KMD/asset-chain address or hex-encoded public key
-   ,...
+   "key"                 (string) an address or hex-encoded public key
+   , ...                     accepts multiple entries
  ]
 
 Response:
@@ -5059,8 +5032,8 @@ Response:
 ::
 
 	{
-	  "address"            (string) the value of the new multisig address.
-	  "redeemScript"       (string) the string value of the hex-encoded redemption script.
+	  "address"            (string) the value of the new multisig address
+	  "redeemScript"       (string) the string value of the hex-encoded redemption script
 	}
 
 Examples:
@@ -5071,7 +5044,7 @@ Create a multisig address from 2 addresses
 
   command:
 
-	komodo-cli -ac_name=SIDD createmultisig 2 "[\"RJnVEQgucK1iwiRjfTZmreXkF49KgTErDn\",\"RCVyjn9MQ8Tw6YRJnDcsx67kfsmfUgLdfw\"]"
+	komodo-cli createmultisig 2 "[\"RJnVEQgucK1iwiRjfTZmreXkF49KgTErDn\",\"RCVyjn9MQ8Tw6YRJnDcsx67kfsmfUgLdfw\"]"
 
   response:
 
@@ -5102,20 +5075,19 @@ estimatefee nblocks
 
 The ``estimatefee`` method estimates the approximate fee per kilobyte. The method is needed for a transaction to begin confirmation within ``nblocks`` blocks.
 
+The value ``-1.0`` is returned if not enough transactions and blocks have been observed to make an estimate.
+
 Arguments:
 
 ::
 
-	nblocks     (numeric)
+	nblocks              (numeric)            the number of blocks within which the fee should be tested
 
 Response:
 
 ::
 
-	n :    (numeric) estimated fee-per-kilobyte
-
-  The value ``-1.0`` is returned if not enough transactions and blocks have been observed to make an estimate.
-
+	n :                    (numeric)           estimated fee-per-kilobyte
 
 Example:
 
@@ -5134,6 +5106,8 @@ estimatepriority nblocks
 
 The ``estimatepriority`` method estimates the approximate priority of a zero-fee transaction, when it needs to begin confirmation within ``nblocks`` blocks.
 
+The value ``-1.0`` is returned if not enough transactions and blocks have been observed to make an estimate.
+
 Arguments:
 
 ::
@@ -5144,9 +5118,7 @@ Response:
 
 ::
 
-	n    (numeric) estimated priority
-
-  -1.0 is returned if not enough transactions and blocks have been observed to make an estimate.
+	n            (numeric)       estimated priority
 
 Example:
 
@@ -5158,7 +5130,7 @@ Example:
 
   response:
 
-  ===need to come back to this, getting -1===
+  ===need to come back to this, getting -1, possible bug?===
 
 invalidateblock "hash"
 ----------------------
@@ -5169,7 +5141,7 @@ Arguments:
 
 ::
 
-	hash   (string, required) the hash of the block to mark as invalid
+	hash       (string, required)    the hash of the block to mark as invalid
 
 Response:
 
@@ -5193,7 +5165,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7     --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "invalidateblock", "params": ["02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "invalidateblock", "params": ["02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -5202,26 +5174,6 @@ Examples:
     "error": null,
     "id": "curltest"
   }
-
-jumblr_deposit "depositaddress"
--------------------------------
-
-For usage look at :doc:`using-JUMBLR`
-
-jumblr_pause
-------------
-
-For usage look at :doc:`using-JUMBLR`
-
-jumblr_resume
--------------
-
-For usage look at :doc:`using-JUMBLR`
-
-jumblr_secret "secretaddress"
------------------------------
-
-For usage look at :doc:`using-JUMBLR`
 
 reconsiderblock "hash"
 ----------------------
@@ -5247,27 +5199,27 @@ Examples:
 validateaddress "komodoaddress"
 -------------------------------
 
-The ``validateaddress`` method returns information about the given KMD/asset-chain address.
+The ``validateaddress`` method returns information about the given address.
 
 Arguments:
 
 ::
 
-	"address"     (string, required) The KMD/asset-chain address to validate
+	"address"        (string, required)        the address to validate
 
 Response:
 
 ::
 
 	{
-	  "isvalid"         (boolean) indicates whether the address is valid. If it is not, this is the only property returned.
-	  "address"   (string) the address validated
-	  "scriptPubKey"       (string) the hex encoded scriptPubKey generated by the address
-	  "ismine"          (boolean) indicates whether the address is yours or not
-	  "isscript"    (boolean) if the key is a script
-	  "pubkey"           (string) the hex value of the raw public key
-	  "iscompressed"     (boolean) if the address is compressed
-	  "account"          (string) DEPRECATED. The account associated with the address, "" is the default account
+	  "isvalid"         (boolean)  indicates whether the address is valid. If it is not, this is the only property returned.
+	  "address"          (string)  the address validated
+	  "scriptPubKey"     (string)  the hex encoded scriptPubKey generated by the address
+	  "ismine"          (boolean)  indicates whether the address is yours
+	  "isscript"         (boolean) whether the key is a script
+	  "pubkey"           (string)  the hex value of the raw public key
+	  "iscompressed"     (boolean) whether the address is compressed
+	  "account"          (string)  DEPRECATED the account associated with the address; "" is the default account
 	}
 
 Examples:
@@ -5296,25 +5248,27 @@ Examples:
 verifymessage "address" "signature" "message"
 ---------------------------------------------------
 
-Verify a signed message
+The ``verifymessage`` method verifies a signed message.
+
+* Note: see also ===link=== ``signmessage``
 
 Arguments:
 
 ::
 
 	"address"         (string, required) the address to use for the signature
-	"signature"       (string, required) the signature provided by the signer in base 64 encoding (see signmessage)
+	"signature"       (string, required) the signature provided by the signer in base 64 encoding
 	"message"         (string, required) the message that was signed
 
 Response:
 
 ::
 
-	true|false   (boolean) indicates whether the signature is verified
+	true|false         (boolean) indicates whether the signature is verified
 
 Examples:
 
-Create the signature
+Create the signature:
 
 ::
 
@@ -5326,7 +5280,7 @@ Create the signature
 
   H1y0mn/wRv56r1bcfkbQtzjG6XeWSelAsyayBuCwEL9XGXs7ieU55dryt/cFWM9gnRFI7gS01AByuSqRs+o/AZs=
 
-Verify the signature
+Verify the signature:
 
 ::
 
@@ -5347,16 +5301,16 @@ Arguments:
 
 ::
 
-	"zaddr"     (string, required) the z address to validate
+	"zaddr"           (string, required)    the z address to validate
 
 Response:
 
 ::
 
 	{
-	  "isvalid"      (boolean) indicates whether the address is valid; if not, this is the only property returned
-	  "address"         (string) the z address validated
-	  "ismine"       (boolean) indicates if the address is yours or not
+	  "isvalid"          (boolean) indicates whether the address is valid; if not, this is the only property returned
+	  "address"          (string) the z address validated
+	  "ismine"           (boolean) indicates if the address is yours or not
 	  "payingkey"         (string) the hex value of the paying key, a_pk
 	  "transmissionkey"   (string) the hex value of the transmission key, pk_enc
 	}
@@ -5377,39 +5331,200 @@ Examples:
     "ismine": true
   }
 
-Wallet
+Jumblr
 ======
 
-addmultisigaddress nrequired ["key",...] ( "account" )
-------------------------------------------------------
+Basic Instructions
+------------------
 
-The ``addmultisigaddress`` method adds a multi-signature address to the wallet, where `nrequired` indicates the number of keys (out of the total provided) required to execute a transaction.
+Install Komodo following the :doc:`installation guide <install-Komodo-manually>`
 
-The keys function as signatures, allowing multiple parties or entities to manage an account. Each key in the array can be a Komodo address or a hex-encoded public key.
+Start the Komodo daemon
 
-DEPRECATED: If 'account' is specified, the method assigns the multi-signature address to that account.
+.. code-block:: shell
+
+	cd komodo/src
+
+	./komodod &
+
+Designate a KMD address with at least 10.024 KMD funds. ( ===link=== ``jumblr_deposit``)
+
+.. code-block:: shell
+
+	./komodo-cli jumblr_deposit "KMD_address"
+
+#Example:
+
+.. code-block:: shell
+
+	./komodo-cli jumblr_deposit RT4mSUjG35QeuGcedsfpHtP5MhDeEGTAqb
+
+
+Designate a destination address for your funds. This should be a transparent address that you are keeping secret. ( ===link=== ``jumblr_secret``)
+
+.. code-block:: shell
+
+	./komodo-cli jumblr_secret "destination_KMD_address"
+
+#Example:
+
+.. code-block:: shell
+
+	./komodo-cli jumblr_secret RS46GZ5iTkt2exdauQG3JJ8fdnZNJUvAc1
+
+Leave your node running until the balance in your first address reaches below 10.024 KMD and the destination address receives the correct amount.
+
+.. warning::
+
+	Jumblr is created to be resistant against time-based analysis. That means it is not meant to be fast. Make sure you initiate the Jumblr process only if you have plenty of time for the process to finish.
+
+For a more detailed description of Jumblr, please see our full explanation in our ===link=== whitepaper.
+
+jumblr_deposit "depositaddress"
+-------------------------------
+
+The ``jubmlr_deposit`` method indicates the address from which Jumblr should withdraw funds. There should be at least 10.024 KMD in this address. Jumblr will withdraw funds in increments of 10, 100, or 7770 KMD.
+
+* Note: While shielded z_address technology is available on all KMD-based asset chains, the Jumblr engine and methods are only available on the KMD mainnet.
 
 Arguments:
 
 ::
 
-	nrequired        (numeric, required) the number of required keys (out of the `n` submitted)
-	"keysobject"   (string, required) a json array of addresses or hex-encoded public keys
-	     [
-	       "address"  (string) address or hex-encoded public key
-	       ...,
-	     ]
-	"account"      (string, optional) DEPRECATED: if provided, "account" MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+  "depositaddress"          (string, required)    the address from which Jumblr will withdraw funds
 
 Response:
 
 ::
 
-	"zcashaddress"  (string) an address associated with the keys
+  (none)
 
 Examples:
 
-Add a multisig address from 2 addresses
+::
+
+  command:
+
+  komodo-cli "RT4mSUjG35QeuGcedsfpHtP5MhDeEGTAqb"
+
+  response:
+
+  (none)
+
+jumblr_pause
+------------
+
+The ``jumblr_pause`` method instructs Jumblr to temporarily pause the privacy-shielding process.
+
+* Note: see also ===link=== ``jumblr_resume``
+
+Arguments:
+
+::
+
+  (none)
+
+Response:
+
+::
+
+  (none)
+
+Examples:
+
+::
+
+  command:
+
+  komodo-cli jumblr_pause
+
+  response:
+
+  (none)
+
+jumblr_resume
+-------------
+
+The ``jumblr_resume`` method instructs Jumblr to resume the privacy-shielding process.
+
+* Note: see also ``jumblr_pause``
+
+Arguments:
+
+::
+
+  (none)
+
+Response:
+
+::
+
+  (none)
+
+Examples:
+
+::
+
+  command:
+
+  komodo-cli jumblr_resume
+
+  response:
+
+  (none)
+
+jumblr_secret "secretaddress"
+-----------------------------
+
+The ``jumblr_secret`` method indicates to Jumblr the final `t` destination address. This should be a separate `t` address that has no connection to the wallet.dat file of your ``jumblr_deposit`` address. Ideally, you should only access the final ``jumblr_secret`` address via a separate node, and with other layers of privacy (VPN, Tor, etc.).
+
+Arguments:
+
+  "secretaddress"     (string, required)  the destination transparent address
+
+Response:
+
+  (none)
+
+Examples:
+
+::
+
+  komodo-cli jumbr_secret "RCpMUZwxc3pWsgip5aj3Sy1cKkh86P3Tns"
+
+Wallet
+======
+
+addmultisigaddress nrequired ["key", ...] ( "account" )
+-------------------------------------------------------
+
+The ``addmultisigaddress`` method adds a multi-signature address to the wallet, where ``nrequired`` indicates the number of keys (out of the total provided) required to execute a transaction.
+
+The keys function as signatures, allowing multiple parties or entities to manage an account. Each key in the array can be an address or a hex-encoded public key.
+
+* DEPRECATED: if 'account' is specified, the method assigns the multi-signature address to that account
+
+Arguments:
+
+::
+
+	nrequired            (numeric, required) the number of required keys (out of the `n` submitted)
+	"keysobject"         (string, required) a json array of addresses or hex-encoded public keys
+	     [
+	       "address"     (string) address or hex-encoded public key
+	       ...,
+	     ]
+	"account"            (string, optional) DEPRECATED: if provided, "account" MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+
+Response:
+
+::
+
+	"address"            (string)      an address associated with the keys
+
+Examples:
+
+Add a multisig address from 2 addresses:
 
 ::
 
@@ -5421,24 +5536,32 @@ Add a multisig address from 2 addresses
 
   bLz2YZ7Mm8MgPc9mPNiFqhjFPbFZU4WUD5
 
-As json rpc call
-
 ::
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addmultisigaddress", "params": [2, "[\"t16sSauSf5pF2UkUwvKGq4qjNRzBZYqgEL5\",\"t171sgjn4YtPu27adkKGrdDwzRTxnRkBfKV\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  command:
+
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addmultisigaddress", "params": [2, ["RL4CuA2MSAbBiqJKQEr2TKnKT2fSwK99mG","RBYVFCxpJdLgvUixhguxzuH1TJpoNLYCJ6"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+
+  response:
+
+  {
+    "result": "bNdB9fAt9HmQD8CmBjkY6QwmrNSBrbzsgA",
+    "error": null,
+    "id": "curltest"
+  }
 
 backupwallet "destination"
 --------------------------
 
-The ``backupwallet`` method safely copies the ``wallet.dat`` file to the indicated file.
+The ``backupwallet`` method safely copies the ``wallet.dat`` file to the indicated destination. The ``destination`` input accepts only alphanumeric characters.
 
-The ``destination`` input accepts only alphanumeric characters.
+* Note: this method requires that the coin daemon have the ===link=== ``exportdir`` runtime parameter enabled
 
 Arguments:
 
 ::
 
-	"destination"   (string, required) the destination filename, saved in the directory set by ===link=== -exportdir option
+	"destination"   (string, required) the destination filename, saved in the directory set by the ===link=== ``-exportdir`` runtime parameter
 
 Response:
 
@@ -5471,9 +5594,9 @@ Examples:
 dumpprivkey "address"
 ---------------------------
 
-The ``dumpprivkey`` method reveals the private key corresponding to the indicated 'address'.
+The ``dumpprivkey`` method reveals the private key corresponding to the indicated ``address``.
 
-* Note: See also ``importprivkey``
+* Note: see also ``importprivkey``
 
 Arguments:
 
@@ -5497,7 +5620,7 @@ Examples:
 
   response:
 
-  PURPOSEFULLYOMMITTEDxxxxxxxx4KkCmRnnSg7iXvAUjoYivC8K
+  DONOTUSExxxxxxxxxxxxxxxxxxxx4KkCmRnnSg7iXvAUjoYivC8K
 
 ::
 
@@ -5508,7 +5631,7 @@ Examples:
   response:
 
   {
-    "result": "PURPOSEFULLYOMMITTEDxxxxxxxx4KkCmRnnSg7iXvAUjoYivC8K",
+    "result": "DONOTUSExxxxxxxxxxxxxxxxxxxx4KkCmRnnSg7iXvAUjoYivC8K",
     "error": null,
     "id": "curltest"
   }
@@ -5517,9 +5640,11 @@ Examples:
 dumpwallet "filename"
 ---------------------
 
-The ``dumpwallet`` method dumps all transparent_address wallet keys in a human-readable format.
+The ``dumpwallet`` method dumps all transparent_address wallet keys into a file, using a human-readable format.
 
 Overwriting an existing file is not permitted. The ``destination`` parameter accepts only alphanumeric characters.
+
+* Note: this method requires that the coin daemon have the ===link=== ``exportdir`` runtime parameter enabled
 
 Arguments:
 
@@ -5548,7 +5673,7 @@ Examples:
   curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   {
-    "result": "/home/siddhartha/Desktop/test",
+    "result": "/home/myusername/myexportdir/test",
     "error": null,
     "id": "curltest"
   }
@@ -5560,15 +5685,15 @@ encryptwallet "passphrase"
 
 The ``encryptwallet`` method encrypts the wallet with the indicated ``passphrase``.
 
-This method is for first time encryption only. After this, any calls that interact with private keys, such as sending or signing, will require the passphrase to be set prior to the making these calls. Use the ``walletpassphrase`` call for this, and then ``walletlock`` call. If the wallet is already encrypted, use the ``walletpassphrasechange`` call.
+This method is for first-time encryption only. After this, any calls that interact with private keys, such as sending or signing, will require the passphrase to be set prior to making these calls. Use the ===link=== ``walletpassphrase`` call for this, and then ===link=== ``walletlock``. If the wallet is already encrypted, use the ===link=== ``walletpassphrasechange`` call.
 
-Note that using the ``encryptwallet`` method will shutdown the server.
+* Note: using the ``encryptwallet`` method will shutdown the server
 
 Arguments:
 
 ::
 
-	"passphrase"    (string) the passphrase to encrypt the wallet with. It must be at least 1 character, but should be long.
+	"passphrase"    (string) the passphrase with which to encrypt the wallet; it must be at least 1 character, but should be long
 
 Response:
 
@@ -5578,7 +5703,7 @@ Response:
 
 Examples:
 
-Encrypt your wallet
+Encrypt your wallet:
 
 ::
 
@@ -5590,7 +5715,7 @@ Encrypt your wallet
 
   (disabled)
 
-Set the passphrase to use the wallet, such as for signing or sending coins
+Set the passphrase to use the wallet, such as for signing or sending coins:
 
 ::
 
@@ -5602,7 +5727,7 @@ Set the passphrase to use the wallet, such as for signing or sending coins
 
   (disabled)
 
-Enter a test command like ``signmessage``
+Enter a test command like ``signmessage``:
 
 ::
 
@@ -5614,7 +5739,7 @@ Enter a test command like ``signmessage``
 
   (disabled)
 
-Lock the wallet again by removing the passphrase
+Lock the wallet again by removing the passphrase:
 
 ::
 
@@ -5626,7 +5751,7 @@ Lock the wallet again by removing the passphrase
 
   (disabled)
 
-As a json rpc call
+As a json rpc call:
 
 ::
 
@@ -5638,7 +5763,7 @@ As a json rpc call
 
   (disabled)
 
-getaccount "KMD_address"
+getaccount "address"
 ------------------------
 
 **DEPRECATED** The ``getaccount`` method returns the account associated with the given address.
@@ -5647,7 +5772,7 @@ Arguments:
 
 ::
 
-  "address"        (string, required) the address for account lookup
+  "address"        (string, required) the address
 
 Response:
 
@@ -5717,7 +5842,7 @@ Examples:
 getaddressesbyaccount "account"
 -------------------------------
 
-**DEPRECATED**. Returns the list of addresses for the given account.
+**DEPRECATED** The ``getaddressesbyaccount`` method returns the list of addresses for the given ``account``.
 
 Arguments:
 
@@ -5731,7 +5856,7 @@ Response:
 
 	[
 	  "address"  (string) an address associated with the given account
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -5767,19 +5892,19 @@ Arguments:
 
 ::
 
-	"account"      (string, optional)    DEPRECATED if provided, it MUST be set to the empty string "" or to the string "*"
+	"account"        (string, optional)                DEPRECATED if provided, it MUST be set to the empty string "" or to the string "*"
 	minconf          (numeric, optional, default=1)    only include transactions confirmed at least this many times
-	includeWatchonly (bool, optional, default=false) also include balance in watchonly addresses (see ===link=== ``importaddress``)
+	includeWatchonly (bool, optional, default=false)   also include balance in watchonly addresses (see ===link=== ``importaddress``)
 
 Response:
 
 ::
 
-	amount              (numeric) the total amount of coins
+	amount              (numeric) the total amount
 
 Examples:
 
-The total amount in the wallet
+The total amount in the wallet:
 
 ::
 
@@ -5791,7 +5916,7 @@ The total amount in the wallet
 
   10.05000000
 
-The total amount in the wallet where at five blocks are confirmed
+The total amount in the wallet where at least five blocks are confirmed:
 
 ::
 
@@ -5803,7 +5928,7 @@ The total amount in the wallet where at five blocks are confirmed
 
   10.05000000
 
-As a json rpc call
+As a json rpc call:
 
 ::
 
@@ -5828,7 +5953,7 @@ Arguments:
 
 ::
 
-	"account"        (string, optional) DEPRECATED. If provided, it MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+	"account"        (string, optional) DEPRECATED: if provided, the account MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
 
 Response:
 
@@ -5923,7 +6048,7 @@ Response:
 
 ::
 
-	amount              (numeric)  the total amount received for this account.
+	amount              (numeric)  the total amount received for this account
 
 Examples:
 
@@ -6009,7 +6134,7 @@ Arguments:
 
 ::
 
-	 "txid"    (string, required)    the transaction id
+	 "txid"               (string, required)                 the transaction id
 	"includeWatchonly"    (bool, optional, default=false)    whether to include watchonly addresses in the returned balance calculation and in the ``details[]`` returned values
 
 Response:
@@ -6017,34 +6142,34 @@ Response:
 ::
 
 	{
-	  "amount"           (numeric)  the transaction amount
-	  "confirmations"     (numeric) the number of confirmations
-	  "blockhash"        (string) the block hash
-	  "blockindex"       (numeric) the block index
-	  "blocktime"       (numeric) the time in seconds since epoch (1 Jan 1970 GMT)
-	  "txid"             (string) the transaction id.
-	  "time"            (numeric) the transaction time in seconds since epoch (1 Jan 1970 GMT)
-	  "timereceived"    (numeric) the time received in seconds since epoch (1 Jan 1970 GMT)
+	  "amount"               (numeric)  the transaction amount
+	  "confirmations"        (numeric) the number of confirmations
+	  "blockhash"            (string) the block hash
+	  "blockindex"           (numeric) the block index
+	  "blocktime"            (numeric) the time in seconds since epoch (1 Jan 1970 GMT)
+	  "txid"                 (string) the transaction id
+	  "time"                 (numeric) the transaction time in seconds since epoch (1 Jan 1970 GMT)
+	  "timereceived"         (numeric) the time received in seconds since epoch (1 Jan 1970 GMT)
 	  "details" : [
 	    {
-	      "account"      (string) (DEPRECATED) the account name involved in the transaction; can be "" for the default account
-	      "address"      (string) the address involved in the transaction
-	      "category"    (string) the category - either ``send`` or ``receive``
-	      "amount"                  (numeric) the amount
-	      "vout"                       (numeric) the vout value
+	      "account"          (string) DEPRECATED the account name involved in the transaction; can be "" for the default account
+	      "address"          (string) the address involved in the transaction
+	      "category"         (string) the category - either ``send`` or ``receive``
+	      "amount"           (numeric) the amount
+	      "vout"             (numeric) the vout value
 	    }
-	    ,...
+	    , ...
 	  ],
 	  "vjoinsplit" : [
 	    {
-	      "anchor"          (string) merkle root of note commitment tree
+	      "anchor"                         (string) merkle root of note commitment tree
 	      "nullifiers" : [ string, ...]      (string) nullifiers of input notes
 	      "commitments" : [ string, ...]     (string) note commitments for note outputs
 	      "macs" : [ string, ...]            (string) message authentication tags
-	      "vpub_old"                  (numeric) the amount removed from the transparent value pool
-	      "vpub_new"                 (numeric) the amount added to the transparent value pool
+	      "vpub_old"                       (numeric) the amount removed from the transparent value pool
+	      "vpub_new"                    (numeric) the amount added to the transparent value pool
 	    }
-	    ,...
+	    , ...
 	  ],
 	  "hex"         (string) raw data for transaction
 	}
@@ -6235,8 +6360,6 @@ Examples:
     "id": "curltest"
   }
 
-===random note: we need a legend that indicates what the () and other symbols means===
-
 importaddress "address" ( "label" rescan )
 ------------------------------------------
 
@@ -6307,9 +6430,9 @@ Arguments:
 
 ::
 
-	"privkey"   (string, required)  the private key (see ===link=== dumpprivkey)
-	"label"            (string, optional, default="") an optional label
-	rescan               (boolean, optional, default=true) Rescan the wallet for transactions
+	"privkey"          (string, required)                    the private key (see ===link=== ``dumpprivkey``)
+	"label"            (string, optional, default="")        an optional label
+	rescan             (boolean, optional, default=true)     rescan the wallet for transactions
 
 Note: This call can take minutes to complete if rescan is true.
 
@@ -6325,7 +6448,7 @@ Examples:
 
   command:
 
-	komodo-cli importprivkey "PURPOSEFULLYOMMITTEDxxxxxxxxj4Xu9jjinhLpffhdtoKg5gar2"
+	komodo-cli importprivkey "DONOTUSExxxxxxxxxxxxxxxxxxxxj4Xu9jjinhLpffhdtoKg5gar2"
 
   response:
 
@@ -6337,7 +6460,7 @@ Import using a label and without rescan
 
   command:
 
-	komodo-cli importprivkey "PURPOSEFULLYOMMITTEDxxxxxxxxj4Xu9jjinhLpffhdtoKg5gar2" "testing" false
+	komodo-cli importprivkey "DONOTUSExxxxxxxxxxxxxxxxxxxxj4Xu9jjinhLpffhdtoKg5gar2" "testing" false
 
   response:
 
@@ -6403,13 +6526,13 @@ Examples:
 keypoolrefill ( newsize )
 -------------------------
 
-The ``keypoolrefill`` method fills the keypool.
+The ``keypoolrefill`` method refills the keypool.
 
 Arguments:
 
 ::
 
-	newsize     (numeric, optional, default=100) The new keypool size
+	newsize     (numeric, optional, default=100)     the new keypool size
 
 Response:
 
@@ -6509,12 +6632,12 @@ Response:
 	  [                          (array) each array at this indentation level is a unique grouping of addresses
 	    [
 	      "address",             (string) the address
-	      amount,                (numeric) the amount in ZEC
+	      amount,                (numeric) the amount
 	      "account"              (string, optional) (DEPRECATED) the account
 	    ]
-	    ,...
+	    , ...
 	  ]
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -6605,7 +6728,7 @@ Response:
 	    "txid"     (string)    the transaction id locked
 	    "vout"      (numeric)  the vout value
 	  }
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -6653,9 +6776,9 @@ Arguments:
 
 ::
 
-  minconf      (numeric, optional, default=1)       the minimum number of confirmations before payments are included
-	includeempty (boolean, optional, default=false)    whether to include accounts that haven't received any payments
-	includeWatchonly (bool, optional, default=false)   whether to include watchonly addresses (see 'importaddress')
+  minconf           (numeric, optional, default=1)       the minimum number of confirmations before payments are included
+	includeempty       (boolean, optional, default=false)    whether to include accounts that haven't received any payments
+	includeWatchonly   (bool, optional, default=false)   whether to include watchonly addresses (see 'importaddress')
 
 Response:
 
@@ -6668,7 +6791,7 @@ Response:
 	    "amount"                 (numeric)       the total amount received by addresses with this account
 	    "confirmations"           (numeric)    the number of confirmations of the most recent transaction included
 	  }
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -6724,11 +6847,11 @@ Response:
 	  {
 	    "involvesWatchonly"        (bool)      only returned if imported addresses were involved in transaction
 	    "address"                  (string)    the receiving address
-	    "account"                  (string) DEPRECATED     the account of the receiving address; the default account is ""
+	    "account"                  (string)    DEPRECATED     the account of the receiving address; the default account is ""
 	    "amount"                  (numeric)    the total amount received by the address
 	    "confirmations"            (numeric)   the number of confirmations of the most recent transaction included
 	  }
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -6810,8 +6933,8 @@ Examples:
     "id": "curltest"
   }
 
-listsinceblock ( "blockhash" target-confirmations includeWatchonly)
--------------------------------------------------------------------
+listsinceblock ( "blockhash" target-confirmations includeWatchonly )
+--------------------------------------------------------------------
 
 The ``listsinceblock`` method queries all transactions in blocks since block ``blockhash``, or all transactions if ``blockhash`` is omitted.
 
@@ -7005,7 +7128,7 @@ List the most recent 10 transactions in the systems:
 
   command:
 
-	./komodo-cli listtransactions
+	komodo-cli listtransactions
 
   response:
 
@@ -7070,8 +7193,6 @@ List transactions 100 to 120:
       ...
   ]
 
-As a json rpc call
-
 ::
 
   command:
@@ -7106,7 +7227,7 @@ As a json rpc call
     "id": "curltest"
   }
 
-listunspent ( minconf maxconf  ["address",...] )
+listunspent ( minconf maxconf  ["address", ...] )
 ------------------------------------------------
 
 The ``listunspent`` method returns an array of unspent transaction outputs, with a range between ``minconf`` and ``maxconf`` (inclusive) confirmations. The method can, optionally, filter to only include ``txouts`` paid to specified addresses.
@@ -7119,7 +7240,7 @@ Arguments:
 	maxconf          (numeric, optional, default=9999999) the maximum confirmations to filter
   [
     "address"       (string)   a series of addresses
-    , ...
+    , ...							                   accepts multiple entries
   ]
 
 Response:
@@ -7236,7 +7357,7 @@ Examples:
   }
 
 
-lockunspent unlock [{"txid":"txid","vout":n},...]
+lockunspent unlock [{"txid":"txid","vout":n}, ...]
 -------------------------------------------------
 
 The ``lockunspent`` method locks (unlock = ``false``) or unlocks (unlock = ``true``) specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection, when spending the relevant coin. The locks are stored in memory only; at runtime a node always starts with zero locked outputs, and the locked output list is always cleared when a node stops or fails.
@@ -7254,7 +7375,7 @@ Arguments:
 	         "txid"    (string) the transaction id
 	         "vout"        (numeric) the output number
 	       }
-	       ,...
+	       , ...         accepts multiple entries
 	     ]
 
 Response:
@@ -7358,7 +7479,7 @@ Response:
 ::
 
   [
-    "transaction_id_string"   (string)  an array of the rebroadcasted transaction id's
+    "transaction_id"   (string)  an array of the rebroadcasted transaction id's
   ]
 
 Examples:
@@ -7446,7 +7567,7 @@ Examples:
   (deprecated)
 
 
-sendmany "account" {"address":amount,...} ( minconf "comment" ["address",...] )
+sendmany "account" {"address":amount, ...} ( minconf "comment" ["address", ...] )
 -----------------------------------------------------------------------------------
 
 The ``sendmany`` method can send multiple multiple transactions at once. Amounts are double-precision floating point numbers.
@@ -7459,14 +7580,14 @@ Arguments:
 	"amounts"                        (string, required)                  a json object with addresses and amounts
 	    {
 	      "address":amount           ("string":numeric)                  the address (string) and the value (double-precision floating numeric)
-	      ,...
+	      , ...                     accepts multiple entries
 	    }
 	minconf                          (numeric, optional, default=1)      only use the balance confirmed at least this many times
 	"comment"                        (string, optional)                  a comment
 	subtractfeefromamount            (string, optional)                  A json array with addresses. The fee will be equally deducted from the amount of each selected address; the recipients will receive less than you enter in their corresponding amount field. If no addresses are specified here, the sender pays the fee.
 	    [
 	      "address"                  (string)                            subtract fee from this address
-	      ,...
+	      , ...                     accepts multiple entries
 	    ]
 
 Response:
@@ -7527,7 +7648,7 @@ Send two amounts to two different addresses, subtract fee from amount:
     "id": "curltest"
   }
 
-sendtoaddress "KMD_address" amount ( "comment" "comment-to" subtractfeefromamount )
+sendtoaddress "address" amount ( "comment" "comment-to" subtractfeefromamount )
 -----------------------------------------------------------------------------------
 
 The ``sendtoaddress`` method sends an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001
@@ -7546,7 +7667,7 @@ Response:
 
 ::
 
-	"transaction_id_string"  (string) the transaction id
+	"transaction_id"  (string) the transaction id
 
 Examples:
 
@@ -7594,7 +7715,7 @@ Examples:
     "id": "curltest"
   }
 
-setaccount "KMD_address" "account"
+setaccount "address" "account"
 ----------------------------------
 
 **DEPRECATED** The ``setaccount`` method sets the account associated with the given address.
@@ -7671,7 +7792,7 @@ Examples:
     "id": "curltest"
   }
 
-signmessage "KMD address" "message"
+signmessage "address" "message"
 -----------------------------------
 
 The ``signmessage`` method signs a message via the private key of an address.
@@ -7758,7 +7879,7 @@ Examples:
 
   response:
 
-  PURPOSEFULLYOMMITTEDxxxxV6EyPpaZFVDsqeNB6k8eoLFERdag
+  DONOTUSExxxxxxxxxxxxxxxxV6EyPpaZFVDsqeNB6k8eoLFERdag
 
 ::
 
@@ -7769,7 +7890,7 @@ Examples:
   response:
 
   {
-    "result": "PURPOSEFULLYOMMITTEDxxxxV6EyPpaZFVDsqeNB6k8eoLFERdag",
+    "result": "DONOTUSExxxxxxxxxxxxxxxxV6EyPpaZFVDsqeNB6k8eoLFERdag",
     "error": null,
     "id": "curltest"
   }
@@ -7973,7 +8094,7 @@ Arguments:
 
 	[
     "operationid"         (string, optional)    a list of operation ids to query; if not provided, the method examines all operations known to the node
-    , ... ===note: we need to put this same indication for multi-object arrays and objects, to make it consistent===
+    , ...							                   accepts multiple entries
   ]
 
 Response:
@@ -7997,7 +8118,7 @@ Response:
             "address"           (string)    the receiving address
             "amount"            (numeric)   the amount to receive
           }
-          , ...
+          , ...							                   accepts multiple entries
         ],
         "minconf"               (numeric)   the minimum number of confirmations required
         "fee"                   (numeric)   the transaction fee
@@ -8319,7 +8440,7 @@ Examples:
 
   command:
 
-	komodo-cli z_importkey "PURPOSEFULLYOMMITTEDxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK"
+	komodo-cli z_importkey "DONOTUSExxxxxxxxxxxxxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK"
 
   response:
 
@@ -8331,7 +8452,7 @@ Examples:
 
   command:
 
-	komodo-cli z_importkey "PURPOSEFULLYOMMITTEDxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK" whenkeyisnew 30000
+	komodo-cli z_importkey "DONOTUSExxxxxxxxxxxxxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK" whenkeyisnew 30000
 
   response:
 
@@ -8341,7 +8462,7 @@ Examples:
 
   command:
 
-  komodo-cli z_importkey "PURPOSEFULLYOMMITTEDxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK" yes 20000
+  komodo-cli z_importkey "DONOTUSExxxxxxxxxxxxxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK" yes 20000
 
   response:
 
@@ -8351,7 +8472,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importkey", "params": ["PURPOSEFULLYOMMITTEDxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK", "no"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importkey", "params": ["DONOTUSExxxxxxxxxxxxxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK", "no"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
 
   response:
 
@@ -8504,7 +8625,7 @@ Response:
 
 	[
 	  "z_addresses"           (string) a zaddr belonging to the wallet
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -8556,7 +8677,7 @@ Response:
 
 	[
 	  "operationid"       (string) an operation id belonging to the wallet
-	  ,...
+	  , ...
 	]
 
 Examples:
@@ -8703,7 +8824,7 @@ Arguments:
     	                     If a special string is given, any given addresses of that type will be ignored.
     	[
     	  "address"          (string) can be a t_address or a z_address
-    	  , ...
+    	  , ...							                   accepts multiple entries
     	]
 	"toaddress"           (string, required) the t_address or z_address to receive the combined UTXO
 	fee                   (numeric, optional, default=0.0001) the fee amount to attach to this transaction
@@ -8749,7 +8870,7 @@ Examples:
 
   (disabled)
 
-z_sendmany "fromaddress" [{"address":...,"amount":...},...] ( minconf ) ( fee )
+z_sendmany "fromaddress" [{"address":...,"amount":...}, ...] ( minconf ) ( fee )
 --------------------------------------------------------------------------------
 
 The ``z_sendmany`` method sends one or more transactions at once, and allows for sending transactions of types `t --> z`, `z --> z`, `z --> t`. It is the principle method for dealing with shielded `z` transactions in the Komodo ecosystem.
@@ -8762,11 +8883,14 @@ Arguments:
 
 	"fromaddress"         (string, required) the sending t_address or z_address
 	"amounts"
-	    [{
+	    [
+        {
 	      "address"  (string, required) the receiving address; can be a t_address or z_address
 	      "amount"    (numeric, required) the numeric amount
 	      "memo"        (string, optional) if the address is a z_addr, this property accepts raw data represented in hexadecimal string format
-	    }, ...]
+	       }
+         , ...							                   accepts multiple entries
+      ]
 	minconf               (numeric, optional, default=1) Only use funds confirmed at least this many times.
 	fee                   (numeric, optional, default=0.0001) The fee amount to attach to this transaction.
 
@@ -8915,7 +9039,7 @@ Output:
 	  {
 	    "runningtime"
 	  }
-    , ...
+    , ...							                   accepts multiple entries
 	]
 
 zcrawjoinsplit rawtx inputs outputs vpub_old vpub_new
@@ -9003,152 +9127,3 @@ zcsamplejoinsplit
 -----------------
 
 The ``zcsamplejoinsplit`` method performs a joinsplit and returns the JSDescription.
-
-
-
-
-
-################################
-
-##
-## komodo.conf configuration file. Lines beginning with # are comments.
-##
-
-# Network-related settings:
-
-# Run a regression test network
-#regtest=0
-
-# Connect via a SOCKS5 proxy
-#proxy=127.0.0.1:9050
-
-# Bind to given address and always listen on it. Use [host]:port notation for IPv6
-#bind=<addr>
-
-# Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6
-#whitebind=<addr>
-
-##############################################################
-##            Quick Primer on addnode vs connect            ##
-##  Let's say for instance you use addnode=4.2.2.4          ##
-##  addnode will connect you to and tell you about the      ##
-##    nodes connected to 4.2.2.4.  In addition it will tell ##
-##    the other nodes connected to it that you exist so     ##
-##    they can connect to you.                              ##
-##  connect will not do the above when you 'connect' to it. ##
-##    It will *only* connect you to 4.2.2.4 and no one else.##
-##                                                          ##
-##  So if you're behind a firewall, or have other problems  ##
-##  finding nodes, add some using 'addnode'.                ##
-##                                                          ##
-##  If you want to stay private, use 'connect' to only      ##
-##  connect to "trusted" nodes.                             ##
-##                                                          ##
-##  If you run multiple nodes on a LAN, there's no need for ##
-##  all of them to open lots of connections.  Instead       ##
-##  'connect' them all to one node that is port forwarded   ##
-##  and has lots of connections.                            ##
-##       Thanks goes to [Noodle] on Freenode.               ##
-##############################################################
-
-# Use as many addnode= settings as you like to connect to specific peers
-#addnode=69.164.218.197
-#addnode=10.0.0.2:8233
-
-# Alternatively use as many connect= settings as you like to connect ONLY to specific peers
-#connect=69.164.218.197
-#connect=10.0.0.1:8233
-
-# Listening mode, enabled by default except when 'connect' is being used
-#listen=1
-
-# Maximum number of inbound+outbound connections.
-#maxconnections=
-
-#
-# JSON-RPC options (for controlling a running Komodo/komodod process)
-#
-
-# server=1 tells komodod to accept JSON-RPC commands (set as default if not specified)
-#server=1
-
-# Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6.
-# This option can be specified multiple times (default: bind to all interfaces)
-#rpcbind=<addr>
-
-# You must set rpcuser and rpcpassword to secure the JSON-RPC api
-#rpcuser=Ulysses
-#rpcpassword=YourSuperGreatPasswordNumber_DO_NOT_USE_THIS_OR_YOU_WILL_GET_ROBBED_385593
-
-# How many seconds komodo will wait for a complete RPC HTTP request.
-# after the HTTP connection is established.
-#rpcclienttimeout=30
-
-# By default, only RPC connections from localhost are allowed.
-# Specify as many rpcallowip= settings as you like to allow connections from other hosts,
-# either as a single IPv4/IPv6 or with a subnet specification.
-
-# NOTE: opening up the RPC port to hosts outside your local trusted network is NOT RECOMMENDED,
-# because the rpcpassword is transmitted over the network unencrypted and also because anyone
-# that can authenticate on the RPC port can steal your keys + take over the account running komodod
-# For more information see https://github.com/zcash/zcash/issues/1497
-
-#rpcallowip=10.1.1.34/255.255.255.0
-#rpcallowip=1.2.3.4/24
-#rpcallowip=2001:db8:85a3:0:0:8a2e:370:7334/96
-
-# Listen for RPC connections on this TCP port:
-#rpcport=8232
-
-# You can use Komodo or komodod to send commands to Komodo/komodod
-# running on another host using this option:
-#rpcconnect=127.0.0.1
-
-# Transaction Fee
-
-# Send transactions as zero-fee transactions if possible (default: 0)
-#sendfreetransactions=0
-
-# Create transactions that have enough fees (or priority) so they are likely to # begin confirmation within n blocks (default: 1).
-# This setting is overridden by the -paytxfee option.
-#txconfirmtarget=n
-
-# Miscellaneous options
-
-# Enable attempt to mine komodo.
-#gen=0
-
-# Set the number of threads to be used for mining komodo (-1 = all cores).
-#genproclimit=1
-
-# Specify a different Equihash solver (e.g. "tromp") to try to mine komodo
-# faster when gen=1.
-#equihashsolver=default
-
-# Pre-generate this many public/private key pairs, so wallet backups will be valid for
-# both prior transactions and several dozen future transactions.
-#keypool=100
-
-# Pay an optional transaction fee every time you send komodo.  Transactions with fees
-# are more likely than free transactions to be included in generated blocks, so may
-# be validated sooner. This setting does not affect private transactions created with
-# 'z_sendmany'.
-#paytxfee=0.00
-
-#Rewind the chain to specific block height. This is useful for creating snapshots at a given block height.
-#rewind=777777
-
-#Stop the chain a specific block height. This is useful for creating snapshots at a given block height.
-#stopat=1000000
-
-#Set an address to use as change address for all transactions. This value must be set to a 33 byte pubkey. All mined coins will also be sent to this address.
-#pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392
-
-#Forfeit all user rewards to miners. Set this to explicitly not claim user rewards.
-#exchange=1
-
-#Donate all user rewards to a a specific address. This value must be set to a 33 byte pubkey.
-#donation=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392
-
-# The exportdir parameter tells the coin daemon where to store your
-#exportdir=/home/myusername/mydirectory

@@ -2,3 +2,15 @@
 - Komodo API Details
 - Jumblr
 - Any additional information about KMD main chain
+
+
+RPC Calls notes:
+database of arguments | type | required/optional | descriptions | extra details
+database of responses | type | parent/default/child-name | descriptions | extra details
+
+synchronous vs asynchronous
+
+prolonged period?
+note about rpc .conf location?
+
+command origin, if known: BTC/Zcash/KMD/Custom
