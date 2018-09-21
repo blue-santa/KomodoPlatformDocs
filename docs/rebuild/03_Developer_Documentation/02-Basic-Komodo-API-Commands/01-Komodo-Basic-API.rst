@@ -865,7 +865,7 @@ Examples:
 
 	command:
 
-	curl --user myrpcuser:myuserpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
 	response:
 
@@ -973,7 +973,7 @@ Examples:
 ::
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -997,7 +997,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}]}' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}]}' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1089,7 +1089,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressmempool", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressmempool", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1162,7 +1162,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddresstxids", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddresstxids", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1264,7 +1264,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1287,7 +1287,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"], "chainInfo": true}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressutxos", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"], "chainInfo": true}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1353,7 +1353,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1468,7 +1468,7 @@ Examples (using blockhash):
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1511,7 +1511,7 @@ Examples (using blockhash):
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09", false] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1580,7 +1580,7 @@ Examples (using block height):
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1625,7 +1625,7 @@ Examples (using block height):
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["120", false] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1754,7 +1754,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1844,7 +1844,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1893,7 +1893,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -1954,7 +1954,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2039,7 +2039,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["0dd66ee1f151c38f73843378c08715ee3f4d3cf2888783e2846b81c057987084"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2132,7 +2132,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2189,7 +2189,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2246,7 +2246,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2334,7 +2334,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2394,7 +2394,7 @@ Examples:
 
   response:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getspentinfo", "params": [{"txid": "41ec75822318373bd00513efe7c708e745ab370db08ef4e0bd2ba4882ea77b40", "index": 0}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
 gettxout
 --------
@@ -2468,7 +2468,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2591,7 +2591,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2665,7 +2665,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "kvsearch", "params": ["examplekey"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "kvsearch", "params": ["examplekey"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2751,7 +2751,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7   --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "kvupdate", "params": ["examplekey", "examplevalue", "2", "examplepassphrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "kvupdate", "params": ["examplekey", "examplevalue", "2", "examplepassphrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
 
   response:
 
@@ -2836,7 +2836,7 @@ Examples:
 
   command:
 
-  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "minerids", "params": ["1000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "minerids", "params": ["1000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -2994,7 +2994,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3045,7 +3045,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7    --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifytxoutproof", "params": ["040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifytxoutproof", "params": ["040000004cd8bd98c66020496d0b34a5f5412400146ba10d6c7ab4286f84f7008d8d390e9ca9575183f60906e293e9766997396bec59f1c0b966085de3d17f8ac3c9d5280000000000000000000000000000000000000000000000000000000000000000da05975bf50e0f202d004b81fcc388cfd411d8c7c59a548e070b5affe938ce8ce830f10b298b00002402939a9a31df1305b40d26d9748283b102c708258717248d0d63f01d2957d8e3dcf56f6e03000000022e4babc29707fbdd8da2e4277b7c8b8b09e837f409eb047c936904d75fc8e6267a9dcf39838a70d552bf5e246116bee43e93178916aae388d5bd87bf2e4a1fc7010d"] }' -H 'content-type: text/plain;' http://127.0.0.1:9801
 
   response:
 
@@ -3145,7 +3145,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3332,7 +3332,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_validatepaymentdisclosure", "params": ["zpd:706462ff004c561a0447ba2ec51184e6c204..."] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_validatepaymentdisclosure", "params": ["zpd:706462ff004c561a0447ba2ec51184e6c204..."] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3423,7 +3423,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getgenerate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getgenerate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3503,7 +3503,7 @@ Turning the setting on via json rpc:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setgenerate", "params": [true, 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setgenerate", "params": [true, 1] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3557,7 +3557,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockubsidy", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockubsidy", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
 getblocktemplate
 ----------------
@@ -3671,7 +3671,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3754,7 +3754,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getlocalsolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getlocalsolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3825,7 +3825,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3894,7 +3894,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -3943,7 +3943,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworksolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworksolps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
 prioritisetransaction
 ---------------------
@@ -3988,7 +3988,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   result:
 
@@ -4041,7 +4041,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
 Network
 =======
@@ -4084,7 +4084,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addnode", "params": ["192.168.0.6:8233", "onetry"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addnode", "params": ["192.168.0.6:8233", "onetry"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4127,7 +4127,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4172,7 +4172,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["192.168.0.6:8233"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["192.168.0.6:8233"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4265,7 +4265,7 @@ Examples:
 
   command:
 
-  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddednodeinfo", "params": [true, "78.47.205.239"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddednodeinfo", "params": [true, "78.47.205.239"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4321,7 +4321,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4376,7 +4376,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdeprecationinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdeprecationinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4433,7 +4433,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnettotals", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnettotals", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4544,7 +4544,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4673,7 +4673,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4750,7 +4750,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4807,7 +4807,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "ping", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "ping", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4857,7 +4857,7 @@ Examples:
 
   command:
 
-  curl --user userb4911b4842afadc2:68c3394f2b2ee55fddeb8e8e2c3fd372 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setban", "params": ["78.47.205.239", "add", 86400] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setban", "params": ["78.47.205.239", "add", 86400] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -4913,7 +4913,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": [[{"txid":"9f44dc664882198b14e9a8c466d466efcdd070ccb6f57be8e2884aa11e7b2a30","vout":0}], {"RHCXHfXCZQpbUbihNHh5gTwfr7NXmJXmHi":0.01} ]}' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": [[{"txid":"9f44dc664882198b14e9a8c466d466efcdd070ccb6f57be8e2884aa11e7b2a30","vout":0}], {"RHCXHfXCZQpbUbihNHh5gTwfr7NXmJXmHi":0.01} ]}' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   {
     "result": "0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000",
@@ -5051,7 +5051,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decoderawtransaction", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decoderawtransaction", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   {
     "result": {
@@ -5139,7 +5139,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decodescript", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "decodescript", "params": ["0100000001302a7b1ea14a88e2e87bf5b6cc70d0cdef66d466c4a8e9148b19824866dc449f0000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   {
     "result": {
@@ -5391,7 +5391,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawtransaction", "params": ["a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawtransaction", "params": ["a44feb2e788d0332e283d8ca69c6a20999944dccac93246cbf9b36d841b08c95", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
   {
@@ -5504,7 +5504,7 @@ As a json rpc call:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa4000000006a4730440220242c38740261799f9b6ccbde8f941e2567e86c84108c508d108d062ab9677b6e02206fea089b28c6d66d1c8f2343e1de7960dadafa3cf268c00f7dbe391cd8b9365f01210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc98ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa4000000006a4730440220242c38740261799f9b6ccbde8f941e2567e86c84108c508d108d062ab9677b6e02206fea089b28c6d66d1c8f2343e1de7960dadafa3cf268c00f7dbe391cd8b9365f01210384c0db4f1eaa142a2745742b942f989375dbec32c55310a793225bb5c43cdc98ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -5582,7 +5582,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa40000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signrawtransaction", "params": ["0100000001958cb041d8369bbf6c2493accc4d949909a2c669cad883e232038d782eeb4fa40000000000ffffffff0140420f00000000001976a91456def632e67aa11c25ac16a0ee52893c2e5a2b6a88ac00000000"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -5645,7 +5645,7 @@ Create a multisig address from 2 addresses
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createmultisig", "params": [2, ["RJnVEQgucK1iwiRjfTZmreXkF49KgTErDn","RCVyjn9MQ8Tw6YRJnDcsx67kfsmfUgLdfw"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createmultisig", "params": [2, ["RJnVEQgucK1iwiRjfTZmreXkF49KgTErDn","RCVyjn9MQ8Tw6YRJnDcsx67kfsmfUgLdfw"]] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -5753,7 +5753,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "invalidateblock", "params": ["02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "invalidateblock", "params": ["02f51fb2793b0728050c5e983ffed669594e0a2dda01dcb7a68d129fd87436e0"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6128,7 +6128,7 @@ Add a multisig address from 2 addresses:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addmultisigaddress", "params": [2, ["RL4CuA2MSAbBiqJKQEr2TKnKT2fSwK99mG","RBYVFCxpJdLgvUixhguxzuH1TJpoNLYCJ6"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addmultisigaddress", "params": [2, ["RL4CuA2MSAbBiqJKQEr2TKnKT2fSwK99mG","RBYVFCxpJdLgvUixhguxzuH1TJpoNLYCJ6"]] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6169,7 +6169,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "backupwallet", "params": ["backupdata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "backupwallet", "params": ["backupdata"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6214,7 +6214,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpprivkey", "params": ["RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpprivkey", "params": ["RTcwYaQPDVN7V9SdfFHARWnoB7vcpSfdvs"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6258,7 +6258,7 @@ Examples:
 
   /home/myusername/myexportdir/test
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   {
     "result": "/home/myusername/myexportdir/test",
@@ -6345,7 +6345,7 @@ As a json rpc call:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["mypassphrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["mypassphrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6384,7 +6384,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaccount", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaccount", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6421,7 +6421,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaccountaddress", "params": ["myaccount"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaccountaddress", "params": ["myaccount"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6463,7 +6463,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressesbyaccount", "params": ["tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressesbyaccount", "params": ["tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6522,7 +6522,7 @@ As a json rpc call:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbalance", "params": ["", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbalance", "params": ["", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6565,7 +6565,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6610,7 +6610,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawchangeaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawchangeaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6703,7 +6703,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getreceivedbyaddress", "params": ["RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getreceivedbyaddress", "params": ["RJSDZjp7kjBNhHsbECDE1jwYNK7af41pZN", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6813,7 +6813,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettransaction", "params": ["7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettransaction", "params": ["7281407d85619901ee10d52c96869f7879393434b782331df6f67a0e0e9d1ffa"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6867,7 +6867,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getunconfirmedbalance", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getunconfirmedbalance", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6929,7 +6929,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -6997,7 +6997,7 @@ Import an address with rescan
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importaddress", "params": ["R9z796AehK5b6NCPeVkGUHSpJnawerf8oP", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importaddress", "params": ["R9z796AehK5b6NCPeVkGUHSpJnawerf8oP", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7056,7 +7056,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importprivkey", "params": ["UwibHKsYfiM19BXQmcUwAfw331GzGQK8aoPqqYEbyoPrzc2965nE", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importprivkey", "params": ["UwibHKsYfiM19BXQmcUwAfw331GzGQK8aoPqqYEbyoPrzc2965nE", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7099,7 +7099,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importwallet", "params": ["path/to/exportdir/nameofbackup"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importwallet", "params": ["path/to/exportdir/nameofbackup"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7152,7 +7152,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "keypoolrefill", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "keypoolrefill", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7199,7 +7199,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listaccounts", "params": [6] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listaccounts", "params": [6] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7271,7 +7271,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listaddressgroupings", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listaddressgroupings", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7344,7 +7344,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listlockunspent", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listlockunspent", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7412,7 +7412,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaccount", "params": [6, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaccount", "params": [6, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7500,7 +7500,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   {
     "result": [
@@ -7641,7 +7641,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listsinceblock", "params": ["029f11d80ef9765602235e1bc9727e3eb6ba20839319f761fee920d63401e327", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listsinceblock", "params": ["029f11d80ef9765602235e1bc9727e3eb6ba20839319f761fee920d63401e327", 6] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
   {
@@ -7784,7 +7784,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listtransactions", "params": ["*", 20, 100] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listtransactions", "params": ["*", 20, 100] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
   {
@@ -7910,7 +7910,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listunspent", "params": [6, 9999999, ["RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu","RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listunspent", "params": [6, 9999999, ["RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu","RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ"]] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -7986,7 +7986,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "lockunspent", "params": [false, [{"txid":"d7ba45296c66e16eb61f27a4eef8848c7f5579fe801f277c1b0e074a4f47d6fd","vout":0}]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "lockunspent", "params": [false, [{"txid":"d7ba45296c66e16eb61f27a4eef8848c7f5579fe801f277c1b0e074a4f47d6fd","vout":0}]] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8043,7 +8043,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "move", "params": ["timotei", "akiko", 0.01, 6, "happy birthday!"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "move", "params": ["timotei", "akiko", 0.01, 6, "happy birthday!"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8086,7 +8086,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "resendwallettransactions", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "resendwallettransactions", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8146,7 +8146,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendfrom", "params": ["tabby", "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu", 0.01, 6, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendfrom", "params": ["tabby", "RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu", 0.01, 6, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8218,7 +8218,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendmany", "params": ["", {"RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ":0.01,"RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu":0.02}, 6, "testing"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendmany", "params": ["", {"RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ":0.01,"RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu":0.02}, 6, "testing"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8285,7 +8285,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendtoaddress", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", 0.1, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendtoaddress", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", 0.1, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8323,7 +8323,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setaccount", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", "tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setaccount", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", "tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8362,7 +8362,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "settxfee", "params": [0.00001] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "settxfee", "params": [0.00001] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8420,7 +8420,7 @@ Verify the signature:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessage", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessage", "params": ["RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8465,7 +8465,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportkey", "params": ["ztffWAUUY9PnLiBVXY2pnX67kfm71SevtPC5d9LLM3xZqehy4XxV1FeyxPWcHGTiCd7GtQ17gk5jDTQxhHB13K1A7HT6hZH"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportkey", "params": ["ztffWAUUY9PnLiBVXY2pnX67kfm71SevtPC5d9LLM3xZqehy4XxV1FeyxPWcHGTiCd7GtQ17gk5jDTQxhHB13K1A7HT6hZH"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8508,7 +8508,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportviewingkey", "params": ["ztffWAUUY9PnLiBVXY2pnX67kfm71SevtPC5d9LLM3xZqehy4XxV1FeyxPWcHGTiCd7GtQ17gk5jDTQxhHB13K1A7HT6hZH"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportviewingkey", "params": ["ztffWAUUY9PnLiBVXY2pnX67kfm71SevtPC5d9LLM3xZqehy4XxV1FeyxPWcHGTiCd7GtQ17gk5jDTQxhHB13K1A7HT6hZH"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8549,7 +8549,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_exportwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8610,7 +8610,7 @@ As a json rpc call
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getbalance", "params": ["ztfF6SFBfq2qha73dAgsXnL86F8air32CXKxJg8aYtEPJFdLcw4y3zWzBasocnx1V9GLnnFeKnkPvkScjNkQBfWn2kBDmkn", 5] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getbalance", "params": ["ztfF6SFBfq2qha73dAgsXnL86F8air32CXKxJg8aYtEPJFdLcw4y3zWzBasocnx1V9GLnnFeKnkPvkScjNkQBfWn2kBDmkn", 5] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8651,7 +8651,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8744,7 +8744,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getoperationresult", "params": [["opid-6a9da0dd-a950-4d95-848c-d3c18e44be03"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getoperationresult", "params": [["opid-6a9da0dd-a950-4d95-848c-d3c18e44be03"]] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8880,7 +8880,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getoperationstatus", "params": [["opid-47e12224-8477-4cd4-852d-d8c3ddbc6375"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_getoperationstatus", "params": [["opid-47e12224-8477-4cd4-852d-d8c3ddbc6375"]] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -8976,7 +8976,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_gettotalbalance", "params": [5] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_gettotalbalance", "params": [5] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9052,7 +9052,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importkey", "params": ["DONOTUSExxxxxxxxxxxxxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK", "no"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importkey", "params": ["DONOTUSExxxxxxxxxxxxxxxxBP6ipkmBxmEQbugcCQ16vUaWGFK", "no"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9134,7 +9134,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importviewingkey", "params": ["ZiVtfYkeyRY3y8Wykm5zjLcnssEkVrkej6j3kQ5B1AE2qp2F3VsKzpoXTzD82hrvMjWB9WxCHbXXrXax2ceyHLWrnQDaMrMja", "no"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importviewingkey", "params": ["ZiVtfYkeyRY3y8Wykm5zjLcnssEkVrkej6j3kQ5B1AE2qp2F3VsKzpoXTzD82hrvMjWB9WxCHbXXrXax2ceyHLWrnQDaMrMja", "no"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9175,7 +9175,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importwallet", "params": ["/mydirectory/nameofbackup"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_importwallet", "params": ["/mydirectory/nameofbackup"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9226,7 +9226,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listaddresses", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listaddresses", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9290,7 +9290,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listoperationids", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listoperationids", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9363,7 +9363,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listreceivedbyaddress", "params": ["ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_listreceivedbyaddress", "params": ["ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9443,7 +9443,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_mergetoaddress", "params": [["t1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd"], "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_mergetoaddress", "params": [["t1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd"], "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9515,7 +9515,7 @@ Examples:
 
   command:
 
-	curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_sendmany", "params": ["RCpMUZwxc3pWsgip5aj3Sy1cKkh86P3Tns", [{"address": "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf" ,"amount": 0.01}]] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_sendmany", "params": ["RCpMUZwxc3pWsgip5aj3Sy1cKkh86P3Tns", [{"address": "ztfaW34Gj9FrnGUEf833ywDVL62NWXBM81u6EQnM6VR45eYnXhwztecW1SjxA7JrmAXKJhxhj3vDNEpVCQoSvVoSpmbhtjf" ,"amount": 0.01}]] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
@@ -9589,7 +9589,7 @@ Examples:
 
   command:
 
-  curl --user user2398463324:passf4bab3f0e4330392d885ed1a108fa09e640590b1f05d2da00181756bb3b93414b7 --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_shieldcoinbase", "params": ["RWRSfEYcfLv3yy9mhAuKHQTMCs9fArpPiH", "ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP"] }' -H 'content-type: text/plain;' http://127.0.0.1:8032/
+  curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "z_shieldcoinbase", "params": ["RWRSfEYcfLv3yy9mhAuKHQTMCs9fArpPiH", "ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP"] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
 
   response:
 
