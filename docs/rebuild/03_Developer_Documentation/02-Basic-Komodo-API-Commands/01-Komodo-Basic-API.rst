@@ -22,11 +22,11 @@ The API is accessed through the ``komodo-cli`` software, which is provided durin
 
 To access the API commands, open a new terminal, proceed to the directory where ``komodod`` and ``komodo-cli`` are installed, and execute:
 
-``komodo-cli [API COMMAND]`` (Linux)
+``komodo-cli [API COMMAND]``
 
-The API can likewise be used for all KMD-based independent blockchains. Two modifications are required: the name of the independent blockchain and the total coin supply.
+The API can likewise be used for all KMD-based independent blockchains. One modification is required: the name of the independent blockchain, included as an argument.
 
-``komodo-cli -ac_name=[BLOCKCHAIN NAME] -ac_supply=[BLOCKCHAIN COIN SUPPLY]``
+``komodo-cli -ac_name=[BLOCKCHAIN NAME]
 
 The list of available API commands can be retrieved locally by executing:
 
@@ -251,11 +251,11 @@ The second piece of software required is ``komodo-cli``. This software allows th
 
 ::
 
-  To call ``getbalance`` from the KMD coin daemon:
+  To call ===link=== "getbalance" from the KMD coin daemon:
 
   komodo-cli getbalance
 
-  To call ``getbalance`` from a KMD-compatible coin daemon for a coin with a supply of 1000000:
+  To call ===link=== "getbalance" from a KMD-compatible coin daemon for a coin with a supply of 1000000:
 
   komodo-cli -ac_name=COINNAME getbalance
 
@@ -267,9 +267,9 @@ To access a coin daemon remotely -- for example, via a ``curl`` command in the s
 Assuming the default installation location, the ``.conf`` file can be found by exploring the following directories:
 
 ::
-	MacOS: ``~/Library/Application Support/Komodo``
-	Windows: ``C:\Users\myusername\AppData\Roaming\Komodo\``
-	GNU/Linux: ``~/.komodo``
+	MacOS: ~/Library/Application Support/Komodo
+	Windows: C:\Users\myusername\AppData\Roaming\Komodo\
+	GNU/Linux: ~/.komodo
 
 Within that directory there are also subdirectories containing all KMD-compatible coin daemon ``.conf`` files.
 
@@ -282,17 +282,17 @@ Users should exercise caution not to delete the ``wallet.dat`` file during this 
 To erase all synced blockchain data, the following files should be deleted from the ``.komodo`` folder:
 
 ::
-  ``blocks``
-  ``chainstate``
-  ``notarisations``
-  ``komodostate``
-  ``komodostate.ind``
+  blocks
+  chainstate
+  notarisations
+  komodostate
+  komodostate.ind
 
 Default file locations:
 ::
-	MacOS: ``~/Library/Application Support/Komodo``
-	Windows: ``C:\Users\myusername\AppData\Roaming\Komodo\``
-	GNU/Linux: ``~/.komodo``
+	MacOS: ~/Library/Application Support/Komodo
+	Windows: C:\Users\myusername\AppData\Roaming\Komodo\
+	GNU/Linux: ~/.komodo
 
 Common Runtime Parameters and the .conf Settings
 ------------------------------------------------
@@ -322,13 +322,13 @@ As a runtime parameter:
 
 ::
 
-  komodod ``-addressindex=1``
+  komodod -addressindex=1
 
 As a default value in the coin's ``.conf`` file:
 
 ::
 
-  ``addressindex=1``
+  addressindex=1
 
 txindex
 -------
@@ -346,9 +346,9 @@ reindex
 
 Usage:
 
-::
-
 As a runtime parameter:
+
+::
 
   komodod -reindex
 
@@ -359,7 +359,7 @@ timestampindex
 
 The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions===.
 
-The ``-reindex`` parameter is NOT a viable alternative method for re-syncing the blockchain in this circumstance.
+* Note: the ``-reindex`` parameter is NOT a viable alternative method for re-syncing the blockchain in this circumstance.
 
 Usage:
 
@@ -382,19 +382,19 @@ spentindex
 
 The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions===.
 
-The ``-reindex`` parameter is not a viable alternative method for re-syncing the blockchain in this circumstance.
-
 ``spentindex`` is enabled by default on any asset chain that utilizes the ``cc`` smart contract protocol.
+
+Note: the ``-reindex`` parameter is not a viable alternative method for re-syncing the blockchain in this circumstance.
 
 Usage:
 
-As a runtime parameter:
+  As a runtime parameter:
 
 ::
 
   komodod -spentindex=1
 
-As a default value in the coin's ``.conf`` file:
+  As a default value in the coin's ``.conf`` file:
 
 ::
 
