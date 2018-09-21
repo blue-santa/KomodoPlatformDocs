@@ -319,7 +319,7 @@ As a runtime parameter:
 
 ::
 
-  ``komodod -addressindex=1``
+  ``-addressindex=1``
 
 As a default value in the coin's ``.conf`` file:
 
@@ -346,7 +346,7 @@ Usage:
 
 As a runtime parameter:
 
-  `komodod -reindex`
+  `-reindex`
 
 timestampindex
 --------------
@@ -362,7 +362,7 @@ As a runtime parameter:
 
 ::
 
-  ``komodod -timestampindex=1``
+  ``-timestampindex=1``
 
 As a default value in the coin's ``.conf`` file:
 
@@ -385,7 +385,7 @@ Usage:
 As a runtime parameter:
 
 ::
-  ``komodod -spentindex=1``
+  ``-spentindex=1``
 
 As a default value in the coin's ``.conf`` file:
 
@@ -403,7 +403,7 @@ As a runtime parameter:
 
 ::
 
-  komodod -regtest
+  -regtest
 
 As a default value in the coin's ``.conf`` file:
 
@@ -439,7 +439,7 @@ mempooltxinputlimit
 proxy
 -----
 
-`proxy` is a runtime daemon parameter that allows the user to connect via a `SOCKS5` proxy.
+``proxy`` is a runtime daemon parameter that allows the user to connect via a `SOCKS5` proxy.
 
 Usage:
 
@@ -447,7 +447,7 @@ As a runtime parameter:
 
 ::
 
-  komodod -proxy=127.0.0.1:9050
+  -proxy=127.0.0.1:9050
 
 As a default value in the coin's ``.conf`` file:
 
@@ -468,7 +468,7 @@ As a runtime parameter:
 
 ::
 
-  komodod -bind=127.0.0.1:9050
+  -bind=127.0.0.1:9050
 
 As a default value in the coin's ``.conf`` file:
 
@@ -489,7 +489,7 @@ As a runtime parameter:
 
 ::
 
-  komodod -whitebind=127.0.0.1:9050
+  -whitebind=127.0.0.1:9050
 
 As a default value in the coin's ``.conf`` file:
 
@@ -546,7 +546,7 @@ As a runtime parameter:
 
 ::
 
-  komodod -gen=0
+  -gen=0
 
 As a default value in the coin's ``.conf`` file:
 
@@ -624,7 +624,7 @@ As a runtime parameter:
 
 ::
 
-  komodod -rpcbind=127.0.0.1:9704
+  -rpcbind=127.0.0.1:9704
 
 As a default value in the coin's ``.conf`` file:
 
@@ -641,7 +641,7 @@ As a runtime parameter:
 
 ::
 
-  komodod -rpcclienttimeout=SECONDS
+  -rpcclienttimeout=SECONDS
 
 As a default value in the coin's ``.conf`` file:
 
