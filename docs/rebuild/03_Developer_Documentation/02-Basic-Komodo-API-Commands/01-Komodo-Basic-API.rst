@@ -308,11 +308,11 @@ To see additional runtime parameters not included here, please visit the relevan
 addressindex
 ------------
 
-``addressindex`` instructs a KMD-based coin daemon to maintain an index of all addresses and balances. It is initiated at run time and it is used to query address balances across the entire chain.
+``addressindex`` instructs a KMD-based coin daemon to maintain an index of all addresses and balances.
 
 The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions===.
 
-The ===link=== ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
+* Note: the ===link=== ``-reindex`` parameter is not a viable alternative method for resyncing the blockchain in this circumstance.
 
 ``addressindex`` is enabled by default on any asset chain that utilizes the CryptoConditions (CC) smart-contract protocol.
 
@@ -355,7 +355,7 @@ As a runtime parameter:
 timestampindex
 --------------
 
-``timestampindex`` instructs a KMD-based coin daemon to maintain a timestamp index for all blockhashes. It is initiated at run time and it is used to query blocks by a range of timestamps.
+``timestampindex`` instructs a KMD-based coin daemon to maintain a timestamp index for all blockhashes.
 
 The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions===.
 
@@ -378,23 +378,23 @@ As a default value in the coin's ``.conf`` file:
 spentindex
 ----------
 
-``spentindex`` instructs a KMD-based coin daemon to maintain a full index of all spent transactions (txids). The parameter is called at runtime and it is used to search across the entire chain history.
+``spentindex`` instructs a KMD-based coin daemon to maintain a full index of all spent transactions (txids).
 
 The user should manually delete the blockchain data before initiating this parameter ===link to manual deletion instructions===.
 
 ``spentindex`` is enabled by default on any asset chain that utilizes the ``cc`` smart contract protocol.
 
-Note: the ``-reindex`` parameter is not a viable alternative method for re-syncing the blockchain in this circumstance.
+* Note: the ``-reindex`` parameter is not a viable alternative method for re-syncing the blockchain in this circumstance.
 
 Usage:
 
-  As a runtime parameter:
+As a runtime parameter:
 
 ::
 
   komodod -spentindex=1
 
-  As a default value in the coin's ``.conf`` file:
+As a default value in the coin's ``.conf`` file:
 
 ::
 
@@ -405,7 +405,7 @@ regtest
 
 ``regtest`` instructs the coin daemon to run a regression test network. Typically, the user will create a disposable asset chain for these purposes. The asset-chain coin supply parameter is not required in this instance.
 
-*Note: a regression-test network is a useful tool for rapid trial and testing.
+* Note: a regression-test network is a useful tool for rapid trial and testing.
 
 Usage:
 
@@ -571,13 +571,15 @@ listen
 
 Usage:
 
-::
-
 As a runtime parameter:
+
+::
 
   komodod -listen=1
 
 As a default value in the coin's ``.conf`` file:
+
+::
 
   listen=1
 
@@ -637,6 +639,8 @@ As a runtime parameter:
   komodod -rpcbind=127.0.0.1:9704
 
 As a default value in the coin's ``.conf`` file:
+
+::
 
   rpcbind=127.0.0.1:9704
 
@@ -698,7 +702,7 @@ As a default value in the coin's ``.conf`` file:
 rpcconnect
 ----------
 
-``rpcconnect`` allows the user to connect to ``komodod`` and send RPC commands from a host. By default, it is set to localhost. We DO NOT RECOMMEND that the average user sets this value to any other host, as it can grant access to a foreign party, who are then able to take control over ``komodod`` and all funds in your ``wallet.dat`` file.
+``rpcconnect`` allows the user to connect to ``komodod`` and send RPC commands from a host. By default, it is set to localhost. We DO NOT RECOMMEND that the average user set this value to anything other than the localhost, as it can grant access to a foreign party, who are then able to take control over ``komodod`` and all funds in your ``wallet.dat`` file.
 
 Usage:
 
@@ -724,7 +728,7 @@ As a default value in the coin's ``.conf`` file:
 genproclimit
 ------------
 
-``genproclimit`` sets the number of threads to be used for mining (-1 = all cores).
+``genproclimit`` sets the number of threads to be used for mining. To initiate all cores, use the value ``-1``.
 
 Usage:
 
@@ -955,6 +959,7 @@ Examples:
   ]
 
 ::
+
   command:
 
   komodo-cli getaddressdeltas '{"addresses":["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"],"start":1,"end":200,"chainInfo":true}'
@@ -983,6 +988,7 @@ Examples:
   }
 
 ::
+
   command:
 
 	curl --user myrpcuser:myrpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressdeltas", "params": [{"addresses": ["RTTg3izdeVnqkTTxjzsPFrdUQexgqCy1qb"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:myrpcport/
@@ -1003,7 +1009,6 @@ Examples:
     "error": null,
     "id": "curltest"
   }
-
 
 ::
 
