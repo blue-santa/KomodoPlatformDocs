@@ -32,6 +32,7 @@ Default file locations:
 === Put this section elsewhere: To launch the coin daemon in mining mode is set with the command line argument ``-gen`` (or ``komodo.conf`` setting gen)===
 
 -bantime
+-mempooltxinputlimit
 
 addressindex
 ------------

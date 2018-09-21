@@ -70,7 +70,7 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`getrawmempool ( verbose )`
 :ref:`getspentinfo`
 :ref:`gettxout "txid" n ( includemempool )`
-:ref:`gettxoutproof ["txid", ...] ( blockhash )`
+:ref:`gettxoutproof ["txid", ... ] ( blockhash )`
 :ref:`gettxoutsetinfo`
 :ref:`height_MoM height`
 :ref:`kvsearch key`
@@ -135,18 +135,18 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`Category: Rawtransactions <Rawtransactions>`
 --------------------------------------------------
 
-:ref:`createrawtransaction [{"txid":"id","vout":n}, ...] {"address":amount, ...}`
+:ref:`createrawtransaction [{"txid":"id","vout":n}, ... ] {"address":amount, ... }`
 :ref:`decoderawtransaction "hexstring"`
 :ref:`decodescript "hex"`
 :ref:`fundrawtransaction "hexstring"`
 :ref:`getrawtransaction "txid" ( verbose )`
 :ref:`sendrawtransaction "hexstring" ( allowhighfees )`
-:ref:`signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"}, ...] ["privatekey1", ...] sighashtype )`
+:ref:`signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"}, ... ] ["privatekey1", ... ] sighashtype )`
 
 :ref:`Category: Util <Util>`
 ----------------------------
 
-:ref:`createmultisig nrequired ["key", ...]`
+:ref:`createmultisig nrequired ["key", ... ]`
 :ref:`estimatefee nblocks`
 :ref:`estimatepriority nblocks`
 :ref:`invalidateblock "hash"`
@@ -162,7 +162,7 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`Category: Wallet <Wallet>`
 --------------------------------
 
-:ref:`addmultisigaddress nrequired ["key", ...] ( "account" )`
+:ref:`addmultisigaddress nrequired ["key", ... ] ( "account" )`
 :ref:`backupwallet "destination"`
 :ref:`dumpprivkey "komodoaddress"`
 :ref:`dumpwallet "filename"`
@@ -189,12 +189,12 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`listreceivedbyaddress ( minconf includeempty includeWatchonly)`
 :ref:`listsinceblock ( "blockhash" target-confirmations includeWatchonly)`
 :ref:`listtransactions ( "account" count from includeWatchonly)`
-:ref:`listunspent ( minconf maxconf  ["address", ...] )`
-:ref:`lockunspent unlock [{"txid":"txid","vout":n}, ...]`
+:ref:`listunspent ( minconf maxconf  ["address", ... ] )`
+:ref:`lockunspent unlock [{"txid":"txid","vout":n}, ... ]`
 :ref:`move "fromaccount" "toaccount" amount ( minconf "comment" )`
 :ref:`resendwallettransactions`
 :ref:`sendfrom "fromaccount" "toaddress" amount ( minconf "comment" "comment-to" )`
-:ref:`sendmany "fromaccount" {"address":amount, ...} ( minconf "comment" ["address", ...] )`
+:ref:`sendmany "fromaccount" {"address":amount, ... } ( minconf "comment" ["address", ... ] )`
 :ref:`sendtoaddress "address" amount ( "comment" "comment-to" subtractfeefromamount )`
 :ref:`setaccount "address" "account"`
 :ref:`settxfee amount`
@@ -204,8 +204,8 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`z_exportwallet "filename"`
 :ref:`z_getbalance "address" ( minconf )`
 :ref:`z_getnewaddress`
-:ref:`z_getoperationresult (["operationid", ...])`
-:ref:`z_getoperationstatus (["operationid", ...])`
+:ref:`z_getoperationresult (["operationid", ... ])`
+:ref:`z_getoperationstatus (["operationid", ... ])`
 :ref:`z_gettotalbalance ( minconf includeWatchonly )`
 :ref:`z_importkey "zkey" ( rescan startHeight )`
 :ref:`z_importviewingkey "vkey" ( rescan startHeight )`
@@ -213,8 +213,8 @@ Click any of the API options below to be taken to their summary. You may also na
 :ref:`z_listaddresses ( includeWatchonly )`
 :ref:`z_listoperationids`
 :ref:`z_listreceivedbyaddress "address" ( minconf )`
-:ref:`z_mergetoaddress ["fromaddress", ...] "toaddress" ( fee ) ( transparent_limit ) ( shielded_limit ) ( memo )`
-:ref:`z_sendmany "fromaddress" [{"address":...,"amount":...}, ...] ( minconf ) ( fee )`
+:ref:`z_mergetoaddress ["fromaddress", ... ] "toaddress" ( fee ) ( transparent_limit ) ( shielded_limit ) ( memo )`
+:ref:`z_sendmany "fromaddress" [{"address":...,"amount":...}, ... ] ( minconf ) ( fee )`
 :ref:`z_shieldcoinbase "fromaddress" "tozaddress" ( fee ) ( limit )`
 :ref:`zcbenchmark benchmarktype samplecount`
 :ref:`zcrawjoinsplit rawtx inputs outputs vpub_old vpub_new`
@@ -296,9 +296,9 @@ getaddressdeltas
 
 ::
 
-  getaddressdeltas '{"addresses": ["address", ...]}'
+  getaddressdeltas '{"addresses": ["address", ... ]}'
 
-  getaddressdeltas '{"addresses": ["address", ...], "start": start_number, "end": end_number, "chainInfo": boolean}'
+  getaddressdeltas '{"addresses": ["address", ... ], "start": start_number, "end": end_number, "chainInfo": boolean}'
 
 The ``getaddressdeltas`` method returns all confirmed balance changes of an address. The parameters allow the user to optionally limit the response to a given interval of blocks. The method requires ===link=== ``addressindex`` to be enabled.
 
@@ -548,7 +548,7 @@ Response:
 ::
 
 	[
-    "transactionid"               (string)   the transaction id
+    "transaction_id"               (string)   the transaction id
 	  , ...
 	]
 
@@ -806,7 +806,7 @@ Response (for verbose = ``true``):
     "merkleroot"           (string)           the merkle root
     "tx"
       [                    (array of string)  the transaction ids
-        "transactionid"    (string)           the transaction id
+        "transaction_id"    (string)           the transaction id
         , ...
       ]
     "time"                 (numeric)          the block time in seconds since epoch (Jan 1 1970 GMT)
@@ -1694,7 +1694,7 @@ Response (verbose = false):
 ::
 
 	[
-	  "transactionid"                (string)    the transaction id
+	  "transaction_id"                (string)    the transaction id
 	  , ...
 	]
 
@@ -1703,7 +1703,7 @@ Response (verbose = true):
 ::
 
 	{
-	  "transactionid" : {
+	  "transaction_id" : {
 	    "size"                       (numeric)   transaction size in bytes
 	    "fee"                        (numeric)   transaction fee
     	"time"                       (numeric)   local time transaction entered pool in seconds since 1 Jan 1970 GMT
@@ -1711,7 +1711,7 @@ Response (verbose = true):
     	"startingpriority"           (numeric)   priority when transaction entered pool
     	"currentpriority"            (numeric)   transaction priority now
     	"depends": [                 (array)     unconfirmed transactions used as inputs for this transaction
-        "transactionid"            (string)    parent transaction id
+        "transaction_id"            (string)    parent transaction id
 	       , ...
       ]
 	  }, ...
@@ -1910,11 +1910,11 @@ gettxoutproof
 
 ::
 
-  gettxoutproof '["transaction_id", ...]' ( "blockhash_string" )
+  gettxoutproof '["transaction_id", ... ]' ( "blockhash_string" )
 
 The ``gettxoutproof`` method returns a hex-encoded proof showing that the indicated transaction was included in a block.
 
-**NOTE:** By default this function only works in certain situations. It is successful when there is an unspent output in the utxo for this transaction. It is possible to make the command always successful; you need to maintain a transaction index, using the ``-txindex`` command-line option at runtime, or you must manually specify the hash of the block in which the transaction is included.
+**NOTE:** The ``gettxoutproof`` method relies on the ``txindex`` runtime parameter. This parameter is enabled by default on all KMD-based blockchains, and should never be disabled.
 
 Arguments:
 
@@ -4278,7 +4278,7 @@ Examples:
 Rawtransactions
 ===============
 
-createrawtransaction '[{"txid": "id_string", "vout": number}, ...]' '{"address":amount, ...}'
+createrawtransaction '[{"txid": "id_string", "vout": number}, ... ]' '{"address":amount, ... }'
 ------------------------------------------------------------------------
 
 The ``createrawtransaction`` method creates a transaction, spending the given inputs and sending to the given addresses. The method returns a hex-encoded raw transaction.
@@ -4926,7 +4926,7 @@ As a json rpc call:
     "id": "curltest"
   }
 
-signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"}, ...] ["privatekey1", ...] sighashtype )
+signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"}, ... ] ["privatekey1", ... ] sighashtype )
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 The ``signrawtransaction`` method signs inputs for a raw transaction (serialized, hex-encoded). The second optional argument (may be null) is an array of previous transaction outputs that this transaction depends on, but may not yet be in the block chain. The third optional argument (may be null) is an array of base58-encoded private keys that, if given, will be the only keys used to sign the transaction.
@@ -5010,7 +5010,7 @@ Examples:
 Util
 ====
 
-createmultisig nrequired ["key", ...]
+createmultisig nrequired ["key", ... ]
 ------------------------------------
 
 The ``createmultisig`` method creates a multi-signature address with ``n`` signature(s) of ``m`` key(s) required. The method returns a json object with the address and redeemScript.
@@ -5495,7 +5495,7 @@ Examples:
 Wallet
 ======
 
-addmultisigaddress nrequired ["key", ...] ( "account" )
+addmultisigaddress nrequired ["key", ... ] ( "account" )
 -------------------------------------------------------
 
 The ``addmultisigaddress`` method adds a multi-signature address to the wallet, where ``nrequired`` indicates the number of keys (out of the total provided) required to execute a transaction.
@@ -5811,11 +5811,11 @@ Arguments:
 
 ::
 
-	"account"       (string, required)   MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+	"account"        (string, required)   MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
 
 Response:
 
-	"address"   (string) the account address
+	"address"        (string) the account address
 
 Examples:
 
@@ -5855,7 +5855,7 @@ Response:
 ::
 
 	[
-	  "address"  (string) an address associated with the given account
+	  "address"        (string)      an address associated with the given account
 	  , ...
 	]
 
@@ -6163,9 +6163,9 @@ Response:
 	  "vjoinsplit" : [
 	    {
 	      "anchor"                         (string) merkle root of note commitment tree
-	      "nullifiers" : [ string, ...]      (string) nullifiers of input notes
-	      "commitments" : [ string, ...]     (string) note commitments for note outputs
-	      "macs" : [ string, ...]            (string) message authentication tags
+	      "nullifiers" : [ string, ... ]      (string) nullifiers of input notes
+	      "commitments" : [ string, ... ]     (string) note commitments for note outputs
+	      "macs" : [ string, ... ]            (string) message authentication tags
 	      "vpub_old"                       (numeric) the amount removed from the transparent value pool
 	      "vpub_new"                    (numeric) the amount added to the transparent value pool
 	    }
@@ -6454,8 +6454,6 @@ Examples:
 
   R9z796AehK5b6NCPeVkGUHSpJnawerf8oP
 
-Import using a label and without rescan
-
 ::
 
   command:
@@ -6624,6 +6622,12 @@ listaddressgroupings
 
 The ``listaddressgroupings`` method lists groups of addresses which have had their common ownership made public by common use as inputs or as the resulting change in past transactions.
 
+Arguments:
+
+::
+
+  (none)
+
 Response:
 
 ::
@@ -6631,8 +6635,8 @@ Response:
 	[
 	  [                          (array) each array at this indentation level is a unique grouping of addresses
 	    [
-	      "address",             (string) the address
-	      amount,                (numeric) the amount
+	      "address",             (string)                        the address
+	      amount,                (numeric)                       the amount
 	      "account"              (string, optional) (DEPRECATED) the account
 	    ]
 	    , ...
@@ -6847,7 +6851,7 @@ Response:
 	  {
 	    "involvesWatchonly"        (bool)      only returned if imported addresses were involved in transaction
 	    "address"                  (string)    the receiving address
-	    "account"                  (string)    DEPRECATED     the account of the receiving address; the default account is ""
+	    "account"                  (string)    DEPRECATED the account of the receiving address; the default account is ""
 	    "amount"                  (numeric)    the total amount received by the address
 	    "confirmations"            (numeric)   the number of confirmations of the most recent transaction included
 	  }
@@ -7122,8 +7126,6 @@ Response:
 
 Examples:
 
-List the most recent 10 transactions in the systems:
-
 ::
 
   command:
@@ -7153,12 +7155,9 @@ List the most recent 10 transactions in the systems:
       "vjoinsplit": [
       ],
       "size": 99
-    },
-     ...
+    }
+    , ... (9 responses ommitted from documentation for brevity)
   ]
-
-
-List transactions 100 to 120:
 
 ::
 
@@ -7189,8 +7188,8 @@ List transactions 100 to 120:
       "vjoinsplit": [
       ],
       "size": 99
-    },
-      ...
+    }
+    , ... (9 responses ommitted from documentation for brevity)
   ]
 
 ::
@@ -7220,14 +7219,14 @@ List transactions 100 to 120:
         "timereceived": 1536976211,
         "vjoinsplit": [],
         "size": 99
-      },
-        ...
+      }
+      , ... (9 responses ommitted from documentation for brevity)
     ],
     "error": null,
     "id": "curltest"
   }
 
-listunspent ( minconf maxconf  ["address", ...] )
+listunspent ( minconf maxconf  ["address", ... ] )
 ------------------------------------------------
 
 The ``listunspent`` method returns an array of unspent transaction outputs, with a range between ``minconf`` and ``maxconf`` (inclusive) confirmations. The method can, optionally, filter to only include ``txouts`` paid to specified addresses.
@@ -7357,32 +7356,31 @@ Examples:
   }
 
 
-lockunspent unlock [{"txid":"txid","vout":n}, ...]
--------------------------------------------------
+lockunspent unlock [{"txid":"txid","vout":n}, ... ]
+---------------------------------------------------
 
 The ``lockunspent`` method locks (unlock = ``false``) or unlocks (unlock = ``true``) specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection, when spending the relevant coin. The locks are stored in memory only; at runtime a node always starts with zero locked outputs, and the locked output list is always cleared when a node stops or fails.
 
-* Note: also see the ===link=== ``listunspent`` and ===link=== ``listlockunspent`` calls to determine the user's local transaction state and info.
+* Note: also see the ===link=== ``listunspent`` and ===link=== ``listlockunspent`` calls to determine local transaction state and info.
 
 Arguments:
 
 ::
 
-	unlock              (boolean, required) whether to unlock (true) or lock (false) the specified transactions
-  "transactions"      (string, required)
-	     [
-	       {
-	         "txid"    (string) the transaction id
-	         "vout"        (numeric) the output number
-	       }
-	       , ...         accepts multiple entries
-	     ]
+  unlock              (boolean, required) whether to unlock (true) or lock (false) the specified transactions
+  [
+   {
+     "txid"    (string) the transaction id
+     "vout"        (numeric) the output number
+   }
+   , ...         accepts multiple entries
+  ]
 
 Response:
 
 ::
 
-	true|false    (boolean)      whether the command was successful or not
+	true|false    (boolean)      whether the command was successful
 
 Examples:
 
@@ -7532,7 +7530,7 @@ Response:
 
 ::
 
-	"transactionid"        (string) the transaction id.
+	"transaction_id"        (string) the transaction id
 
 Examples:
 
@@ -7567,7 +7565,7 @@ Examples:
   (deprecated)
 
 
-sendmany "account" {"address":amount, ...} ( minconf "comment" ["address", ...] )
+sendmany "account" { "address": amount, ... } ( minconf "comment" [ "address", ... ] )
 -----------------------------------------------------------------------------------
 
 The ``sendmany`` method can send multiple multiple transactions at once. Amounts are double-precision floating point numbers.
@@ -7577,14 +7575,14 @@ Arguments:
 ::
 
 	"account"                        (string, required)                  MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
-	"amounts"                        (string, required)                  a json object with addresses and amounts
+	"amounts"
 	    {
 	      "address":amount           ("string":numeric)                  the address (string) and the value (double-precision floating numeric)
 	      , ...                     accepts multiple entries
 	    }
 	minconf                          (numeric, optional, default=1)      only use the balance confirmed at least this many times
 	"comment"                        (string, optional)                  a comment
-	subtractfeefromamount            (string, optional)                  A json array with addresses. The fee will be equally deducted from the amount of each selected address; the recipients will receive less than you enter in their corresponding amount field. If no addresses are specified here, the sender pays the fee.
+	subtractfeefromamount            (string, optional)                  a json array with addresses. The fee will be equally deducted from the amount of each selected address; the recipients will receive less than you enter in their corresponding amount field. If no addresses are specified here, the sender pays the fee.
 	    [
 	      "address"                  (string)                            subtract fee from this address
 	      , ...                     accepts multiple entries
@@ -7594,23 +7592,19 @@ Response:
 
 ::
 
-	"transactionid"                   (string)                           the transaction id for the send; only 1 transaction is created regardless of the number of addresses
+	"transaction_id"                   (string)                           the transaction id for the send; only 1 transaction is created regardless of the number of addresses
 
 Examples:
-
-Send two amounts to two different addresses:
 
 ::
 
   command:
 
-	./komodo-cli sendmany "" '{"RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ":0.01,"RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu":0.02}'
+	komodo-cli sendmany "" '{"RBtNBJjWKVKPFG4To5Yce9TWWmc2AenzfZ":0.01,"RPS3xTZCzr6aQfoMw5Bu1rpQBF6iVCWsyu":0.02}'
 
   response:
 
   e39b046f0e30bd2a80c64ec78d902107858c8f0d55097d7f2293df1c9a4496ae
-
-Send two amounts to two different addresses, setting the confirmation and comment:
 
 ::
 
@@ -7621,8 +7615,6 @@ Send two amounts to two different addresses, setting the confirmation and commen
   response:
 
   3829164d8a68d9b7c2c89efe419eca77e37883318b7187b7e000e80e8138a370
-
-Send two amounts to two different addresses, subtract fee from amount:
 
 ::
 
@@ -7716,7 +7708,7 @@ Examples:
   }
 
 setaccount "address" "account"
-----------------------------------
+------------------------------
 
 **DEPRECATED** The ``setaccount`` method sets the account associated with the given address.
 
@@ -7724,8 +7716,8 @@ Arguments:
 
 ::
 
-	"address"          (string, required) the address to be associated with an account
-	"account"         (string, required)   MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
+	"address"          (string, required)    the address to be associated with an account
+	"account"          (string, required)    MUST be set to the empty string "" to represent the default account; passing any other string will result in an error
 
 Examples:
 
@@ -7793,7 +7785,7 @@ Examples:
   }
 
 signmessage "address" "message"
------------------------------------
+-------------------------------
 
 The ``signmessage`` method signs a message via the private key of an address.
 
@@ -7812,7 +7804,7 @@ Response:
 
 Examples:
 
-Create the signature
+Create the signature:
 
 ::
 
@@ -7824,7 +7816,7 @@ Create the signature
 
   H1y0mn/wRv56r1bcfkbQtzjG6XeWSelAsyayBuCwEL9XGXs7ieU55dryt/cFWM9gnRFI7gS01AByuSqRs+o/AZs=
 
-Verify the signature
+Verify the signature:
 
 ::
 
@@ -7941,7 +7933,7 @@ Examples:
 z_exportwallet "filename"
 -------------------------
 
-The ``z_exportwallet`` method exports all wallet keys, including both ``t_address`` and ``z_address`` types, in a human-readable format.  Overwriting an existing file is not permitted.
+The ``z_exportwallet`` method exports all wallet keys, including both t address and z address types, in a human-readable format.  Overwriting an existing file is not permitted.
 
 Arguments:
 
@@ -7982,7 +7974,7 @@ Examples:
 z_getbalance "address" ( minconf )
 ----------------------------------
 
-The ``z_getbalance`` method returns the balance of a t_address or z_address belonging to the node’s wallet.
+The ``z_getbalance`` method returns the balance of a t address or z_address belonging to the node’s wallet.
 
 ``CAUTION``: If address is a watch-only z_address, the returned balance may be larger than the actual balance,
 as spends cannot be detected with incoming viewing keys.
@@ -8081,7 +8073,7 @@ Examples:
     "id": "curltest"
   }
 
-z_getoperationresult (["operationid", ...])
+z_getoperationresult (["operationid", ... ])
 ---------------------------------------------
 
 The ``z_getoperationresult`` method retrieves the result and status of an operation which has finished, and then removes the operation from memory.
@@ -8196,7 +8188,7 @@ Examples:
     "id": "curltest"
   }
 
-z_getoperationstatus (["operationid", ...])
+z_getoperationstatus (["operationid", ... ])
 ---------------------------------------------
 
 The ``z_getoperationstatus`` message queries the operation status and any associated result or error data of any ``operationid`` stored in local memory. The operation will remain in memory (unlike ``z_getoperationresult``, which removes the data from the local memory).
@@ -8418,6 +8410,8 @@ The ``z_importkey`` method imports ``z_privatekey`` to your wallet.
 
 * Note: see also ===link=== ``z_exportkey``
 
+* Note: the optional parameters are currently not functional with KMD-based blockchains
+
 Arguments:
 
 ::
@@ -8447,8 +8441,6 @@ Examples:
   (none)
 
 ::
-
-===fix the json object===
 
   command:
 
@@ -8485,7 +8477,7 @@ Examples:
 z_importviewingkey "viewing_key" ( rescan startHeight )
 ------------------------------------------------
 
-The ``z_importviewingkey`` adds a viewing key to your wallet. This method allows you to view the balance in a z_address that otherwise does not belong to your wallet.
+The ``z_importviewingkey`` adds a viewing key to your wallet. This method allows you to view the balance in a z address that otherwise does not belong to your wallet.
 
 * Note: see also ===link=== ``z_exportviewingkey``
 
@@ -8499,6 +8491,8 @@ Arguments:
 
  * Note: this call can take minutes to complete if rescan is true
 
+ * Note: the optional parameters are currently not functional for KMD-based blockchains
+
 Response:
 
 ::
@@ -8506,8 +8500,6 @@ Response:
   (none)
 
 Examples:
-
-=== the optional parameters do not yet work ===
 
 ::
 
@@ -8563,8 +8555,7 @@ Examples:
 z_importwallet "filename"
 -------------------------
 
-The ``z_importwallet`` method imports t_address and z_address keys from a wallet export file.
-
+The ``z_importwallet`` method imports t address and z address keys from a wallet export file.
 
 * Note: see also ===links=== ``z_exportwallet``
 
@@ -8609,7 +8600,7 @@ Examples:
 z_listaddresses ( includeWatchonly )
 ------------------------------------
 
-The ``z_listaddresses`` method returns the list of z_addresses belonging to the wallet.
+The ``z_listaddresses`` method returns the list of z addresses belonging to the wallet.
 
 * Note: see also ===link=== ``z_importviewingkey``
 
@@ -8624,7 +8615,7 @@ Response:
 ::
 
 	[
-	  "z_addresses"           (string) a zaddr belonging to the wallet
+	  "z_addresses"           (string) a z address belonging to the wallet
 	  , ...
 	]
 
@@ -8669,14 +8660,14 @@ Arguments:
 
 ::
 
-	"status"         (string, optional) filter result by the operation's state e.g. "success"
+	"status"         (string, optional)      filter result by the operation's state e.g. "success"
 
 Response:
 
 ::
 
 	[
-	  "operationid"       (string) an operation id belonging to the wallet
+	  "operationid"       (string)            an operation id belonging to the wallet
 	  , ...
 	]
 
@@ -8727,7 +8718,7 @@ Examples:
 z_listreceivedbyaddress "z_address" ( minconf )
 ---------------------------------------------
 
-The ``z_listreceivedbyaddress`` method returns a list of amounts received by a z_address belonging to the node’s wallet.
+The ``z_listreceivedbyaddress`` method returns a list of amounts received by a z address belonging to the node’s wallet.
 
 Arguments:
 
@@ -8801,51 +8792,51 @@ Examples:
   }
 
 
-z_mergetoaddress ["fromaddress", ...] "toaddress" ( fee ) ( transparent_limit ) ( shielded_limit ) ( memo )
+z_mergetoaddress [ "fromaddress", ... ] "toaddress" ( fee ) ( transparent_limit ) ( shielded_limit ) ( memo )
 ------------------------------------------------------------------------------------------------------------
 
 **WARNING**: ``z_mergetoaddress`` is DISABLED but can be enabled as an experimental feature.
 
-The ``z_mergetoaddress`` method merges multiple UTXOs and notes into a single UTXO or note. The method works for both t_addresses and z_addresses, both separately and in combination.  Coinbase UTXOs are ignored; use ``z_shieldcoinbase`` to combine those into a single note.
+The ``z_mergetoaddress`` method merges multiple utxos and notes into a single utxo or note. The method works for both t addresses and z addresses, both separately and in combination.  Coinbase utxos are ignored; use ``z_shieldcoinbase`` to combine those into a single note.
 
-This is an asynchronous operation, and UTXOs selected for merging will be locked.  If there is an error, they are unlocked.  The RPC call `listlockunspent` can be used to return a list of locked UTXOs.
+This is an asynchronous operation, and utxos selected for merging will be locked.  If there is an error, they are unlocked.  The RPC call `listlockunspent` can be used to return a list of locked utxos.
 
-The number of UTXOs and notes selected for merging can be limited by the caller.  If the transparent limit parameter is set to zero, the -mempooltxinputlimit option will determine the number of UTXOs. Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes.
+The number of utxos and notes selected for merging can be limited by the caller.  If the transparent limit parameter is set to zero, the ===link=== ``-mempooltxinputlimit`` option will determine the number of utxos. Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes.
 
 Arguments:
 
 ::
 
 	fromaddresses         (string, required)
-	                  Note: The following special strings are accepted inside the array:
-    	                         - "*": Merge both UTXOs and notes from all addresses belonging to the wallet.
-    	                         - "ANY_TADDR": Merge UTXOs from all t-addrs belonging to the wallet.
-    	                         - "ANY_ZADDR": Merge notes from all z-addrs belonging to the wallet.
-    	                     If a special string is given, any given addresses of that type will be ignored.
+	                  Note: the following special strings are accepted inside the array:
+    	                         - "*": merge both utxos and notes from all addresses belonging to the wallet
+    	                         - "ANY_TADDR": merge utxos from all t addresses belonging to the wallet
+    	                         - "ANY_ZADDR": merge notes from all z addresses belonging to the wallet
+    	                     if a special string is given, any given addresses of that type will be ignored
     	[
-    	  "address"          (string) can be a t_address or a z_address
+    	  "address"          (string) can be a t address or a z address
     	  , ...							                   accepts multiple entries
     	]
-	"toaddress"           (string, required) the t_address or z_address to receive the combined UTXO
+	"toaddress"           (string, required) the t address or z address to receive the combined utxo
 	fee                   (numeric, optional, default=0.0001) the fee amount to attach to this transaction
 	transparent_limit     (numeric, optional, default=50) limit on the maximum number of transparent UTXOs to merge; you may set this value to 0 to use the node option ===link explanation?=== ``-mempooltxinputlimit``
 	shielded_limit        (numeric, optional, default=10) limit on the maximum number of hidden notes to merge; you may set this value to 0 to merge as many as will fit in the transaction
-	"memo"                (string, optional)         encoded as hex; when ``toaddress`` is a z_address, this value will be stored in the memo field of the new note
+	"memo"                (string, optional)         encoded as hex; when ``toaddress`` is a z address, this value will be stored in the memo field of the new note
 
 Response:
 
 ::
 
 	{
-	  "remainingUTXOs"              (numeric) number of UTXOs still available for merging
-	  "remainingTransparentValue"   (numeric) value of UTXOs still available for merging
+	  "remainingUTXOs"              (numeric) number of utxos still available for merging
+	  "remainingTransparentValue"   (numeric) value of utxos still available for merging
 	  "remainingNotes"              (numeric) number of notes still available for merging
 	  "remainingShieldedValue"      (numeric) value of notes still available for merging
-	  "mergingUTXOs"                (numeric) number of UTXOs being merged
-	  "mergingTransparentValue"     (numeric) value of UTXOs being merged
+	  "mergingUTXOs"                (numeric) number of utxos being merged
+	  "mergingTransparentValue"     (numeric) value of utxos being merged
 	  "mergingNotes"                (numeric) number of notes being merged
 	  "mergingShieldedValue"        (numeric) value of notes being merged
-	  "opid"                        (string)  an operationid to pass to z_getoperationstatus to get the result of the operation
+	  "opid"                        (string)  an operationid to pass to ``z_getoperationstatus`` to get the result of the operation
 	}
 
 Examples:
@@ -8870,35 +8861,35 @@ Examples:
 
   (disabled)
 
-z_sendmany "fromaddress" [{"address":...,"amount":...}, ...] ( minconf ) ( fee )
+z_sendmany "fromaddress" [ { "address": ..., "amount": ... }, ... ] ( minconf ) ( fee )
 --------------------------------------------------------------------------------
 
 The ``z_sendmany`` method sends one or more transactions at once, and allows for sending transactions of types `t --> z`, `z --> z`, `z --> t`. It is the principle method for dealing with shielded `z` transactions in the Komodo ecosystem.
 
-The ``amount`` values are double-precision floating point numbers. Change from a t_address flows to a new t_address address, while change from z_address returns to itself. When sending coinbase UTXOs to a z_address, change is not allowed. The entire value of the UTXO(s) must be consumed. Currently, the maximum number of z_address outputs is 54 due to transaction size limits.
+The ``amount`` values are double-precision floating point numbers. Change from a t address flows to a new t address address, while change from z address returns to itself. When sending coinbase utxos to a z address, change is not allowed. The entire value of the utxo(s) must be consumed. Currently, the maximum number of z address outputs is 54 due to transaction size limits.
 
 Arguments:
 
 ::
 
-	"fromaddress"         (string, required) the sending t_address or z_address
+	"fromaddress"         (string, required) the sending t address or z address
 	"amounts"
 	    [
         {
-	      "address"  (string, required) the receiving address; can be a t_address or z_address
+	      "address"  (string, required) the receiving address; can be a t address or z address
 	      "amount"    (numeric, required) the numeric amount
-	      "memo"        (string, optional) if the address is a z_addr, this property accepts raw data represented in hexadecimal string format
+	      "memo"        (string, optional) if the address is a z address, this property accepts raw data represented in hexadecimal string format
 	       }
          , ...							                   accepts multiple entries
       ]
-	minconf               (numeric, optional, default=1) Only use funds confirmed at least this many times.
-	fee                   (numeric, optional, default=0.0001) The fee amount to attach to this transaction.
+	minconf               (numeric, optional, default=1) only use funds confirmed at least this many times
+	fee                   (numeric, optional, default=0.0001) the fee amount to attach to this transaction
 
 Response:
 
 ::
 
-	"operationid"          (string) An operationid to pass to z_getoperationstatus to get the result of the operation.
+	"operationid"          (string) an operationid to pass to z_getoperationstatus to get the result of the operation
 
 Examples:
 
@@ -8906,7 +8897,7 @@ Examples:
 
   command:
 
-  ./komodo-cli -ac_name=SIDDA z_sendmany "RUX5vGkxJCKBPGm8b97VUumt2aHkuCjp8e" '[{"address":"RVEsww91UBdUNGyCC1GjDVuvJShEei2kj4","amount":0.01}]'
+  komodo-cli z_sendmany "RUX5vGkxJCKBPGm8b97VUumt2aHkuCjp8e" '[{"address":"RVEsww91UBdUNGyCC1GjDVuvJShEei2kj4","amount":0.01}]'
 
   response:
 
@@ -8916,7 +8907,7 @@ Examples:
 
   command:
 
-  ./komodo-cli z_sendmany "RCpMUZwxc3pWsgip5aj3Sy1cKkh86P3Tns" '[{"address":"ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3","amount":0.01}]'
+  komodo-cli z_sendmany "RCpMUZwxc3pWsgip5aj3Sy1cKkh86P3Tns" '[{"address":"ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3","amount":0.01}]'
 
   response:
 
@@ -8926,7 +8917,7 @@ Examples:
 
   command:
 
-  ./komodo-cli -ac_name=SIDDA z_sendmany "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3" '[{"address":"ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP","amount":0.0099}]'
+  komodo-cli z_sendmany "ztci8RzNSo2pdiDpAeHpz9Rp91hq12Mn7zcFfBR8Jjs2ydZUCTw8rLZzkVP888M4vGezpZVfsTR8orgxYK3N8gdgbBzakx3" '[{"address":"ztYMDvwUqi5FZLQy4so71ZGHXk2fDtEYU9HNns9DNYjXJr9PEzSL8Dq8NcdiRijsgCm4r3nNWA6dUrqW9suGd2F7uuj2BhP","amount":0.0099}]'
 
   response:
 
@@ -8949,16 +8940,16 @@ Examples:
 z_shieldcoinbase "fromaddress" "tozaddress" ( fee ) ( limit )
 -------------------------------------------------------------
 
-The ``z_shieldcoinbase`` method shields transparent coinbase funds by sending the funds to a shielded z_address.  This is an asynchronous operation and utxos selected for shielding will be locked. If there is an error, they are unlocked.  The RPC call ``listlockunspent`` can be used to return a list of locked utxos. The number of coinbase utxos selected for shielding can be limited by the caller.  If the limit parameter is set to zero, the ``-mempooltxinputlimit`` option will determine the number of uxtos.  Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes.
+The ``z_shieldcoinbase`` method shields transparent coinbase funds by sending the funds to a shielded z address.  This is an asynchronous operation and utxos selected for shielding will be locked. If there is an error, they are unlocked.  The RPC call ``listlockunspent`` can be used to return a list of locked utxos. The number of coinbase utxos selected for shielding can be limited by the caller. If the limit parameter is set to zero, the ===link=== ``-mempooltxinputlimit`` option will determine the number of uxtos.  Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes.
 
 Arguments:
 
 ::
 
-	"fromaddress"         (string, required)                     the address is a t_addr or "*" for all t_addrs belonging to the wallet
-	"toaddress"           (string, required)                     the address is a z_addr
+	"fromaddress"         (string, required)                     the address is a t address or "*" for all t address belonging to the wallet
+	"toaddress"           (string, required)                     the address is a z address
 	fee                   (numeric, optional, default=0.0001)    the fee amount to attach to this transaction
-	limit                 (numeric, optional, default=50)        limit on the maximum number of utxos to shield; Set to ``0`` to use node option ``-mempooltxinputlimit``
+	limit                 (numeric, optional, default=50)        limit on the maximum number of utxos to shield; set to ``0`` to use node option ``-mempooltxinputlimit``
 
 Response:
 
@@ -9025,105 +9016,3 @@ Examples:
     "error": null,
     "id": "curltest"
   }
-
-zcbenchmark benchmarktype samplecount
--------------------------------------
-
-The ``zcbenchmark`` method runs a ``benchmarktype`` measurement, ``samplecount`` times, and returns the running times of each sample.
-
-Output:
-
-::
-
-	[
-	  {
-	    "runningtime"
-	  }
-    , ...							                   accepts multiple entries
-	]
-
-zcrawjoinsplit rawtx inputs outputs vpub_old vpub_new
------------------------------------------------------
-
-**DEPRECATED** The ``zcrawjoinsplit``method splices a `joinsplit` into `rawtx`. Inputs are unilaterally confidential. Outputs are confidential between sender/receiver. The `vpub_old` and `vpub_new` values are globally public and move transparent value into or out of the confidential value store, respectively.
-
-Note: The caller is responsible for delivering the output enc1 and enc2 to the appropriate recipients, as well as signing rawtxout and ensuring it is mined. (A future RPC call will deliver the confidential payments in-band on the blockchain.)
-
-Arguments:
-
-::
-
-  (deprecated)
-
-Response:
-
-::
-
-  (deprecated)
-
-Examples:
-
-::
-
-  (deprecated)
-
-zcrawkeygen
------------
-
-**DEPRECATED** The ``zcrawkeygen`` method generates a z_address which can send and receive confidential values.
-
-Arguments:
-
-::
-
-  (none)
-
-Response:
-
-::
-
-	{
-	  "zcaddress": zcaddr,
-	  "zcsecretkey": zcsecretkey,
-	  "zcviewingkey": zcviewingkey,
-	}
-
-Examples:
-
-::
-
-  (deprecated)
-
-zcrawreceive zcsecretkey encryptednote
---------------------------------------
-
-**DEPRECATED** The ``zcrawreceive`` method decrypts ``encryptednote`` and checks if the coin commitments are in the blockchain, as indicated by the ``exists`` result.
-
-Arguments:
-
-::
-
-  (deprecated)
-
-Output:
-
-::
-
-  (deprecated)
-
-	{
-	  "amount"             (numeric)       the amount
-	  "note"               (string)        the note
-	  "exists"
-	}
-
-Examples:
-
-::
-
-  (deprecated)
-
-zcsamplejoinsplit
------------------
-
-The ``zcsamplejoinsplit`` method performs a joinsplit and returns the JSDescription.
