@@ -1138,6 +1138,7 @@ The ``getaddresstxids`` method returns the txids for an address(es). It requires
 Arguments:
 
 ::
+
 	{
 	  "addresses"
 	    [
@@ -1422,7 +1423,7 @@ Response (for verbose = ``true``):
     "nextblockhash"        (string)           the hash of the next block
   }
 
-Response (for verbose=``false``):
+Response (for verbose = ``false`` ):
 
 ::
 
@@ -1976,6 +1977,7 @@ Examples:
   response:
 
 ::
+
   command:
 
   komodo-cli getblockhashes 1231614698 1231024505 '{"noOrphans":false, "logicalTimes":true}'
@@ -2000,7 +2002,7 @@ Arguments:
 	"hash"                 (string, required)                  the block hash
 	verbose                (boolean, optional, default=true)   true returns a json object, false returns hex-encoded data
 
-Result (for verbose = true):
+Result (for verbose = ``true``):
 
 ::
 
@@ -2018,7 +2020,7 @@ Result (for verbose = true):
 	  "nextblockhash"       (string)       the hash of the next block
 	}
 
-Result (for verbose=false):
+Result (for verbose = ``false`` ):
 
 ::
 
@@ -2294,7 +2296,7 @@ Arguments:
 
 	verbose               (boolean, optional, default=false)     true for a json object, false for a json array of transaction ids
 
-Response (verbose = false):
+Response (verbose = ``false`` ):
 
 ::
 
@@ -2303,7 +2305,7 @@ Response (verbose = false):
 	  , ...
 	]
 
-Response (verbose = true):
+Response (verbose = ``true`` ):
 
 ::
 
@@ -2438,7 +2440,7 @@ Response:
 	  "bestblock"               (string)               the block hash
 	  "confirmations"           (numeric)              the number of confirmations
 	  "value"                   (numeric)              the transaction value
-  	"scriptPubKey": {          //
+  	"scriptPubKey": {
     	 "asm"                  (string)
     	 "hex"                  (string)
     	 "reqSigs"              (numeric)              number of required signatures
@@ -2519,7 +2521,7 @@ gettxoutproof
 
 The ``gettxoutproof`` method returns a hex-encoded proof showing that the indicated transaction was included in a block.
 
-**NOTE:** The ``gettxoutproof`` method relies on the ``txindex`` runtime parameter. This parameter is enabled by default on all KMD-based blockchains, and should never be disabled.
+**NOTE:** The ``gettxoutproof`` method relies on the ===link=== ``txindex`` runtime parameter. This parameter is enabled by default on all KMD-based blockchains, and should never be disabled.
 
 Arguments:
 
@@ -2639,21 +2641,26 @@ The ``kvsearch`` method searches for a key stored via the ===link=== ``kvupdate`
 
 Arguments:
 
+::
+
   key               (string, required)    search the chain for this key
 
 Response:
-{
-  "coin"            (string)              chain the key is stored on
-  "currentheight"   (numeric)             current height of the chain
-  "key"             (string)              key
-  "keylen"          (string)              length of the key
-  "owner"           (string)              hex string representing the owner of the key
-  "height"          (numeric)             height the key was stored at
-  "expiration"      (numeric)             height the key will expire
-  "flags": x        (numeric)             1 if the key was created with a password; 0 otherwise
-  "value"           (string)              stored value
-  "valuesize"       (string)              amount of characters stored
-}
+
+::
+
+  {
+    "coin"            (string)              chain the key is stored on
+    "currentheight"   (numeric)             current height of the chain
+    "key"             (string)              key
+    "keylen"          (string)              length of the key
+    "owner"           (string)              hex string representing the owner of the key
+    "height"          (numeric)             height the key was stored at
+    "expiration"      (numeric)             height the key will expire
+    "flags": x        (numeric)             1 if the key was created with a password; 0 otherwise
+    "value"           (string)              stored value
+    "valuesize"       (string)              amount of characters stored
+  }
 
 Examples:
 
@@ -2727,6 +2734,7 @@ Arguments:
 Response:
 
 ::
+
   {
     "coin"                 (string)               chain the key is stored on
     "height"               (numeric)              height the key was stored at
@@ -2903,6 +2911,8 @@ Arguments:
   timestamp              (number)     the timestamp of the block desired for the query
 
 Response:
+
+::
 
   {
     "notaries": [
@@ -3224,8 +3234,6 @@ Response:
 
 	"text"              (string)               the help text
 
-===What is this below?===
-
 stop
 ----
 
@@ -3457,9 +3465,9 @@ setgenerate
 
   setgenerate generate ( genproclimit )
 
-The ``setgenerate`` method allows the user to set the 'generate' property in the coin daemon to ``true`` or ``false``, thus turning generation (mining) on or off.
+The ``setgenerate`` method allows the user to set the ``generate`` property in the coin daemon to ``true`` or ``false``, thus turning generation (mining) on or off.
 
-Generation is limited to 'genproclimit' processors. -1 is unlimited.
+Generation is limited to ===link=== ``genproclimit`` processors. Set ``genproclimit`` to ``-1`` for unlimited.
 
  * Note: See also the ===link=== ``getgenerate`` method to query the current setting, and ===link=== ``genproclimit``for setting processor default parameters.
 
@@ -3596,7 +3604,7 @@ Arguments:
 	"jsonrequestobject"           (string, optional)   a json object in the following spec
 	     {
 	       "mode"              (string, optional)      can be: "template" | "omitted"
-	       "capabilities":[
+	       "capabilities": [
 	           "support"          (string)             client side supported features: "longpoll", "coinbasetxn", "coinbasevalue", "proposal", "serverlist", "workid"
 	           , ...                     accepts multiple entries
 	         ]
@@ -4024,7 +4032,8 @@ submitblock
 
 The ``submitblock`` method instructs the daemon to propose a new block to the network.
 
-The 'jsonparametersobject' parameter is currently ignored. See https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki for full specification.
+* Note: the ``jsonparametersobject`` parameter is currently ignored. See https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki for full specification.
+* Note: for more information on ``submitblock`` parameters and results, see: https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki#block-submission
 
 Arguments:
 
@@ -4045,8 +4054,6 @@ Response:
 	"duplicate-inconclusive"      node already has block but has not validated it
 	"inconclusive"                node has not validated the block, it may not be on the node's current best chain
 	"rejected"                    block was rejected as invalid
-
-For more information on ``submitblock`` parameters and results, see: https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki#block-submission
 
 Examples:
 
@@ -4159,7 +4166,7 @@ disconnectnode
 
 The ``disconnectnode`` method instructs the daemon to immediately disconnect from the specified node.
 
-Use ``getpeerinfo`` to determine method result.
+Use ``getpeerinfo`` to determine the result.
 
 Arguments:
 
@@ -4734,9 +4741,13 @@ The ``listbanned`` method lists all banned IP addresses and subnets.
 
 Arguments:
 
+::
+
   (none)
 
 Response:
+
+::
 
   [
     {
@@ -4848,9 +4859,17 @@ Arguments:
 	bantime      (numeric, optional) indicates how long (in seconds) the ip is banned (or until when, if [absolute] is set). 0 or empty means the ban is using the default time of 24h, which can also be overwritten using the ===link=== -bantime runtime parameter.
 	absolute     (boolean, optional) if set to true, the bantime must be an absolute timestamp (in seconds) since epoch (Jan 1 1970 GMT)
 
+Response:
+
+::
+
+  (none)
+
 * Note: Use ===link=== ``listbanned`` to view results.
 
 Examples:
+
+::
 
   command:
 
@@ -5254,11 +5273,9 @@ getrawtransaction "transaction_id" ( verbose )
 
 The ``getrawtransaction`` method returns the raw transaction data.
 
-If ``verbose=0``, the method returns a string that is serialized, hex-encoded data for 'txid'. If ``verbose`` is non-zero, the method returns an object with information about ``transaction_id``.
+If ``verbose=0``, the method returns a string that is serialized, hex-encoded data for ``transaction_id``. If ``verbose`` is non-zero, the method returns an object with information about ``transaction_id``.
 
- * Note: By default, this function only works sometimes. For example, when the tx is in the mempool or there is an unspent output in the utxo for this transaction. To make it complete successfully, you need to maintain a transaction index, using the ``-txindex`` run time parameter.
-
- * Note: This method comes from the BTC codebase, of which KMD is ultimately a fork (via Zcash). For full details, please see https://bitcoin.org/en/developer-reference#getrawtransaction
+* Note: this method relies on the ===link=== ``txindex`` runtime parameter, which is enabled by default on all KMD-based chains. Disabling ``txindex`` will cause this method to malfunction.
 
 Arguments:
 
@@ -5267,13 +5284,13 @@ Arguments:
 	"txid"             (string, required) the transaction id
 	verbose            (numeric, optional, default=0) if 0, the method returns a string; otherwise, it returns a json object
 
-Response (if verbose is not set or set to 0):
+Response (if ``verbose`` is not set, or set to ``0``):
 
 ::
 
 	"data"      (string) the serialized, hex-encoded data for 'txid'
 
-Response (if verbose > 0):
+Response (if ``verbose`` > ``0``):
 
 ::
 
@@ -5459,7 +5476,7 @@ sendrawtransaction "hexstring" ( allowhighfees )
 
 The ``sendrawtransction`` method submits raw transaction (serialized, hex-encoded) to local nodes and the network.
 
-Also see ===link=== ``createrawtransaction and ``signrawtransaction`` calls.
+Also see ===link=== ``createrawtransaction`` and ``signrawtransaction`` calls.
 
 Arguments:
 
@@ -5534,7 +5551,7 @@ As a json rpc call:
 signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"}, ... ] ["privatekey1", ... ] sighashtype )
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-The ``signrawtransaction`` method signs inputs for a raw transaction (serialized, hex-encoded). The second optional argument (may be null) is an array of previous transaction outputs that this transaction depends on, but may not yet be in the block chain. The third optional argument (may be null) is an array of base58-encoded private keys that, if given, will be the only keys used to sign the transaction.
+The ``signrawtransaction`` method signs inputs for a raw transaction (serialized, hex-encoded). The second optional argument (may be ``null``) is an array of previous transaction outputs that this transaction depends on, but may not yet be in the block chain. The third optional argument (may be ``null``) is an array of base58-encoded private keys that, if given, will be the only keys used to sign the transaction.
 
 * Note: For full details, please see https://bitcoin.org/en/developer-reference#signrawtransaction
 
@@ -5615,7 +5632,7 @@ Examples:
 Util
 ====
 
-createmultisig nrequired ["key", ... ]
+sig nrequired ["key", ... ]
 ------------------------------------
 
 The ``createmultisig`` method creates a multi-signature address with ``n`` signature(s) of ``m`` key(s) required. The method returns a json object with the address and redeemScript.
@@ -5642,8 +5659,6 @@ Response:
 	}
 
 Examples:
-
-Create a multisig address from 2 addresses
 
 ::
 
@@ -5958,7 +5973,7 @@ Designate a KMD address with at least 10.024 KMD funds. ( ===link=== ``jumblr_de
 
 	komodo-cli jumblr_deposit "KMD_address"
 
-#Example:
+Example:
 
 .. code-block:: shell
 
@@ -5971,7 +5986,7 @@ Designate a destination address for your funds. This should be a transparent add
 
 	komodo-cli jumblr_secret "destination_KMD_address"
 
-#Example:
+Example:
 
 .. code-block:: shell
 
@@ -5979,9 +5994,7 @@ Designate a destination address for your funds. This should be a transparent add
 
 Leave your node running until the balance in your first address reaches below 10.024 KMD and the destination address receives the correct amount.
 
-.. warning::
-
-	Jumblr is created to be resistant against time-based analysis. That means it is not meant to be fast. Make sure you initiate the Jumblr process only if you have plenty of time for the process to finish.
+** Warning **: Jumblr is created to be resistant against time-based analysis. That means it is not meant to be fast. Make sure you initiate the Jumblr process only if you have plenty of time for the process to finish.
 
 For a more detailed description of Jumblr, please see our full explanation in our ===link=== whitepaper.
 
@@ -6081,7 +6094,7 @@ Examples:
 jumblr_secret "secretaddress"
 -----------------------------
 
-The ``jumblr_secret`` method indicates to Jumblr the final `t` destination address. This should be a separate `t` address that has no connection to the wallet.dat file of your ``jumblr_deposit`` address. Ideally, you should only access the final ``jumblr_secret`` address via a separate node, and with other layers of privacy (VPN, Tor, etc.).
+The ``jumblr_secret`` method indicates to Jumblr the final t destination address. This should be a separate t address that has no connection to the ``wallet.dat`` file of your ``jumblr_deposit`` address. Ideally, you should only access the final ``jumblr_secret`` address via a separate node, and with other layers of privacy (VPN, Tor, etc.).
 
 Arguments:
 
@@ -6100,14 +6113,14 @@ Examples:
 Wallet
 ======
 
-addmultisigaddress nrequired ["key", ... ] ( "account" )
+sigaddress nrequired ["key", ... ] ( "account" )
 -------------------------------------------------------
 
 The ``addmultisigaddress`` method adds a multi-signature address to the wallet, where ``nrequired`` indicates the number of keys (out of the total provided) required to execute a transaction.
 
 The keys function as signatures, allowing multiple parties or entities to manage an account. Each key in the array can be an address or a hex-encoded public key.
 
-* DEPRECATED: if 'account' is specified, the method assigns the multi-signature address to that account
+* DEPRECATED: if ``account`` is specified, the method assigns the multi-signature address to that account
 
 Arguments:
 
@@ -6245,7 +6258,7 @@ Examples:
 dumpwallet "filename"
 ---------------------
 
-The ``dumpwallet`` method dumps all transparent_address wallet keys into a file, using a human-readable format.
+The ``dumpwallet`` method dumps all transparent-address wallet keys into a file, using a human-readable format.
 
 Overwriting an existing file is not permitted. The ``destination`` parameter accepts only alphanumeric characters.
 
@@ -6420,6 +6433,8 @@ Arguments:
 
 Response:
 
+::
+
 	"address"        (string) the account address
 
 Examples:
@@ -6491,7 +6506,7 @@ getbalance ( "account" minconf includeWatchonly )
 
 The ``getbalance`` method returns the server's total available balance.
 
-**WARNING* The "account" input is deprecated.
+**WARNING* The ``account`` input is deprecated.
 
 Arguments:
 
@@ -7024,12 +7039,12 @@ Import an address with rescan
     "id": "curltest"
   }
 
-importprivkey "komodoprivkey" ( "label" rescan )
+key "komodoprivkey" ( "label" rescan )
 ------------------------------------------------
 
 The ``importprivkey`` method adds a private key to your wallet.
 
-* Note: See also ===link=== ``dumpprivkey``
+* Note: see also ===link=== ``dumpprivkey``
 
 Arguments:
 
@@ -7039,13 +7054,14 @@ Arguments:
 	"label"            (string, optional, default="")        an optional label
 	rescan             (boolean, optional, default=true)     rescan the wallet for transactions
 
-Note: This call can take minutes to complete if rescan is true.
 
 Response:
 
 ::
 
   addresses     (string)      the public address
+
+ * Note: This call can take minutes to complete if rescan is true.
 
 Examples:
 
@@ -7694,7 +7710,7 @@ Examples:
 listtransactions ( "account" count from includeWatchonly)
 ---------------------------------------------------------
 
-The ``listtransactions`` method returns up to ``count`` most recent transactions skipping the first ``from`` transactions for account ``account``.
+The ``listtransactions`` method returns up to ``count`` most recent transactions skipping the first ``from`` transactions for ``account``.
 
 Arguments:
 
@@ -8173,7 +8189,7 @@ Examples:
 sendmany "account" { "address": amount, ... } ( minconf "comment" [ "address", ... ] )
 -----------------------------------------------------------------------------------
 
-The ``sendmany`` method can send multiple multiple transactions at once. Amounts are double-precision floating point numbers.
+The ``sendmany`` method can send multiple transactions at once. Amounts are double-precision floating point numbers.
 
 Arguments:
 
@@ -8447,10 +8463,10 @@ Verify the signature:
     "id": "curltest"
   }
 
-z_exportkey "z_address_string"
+z_exportkey "z_address"
 ------------------------------
 
-The ``z_exportkey`` method reveals the private z_key corresponding to ``z_address_string``.
+The ``z_exportkey`` method reveals the private z_key corresponding to ``z_address``.
 
 * Note: See also ===link=== ``z_importkey``.
 
@@ -8458,7 +8474,7 @@ Arguments:
 
 ::
 
-	"z_address_string"     (string, required)    the z_address for the private key
+	"z_address"     (string, required)    the z_address for the private key
 
 Response:
 
@@ -8492,10 +8508,10 @@ Examples:
     "id": "curltest"
   }
 
-z_exportviewingkey "z_address_string"
---------------------------
+z_exportviewingkey "z_address"
+------------------------------
 
-The ``z_exportviewingkey`` method reveals the viewing key corresponding to ``z_address_string``.
+The ``z_exportviewingkey`` method reveals the viewing key corresponding to ``z_address``.
 
 * Note: see also ===link== ``z_importviewingkey``
 
@@ -8503,7 +8519,7 @@ Arguments:
 
 ::
 
-	"z_address_string"   (string, required)  the z_address for the viewing key
+	"z_address"   (string, required)  the z_address for the viewing key
 
 Response:
 
@@ -8512,6 +8528,8 @@ Response:
 	"vkey"                  (string) the viewing key
 
 Examples:
+
+::
 
   command:
 
@@ -8579,9 +8597,9 @@ Examples:
 z_getbalance "address" ( minconf )
 ----------------------------------
 
-The ``z_getbalance`` method returns the balance of a t address or z_address belonging to the node’s wallet.
+The ``z_getbalance`` method returns the balance of a t address or z address belonging to the node’s wallet.
 
-``CAUTION``: If address is a watch-only z_address, the returned balance may be larger than the actual balance,
+** CAUTION **: If address is a watch-only z address, the returned balance may be larger than the actual balance,
 as spends cannot be detected with incoming viewing keys.
 
 Arguments:
@@ -8644,13 +8662,15 @@ The ``z_getnewaddress`` method returns a new z_address for receiving payments.
 
 Arguments:
 
+::
+
   (none)
 
 Response:
 
 ::
 
-	"z_address_string"    (string) the new z_address
+	"z_address"    (string) the new z_address
 
 Examples:
 
@@ -8929,13 +8949,12 @@ Examples:
     "id": "curltest"
   }
 
-z_gettotalbalance ( minconf includeWatchonly )
+albalance ( minconf includeWatchonly )
 ----------------------------------------------
 
 The ``z_gettotalbalance`` method returns the total value of funds, including both transparent and private, stored in the node’s wallet.
 
-**CAUTION** If the wallet contains watch-only z_addresses the returned private balance may be larger than the actual balance,
-as spends cannot be detected with incoming viewing keys.
+**CAUTION**: If the wallet contains watch-only z addresses the returned private balance may be larger than the actual balance, as spends cannot be detected with incoming viewing keys.
 
 Arguments:
 
@@ -9220,7 +9239,7 @@ Response:
 ::
 
 	[
-	  "z_addresses"           (string) a z address belonging to the wallet
+	  "z_address"           (string) a z address belonging to the wallet
 	  , ...
 	]
 
@@ -9404,9 +9423,9 @@ z_mergetoaddress [ "fromaddress", ... ] "toaddress" ( fee ) ( transparent_limit 
 
 The ``z_mergetoaddress`` method merges multiple utxos and notes into a single utxo or note. The method works for both t addresses and z addresses, both separately and in combination.  Coinbase utxos are ignored; use ``z_shieldcoinbase`` to combine those into a single note.
 
-This is an asynchronous operation, and utxos selected for merging will be locked.  If there is an error, they are unlocked.  The RPC call `listlockunspent` can be used to return a list of locked utxos.
+This is an asynchronous operation, and utxos selected for merging will be locked.  If there is an error, they are unlocked.  The RPC call ``listlockunspent`` can be used to return a list of locked utxos.
 
-The number of utxos and notes selected for merging can be limited by the caller.  If the transparent limit parameter is set to zero, the ===link=== ``-mempooltxinputlimit`` option will determine the number of utxos. Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes.
+The number of utxos and notes selected for merging can be limited by the caller.  If the transparent limit parameter is set to ``0``, the ===link=== ``-mempooltxinputlimit`` option will determine the number of utxos. Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes.
 
 Arguments:
 
@@ -9469,7 +9488,7 @@ Examples:
 z_sendmany "fromaddress" [ { "address": ..., "amount": ... }, ... ] ( minconf ) ( fee )
 --------------------------------------------------------------------------------
 
-The ``z_sendmany`` method sends one or more transactions at once, and allows for sending transactions of types `t --> z`, `z --> z`, `z --> t`. It is the principle method for dealing with shielded `z` transactions in the Komodo ecosystem.
+The ``z_sendmany`` method sends one or more transactions at once, and allows for sending transactions of types ``t --> z``, ``z --> z``, ``z --> t``. It is the principle method for dealing with shielded`z transactions in the Komodo ecosystem.
 
 The ``amount`` values are double-precision floating point numbers. Change from a t address flows to a new t address address, while change from z address returns to itself. When sending coinbase utxos to a z address, change is not allowed. The entire value of the utxo(s) must be consumed. Currently, the maximum number of z address outputs is 54 due to transaction size limits.
 
