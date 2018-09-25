@@ -5,63 +5,73 @@ The Komodo Asset Chain
 About Asset Chains
 ==================
 
-An 
+A "Komodo asset chain" is an independent blockchain that is based on Komodo technology and has the option of using Komodo's many services, including security and scalability.
 
-***********************
-Creating New Assetchain
-***********************
+The unique combination of technology in a Komodo asset chain grants businesses and developers an increased level of freedom.
+
+While creating and developing the asset chain does not require contact with or payment to the Komodo team, utilizing many of the related services does.
+
+Most importantly, an asset chain is not secure until it has received the Komodo connection to the Bitcoin hash rate (dPoW). Please reach out to our team whenever you are ready to enlist this and other services.
+
+For a full description of the nature of a Komodo asset chain, please ===link=== refer to our white paper.
+
+*************************
+Creating A New Assetchain
+*************************
 
 Requirements
 ============
 
-* 2 Computers with the ability to open ports. (simpler if they have static public IP addresses)
+* 2 computers with the ability to open ports. (Process is simpler if the computers have static public IP addresses)
 * At least 4gb RAM each
 * At least 2 CPU cores each
 * 64-bit Operating System (Ubuntu 16.04 recommended)
 * ``komodod`` built on each, see :ref:`Installing Komodo Manually` (No need to download the Komodo blockchain)
 
-Creating a new blockchain
-=========================
+Part I: Creating a New Komodo Asset Chain
+=========================================
 
-Note: Do not include the ``<>`` characters in commands. If you are using windows, replace ``./komodod`` and ``./komodo-cli`` with ``komodod.exe`` and ``komodo-cli.exe`` for each step. Replace ``cd ~/komodo/src`` with the folder where ``komodod.exe`` is located.
+The following instructions use the simplest possible set of parameters in creating a new asset chain: a coin with the ticker symbol ``EXAMPLECHAIN``, ``1000000`` premined coins, and the block reward will be ``.0001``.
+
+On your first node, change into ===link=== the directory where Komodo's ``komodod`` and ``komodo-cli`` is installed and execute the following commands in the terminal:
+
+(Mac & GNU/Linux)
 
 .. code-block:: shell
 
-	cd ~/komodo/src
 	./komodod -ac_name=EXAMPLECHAIN -ac_supply=1000000 -addnode=<IP address of the second node> &
 
-This is the simplest possible set of parameters. This will create a coin with the ticker symbol ``EXAMPLECHAIN`` with ``1000000`` premined coins. Blocks will be on-demand after block 128(the chain is only mined when a transaction is in the mempool) and the block reward will be ``.0001``.
+(Windows)
 
-.. note::
+.. code-block:: shell
 
-	The parameter -ac_supply should be set to a whole number without any decimals places and it should be less than 2000000000 to avoid 64 bit overflows.
+	./komodod.exe -ac_name=EXAMPLECHAIN -ac_supply=1000000 -addnode=<IP address of the second node> &
 
-Please refer to :ref:`Asset Chain Parameters` for a full list of parameters to customize your blockchain.
-
-After issuing this command, you will see the p2p port in the terminal window.
+After issuing this command in the terminal, you will find the p2p port in the terminal window.
 
 .. code-block:: shell
 
 	>>>>>>>>>> EXAMPLECHAIN: p2p.8096 rpc.8097 magic.c89a5b16 3365559062 1000000 coins
 
-This p2p port must not be blocked by a firewall. If the computers do not have public IP addresses, you will need to port-forward the p2p port on both computers and append the forwarded port to the IP. For example:
+In this case, ``p2p.8096`` indicates that the p2p port is ``8096``.
+
+This completes the first half of the asset-chain creation process.
+
+	* Note: please refer to :ref:`Asset Chain Parameters` for a full list of parameters to customize your blockchain.
+	(Please also note the requirements for ===link=== ``-ac_supply=1000000``, and instructions for using link ``addnode`` under various network conditions, including firewalls and LANs.)
+
+Part II: Connecting with the second node
+========================================
+
+On the second node, you now need to issue the same command, but with the first node's IP address, and an additional setting: ``-gen -genproclimit=$(nproc)``.
 
 .. code-block:: shell
 
-	./komodod -ac_name=EXAMPLECHAIN -ac_supply=1000000 -addnode=<IP of the second node>:8096
-
-
-Connecting with the second node
-===============================
-
-On the second node, you now need to issue the same command, but with the first node's IP address along with setting ``-gen -genproclimit=$(nproc)``.
-
-.. code-block:: shell
-
-	cd ~/komodo/src
 	./komodod -ac_name=EXAMPLECHAIN -ac_supply=1000000 -addnode=<IP address of the first node> -gen -genproclimit=$(nproc)
 
-When this second node connects to the first node, the second node will begin to mine blocks. The premine will be mined in the genesis block to the wallet of the node that set ``-gen -genproclimit=$(nproc)``.
+When this second node connects to the first node, the second node will begin to mine blocks.
+
+The premined coins will be mined into the genesis block to the wallet of the node that set ``-gen -genproclimit=$(nproc)``.
 
 You can check the contents of the wallet by executing the following command in another terminal:
 
@@ -89,15 +99,13 @@ Use the ``help`` command for a list of commands:
 Secure this Assetchain with Delayed Proof of Work
 =================================================
 
-Your new chain can be secured via dPOW by the Komodo notary nodes giving it Bitcoin level security. The current rate for this is 300 KMD and 800 of the coin to be secured per year. If you are interested in having a new chain notarized, please contact @siu or @PTYX on the Komodo discord.
+Your new chain can be secured via dPOW by the Komodo notary nodes giving it Bitcoin level security. The current rate for this is 300 KMD, 800 of the coin to be secured, and an additional service/setup/maintenance fee (please inquire for details) per year. If you are interested in having a new chain notarized, please reach out to our team for assistance.
 
-@PTYX has launched `ChainZilla <https://www.chainzilla.io/>`_ and @siu:matrix.org has launched ChainMakers to provide assetchain creation, electrum server, explorer, dICO services.
+In our ecosystem, there are also third-parties that can help you to initiate and develop your blockchain. @siu (Discord: @siu#3920) runs the ChainMakers business, and and @PTYX (Discord: @PTYX#6840) runs Chainzilla. Both can provide different levels of service in asset-chain creation, electrum server setup and maintenance, explorer setup, and other decentralized-technology services.
 
-Please send any critique or feedback to Alright or gcharang on matrix or discord.
+Please send any critique or feedback to @Alright or @gcharang on matrix or discord.
 
 `Discord Invite <https://discord.gg/SCdf4eh>`_
-
-
 
 **********************
 Asset Chain Parameters

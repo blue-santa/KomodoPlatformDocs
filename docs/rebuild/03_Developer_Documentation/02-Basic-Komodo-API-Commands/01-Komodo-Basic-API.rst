@@ -36,6 +36,8 @@ To learn more about a specific API command, execute:
 
 ``komodo-cli help [API COMMAND]``.
 
+Note: Do not include the ``<>`` characters in commands. If you are using windows, replace ``./komodod`` and ``./komodo-cli`` with ``komodod.exe`` and ``komodo-cli.exe`` for each step. Replace ``cd ~/komodo/src`` with the folder where ``komodod.exe`` is located.
+
 List of API Commands by Category
 ================================
 
@@ -519,6 +521,12 @@ If you are behind a firewall or are having issues connecting to the network, ``a
 On the other hand, if you want to connect only to designated and trusted nodes, ``connect`` is a stronger option.
 
 If you run multiple nodes that are connected via a LAN, it is not necessary for each node to open multiple connections. Instead, use ``connect`` to connect all to one primary node, and then use ``addnode`` on the primary node to connect to the network.
+
+  * Note: The p2p port must not be blocked by a firewall. If the computers do not have public IP addresses, you will need to port-forward the p2p port on both computers and append the forwarded port to the IP. For example:
+
+  .. code-block:: shell
+
+  	./komodod -ac_name=EXAMPLECHAIN -ac_supply=1000000 -addnode=<IP of the second node>:8096
 
 Usage:
 
