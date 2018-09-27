@@ -7,11 +7,13 @@ About Asset Chains
 
 A "Komodo asset chain" is an independent blockchain that is based on Komodo technology and has the option of using Komodo's many services, including security and scalability.
 
+We use the term, "asset chain," because the coins in the blockchain are assets owned by you and your blockchain's users.
+
 The unique combination of technology in a Komodo asset chain grants businesses and developers an increased level of freedom.
 
-While creating and developing the asset chain does not require contact with or payment to the Komodo team, utilizing many of the related services does.
+While creating and developing the asset chain does not require contact with or payment to the Komodo team, utilizing many of our ancillary services does.
 
-Most importantly, an asset chain is not secure until it has received the Komodo connection to the Bitcoin hash rate (dPoW). Please reach out to our team whenever you are ready to enlist this and other services.
+Most importantly, an asset chain is not secure until it has received the Komodo connection to the Bitcoin hash rate (dPoW). Please reach out to our team whenever you are ready to enlist our services.
 
 For a full description of the nature of a Komodo asset chain, please ===link=== refer to our white paper.
 
@@ -22,16 +24,51 @@ Creating A New Assetchain
 Requirements
 ============
 
-* 2 computers with the ability to open ports. (Process is simpler if the computers have static public IP addresses)
+* 2 computers (nodes) with the ability to open ports
 * At least 4gb RAM each
 * At least 2 CPU cores each
 * 64-bit Operating System (Ubuntu 16.04 recommended)
 * ``komodod`` built on each, see :ref:`Installing Komodo Manually` (No need to download the Komodo blockchain)
 
+Notes on the Computers (Nodes) Used to Create an Asset Chain
+=============================================================
+
+If you are interested in testing a Komodo asset chain for yourself, please do not hesitate to reach out to us when you are stuck. We frequently have support agents available in our ===link https://komodoplatform.com/discord === Discord #support channel, and for off hours you can file a ticket on ===link https://support.komodoplatform.com/support/home === our support page.
+
+If you are ready to press forward now with your first test asset chain, some basic knowledge about how to connect two nodes (computers) is recommended for the initial setup.
+
+In the most ideal circumstance, the new Komodo developer will already have two virtual private server boxes (VPS's) available for testing. VPS's can be cheap and easy to manage. A typical VPS will automatically have a static external IP that is easily reachable, making connection between two VPS nodes simple.
+
+If the new developer does not have two VPS's available, setting up a test asset chain on two local machines in a home or office-type setting is still achievable, but it may require a little more troubleshooting.
+
+The challenge lies in the way the network is created, and there are myriad network setups. For example, if the developers are operating on a local router, where the two machines are connected via wi-fi, the local ip addresses of the machines are a bit harder to find; the router assigns new local ip addresses to the machines each time they connect. In this situation, the developer must log into the router's software interface and search for their currently assigned local ip addresses.
+
+This latter scenario can suffice, if you're just looking to test an asset chain and don't want to spend money on a VPS. However, don't be surprised if you need to ask for help. We'll be here for you, when you need us.
+
+You will know that your machines have succesfully connected when you can run this command in the shell of one of your machines:
+
+::
+
+	ping <insert ip address of your other machine here>
+
+This command will generate a response every second, indicating the `ping` speed with which your machines are able to connect.
+
+::
+
+	ping 192.168.1.101
+	PING 192.168.1.101 (192.168.1.101) 56(84) bytes of data.
+	64 bytes from 192.168.1.101: icmp_seq=1 ttl=64 time=131 ms
+	64 bytes from 192.168.1.101: icmp_seq=2 ttl=64 time=2.40 ms
+	...
+
+If you do not see a continuing response in the shell, your machines are not yet connected. Please reach out to our team and we will do our best to assist you.
+
 Part I: Creating a New Komodo Asset Chain
 =========================================
 
-The following instructions use the simplest possible set of parameters in creating a new asset chain: a coin with the ticker symbol ``EXAMPLECHAIN``, ``1000000`` premined coins, and the block reward will be ``.0001``.
+With your machines successfully able to `ping` each other, you are prepared to create your first asset chain.
+
+The following instructions use the simplest possible set of parameters in creating a new asset chain: a coin with the ticker symbol ``EXAMPLECHAIN``, ``1000000`` premined coins, and a block reward of ``.0001``.
 
 On your first node, change into ===link=== the directory where Komodo's ``komodod`` and ``komodo-cli`` is installed and execute the following commands in the terminal:
 
@@ -53,25 +90,24 @@ After issuing this command in the terminal, you will find the p2p port in the te
 
 	>>>>>>>>>> EXAMPLECHAIN: p2p.8096 rpc.8097 magic.c89a5b16 3365559062 1000000 coins
 
-In this case, ``p2p.8096`` indicates that the p2p port is ``8096``.
+In this case, the p2p port is ``8096``.
 
 This completes the first half of the asset-chain creation process.
 
-	* Note: please refer to :ref:`Asset Chain Parameters` for a full list of parameters to customize your blockchain.
-	(Please also note the requirements for ===link=== ``-ac_supply=1000000``, and instructions for using link ``addnode`` under various network conditions, including firewalls and LANs.)
+	* Note: please refer to :ref:`Asset Chain Parameters` for a full list of parameters to customize your initial blockchain state. Please also note the requirements for ===link=== ``ac_supply``, and instructions for using link ``addnode`` under various network conditions, including firewalls and LANs.
 
-Part II: Connecting with the second node
+Part II: Connecting on the Second Node
 ========================================
 
-On the second node, you now need to issue the same command, but with the first node's IP address, and an additional setting: ``-gen -genproclimit=$(nproc)``.
+On the second node you issue the same command, but with the first node's IP address, and an additional setting that initiates mining on this machine: ``-gen -genproclimit=$(nproc)``.
 
 .. code-block:: shell
 
 	./komodod -ac_name=EXAMPLECHAIN -ac_supply=1000000 -addnode=<IP address of the first node> -gen -genproclimit=$(nproc)
 
-When this second node connects to the first node, the second node will begin to mine blocks.
+When this second node connects it will begin to mine blocks.
 
-The premined coins will be mined into the genesis block to the wallet of the node that set ``-gen -genproclimit=$(nproc)``.
+The indicated number of premined coins will be deposited into to the wallet of the node that executed ``-gen -genproclimit=$(nproc)``.
 
 You can check the contents of the wallet by executing the following command in another terminal:
 
@@ -79,31 +115,60 @@ You can check the contents of the wallet by executing the following command in a
 
 	./komodo-cli -ac_name=EXAMPLECHAIN getwalletinfo
 
-More info can be found in the debug.log of the chain found at ``~/.komodo/EXAMPLECHAIN/debug.log`` or ``%appdata%\komodo\EXAMPLECHAIN\debug.log`` on windows.
+More info can be found in the debug.log of the chain found at:
 
-Querying the Assetchain
-=======================
+``~/.komodo/EXAMPLECHAIN/debug.log`` (Mac & GNU/Linux)
 
-You can query for assetchain blocks and balances with this komodo CLI command:
+``%appdata%\komodo\EXAMPLECHAIN\debug.log`` (Windows)
+
+Querying the Asset Chain
+========================
+
+Using the pre-installed ``komodo-cli`` software, you can execute many RPC calls and other API commands to your new asset chain, enabling you to perform transactions, create and execute smart contracts, store data in KV storage, create cross-chain compatible contracts, etc.
+
+Since the Komodo software began as a fork of Zcash and BTC, essentially all commands that are available on these two upstream blockchains are also available on your new asset chain. Many more commands that we have created to enhance your creative tool set and development process are available as well. Please see our ===link=== API documentation for more information.
+
+Example commands
+----------------
+
+On a KMD-based blockchain, the entire coin supply is mined in the first block. As soon as your machines connected in the steps above, your coin supply was distributed into the ``wallet.dat`` file of the machine that mined the first block. You can view this balance by executing the following command on the mining machine:
+
+.. code-block:: shell
+
+	./komodo-cli -ac_name=EXAMPLECHAIN getbalance
+
+These are the coins that you will sell to your future customers, in exchange for whatever cryptocurrency you desire. Also, since you are built on a KMD-based blockchain, you have easy access to our decentralized exchange, and our decentralized-ICO software.
+
+To see general information about your new asset chain, execute this command:
 
 .. code-block:: shell
 
 	./komodo-cli -ac_name=EXAMPLECHAIN getinfo
 
-Use the ``help`` command for a list of commands:
+This command returns information about all available RPC and API commands:
 
 .. code-block:: shell
 
 	./komodo-cli -ac_name=EXAMPLECHAIN help
 
-Secure this Assetchain with Delayed Proof of Work
-=================================================
+Secure this Asset Chain with Delayed Proof of Work
+==================================================
 
-Your new chain can be secured via dPOW by the Komodo notary nodes giving it Bitcoin level security. The current rate for this is 300 KMD, 800 of the coin to be secured, and an additional service/setup/maintenance fee (please inquire for details) per year. If you are interested in having a new chain notarized, please reach out to our team for assistance.
+Your new chain can receive the same security of the Bitcoin hash rate with a simple service from our KMD notary nodes, called "delayed Proof of Work" (dPoW).
 
-In our ecosystem, there are also third-parties that can help you to initiate and develop your blockchain. @siu (Discord: @siu#3920) runs the ChainMakers business, and and @PTYX (Discord: @PTYX#6840) runs Chainzilla. Both can provide different levels of service in asset-chain creation, electrum server setup and maintenance, explorer setup, and other decentralized-technology services.
+There are two aspects to the cost for dPoW services. The first comes from the cost of making records in your asset chain's database, and in the records of the KMD main chain. These records are called "notarizations," and the Komodo software automatically knows how to create and track them once you are connected to our services.
 
-Please send any critique or feedback to @Alright or @gcharang on matrix or discord.
+Notarizations are performed as transactions on your blockchain and on the main KMD blockchain. The transactions have messages included inside that indicate the most recent and secure state of your asset chain. Your blockchain will know how to recognize and rely on notarizations automatically. Every ten to twenty minutes, all of the information in the KMD chain (including your asset chain's history) is hashed and inserted into the BTC blockchain. Once your information is pushed into BTC, your blockchain will consider all notarized information completely settled and immutable; only the recent, un-notarized transactions are still relying on your asset chain's consensus mechanism (which can be PoW, PoS, or a hybrid of both). Thus, your asset chain will have all the power of Bitcoin securing your blockchain's history.
+
+As the notarizations are transactions, they have a cost to perform, and this cost is covered by the asset-chain developer. Over the course of a year, the cost for performing these transactions is 300 KMD, and 800 of your asset chain's coins.
+
+The second part of the cost of notarization is the payment to the actual Komodo team, which is given in exchange for our services. We have not yet published this rate, as we are still in the discovery phase. Please reach out to us to receive a quote.
+
+Several teams have already signed up for our services and are developing on our platform. From our experience with them we can confidently say that our pricing is generally very (very) affordable, compared to other blockchain services. In many cases, creating a fully independent blockchain on Komodo costs but a small fraction of what it would cost to execute just one smart contract on other blockchain platforms.
+
+In our ecosystem, there are third-party businesses that can help you to initiate and develop your blockchain. @siu (Discord: @siu#3920) runs the ChainMakers business, and @PTYX (Discord: @PTYX#6840) runs Chainzilla. Both can provide different levels of service in asset-chain creation, electrum server setup and maintenance, explorer setup, and other decentralized-technology services.
+
+Please send any critique or feedback of this documnetation to either @siddhartha-komodo, @Alright, or @gcharang on matrix or discord.
 
 `Discord Invite <https://discord.gg/SCdf4eh>`_
 
@@ -111,19 +176,21 @@ Please send any critique or feedback to @Alright or @gcharang on matrix or disco
 Asset Chain Parameters
 **********************
 
-For instructions on how to create an assetchain see :doc:`create-Komodo-Assetchain`
-
 For examples see :doc:`example-asset-chains`
 
 -ac_name
 ========
 
-This is the ticker symbol for the coin you wish to create. It is recommended to use only numbers and uppercase letters.
+This is the ticker symbol for the coin you wish to create. We recommended it consist only of numbers and uppercase letters.
 
 -ac_supply
 ==========
 
-This is the amount of premined coins you would like the chain to have. The node that sets ``-gen`` during the creation process will mine these coins in the genesis block. If this is not set, ``-ac_reward`` must be set, and the default value of 10 coins will be used. If ``-ac_pubkey`` is set, the  premined coins will be mined to the address of the corresponding pubkey. This parameter should be set to a whole number without any decimals places. This should be to set to less than ``2000000000`` to avoid 64 bit overflows.
+This is the amount of premined coins you would like the chain to have.
+
+The node that sets ``-gen`` during the creation process will mine these coins in the genesis block.
+
+If ``-ac_supply`` is not set, ``-ac_reward`` must be set, and the default value of 10 coins will be used. If ``-ac_pubkey`` is set, the  premined coins will be mined to the address of the corresponding pubkey. This parameter should be set to a whole number without any decimals places. This should be to set to less than ``2000000000`` to avoid 64 bit overflows.
 
 Note: An additional fraction of a coin will be added to this based on the chain's parameters. This is used by nodes to verify the genesis block. For example, the DEX chain's ``-ac_supply`` parameter is set to ``999999``, but in reality the genesis block was ``999999.13521376``.
 
@@ -173,6 +240,7 @@ If you'd like to explicitly disable smart contracts set this value to ``0``.
 ==========
 
 .. note::
+
 	This feature is currently only available in the `jl777 branch <https://github.com/jl777/komodo/tree/jl777>`_.
 
 This is the percentage of blocks the chain will aim to have as POS. For example, a ``ac_staked=90`` chain will have 90% POS blocks/10% POW blocks. This isn't exact, but the POW difficulty will automatically adjust based on the overall percentage of POW mined blocks.
