@@ -17,6 +17,8 @@ Most importantly, an asset chain is not secure until it has received the Komodo 
 
 For a full description of the nature of a Komodo asset chain, please ===link=== refer to our white paper.
 
+===let's put a very prominent link to the 'Create New Asset Chain' documentation stuff here, and then move it to the bottom. Here, we'll instead put an index for paramters.===
+
 *************************
 Creating A New Assetchain
 *************************
@@ -68,7 +70,7 @@ Part I: Creating a New Komodo Asset Chain
 
 With your machines successfully able to `ping` each other, you are prepared to create your first asset chain.
 
-The following instructions use the simplest possible set of parameters in creating a new asset chain: a coin with the ticker symbol ``EXAMPLECHAIN``, ``1000000`` premined coins, and a block reward of ``.0001``.
+The following instructions use the simplest possible set of parameters in creating a new asset chain: a coin with the ticker symbol ``EXAMPLECHAIN``, ``1000000`` pre-mined coins, and a block reward of ``.0001``.
 
 On your first node, change into ===link=== the directory where Komodo's ``komodod`` and ``komodo-cli`` is installed and execute the following commands in the terminal:
 
@@ -96,8 +98,8 @@ This completes the first half of the asset-chain creation process.
 
 	* Note: please refer to :ref:`Asset Chain Parameters` for a full list of parameters to customize your initial blockchain state. Please also note the requirements for ===link=== ``ac_supply``, and instructions for using link ``addnode`` under various network conditions, including firewalls and LANs.
 
-Part II: Connecting on the Second Node
-========================================
+Part II: Connecting the Second Node
+===================================
 
 On the second node you issue the same command, but with the first node's IP address, and an additional setting that initiates mining on this machine: ``-gen -genproclimit=$(nproc)``.
 
@@ -107,7 +109,7 @@ On the second node you issue the same command, but with the first node's IP addr
 
 When this second node connects it will begin to mine blocks.
 
-The indicated number of premined coins will be deposited into to the wallet of the node that executed ``-gen -genproclimit=$(nproc)``.
+The indicated number of pre-mined coins will be deposited into to the wallet of the node that executed ``-gen -genproclimit=$(nproc)``.
 
 You can check the contents of the wallet by executing the following command in another terminal:
 
@@ -131,7 +133,7 @@ Since the Komodo software began as a fork of Zcash and BTC, essentially all comm
 Example commands
 ----------------
 
-On a KMD-based blockchain, the entire coin supply is mined in the first block. As soon as your machines connected in the steps above, your coin supply was distributed into the ``wallet.dat`` file of the machine that mined the first block. You can view this balance by executing the following command on the mining machine:
+On a KMD-based blockchain, the entire coin supply is mined in the first block. As soon as your machines connect in the steps above, your coin supply is distributed into the ``wallet.dat`` file of the machine that mines the first block. You can view this balance by executing the following command on the mining machine:
 
 .. code-block:: shell
 
@@ -156,9 +158,9 @@ Secure this Asset Chain with Delayed Proof of Work
 
 Your new chain can receive the same security of the Bitcoin hash rate with a simple service from our KMD notary nodes, called "delayed Proof of Work" (dPoW).
 
-There are two aspects to the cost for dPoW services. The first comes from the cost of making records in your asset chain's database, and in the records of the KMD main chain. These records are called "notarizations," and the Komodo software automatically knows how to create and track them once you are connected to our services.
+There are two aspects to the cost for dPoW services. The first comes from the cost of making records in your asset chain's database, and in the records of the KMD main chain. These records are called "notarizations."
 
-Notarizations are performed as transactions on your blockchain and on the main KMD blockchain. The transactions have messages included inside that indicate the most recent and secure state of your asset chain. Your blockchain will know how to recognize and rely on notarizations automatically. Every ten to twenty minutes, all of the information in the KMD chain (including your asset chain's history) is hashed and inserted into the BTC blockchain. Once your information is pushed into BTC, your blockchain will consider all notarized information completely settled and immutable; only the recent, un-notarized transactions are still relying on your asset chain's consensus mechanism (which can be PoW, PoS, or a hybrid of both). Thus, your asset chain will have all the power of Bitcoin securing your blockchain's history.
+Notarizations are performed as transactions on your blockchain and on the main KMD blockchain. The transactions have messages included inside that indicate the most recent and secure state of your asset chain. Your blockchain will know how to recognize and rely on notarizations automatically. Every ten to twenty minutes, all of the information in the KMD chain (including your asset chain's history) is hashed and inserted into the BTC blockchain. Once your information is pushed into BTC, your blockchain will consider all notarized information completely settled and immutable; only the recent, un-notarized transactions are still relying on your asset chain's raw consensus mechanism (===link=== click here to learn more about the types of consensus mechanisms you can choose on a KMD asset chain). Thus, your asset chain will have all the power of Bitcoin securing your blockchain's history.
 
 As the notarizations are transactions, they have a cost to perform, and this cost is covered by the asset-chain developer. Over the course of a year, the cost for performing these transactions is 300 KMD, and 800 of your asset chain's coins.
 
@@ -166,7 +168,7 @@ The second part of the cost of notarization is the payment to the actual Komodo 
 
 Several teams have already signed up for our services and are developing on our platform. From our experience with them we can confidently say that our pricing is generally very (very) affordable, compared to other blockchain services. In many cases, creating a fully independent blockchain on Komodo costs but a small fraction of what it would cost to execute just one smart contract on other blockchain platforms.
 
-In our ecosystem, there are third-party businesses that can help you to initiate and develop your blockchain. @siu (Discord: @siu#3920) runs the ChainMakers business, and @PTYX (Discord: @PTYX#6840) runs Chainzilla. Both can provide different levels of service in asset-chain creation, electrum server setup and maintenance, explorer setup, and other decentralized-technology services.
+In our ecosystem, there are third-party businesses that can help you to initiate and develop your blockchain. @siu (Discord: @siu#3920) is the head of ===link=== ChainMakers, and @PTYX (Discord: @PTYX#6840) is the head of ===link=== Chainzilla. Both can provide different levels of service in asset-chain creation, electrum server setup and maintenance, explorer setup, and other decentralized-technology services.
 
 Please send any critique or feedback of this documnetation to either @siddhartha-komodo, @Alright, or @gcharang on matrix or discord.
 
@@ -176,7 +178,11 @@ Please send any critique or feedback of this documnetation to either @siddhartha
 Asset Chain Parameters
 **********************
 
-For examples see :doc:`example-asset-chains`
+The Komodo platform offers various default customizations for determining the underlying nature of your asset chain. The desired combination of parameters should be included with the ``komodod`` execution every time the asset-chain daemon is launched.
+
+Changing these customizations at a later time is possible, but in some circumstances it can require a hard fork of your asset chain. In general, it is best to have your asset chain's parameters finalized before decentralizing the ownership of your coin. Should you discover a need to change these parameters after the fact, please reach out to our development team for assistance.
+
+* Note: for examples of various asset-chain types, see :doc:`example-asset-chains`
 
 -ac_name
 ========
@@ -186,17 +192,19 @@ This is the ticker symbol for the coin you wish to create. We recommended it con
 -ac_supply
 ==========
 
-This is the amount of premined coins you would like the chain to have.
+This is the amount of pre-mined coins you would like the chain to have.
 
 The node that sets ``-gen`` during the creation process will mine these coins in the genesis block.
 
-If ``-ac_supply`` is not set, ``-ac_reward`` must be set, and the default value of 10 coins will be used. If ``-ac_pubkey`` is set, the  premined coins will be mined to the address of the corresponding pubkey. This parameter should be set to a whole number without any decimals places. This should be to set to less than ``2000000000`` to avoid 64 bit overflows.
+If ``-ac_supply`` is not set, ``-ac_reward`` must be set, and a default value of 10 coins will be used in the genesis block. If ``-ac_pubkey`` is set, the  pre-mined coins will be mined to the address of the corresponding pubkey.
 
-Note: An additional fraction of a coin will be added to this based on the chain's parameters. This is used by nodes to verify the genesis block. For example, the DEX chain's ``-ac_supply`` parameter is set to ``999999``, but in reality the genesis block was ``999999.13521376``.
+The ``-ac_supply`` parameter should be set to a whole number without any decimals places. It should also be to set to less than ``2000000000`` to avoid 64-bit overflows.
+
+Note: An additional fraction of a coin will be added to this based on the asset chain's parameters. This is used by nodes to verify the genesis block. For example, the DEX chain's ``-ac_supply`` parameter is set to ``999999``, but in reality the genesis block was ``999999.13521376``.
 
 -ac_reward
 ==========
-This is the block reward for each mined block in satoshis. If this is not set, the block reward will be ``10000`` satoshis, and blocks will be on-demand after block 127 (a new block will not be mined unless there is a transaction in the mempool.)
+This is the block reward for each mined block, given in satoshis. If this is not set, the block reward will be ``10000`` satoshis, and blocks will be on-demand after block 127 (a new block will not be mined unless there is a transaction in the mempool.)
 
 -ac_end
 =======
@@ -208,33 +216,68 @@ This is the number of blocks between each block reward halving. This parameter w
 
 -ac_decay
 =========
-This is the percentage the block reward will decrease by each block reward halving. For example, if this is set to ``750000000``, the block reward will drop 25% from the previous block reward each halving. This parameter will have no effect if ``-ac_reward`` is not set.
+
+This is the percentage the block reward will decrease by each block-reward halving. This parameter will have no effect if ``-ac_reward`` is not set.
 This is the formula that ``-ac_decay`` follows:
 
 .. code-block:: shell
 
 	numhalvings = (height / -ac_halving);
 	for (i=0; i<numhalvings; i++)
-	reward = (reward * -ac_decay) / 100000000;
+	reward = (reward * ac_decay) / 100000000;
 
+For example, if this is set to ``750000000``, the block reward will drop 25% from the previous block reward each halving.
 
 -ac_perc
 ========
 
-The ``-ac_perc`` parameter is the percentage added to the block reward and transactions that will be sent to the ``-ac_pubkey`` address. If this parameter is set, ``-ac_pubkey`` must also be set. For example, if ``-ac_reward=100000000`` and ``-ac_perc=10000000``, for each block mined, the miner receives 1 coin along with the ``-ac_pubkey`` address receiving 0.1 coin. For every transaction sent, the pubkey address will receive 10% of the overall transaction value. This 10% is not taken from the user, rather it is created at this point. Each transaction inflates the overall supply.
+The ``-ac_perc`` parameter is the percentage added to both the block reward and to the transactions that will be sent to the ===link=== ``-ac_pubkey`` address. If the ``-ac_perc`` parameter is set, ``-ac_pubkey`` must also be set.
 
-Note: Vout 1 of each coinbase transaction must be the correct amount sent to the corresponding pubkey. The ``vout`` type for all coinbase vouts must be ``pubkey`` as opposed to ``pubkeyhash``. This only affects a miner trying to use a stratum. Z-nomp is currently incompatible.
+For example, if ``-ac_reward=100000000`` and ``-ac_perc=10000000``, for each block mined, the miner receives 1 coin along with the ``-ac_pubkey`` address receiving 0.1 coin. For every transaction sent, the pubkey address will receive 10% of the overall transaction value. This 10% is not taken from the user, rather it is created at this point. Each transaction inflates the overall supply.
+
+	Note: Vout 1 of each coinbase transaction must be the correct amount sent to the corresponding ``pubkey``. The ``vout`` type for all coinbase vouts must be ``pubkey`` as opposed to ``pubkeyhash``. This only affects a miner trying to use a stratum. Z-nomp is currently incompatible.
 
 -ac_pubkey
 ==========
 
-If ``-ac_pubkey`` is set, but ``-ac_perc`` is not, this simply means the genesis block will be mined to the set pubkey's address. This must be set to a 33 byte hex string. You can get the pubkey of an address by using the ``validateaddress`` command in ``komodod``. The address must be imported to the wallet before using ``validateaddress``.
+The ``-ac_pubkey`` parameter designates a public address for receiving payments from the network. These payments can come in the genesis block, in all blocks mined thereafter, and from every transaction on the network.
+
+If ``-ac_pubkey`` is set, but ===link=== ``-ac_perc`` is not, this simply means the genesis block will be mined to the set ``pubkey``'s address, and no blocks or transactions thereafter will mine payments into the ``pubkey``.
+
+``pubkey`` must be set to a 33 byte hex string. You can get the pubkey of an address by using the ===link=== ``validateaddress`` command in ``komodod``, and searching for the returned ``pubkey`` property. The address must be imported to the wallet before using ``validateaddress``.
 
 -ac_cc
 ======
 
-This is the network cluster on which the chain can interact with other chains via cross chain smart contracts. This functionality is still in testing. If this is set to 1, the chain will have smart contracts enabled, but it will not be able to interact with other chains. If this is set to any number other than 0 or 1, the chain can interact with other chains on the same network cluster. For example, all ``-ac_cc=2`` chains can interact with each other but may not interact with ``-ac_cc=3`` chains.
-If you'd like to explicitly disable smart contracts set this value to ``0``.
+ * **NOTE:** This parameter is still in testing.
+
+The ``-ac_cc`` parameter sets the network cluster on which the chain can interact with other chains via ===link=== cross-chain smart contracts and ===link=== MoMoM technology.
+
+Under most circumstances, this parameter requires the Komodo notarization service to achieve functionality, as it relies on the ``pubkey`` of the trusted notary nodes to ensure coin-supply stability.
+
+Once activated, the ``ac_cc`` parameter can allow features such as cross-chain fungibility -- meaning that coins on one asset chain can be directly transferred to another asset chain that has the same ``ac_cc`` setting and notary nodes with the same ``pubkey``.
+
+-ac_cc=0
+--------
+
+Setting ``-ac_cc=0`` disables smart contracts on the asset chain entirely.
+
+-ac_cc=1
+--------
+
+Setting ``-ac_cc=1`` permits smart contracts on the asset chain, but will not allow the asset chain to interaction in cross-chain smart contracts with other asset chains.
+
+-ac_cc=2 to 100
+---------------
+
+The values of `2` through `100` indicate asset chains that can import functions across asset chains, but their coins are not fungible.
+
+For example, an asset chain may be able to query another asset chain on the same ``ac_cc`` cluster for details about a transaction.
+
+-ac_cc=101 to 9999
+------------------
+
+Setting the value of ``ac_cc`` to any value greater than or equal to ``101`` will permit cross-chain interaction with any asset chain that has the same ``ac_cc`` value and is secured by notary nodes with the same ``pubkey``. For example, an asset chain set to ``ac_cc=2`` in its parameters can interact with other asset chains with ``ac_cc=2``, on the same notary-node network, but cannot interact with an asset chain set to ``ac_cc=3``.
 
 -ac_staked
 ==========
@@ -243,9 +286,9 @@ If you'd like to explicitly disable smart contracts set this value to ``0``.
 
 	This feature is currently only available in the `jl777 branch <https://github.com/jl777/komodo/tree/jl777>`_.
 
-This is the percentage of blocks the chain will aim to have as POS. For example, a ``ac_staked=90`` chain will have 90% POS blocks/10% POW blocks. This isn't exact, but the POW difficulty will automatically adjust based on the overall percentage of POW mined blocks.
+This is the percentage of blocks the chain will aim to have mined via Proof of Stake (PoS), with the remainder via Proof of Work (PoW). For example, an ``ac_staked=90`` chain will have ~90% PoS blocks/10% PoW blocks. Measurements of the PoS:PoW ratio are approximate; the PoW difficulty will automatically adjust based on the overall percentage of PoW-mined blocks to adhere to the approximate ``PoS`` value.
 
-Each staked block will have an additional transaction added to the coinbase in which the coins that staked the block are sent back to the same address. This is used to verify which coins staked the block, and this allows for compatibility with existing Komodo infrastructure such as Agama, BarterDEX and explorers. If ``-ac_staked`` is used in conjunction with ``-ac_perc``, the ``-ac_pubkey`` address will receive slightly more coins for each staked block compared to a mined block because of this extra transaction.
+Each staked block will have an additional transaction added to the coinbase in which the coins that staked the block are sent back to the same address. This is used to verify which coins staked the block, and this allows for compatibility with existing Komodo infrastructure such as Agama, BarterDEX, and explorers. If ``-ac_staked`` is used in conjunction with ``-ac_perc``, the ``-ac_pubkey`` address will receive slightly more coins for each staked block compared to a mined block because of this extra transaction.
 
 The following are the (current) rules for staking a block:
 
@@ -261,7 +304,7 @@ The following are the (current) rules for staking a block:
 
 	#. Coinage calculated from the adjusted time is used to divide hash(address + pastblockhash) to create the value compared against the difficulty to determine if a block is won or not. This means a UTXO is more likely to win a block within a segid based on age of the UTXO and amount of coins.
 
-To create a chain using this parameter, start the first node with ``-gen -genproclimit=0``. Start the second node with ``-gen -genproclimit=$(nproc)``. Send coins from the second node to the first node, and it will begin staking. The first 100 blocks will allow POW regardless of the ``ac_staked`` value. On a chain using a high percentage for POS, it's vital to have coins staking by block 100. It is also vital to stake coins in all 64 segids. For the time being, you can use the `genaddresses.py` script in `this repo <https://github.com/alrighttt/dockersegid>`_ to generate an address for each segid. This functionality will soon be integrated directly into the daemon. You can use the ``getbalance64`` command to get the balance you currently have in each segid you are staking in.
+To create a chain using this parameter, start the first node with ``-gen -genproclimit=0``. Start the second node with ``-gen -genproclimit=$(nproc)``. Send coins from the second node to the first node, and it will begin staking. The first 100 blocks will allow PoW regardless of the ``ac_staked`` value. On a chain using a high percentage for PoS, it's vital to have coins staking by block 100. It is also vital to stake coins in all 64 segids. For the time being, you can use the `genaddresses.py` script in `this repo <https://github.com/alrighttt/dockersegid>`_ to generate an address for each segid. This functionality will soon be integrated directly into the daemon. You can use the ``getbalance64`` command to get the balance you currently have in each segid you are staking in.
 
 
 -ac_public
@@ -270,7 +313,7 @@ To create a chain using this parameter, start the first node with ``-gen -genpro
 .. note::
 	This feature is currently only available in the `jl777 branch <https://github.com/jl777/komodo/tree/jl777>`_.
 
-If ``ac_public`` is set to 1, zkSNARKs will be disabled. All z address functionalilty is disabled. Therefore, all transactions on the blockchain are public.
+If ``ac_public`` is set to ``1``, zk-SNARKs are disabled, and all z address functionalilty is disabled. Therefore, all transactions on the blockchain are public.
 
 -ac_private
 ===========
@@ -278,7 +321,7 @@ If ``ac_public`` is set to 1, zkSNARKs will be disabled. All z address functiona
 .. note::
 	This feature is currently only available in the `jl777 branch <https://github.com/jl777/komodo/tree/jl777>`_.
 
-If ``ac_private`` is set to 1, all transactions other than coinbase transactions(block rewards) must use zkSNARKs. All transparent address functionality other than sending mined coins from transparent addresses is disabled.
+If ``ac_private`` is set to ``1``, all transactions other than coinbase transactions (block rewards) must use zk-SNARKs. All transparent address functionality other than sending mined coins from transparent addresses is disabled.
 
 
 Please send any critiques or feedback to Alright or gcharang on matrix or discord.

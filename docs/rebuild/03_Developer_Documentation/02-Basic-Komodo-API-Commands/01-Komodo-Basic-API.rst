@@ -6572,6 +6572,13 @@ As a json rpc call:
     "id": "curltest"
   }
 
+getbalance64
+------------
+
+  ** EXPERIMENTAL FEATURE **: This method is part of the new ===link=== ``-ac_stake`` functionality.
+
+The ``getbalance64`` method is used only on asset chains that are utilizing the ===link=== ``-ac_stake`` functionality. On KMD-based Proof-of-Stake (PoS) asset chains, all staked coins are placed into one of 64 segments. The ``getbalance64`` method returns information about these coins. For further information, please reach out to our support team.
+
 getnewaddress ( "account" )
 ---------------------------
 
