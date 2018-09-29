@@ -1,3 +1,5 @@
+===need an index here===
+
 **********************
 The Komodo Asset Chain
 **********************
@@ -17,8 +19,6 @@ Most importantly, an asset chain is not secure until it has received the Komodo 
 
 For a full description of the nature of a Komodo asset chain, please ===link=== refer to our white paper.
 
-===let's put a very prominent link to the 'Create New Asset Chain' documentation stuff here, and then move it to the bottom. Here, we'll instead put an index for paramters.===
-
 *************************
 Creating A New Assetchain
 *************************
@@ -26,11 +26,11 @@ Creating A New Assetchain
 Requirements
 ============
 
-* 2 computers (nodes) with the ability to open ports
+* 2 nodes with the ability to open ports (a node can be either a computer or a VPS)
 * At least 4gb RAM each
 * At least 2 CPU cores each
 * 64-bit Operating System (Ubuntu 16.04 recommended)
-* ``komodod`` built on each, see :ref:`Installing Komodo Manually` (No need to download the Komodo blockchain)
+* ``komodod`` built on each, see :ref:`Installing Komodo Manually` (no need to download the Komodo blockchain)
 
 Notes on the Computers (Nodes) Used to Create an Asset Chain
 =============================================================
@@ -43,11 +43,11 @@ In the most ideal circumstance, the new Komodo developer will already have two v
 
 If the new developer does not have two VPS's available, setting up a test asset chain on two local machines in a home or office-type setting is still achievable, but it may require a little more troubleshooting.
 
-The challenge lies in the way the network is created, and there are myriad network setups. For example, if the developers are operating on a local router, where the two machines are connected via wi-fi, the local ip addresses of the machines are a bit harder to find; the router assigns new local ip addresses to the machines each time they connect. In this situation, the developer must log into the router's software interface and search for their currently assigned local ip addresses.
+The challenge lies in the way the network is created, and there are myriad network setups. For example, if the developers are operating on a local router, where the two machines are connected via wi-fi, the local ip addresses of the machines are a bit harder to find; the router assigns new local ip addresses to the machines each time they connect. It is not possible to see them from the internet. In this situation, the developer must log into the router's software interface and search for their currently assigned local ip addresses.
 
-This latter scenario can suffice, if you're just looking to test an asset chain and don't want to spend money on a VPS. However, don't be surprised if you need to ask for help. We'll be here for you, when you need us.
+This latter scenario can suffice, if you're just looking to test an asset chain quickly and don't want to spend money on a VPS. However, don't be surprised if you need to ask for help. We'll be here for you, when you need us.
 
-You will know that your machines have succesfully connected when you can run this command in the shell of one of your machines:
+You will know that your machines have successfully connected when you can run this command in the shell of one of your machines:
 
 ::
 
@@ -68,11 +68,11 @@ If you do not see a continuing response in the shell, your machines are not yet 
 Part I: Creating a New Komodo Asset Chain
 =========================================
 
-With your machines successfully able to `ping` each other, you are prepared to create your first asset chain.
+With your machines successfully able to ``ping`` each other, you are prepared to create your first asset chain.
 
 The following instructions use the simplest possible set of parameters in creating a new asset chain: a coin with the ticker symbol ``EXAMPLECHAIN``, ``1000000`` pre-mined coins, and a block reward of ``.0001``.
 
-On your first node, change into ===link=== the directory where Komodo's ``komodod`` and ``komodo-cli`` is installed and execute the following commands in the terminal:
+On your first node, change into ===link=== the directory where Komodo's ``komodod`` and ``komodo-cli`` are installed and execute the following commands in the terminal:
 
 (Mac & GNU/Linux)
 
@@ -128,7 +128,7 @@ Querying the Asset Chain
 
 Using the pre-installed ``komodo-cli`` software, you can execute many RPC calls and other API commands to your new asset chain, enabling you to perform transactions, create and execute smart contracts, store data in KV storage, create cross-chain compatible contracts, etc.
 
-Since the Komodo software began as a fork of Zcash and BTC, essentially all commands that are available on these two upstream blockchains are also available on your new asset chain. Many more commands that we have created to enhance your creative tool set and development process are available as well. Please see our ===link=== API documentation for more information.
+Since the Komodo software began as a fork of Zcash and BTC, essentially all commands that are available on these two upstream blockchains are also available on your new asset chain. We have also created many more commands to enhance your creative tool set and development process. Please see our ===link=== API documentation for more information.
 
 Example commands
 ----------------
@@ -139,7 +139,7 @@ On a KMD-based blockchain, the entire coin supply is mined in the first block. A
 
 	./komodo-cli -ac_name=EXAMPLECHAIN getbalance
 
-These are the coins that you will sell to your future customers, in exchange for whatever cryptocurrency you desire. Also, since you are built on a KMD-based blockchain, you have easy access to our decentralized exchange, and our decentralized-ICO software.
+These are the coins that you will sell to your future customers, in exchange for whatever cryptocurrency you desire. Also, since you are building on a KMD-based blockchain, you have easy access to our decentralized exchange, and our decentralized-ICO software, and our future upgrades.
 
 To see general information about your new asset chain, execute this command:
 
@@ -168,9 +168,9 @@ The second part of the cost of notarization is the payment to the actual Komodo 
 
 Several teams have already signed up for our services and are developing on our platform. From our experience with them we can confidently say that our pricing is generally very (very) affordable, compared to other blockchain services. In many cases, creating a fully independent blockchain on Komodo costs but a small fraction of what it would cost to execute just one smart contract on other blockchain platforms.
 
-In our ecosystem, there are third-party businesses that can help you to initiate and develop your blockchain. @siu (Discord: @siu#3920) is the head of ===link=== ChainMakers, and @PTYX (Discord: @PTYX#6840) is the head of ===link=== Chainzilla. Both can provide different levels of service in asset-chain creation, electrum server setup and maintenance, explorer setup, and other decentralized-technology services.
+In our ecosystem, there are third-party businesses that can help you to initiate and develop your blockchain. @siu (Discord: @siu#3920) is the head of ===link=== ChainMakers, and @PTYX (Discord: @PTYX#6840) is the head of ===link=== Chainzilla. Both can provide different levels of service in asset-chain creation, electrum-server (SPV) setup and maintenance, explorer setup, and other decentralized-technology services.
 
-Please send any critique or feedback of this documnetation to either @siddhartha-komodo, @Alright, or @gcharang on matrix or discord.
+Please send any critique or feedback of this documentation to either @Alright or @gcharang on matrix or discord.
 
 `Discord Invite <https://discord.gg/SCdf4eh>`_
 
@@ -189,6 +189,8 @@ Changing these customizations at a later time is possible, but in some circumsta
 
 This is the ticker symbol for the coin you wish to create. We recommended it consist only of numbers and uppercase letters.
 
+All asset chains are required to set ``-ac_name``.
+
 -ac_supply
 ==========
 
@@ -201,6 +203,8 @@ If ``-ac_supply`` is not set, ``-ac_reward`` must be set, and a default value of
 The ``-ac_supply`` parameter should be set to a whole number without any decimals places. It should also be to set to less than ``2000000000`` to avoid 64-bit overflows.
 
 Note: An additional fraction of a coin will be added to this based on the asset chain's parameters. This is used by nodes to verify the genesis block. For example, the DEX chain's ``-ac_supply`` parameter is set to ``999999``, but in reality the genesis block was ``999999.13521376``.
+
+All chains are required to set ``-ac_supply``.
 
 -ac_reward
 ==========
@@ -218,13 +222,14 @@ This is the number of blocks between each block reward halving. This parameter w
 =========
 
 This is the percentage the block reward will decrease by each block-reward halving. This parameter will have no effect if ``-ac_reward`` is not set.
+
 This is the formula that ``-ac_decay`` follows:
 
 .. code-block:: shell
 
 	numhalvings = (height / -ac_halving);
 	for (i=0; i<numhalvings; i++)
-	reward = (reward * ac_decay) / 100000000;
+	reward_after = reward_before * ac_decay / 100000000;
 
 For example, if this is set to ``750000000``, the block reward will drop 25% from the previous block reward each halving.
 
@@ -241,6 +246,8 @@ For example, if ``-ac_reward=100000000`` and ``-ac_perc=10000000``, for each blo
 ==========
 
 The ``-ac_pubkey`` parameter designates a public address for receiving payments from the network. These payments can come in the genesis block, in all blocks mined thereafter, and from every transaction on the network.
+
+It is used in combination with ===link=== ``-ac_perc``, which sets the amount that is sent to the address. If ``ac_perc`` is not set, the only effect of ``ac_pubkey`` is to have the genesis block be mined to the ``pubkey`` specified.
 
 If ``-ac_pubkey`` is set, but ===link=== ``-ac_perc`` is not, this simply means the genesis block will be mined to the set ``pubkey``'s address, and no blocks or transactions thereafter will mine payments into the ``pubkey``.
 
@@ -270,9 +277,11 @@ Setting ``-ac_cc=1`` permits smart contracts on the asset chain, but will not al
 -ac_cc=2 to 100
 ---------------
 
-The values of `2` through `100` indicate asset chains that can import functions across asset chains, but their coins are not fungible.
+The values of ``2`` through ``100`` indicate asset chains that can import functions across asset chains, but their coins are not fungible.
 
 For example, an asset chain may be able to query another asset chain on the same ``ac_cc`` cluster for details about a transaction.
+
+However, coins may not be transferred between blockchains.
 
 -ac_cc=101 to 9999
 ------------------
@@ -288,7 +297,7 @@ Setting the value of ``ac_cc`` to any value greater than or equal to ``101`` wil
 
 This is the percentage of blocks the chain will aim to have mined via Proof of Stake (PoS), with the remainder via Proof of Work (PoW). For example, an ``ac_staked=90`` chain will have ~90% PoS blocks/10% PoW blocks. Measurements of the PoS:PoW ratio are approximate; the PoW difficulty will automatically adjust based on the overall percentage of PoW-mined blocks to adhere to the approximate ``PoS`` value.
 
-Each staked block will have an additional transaction added to the coinbase in which the coins that staked the block are sent back to the same address. This is used to verify which coins staked the block, and this allows for compatibility with existing Komodo infrastructure such as Agama, BarterDEX, and explorers. If ``-ac_staked`` is used in conjunction with ``-ac_perc``, the ``-ac_pubkey`` address will receive slightly more coins for each staked block compared to a mined block because of this extra transaction.
+Each staked block will have an additional transaction added to the coinbase in which the coins that staked the block are sent back to the same address. This is used to verify which coins staked the block, and this allows for compatibility with existing Komodo infrastructure. If ``-ac_staked`` is used in conjunction with ``-ac_perc``, the ``-ac_pubkey`` address will receive slightly more coins for each staked block compared to a mined block because of this extra transaction.
 
 The following are the (current) rules for staking a block:
 
@@ -304,8 +313,11 @@ The following are the (current) rules for staking a block:
 
 	#. Coinage calculated from the adjusted time is used to divide hash(address + pastblockhash) to create the value compared against the difficulty to determine if a block is won or not. This means a UTXO is more likely to win a block within a segid based on age of the UTXO and amount of coins.
 
-To create a chain using this parameter, start the first node with ``-gen -genproclimit=0``. Start the second node with ``-gen -genproclimit=$(nproc)``. Send coins from the second node to the first node, and it will begin staking. The first 100 blocks will allow PoW regardless of the ``ac_staked`` value. On a chain using a high percentage for PoS, it's vital to have coins staking by block 100. It is also vital to stake coins in all 64 segids. For the time being, you can use the `genaddresses.py` script in `this repo <https://github.com/alrighttt/dockersegid>`_ to generate an address for each segid. This functionality will soon be integrated directly into the daemon. You can use the ``getbalance64`` command to get the balance you currently have in each segid you are staking in.
+To create a chain using this parameter, start the first node with ``-gen -genproclimit=0``. Start the second node with ``-gen -genproclimit=$(nproc)``. Send coins from the second node to the first node, and it will begin staking. The first 100 blocks will allow PoW regardless of the ``ac_staked`` value.
 
+	Note: On a chain using a high percentage for PoS, it's vital to have coins staking by block 100.  If too many PoW blocks are mined consecutively at the start of the chain, the PoW difficulty may increase enough to stop the chain entirely. This can prevent users from sending transactions to staking nodes.
+
+	Note: It is also vital to stake coins in all 64 segids. For the time being, you can use the `genaddresses.py` script in `this repo <https://github.com/alrighttt/dockersegid>`_ to generate an address for each segid. This functionality will soon be integrated directly into the daemon. You can use the ``getbalance64`` command to get the balance you currently have in each segid you are staking in.
 
 -ac_public
 ==========
@@ -323,23 +335,17 @@ If ``ac_public`` is set to ``1``, zk-SNARKs are disabled, and all z address func
 
 If ``ac_private`` is set to ``1``, all transactions other than coinbase transactions (block rewards) must use zk-SNARKs. All transparent address functionality other than sending mined coins from transparent addresses is disabled.
 
-
 Please send any critiques or feedback to Alright or gcharang on matrix or discord.
 
 `Discord Invite <https://discord.gg/SCdf4eh>`_
-
 
 ********************
 Example Asset Chains
 ********************
 
-The purpose of this document is to give a better understanding of asset chain parameters via examples. These chains are grouped simply by the number of parameters used in customizing each. As new parameters are added, the new combinations will be tested and added here.
+The following are a collection of example asset chains, for educational purposes.
 
-Please see :doc:`create-Komodo-Assetchain` and :doc:`assetchain-params` if you haven't already.
-
-All chains must have at least ``ac_name`` and ``ac_supply`` set. The ``ac_pubkey`` parameter can be used with any of these chains. If ``ac_perc`` is not set, the only effect ``ac_pubkey`` has  is to have the genesis block be mined to the pubkey that has been specified. The parameters ``ac_name`` , ``ac_supply`` , ``ac_pubkey`` are not counted when grouping based on the ``Number of parameters``.
-
-The values of parameters other than ``ac_name`` in these examples are completely arbitrary. The names of these example-asset-chains are assigned based on how a chain is customized and its grouping.
+The parameters ``ac_name`` , ``ac_supply`` , ``ac_pubkey`` are not counted when grouping based on the ``Number of parameters``.
 
 Number of parameters: 1
 ***********************
@@ -349,113 +355,82 @@ ac_reward
 
 ``./komodod -ac_name=1REW -ac_supply=999999 -ac_reward=100000000``
 
-999999 coin premine
-
-1 coin block reward that does not end.
+A ``999999`` coin pre-mine, with a 1 coin block reward that does not end. (Recall that ``ac_supply`` is given in coins, while ``ac_reward`` is given in satoshis.)
 
 ac_halving
 ==========
 
 ``./komodod -ac_name=1HALV -ac_supply=999999 -ac_halving=2000``
 
-999999 coin premine
+A 999999-coin pre-mine, with a default block reward of 0.0001 coin, and on-demand blocks after block 128
 
-Default block reward of 0.0001 coin; On demand blocks after block 128
-
-``ac_halving`` has no effect unless ``ac_reward`` is set
+The ``ac_halving`` value has no effect on the asset chain, as ``ac_reward`` is not set.
 
 ac_decay
 ========
 ``./komodod -ac_name=1DECAY -ac_supply=999999 -ac_decay=50000000``
 
-999999 coin premine
+A 999999-coin pre-mine, with a default block reward of 0.0001 coin, and on-demand blocks after block 128.
 
-Default block reward of 0.0001 coin; On demand blocks after block 128
-
-``ac_decay`` has no effect unless ``ac_reward`` is set
+The ``ac_decay`` value has no effect as ``ac_reward`` is not set.
 
 ac_end
 ======
 
 ``./komodod -ac_name=1END -ac_supply=999999 -ac_end=25000``
 
-999999 coin premine
+A 999999-coin pre-mine, with a default block reward of 0.0001 coin, and on-demand blocks after block 128.
 
-Default block reward of 0.0001 coin; On demand blocks after block 128
+The block reward ends at block 25000.
 
-Block reward ends at block 25000.
+Number of parameters: 2
+***********************
 
+ac_reward ac_staked
+===================
+
+``./komodod -ac_name=1STAKE -ac_supply=999999 -ac_reward=100000000 -ac_staked=90``
+
+A 999999-coin pre-mine with a 1-coin block reward. The chain adjusts difficulty to keep 90% of blocks mined via PoS, and 10% mined via PoW.
 
 ac_perc ac_pubkey
 =================
 
 ``./komodod -ac_name=1PERC -ac_supply=999999 -ac_perc=5000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
-
-
-ac_staked
-=========
-
-``./komodod -ac_name=1STAKE -ac_supply=999999 -ac_reward=100000000 -ac_staked=90``
-
-999999 coin premine
-
-1 coin block reward
-
-Chain adjusts difficulty so 90% of blocks are proof of stake, 10% proof of work
-
-It’s important to start staking immediately for high percentages of POS. If too many POW blocks are mined consecutively at the start of the chain, the POW difficulty may increase enough to stop the chain entirely, meaning you can’t send a transaction to staking nodes.
-
-Number of parameters: 2
-***********************
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain will not function because ``ac_reward`` is not set.
 
 ac_reward ac_halving
 ====================
 
 ``./komodod -ac_name=2REWHALV -ac_supply=999999 -ac_reward=500000000 -ac_halving=2000``
 
-999999 coin premine
-
-5 coin block reward.
-
-Block reward decreases by 50% every 2000 blocks.
+A 999999-coin pre-mine, with a 5-coin block reward, and the block reward decreases by 50% every 2000 blocks.
 
 ac_reward ac_decay
 ==================
 
 ``./komodod -ac_name=2REWDECAY -ac_supply=999999 -ac_reward=500000000 -ac_decay=75000000``
 
-999999 coin premine
+A 999999-coin pre-mine, with a 5-coin block reward.
 
-5 coin block reward
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ac_reward ac_end
 ================
 
 ``./komodod -ac_name=2REWEND -ac_supply=999999 -ac_reward=500000000 -ac_end=200``
 
-999999 coin premine
-
-5 coin block reward
-
-Block reward ends at block 200.
+A 999999-coin pre-mine, with a 5-coin block reward, and the block reward ends at block 200.
 
 ac_reward ac_perc ac_pubkey
 ===========================
 
 ``./komodod -ac_name=2REWPERC -ac_supply=999999 -ac_reward=500000000 -ac_perc=5000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-999999 coin premine
+A 999999-coin pre-mine with a 5-coin block reward. The pubkey address receives 0.25-coin for every mined block (an additional 5% above the baseline block reward).
 
-5 coin block reward
-
-Pubkey address receives 0.25 coin for every mined block.(an additional 5% of block reward)
-
-Pubkey address receives an additional 5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins
-are created and sent to the pubkey address.
+The pubkey address also receives an additional 5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins are added to the coin supply and sent to the pubkey address.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -464,20 +439,14 @@ ac_reward ac_staked
 
 ``./komodod -ac_name=2REWSTAKE -ac_supply=100000 -ac_reward=1000000000 -ac_staked=2``
 
-100000 coin premine
-
-10 coin block reward
-
-Chain adjusts difficulty so 2% of blocks are proof of stake, 98% proof of work.
+A 100000 coin pre-mine with a 10-coin block reward. The chain adjusts difficulty so 2% of blocks are mined via PoS, 98% via PoW.
 
 ac_halving ac_decay
 ===================
 
 ``./komodod -ac_name=2HALVDECAY -ac_supply=999999 -ac_halving=2000 -ac_decay=50000000``
 
-999999 coin premine
-
-Default block reward of 0.0001 coin; On demand blocks after block 128
+A 999999-coin pre-mine, with the default block reward of 0.0001 coin, and on-demand blocks after block 128.
 
 ``ac_halving`` and ``ac_decay`` have no effect if ``ac_reward`` is not set.
 
@@ -486,11 +455,7 @@ ac_halving ac_end
 
 ``./komodod -ac_name=2HALVEND -ac_supply=999999 -ac_halving=2000 -ac_end=10000``
 
-999999 coin premine
-
-Default block reward of 0.0001 coin; Blocks are on-demand after block 128
-
-Block reward ends at block 10000
+A 999999-coin pre-mine, with the default block reward of 0.0001 coin, blocks are on-demand after block 128k, and the block reward ends at block 10000.
 
 ``ac_halving`` has no effect without ``ac_reward`` being set.
 
@@ -499,18 +464,16 @@ ac_halving ac_perc ac_pubkey
 
 ``./komodod -ac_name=2HALVPERC -ac_supply=999999 -ac_halving=2000 -ac_perc=5000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-``ac_halving`` has no effect if ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+Also, ``ac_halving`` has no effect if ``ac_reward`` is not set.
 
 ac_halving ac_staked
 ====================
 
 ``./komodod -ac_name=2HALVSTAKE -ac_supply=999999 -ac_halving=2000 -ac_staked=10``
 
-Default block reward of 0.0001 coin
-
-Chain adjusts difficulty so 10% of blocks are proof of stake, 90% proof of work.
+A 999999-coin pre-mine, with the default block reward of 0.0001 coin, and the chain adjusts difficulty so 10% of blocks are mined via PoS, 90% via PoW.
 
 ``ac_halving`` has no effect without ``ac_reward`` being set.
 
@@ -519,103 +482,69 @@ ac_decay ac_end
 
 ``./komodod -ac_name=2DECEND -ac_supply=999999 -ac_decay=5000000 -ac_end=10000``
 
-999999 coin premine
+A 999999-coin pre-mine, with the default block reward of 0.0001 coin, blocks are on-demand after block 128, and the block reward ends at block 10000.
 
-Default block reward of 0.0001 coin; Blocks are on-demand after block 128
-
-Block reward ends at block 10000.
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ac_decay ac_perc ac_pubkey
 ==========================
 
 ``./komodod -ac_name=2DECPERC -ac_supply=999999 -ac_decay=75000000 -ac_perc=10000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-``ac_decay`` has no effect without setting ``ac_reward`` and ``ac_halving`` both set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not function, because ``ac_reward`` is not set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+Also, ``ac_decay`` has no effect when either of ``ac_reward`` and ``ac_halving`` are not set.
 
 ac_decay ac_staked
 ==================
 
 ``./komodod -ac_name=2DECAYSTAKE -ac_supply=999999 -ac_decay=5000000 -ac_staked=50``
 
-999999 coin premine
+A 999999-coin pre-mine, with the default block reward of 0.0001 coin, and the chain adjusts difficulty so 50% of blocks are mined via PoS, 50% via PoW.
 
-Default block reward of 0.0001 coin
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
-
-Chain adjusts difficulty so 50% of blocks are proof of stake, 50% proof of work.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ac_end ac_perc ac_pubkey
 ========================
 
 ``./komodod -ac_name=2ENDPERC -ac_supply=999999 -ac_end=10000 -ac_perc=5000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 ac_end ac_staked
 ================
 
 ``./komodod -ac_name=2ENDSTAKE -ac_supply=999999 -ac_end=10000 -ac_staked=5``
 
-999999 coin premine
-
-Default block reward of 0.0001 coin
-
-Block reward ends at block 10000.
-
-Chain adjusts difficulty so 5% of blocks are proof of stake, 95% proof of work.
+A 999999-coin pre-mine, with the default block reward of 0.0001 coin, the block reward ends at block 10000, and the chain adjusts difficulty so 5% of blocks are mined via PoS, 95% via PoW.
 
 ac_perc ac_pubkey ac_staked
 ===========================
 
 ``./komodod -ac_name=2PERCSTAKE -ac_supply=999999 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=50``
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
-
-
-Number of parameters: 3
-***********************
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not function, because ``ac_reward`` is not set.
 
 ac_reward ac_halving ac_decay
 =============================
 
 ``./komodod -ac_name=3REWHALVDEC -ac_supply=999999 -ac_reward=1000000000 -ac_halving=2000 -ac_decay=75000000``
 
-999999 coin premine
-
-10 coin block reward
-
-Block reward decreases by 25% every 2000 blocks.
+A 999999-coin pre-mine, with a 10-coin block reward, and the block reward decreases by 25% every 2000 blocks.
 
 ac_reward ac_halving ac_end
 ===========================
 
 ``./komodod -ac_name=3REWHALVEND -ac_supply=999999 -ac_reward=500000000 -ac_halving=2000 -ac_end=10000``
 
-999999 coin premine
-
-5 coin block reward
-
-Block reward decreases by 50% every 2000 blocks
-
-Block reward ends at block 10000
+A 999999-coin pre-mine, with a 5-coin block reward, the block reward decreases by 50% every 2000 blocks, and the block reward ends at block 10000.
 
 ac_reward ac_halving ac_perc ac_pubkey
 ======================================
 
 ``./komodod -ac_name=3REWHALVPERC -ac_supply=999999 -ac_reward=500000000 -ac_halving=1440 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_perc=50000000``
 
-999999 coin premine
-
-5 coin block reward
-
-Block reward decreases by 50% every 1440 blocks.
-
-The pubkey address receives an additional 50% of the block reward for each mined block. For example, before the first halving the pubkey address will receive 2.5 coins(50% of 5 coin block reward) for every mined block. After the first halving, the pubkey address will receive 1.25 coins.
+A 999999-coin pre-mine, with a 5-coin block reward, and the block reward decreases by 50% every 1440 blocks. The pubkey address receives an additional 50% above the block reward for each mined block. For example, before the first halving the pubkey address will receive 2.5 coins (50% above the 5-coin block reward, for a total of 7.5 coins) for every mined block. After the first halving, the pubkey address will receive 1.25 coins (for a total of 3.75 coins).
 
 The pubkey address receives an additional 50% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 50 coins are created and sent to the pubkey address.
 
@@ -627,41 +556,25 @@ ac_reward ac_halving ac_staked
 
 ``./komodod -ac_name=3REWHALVSTAKE -ac_supply=999999 -ac_reward=100000000 -ac_havling=2000 -ac_staked=10``
 
-999999 coin premine
-
-1 coin block reward
-
-Block reward decreases by 50% every 2000 blocks
-
-Chain adjusts difficulty so 10% of blocks are proof of stake, 90% proof of work.
+A 999999-coin pre-mine, with a 1-coin block reward, block reward decreases by 50% every 2000 blocks, and the chain adjusts difficulty so 10% of blocks are mined via PoS, 90% via PoW.
 
 ac_reward ac_decay ac_end
 =========================
 
 ``./komodod -ac_name=3REWDECEND -ac_supply=999999 -ac_reward=500000000 -ac_decay=75000000 -ac_end=5000``
 
-999999 coin premine
+A 999999-coin pre-mine, with a 5-coin block reward, and the block reward ends at block 5000.
 
-5 coin block reward
-
-Block reward ends at block 5000.
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ac_reward ac_decay ac_perc ac_pubkey
 ====================================
 
 ``./komodod -ac_name=3REWDECPERC -ac_supply=999999 -ac_reward=500000000  -ac_decay=75000000 -ac_perc=10000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-999999 coin premine
+A 999999-coin pre-mine with a 5-coin block reward. The pubkey address receives 0.5 coin for every mined block (an additional 10% above the block reward). The pubkey address receives an additional 10% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 10 coins are created and sent to the pubkey address.
 
-5 coin block reward
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
-
-Pubkey address receives 0.5 coin for every mined block(an additional 10% of block reward)
-
-Pubkey address receives an additional 10% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 10 coins are created and sent to the pubkey address.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -670,29 +583,16 @@ ac_reward ac_decay ac_staked
 
 ``./komodod -ac_name=3REWDECSTAKE -ac_supply=999999 -ac_reward=1000000000 -ac_decay=25000000 -ac_staked=50``
 
-999999 coin premine
+A 999999-coin pre-mine, with a 10-coin block reward, and the chain adjusts difficulty so 50% of blocks are mined via PoS, 50% via PoW.
 
-10 coin block reward
-
-``ac_decay`` has no effect if ``ac_halving`` is not set
-
-Chain adjusts difficulty so 50% of blocks are proof of stake, 50% proof of work.
-
+``ac_decay`` has no effect if ``ac_halving`` is not set.
 
 ac_reward ac_end ac_perc ac_pubkey
 ==================================
 
 ``./komodod -ac_name=3ENDPERCREW -ac_supply=999999 -ac_reward=5000000000 -ac_end=10000 -ac_perc=5000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-999999 coin premine
-
-50 coin block reward
-
-Block reward ends at block 10000.
-
-Pubkey address receives 2.5 coins(an additional 5% of block reward) for every mined block before block 10000.
-
-Pubkey address receives an additional 5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins are created and sent to the pubkey address.
+A 999999-coin pre-mine, with a 50-coin block reward, and the block reward ends at block 10000. The pubkey address receives 2.5 coins (an additional 5% above the block reward) for every mined block before block 10000. The pubkey address receives an additional 5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins are created and sent to the pubkey address.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be pubkey as opposed to pubkeyhash.
 
@@ -701,28 +601,14 @@ ac_reward ac_end ac_staked
 
 ``./komodod -ac_name=3REWENDSTAKE -ac_supply=500000 -ac_reward=10000000000 -ac_end=15000 -ac_staked=60``
 
-500000 coin premine
-
-100 coin block reward
-
-Block reward ends at block 15000.
-
-Chain adjusts difficulty so 60% of blocks are proof of stake, 40% proof of work.
+A 500000 coin pre-mine, with a 100-coin block reward, the block reward ends at block 15000, and the chain adjusts difficulty so 60% of blocks are mined via PoS, 40% via PoW.
 
 ac_reward ac_perc ac_pubkey ac_staked
 =====================================
 
 ``./komodod -ac_name=3REWPERCSTAKE -ac_supply=1000000 -ac_reward=1000000000 -ac_perc=10000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=50``
 
-1000000 coin premine
-
-10 coin block reward
-
-Chain adjusts difficulty so 50% of blocks are proof of stake, 50% proof of work.
-
-Pubkey address receives 1 coin for every mined block.(an additional 10% of block reward)
-
-Pubkey address receives an additional 10% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins are created and sent to the pubkey address. This includes the additional verification transaction in POS blocks, meaning the pubkey address receives more coins for every POS block.
+A 1000000-coin pre-mine, a 10-coin block reward, the chain adjusts difficulty so 50% of blocks are mined via PoS, 50% via PoW. The pubkey address receives 1 coin for every mined block (an additional 10% above the block reward). The pubkey address receives an additional 10% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins are created and sent to the pubkey address. This includes the additional verification transaction in PoS blocks, meaning the pubkey address receives more coins for every PoS block.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -731,11 +617,7 @@ ac_halving ac_decay ac_end
 
 ``./komodod -ac_name=3HALVDECEND -ac_supply=999999 -ac_end=100000 -ac_halving=5000 -ac_end=100000``
 
-999999 coin premine
-
-Default block reward of .0001; Blocks are on-demand after block 128.
-
-Block reward ends at block 100000.
+A 999999-coin pre-mine, with the default block reward of .0001, blocks are on-demand after block 128, and the block reward ends at block 100000.
 
 ``ac_halving`` has no effect if ``ac_reward`` is not set.
 
@@ -746,7 +628,7 @@ ac_halving ac_decay ac_perc ac_pubkey
 
 ``ac_halving`` has no effect if ``ac_reward`` is not set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 
 ac_halving ac_decay ac_staked
@@ -754,12 +636,9 @@ ac_halving ac_decay ac_staked
 
 ``./komodod -ac_name=3HALVDECSTAKE -ac_supply=50000 -ac_halving=2000 -ac_decay=45000000 -ac_staked=40``
 
-50000 coin premine
+A 50000-coin pre-mine, and the hain adjusts difficulty so 40% of blocks are mined via PoS, 60% via PoW.
 
 ``ac_halving`` and ``ac_decay`` have no effect if ``ac_reward`` is not set
-
-Chain adjusts difficulty so 40% of blocks are proof of stake, 60% proof of work.
-
 
 ac_halving ac_end ac_perc ac_pubkey
 ===================================
@@ -767,101 +646,70 @@ ac_halving ac_end ac_perc ac_pubkey
 
 ``ac_halving`` has no effect if ``ac_reward`` is not set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 
 ac_halving ac_end ac_staked
 ===========================
 ``./komodod -ac_name=3HALVENDSTAKE -ac_supply=50000 -ac_halving=2000 -ac_end=10000 -ac_staked=50``
 
-50000 coin premine
-
-Default block reward of 0.0001 coin
+A 50000-coin pre-mine, with a default block reward of 0.0001 coin, the block reward ends at block 10000, and chain adjusts difficulty so 50% of blocks are mined via PoS, 50% via PoW.
 
 ``ac_halving` has no effect if ``ac_reward`` is not set.
-
-Block reward ends at block 10000.
-
-Chain adjusts difficulty so 50% of blocks are proof of stake, 50% proof of work.
-
 
 ac_halving ac_perc ac_pubkey ac_staked
 ======================================
 ``./komodod -ac_name=3HALVPERCSTAKE -ac_supply=99999 -ac_halving=2000 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=10``
 
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 ac_decay ac_end ac_perc ac_pubkey
 =================================
 ``./komodod -ac_name=3DECENDPERC -ac_supply=10000 -ac_decay=75000000 -ac_end=100000 -ac_perc=10000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 
 ac_decay ac_end ac_staked
 =========================
 ``./komodod -ac_name=3DECENDSTAKE -ac_supply=800000 -ac_decay=20000000 -ac_end=20000 -ac_staked=60``
 
-800000 coin premine
+A 800000-coin pre-mine, the default block reward of 0.0001 coin, the block reward ends at block 20000, chain adjusts difficulty so 60% of blocks are mined via PoS, 40% via PoW.
 
-Default block reward of 0.0001 coin
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
-
-Block reward ends at block 20000.
-
-Chain adjusts difficulty so 60% of blocks are proof of stake, 40% proof of work.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ac_decay ac_perc ac_pubkey ac_staked
 ====================================
 ``./komodod -ac_name=3DECPERCSTAKE -ac_supply=77777 -ac_decay=40000000 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 
 ac_end ac_perc ac_pubkey ac_staked
 ==================================
 ``./komodod -ac_name=3ENDPERCSTAKE -ac_supply=999999 -ac_end=70000 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=10``
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
-
-Number of parameters: 4
-***********************
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 ac_reward ac_halving ac_decay ac_end
 ====================================
 
 ``./komodod -ac_name=4REWHALVDECEND -ac_supply=1000000 -ac_reward=10000000000 -ac_halving=10000 -ac_decay=25000000 -ac_end=100000``
 
-1000000 coin premine
-
-100 coin block reward
-
-Block reward decreases by 75% every 10000 blocks.
-
-Block reward ends at block 100000.
+A 1000000-coin pre-mine, a 100-coin block reward, the block reward decreases by 75% every 10000 blocks, and the block reward ends at block 100000.
 
 ac_reward ac_halving ac_decay ac_perc ac_pubkey
 ===============================================
 
 ``./komodod -ac_name=4REWHALVDECPERC -ac_supply=999999 -ac_reward=1000000000 -ac_halving=5000 -ac_decay=60000000 -ac_perc=5000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-999999 coin premine
-
-10 coin block reward
-
-Block reward decreases 40% every 5000 blocks
-
-The pubkey address receives an additional 5% of the block reward for each mined block. For example, before the first halving, the pubkey address will receive 0.5 coin(5% of 10 coin block reward) for every mined block. After the first halving, the pubkey address will receive 0.3 coin for every mined block.(5% of 6 coin block reward)
-
-Pubkey address receives an additional 5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins
-are created and sent to the pubkey address.
+A 999999-coin pre-mine, a 10-coin block reward, and the block reward decreases 40% every 5000 blocks. The pubkey address receives an additional 5% above the block reward for each mined block. For example, before the first halving, the pubkey address will receive 0.5 coin (5% of the 10-coin block reward) for every mined block. After the first halving, the pubkey address will receive 0.3 coin for every mined block (5% of the 6-coin block reward). The pubkey address receives an additional 5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins are created and sent to the pubkey address.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -870,30 +718,14 @@ ac_reward ac_halving ac_decay ac_staked
 
 ``./komodod -ac_name=4REWHALVDECSTAKE -ac_supply=99999 -ac_reward=1000000000000 -ac_halving=2000 -ac_decay=60000000 -ac_staked=50``
 
-99999 coin premine
-
-10000 coin block reward
-
-Block reward decreases by 40% every 2000 blocks.
-
-Chain adjusts difficulty so 50% of blocks are proof of stake, 50% proof of work.
+A 99999-coin pre-mine, a 10000-coin block reward, the block reward decreases by 40% every 2000 blocks, and the chain adjusts difficulty so 50% of blocks are mined via PoS, 50% via PoW.
 
 ac_reward ac_halving ac_end ac_perc ac_pubkey
 =============================================
 
 ``./komodod -ac_name=4REWPERCENDHALV -ac_supply=999999 -ac_reward=1000000000 -ac_halving=2000 -ac_end=60005 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_perc=10000000``
 
-999999 coin premine
-
-10 coin block reward
-
-Block reward decreases by 50% every 2000 blocks.
-
-Block reward ends at block 60005.
-
-The pubkey address receives an additional 10% of the block reward for each mined block. For example, before the first halving, the pubkey address will receive 1 coin(10% of 10 coin block reward) for every mined block. After the first halving, the pubkey address will receive 0.5 coin for every mined block.
-
-Pubkey address receives an additional 10% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 10 coins are created and sent to the pubkey address.
+A 999999-coin pre-mine, a 10-coin block reward, the block reward decreases by 50% every 2000 blocks, and the block reward ends at block 60005. The pubkey address receives an additional 10% above the block reward for each mined block. For example, before the first halving, the pubkey address will receive 1 coin (10% of 10-coin block reward) for every mined block. After the first halving, the pubkey address will receive 0.5 coin for every mined block. The pubkey address receives an additional 10% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 10 coins are created and sent to the pubkey address.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -902,32 +734,14 @@ ac_reward ac_halving ac_end ac_staked
 
 ``./komodod -ac_name=4REWHALVENDSTAKE -ac_supply=99999 -ac_reward=10000000 -ac_halving=5000 -ac_end=50000 -ac_staked=40``
 
-99999 coin premine
-
-0.1 coin block reward
-
-Block reward decreases by 50% every 5000 blocks.
-
-Block reward ends at block 50000.
-
-Chain adjusts difficulty so 40% of blocks are proof of stake, 60% proof of work.
+A 99999-coin pre-mine, a 0.1 coin block reward, the block reward decreases by 50% every 5000 blocks, the block reward ends at block 50000, and the chain adjusts difficulty so 40% of blocks are mined via PoS, 60% via PoW.
 
 ac_reward ac_halving ac_perc ac_pubkey ac_staked
 ================================================
 
 ``./komodod -ac_name=4PERCREWHALVSTAKE -ac_supply=999999 -ac_reward=1000000000 -ac_halving=2000 -ac_perc=5000000 -ac_staked=50 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-999999 coin premine
-
-10 coin block reward
-
-Block reward decreases by 50% every 2000 blocks.
-
-Chain adjusts difficulty so 50% of blocks are proof of stake, 50% proof of work.
-
-The pubkey address receives an additional 5% of the block reward for each mined block. For example, before the first halving, the pubkey address will receive 0.5 coin(5% of 10 coin block reward) for every mined block. After the first halving, the pubkey address will receive 0.25 coin for every mined block.
-
-Pubkey address receives an additional 5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins are created and sent to the pubkey address.
+A 999999-coin pre-mine, a 10-coin block reward, block reward decreases by 50% every 2000 blocks, and the chain adjusts difficulty so 50% of blocks are mined via PoS, 50% via PoW. The pubkey address receives an additional 5% above the block reward for each mined block. For example, before the first halving, the pubkey address will receive 0.5 coin (5% above the 10-coin block reward) for every mined block. After the first halving, the pubkey address will receive 0.25-coin for every mined block. The pubkey address receives an additional 5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 5 coins are created and sent to the pubkey address.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -935,17 +749,9 @@ ac_reward ac_decay ac_end ac_perc ac_pubkey
 ===========================================
 ``./komodod -ac_name=4REWDECENDPERC -ac_supply=70000 -ac_reward=700000000 -ac_decay=80000000 -ac_end=10000 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-70000 coin premine
+A 70000-coin pre-mine, with a 7-coin block reward, and the block reward ends at block 10000. The pubkey address receives .07-coin for every mined block. (an additional 1% above the block reward). The pubkey address receives an additional 1% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 1 coin is created and sent to the pubkey address.
 
-7 coin block reward
-
-Block reward ends at block 10000.
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
-
-Pubkey address receives .07 coin for every mined block.(an additional 1% of block reward)
-
-Pubkey address receives an additional 1% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 1 coins are created and sent to the pubkey address.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -953,49 +759,28 @@ ac_reward ac_decay ac_end ac_staked
 ===================================
 ``./komodod -ac_name=4REWDECENDSTAKE -ac_supply=999999 -ac_reward=500000000 -ac_decay=75000000 -ac_end=12000 -ac_staked=40``
 
-999999 coin premine
+A 999999-coin pre-mine, with a 5-coin block reward, the block reward ends at block 12000, and the chain adjusts difficulty so 40% of blocks are mined via PoS, 60% via PoW.
 
-5 coin block reward
-
-Block rewards ends at block 12000.
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
-
-Chain adjusts difficulty so 40% of blocks are proof of stake, 60% proof of work.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ac_reward ac_decay ac_perc ac_pubkey ac_staked
 ==============================================
 ``./komodod -ac_name=4REWDECPERCSTAKE -ac_supply=9000 -ac_reward=1000000000 -ac_decay=80000000 -ac_perc=2000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=80``
 
-9000 coin premine
+A 9000-coin pre-mine, and a 10-coin block reward. The pubkey address receives 0.2 coin for every mined block (an additional 2% above the block reward). The pubkey address receives an additional 2% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 2 coins are created and sent to the pubkey address. This includes the additional verification transaction in PoS blocks, meaning the pubkey address receives more coins for every PoS block.
 
-10 coin block reward.
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
-
-Pubkey address receives 0.2 coin for every mined block.(an additional 2% of block reward)
-
-Pubkey address receives an additional 2% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 2 coins are created and sent to the pubkey address. This includes the additional verification transaction in POS blocks, meaning the pubkey address receives more coins for every POS block.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
-
 
 ac_reward ac_end ac_perc ac_pubkey ac_staked
 ============================================
 
 ``./komodod -ac_name=4REWENDPERCSTAKE -ac_supply=999999 -ac_reward=5000000000 -ac_end=10000 -ac_staked=33 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-999999 coin premine
+A 999999-coin pre-mine, a 50-coin block reward, the block rewards ends at block 10000, and the chain adjusts difficulty so 33% of blocks are mined via PoS, 67% via PoW.
 
-50 coin block reward
-
-Block rewards ends at block 10000.
-
-Chain adjusts difficulty so 33% of blocks are proof of stake, 67% proof of work.
-
-Pubkey address receives 0.5 coin for every mined block(an additional 1% of block reward)
-
-Pubkey address receives an additional 1% for every transaction made on the chain. For example, if a transaction sends 100 coins, 1 additional coin is created and sent to the pubkey address. This includes the additional verification transaction in POS blocks, meaning the pubkey address receives more coins for every POS block.
+The pubkey address receives 0.5 coin for every mined block (an additional 1% above the block reward). The pubkey address receives an additional 1% for every transaction made on the chain. For example, if a transaction sends 100 coins, 1 additional coin is created and sent to the pubkey address. This includes the additional verification transaction in PoS blocks, meaning the pubkey address receives more coins for every PoS block.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -1005,21 +790,15 @@ ac_halving ac_decay ac_end ac_perc ac_pubkey
 
 ``ac_halving`` has no effect if ``ac_reward`` is not set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 ac_halving ac_decay ac_end ac_staked
 ====================================
 ``./komodod -ac_name=4HALVDECENDSTAKE -ac_supply=999999 -ac_halving=5000 -ac_decay=60000000 -ac_end=25000 -ac_staked=10``
 
-999999 coin premine
-
-Default block reward of .0001 coin.
-
-Block reward ends at block 25000
+A 999999-coin pre-mine, the default block reward of .0001 coin, the block reward ends at block 25000, and the chain adjusts difficulty so 10% of blocks are mined via PoS, 90% via PoW.
 
 ``ac_halving`` and ``ac_decay`` have no effect if ``ac_reward`` is not set
-
-Chain adjusts difficulty so 10% of blocks are proof of stake, 90% proof of work.
 
 ac_halving ac_decay ac_perc ac_pubkey ac_staked
 ===============================================
@@ -1027,7 +806,7 @@ ac_halving ac_decay ac_perc ac_pubkey ac_staked
 
 ``ac_halving`` and ``ac_decay`` have no effect if ``ac_reward`` is not set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 ac_halving ac_end ac_perc ac_pubkey ac_staked
 =============================================
@@ -1035,15 +814,15 @@ ac_halving ac_end ac_perc ac_pubkey ac_staked
 
 ``ac_halving`` has no effect if ``ac_reward`` is not set
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 ac_decay ac_end ac_perc ac_pubkey ac_staked
 ===========================================
 ``./komodod -ac_name=4DECENDPERCSTAKE -ac_supply=999999 -ac_decay=75000000 -ac_end=100000 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=40``
 
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 Number of parameters: 5
 ***********************
@@ -1053,17 +832,9 @@ ac_reward ac_halving ac_decay ac_end ac_perc ac_pubkey
 
 ``./komodod -ac_name=5REWHALVDECENDPERC -ac_supply=999999 -ac_reward=10000000000 -ac_halving=10000 -ac_decay=75000000 -ac_end=100000 -ac_perc=2000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392``
 
-999999 coin premine
+A 999999-coin pre-mine, a 100-coin block reward, the block reward reduces by 25% every 10000 blocks, and the block reward ends at block 100000. The pubkey address receives an additional 2% above the block reward for each mined block. For example, before the first halving, the pubkey address will receive 2 coins (2% of 100-coin block reward) for every mined block. After the first halving, the pubkey address will receive 1.5 coins for every mined block (2% of 75-coin block reward).
 
-100 coin block reward
-
-Block reward reduces by 25% every 10000 blocks.
-
-Block reward ends at block 100000.
-
-The pubkey address receives an additional 2% of the block reward for each mined block. For example, before the first halving, the pubkey address will receive 2 coins(2% of 100 coin block reward) for every mined block. After the first halving, the pubkey address will receive 1.5 coins for every mined block.(2% of 75 coin block reward)
-
-Pubkey address receives an additional 2% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 2 coins are created and sent to the pubkey address.
+The pubkey address receives an additional 2% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 2 coins are created and sent to the pubkey address.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -1072,15 +843,7 @@ ac_reward ac_halving ac_decay ac_end ac_staked
 
 ``./komodod -ac_name=5REWHALVDECENDSTAKE -ac_supply=50000 -ac_reward=500000000 -ac_halving=5000 -ac_decay=70000000 -ac_end=100000 -ac_staked=80``
 
-50000 coin premine
-
-5 coin block reward
-
-Block reward decreases by 30% every 5000 blocks.
-
-Block reward ends at block 100000.
-
-Chain adjusts difficulty so 80% of blocks are proof of stake, 20% proof of work.
+A 50000-coin pre-mine, a 5-coin block reward, the block reward decreases by 30% every 5000 blocks, the block reward ends at block 100000, and the chain adjusts difficulty so 80% of blocks are mined via PoS, 20% via PoW.
 
 
 ac_reward ac_halving ac_decay ac_perc ac_pubkey ac_staked
@@ -1088,39 +851,22 @@ ac_reward ac_halving ac_decay ac_perc ac_pubkey ac_staked
 
 ``./komodod -ac_name=5REWHALVDECPERCSTAKE -ac_supply=1 -ac_reward=50000000000 -ac_halving=2000 -ac_decay=25000000 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=50``
 
-1 coin premine
+A 1-coin pre-mine, a 500-coin block reward, the block reward decreases by 75% every 2000 blocks, and the chain adjusts difficulty so 50% of blocks are mined via PoS, 50% via PoW. The pubkey address receives an additional 1% above the block reward for each mined block. For example, before the first halving, the pubkey address will receive 5 coins (1% of 500 coin block reward) for every mined block. After the first halving, the pubkey address will receive 1.25 coins for every mined block (1% of 125 block reward).
 
-500 coin block reward
-
-Block reward decreases by 75% every 2000 blocks.
-
-Chain adjusts difficulty so 50% of blocks are proof of stake, 50% proof of work.
-
-The pubkey address receives an additional 1% of the block reward for each mined block. For example, before the first halving, the pubkey address will receive 5 coins(1% of 500 coin block reward) for every mined block. After the first halving, the pubkey address will receive 1.25 coins for every mined block.(1% of 125 block reward)
-
-Pubkey address receives an additional 1% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 1 coins are created and sent to the pubkey address. This includes the additional verification transaction in POS blocks, meaning the pubkey address receives more coins for every POS block.
+The pubkey address receives an additional 1% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 1 coin is created and sent to the pubkey address. This includes the additional verification transaction in PoS blocks, meaning the pubkey address receives more coins for every PoS block.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
-
 
 ac_reward ac_halving ac_end ac_perc ac_pubkey ac_staked
 =======================================================
 
 ``./komodod -ac_name=5REWHALVENDPERCSTAKE -ac_supply=100 -ac_reward=100000000 -ac_halving=20000 -ac_end=100000 -ac_perc=1000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=90``
 
-100 coin premine
+A 100-coin pre-mine, a 1-coin block reward, the block reward decreases by 50% every 20000 blocks, the block reward ends at block 100000, and chain adjusts difficulty so 90% of blocks are mined via PoS, 10% via PoW.
 
-1 coin block reward
+The pubkey address receives an additional 1% above the block reward for each mined block. For example, before the first halving, the pubkey address will receive 0.01 coin (1% of the 1-coin block reward) for every mined block. After the first halving, the pubkey address will receive 0.005-coin for every mined block. (1% of 0.5 block reward)
 
-Block reward decreases by 50% every 20000 blocks.
-
-Block reward ends at block 100000.
-
-Chain adjusts difficulty so 90% of blocks are proof of stake, 10% proof of work.
-
-The pubkey address receives an additional 1% of the block reward for each mined block. For example, before the first halving, the pubkey address will receive 0.01 coin(1% of 1 coin block reward) for every mined block. After the first halving, the pubkey address will receive 0.005 coin for every mined block.(1% of 0.5 block reward)
-
-Pubkey address receives an additional 1% for every transaction made on the chain. For example, if a transaction sends 100 coins, 1 additional coin is created and sent to the pubkey address. This includes the additional verification transaction in POS blocks, meaning the pubkey address receives more coins for every POS block.
+The pubkey address receives an additional 1% for every transaction made on the chain. For example, if a transaction sends 100 coins, 1 additional coin is created and sent to the pubkey address. This includes the additional verification transaction in PoS blocks, meaning the pubkey address receives more coins for every PoS block.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -1128,19 +874,11 @@ ac_reward ac_decay ac_end ac_perc ac_pubkey ac_staked
 =====================================================
 ``./komodod -ac_name=5REWDECENDPERCSTAKE -ac_supply=1000 -ac_reward=500000000 -ac_decay=75000000 -ac_end=10000 -ac_perc=10000000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=60``
 
-1000 coin premine
+A 1000-coin pre-mine, a 5-coin block reward, the block reward ends at block 10000, and the chain adjusts difficulty so 60% of blocks are mined via PoS, 40% via PoW.
 
-5 coin block reward
+The pubkey address receives 0.5 coin for every mined block (an additional 10% above the block reward). The pubkey address receives an additional 10% for every transaction made on the chain. For example, if a transaction sends 100 coins, 10 additional coins are created and sent to the pubkey address. This includes the additional verification transaction in PoS blocks, meaning the pubkey address receives more coins for every PoS block.
 
-Block reward ends at block 10000.
-
-``ac_decay`` has no effect without ``ac_halving`` and ``ac_reward`` both set.
-
-Chain adjusts difficulty so 60% of blocks are proof of stake, 40% proof of work.
-
-Pubkey address receives 0.5 coin for every mined block.(an additional 10% of block reward)
-
-Pubkey address receives an additional 10% for every transaction made on the chain. For example, if a transaction sends 100 coins, 10 additional coin is created and sent to the pubkey address. This includes the additional verification transaction in POS blocks, meaning the pubkey address receives more coins for every POS block.
+For ``ac_decay`` to have an effect, both ``ac_halving`` and ``ac_reward`` must be set.
 
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
 
@@ -1150,26 +888,15 @@ ac_halving ac_decay ac_end ac_perc ac_pubkey ac_staked
 
 ``ac_halving`` and ``ac_decay``have no effect if ``ac_reward`` is not set.
 
-If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain does not work at all because ``ac_reward`` is not set.
-
-Number of parameters: 6
-***********************
+If ``ac_perc`` is set, ``ac_reward`` must be set also. This chain is not functional, because ``ac_reward`` is not set.
 
 ac_reward ac_halving ac_decay ac_end ac_perc ac_pubkey ac_staked
 =================================================================
 
 ``./komodod -ac_name=6REWHALVDECENDPERCSTAKE -ac_supply=100000000 -ac_reward=100000000000 -ac_halving=100000 -ac_decay=75000000 -ac_end=1000000 -ac_perc=500000 -ac_pubkey=027dc7b5cfb5efca96674b45e9fda18df069d040b9fd9ff32c35df56005e330392 -ac_staked=1``
 
-100000000 coin premine
+A 100000000-coin pre-mine, a 1000-coin block reward, the block reward decreases by 25% every 100000 blocks, the block reward ends at block 1000000, and the chain adjusts difficulty so 1% of blocks are mined via PoS, 99% via PoW.
 
-1000 coin block reward
+The pubkey address receives an additional 0.5% above the block reward for each mined block. For example, before the first halving, the pubkey address will receive 5 coins (0.5% of 1000 coin block reward) for every mined block. After the first halving, the pubkey address will receive 3.75 coins for every mined block (0.5% of 750-block reward). The pubkey address receives an additional 0.5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 0.5 coins are created and sent to the pubkey address. This includes the additional verification transaction in PoS blocks, meaning the pubkey address receives more coins for every PoS block.
 
-Block reward decreases by 25% every 100000 blocks
-
-Block reward ends at block 1000000
-
-Chain adjusts difficulty so 1% of blocks are proof of stake, 99% proof of work.
-
-The pubkey address receives an additional 0.5% of the block reward for each mined block. For example, before the first halving, the pubkey address will receive 5 coins(0.5% of 1000 coin block reward) for every mined block. After the first halving, the pubkey address will receive 3.75 coins for every mined block.(0.5% of 750 block reward)
-Pubkey address receives an additional 0.5% for every transaction made on the chain. For example, if a transaction sends 100 coins, an additional 0.5 coin are created and sent to the pubkey address. This includes the additional verification transaction in POS blocks, meaning the pubkey address receives more coins for every POS block.
 ``ac_perc`` chains are currently incompatible with z-nomp. The coinbase transaction vout type must be ``pubkey`` as opposed to ``pubkeyhash``.
